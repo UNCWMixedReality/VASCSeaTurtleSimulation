@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InteractableToggle : MonoBehaviour
+{
+    public GameObject Shovel;
+    public GameObject Cage;
+    public GameObject egg1;
+    public GameObject egg2;
+    public GameObject egg3;
+    public GameObject egg4;
+    public GameObject egg5;
+    public GameObject egg6;
+    public GameObject sign;
+
+
+    public void toggle(int thing, int layer)
+    {
+        switch (thing)
+        {
+            case 0:
+                Debug.Log("Shovel");
+                Shovel.layer = layer;
+                break;
+            case 1:
+                Debug.Log("egg1");
+                egg1.layer = layer;
+                break;
+            case 2:
+                Debug.Log("egg2");
+                egg2.layer = layer;
+                egg3.layer = layer;
+                egg4.layer = layer;
+                egg5.layer = layer;
+                egg6.layer = layer;
+                break;
+            case 3:
+                Debug.Log("Cage");
+                Cage.layer = layer;
+                break;
+            case 4:
+                Debug.Log("Sign");
+                sign.layer = layer;
+                break;
+            default:
+                Debug.Log("no such object exists");
+                break;
+        }
+    }
+}

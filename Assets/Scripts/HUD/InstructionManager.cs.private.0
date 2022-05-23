@@ -1,0 +1,251 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Text;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InstructionManager : MonoBehaviour
+{
+	public GameObject TextBox;
+	
+	public GameObject InstructionPanel;
+	public GameObject playerTracker;
+	
+	public GameObject TableOne;
+	public GameObject TableTwo;
+	public GameObject TableThree;
+
+	public GameObject calipers;
+	public GameObject container;
+	public GameObject tapeMeasure;
+	public GameObject clipboard;
+	public GameObject loadTurtle;
+	public GameObject loadTrack;
+
+	public AudioConvo AC;
+	public RoomSwitch RS;
+	public Fading FD;
+
+	[HideInInspector]
+	public float oneStart;
+	[HideInInspector]
+	public float twoStart;
+	[HideInInspector]
+	public float threeStart;
+	[HideInInspector]
+	private bool switchActive;  //button for toggling panel on and off
+	[HideInInspector]
+	public bool active;         //keeps track of whether the panel is currently active
+	[HideInInspector]
+	public bool taskActive;     //keeps track of if a task is active
+
+	private bool caliperStart;  //keeps track of if the calipers have been picked up
+	private bool tmStart;       //keeps track of if the TM has been picked up
+	private bool playedFirst;	//keeps track of if the first instructions have been played
+	private int current;		//int keeping track of the current instruction being displayed
+	public int range;			//how close the player must be to start a task
+	private int taskTracker;	//keeps track of which task the player is on
+	private Text text;
+	//private static readonly string textFile = Directory.GetCurrentDirectory() + @"\Assets\Scripts\HUD\InstructionsM1.txt";
+	private string[] instructions = new string[16];
+
+	public IEnumerator Wait(int wait, int index)
+	{
+		//change the panel after a given amount of time has passed
+		yield return new WaitForSeconds(wait);
+		changePanel(index);
+		if(index == 3)
+        {
+			yield return new WaitForSeconds(5);
+			calipers.SetActive(true);
+		}
+		if (index == 5)
+        {
+			yield return new WaitForSeconds(7);
+			container.transform.GetChild(1).gameObject.SetActive(true);
+			container.transform.GetChild(2).gameObject.SetActive(true);
+			container.transform.GetChild(3).gameObject.SetActive(true);
+		}
+		if (index == 6)
+        {
+			yield return new WaitForSeconds(5);
+			tapeMeasure.SetActive(true);
+		}
+		if (index == 8)
+        {
+			yield return new WaitForSeconds(6);
+			clipboard.transform.GetChild(1).gameObject.SetActive(true);
+			clipboard.transform.GetChild(2).gameObject.SetActive(true);
+			clipboard.transform.GetChild(3).gameObject.SetActive(true);
+		}
+		if (index == 12)
+        {
+			yield return new WaitForSeconds(3);
+			loadTurtle.SetActive(true);
+        }
+		if(index == 14)
+        {
+			yield return new WaitForSeconds(4);
+			loadTrack.SetActive(true);
+        }
+	}
+	
+	public IEnumerator WaitForFade1(int wait)
+    {
+		yield return new WaitForSeconds(wait);
+		RS.switchRoom();
+		FD.Fade(false, true);
+		print("Calling fade out");
+		yield return new WaitForSeconds(wait);
+		changePanel(10);    //load task 1 instructions
+		AC.playSound();
+		Debug.Log("first task started");
+		TableOne.SetActive(false);
+		taskTracker = 1;
+		oneStart = Time.time;
+	}
+
+	public IEnumerator WaitForFade2(int wait)
+	{
+		yield return new WaitForSeconds(wait);
+		RS.switchRoom();
+		FD.Fade(false, true);
+		print("Calling fade out");
+		yield return new WaitForSeconds(wait);
+		StartCoroutine(Wait(6, 12));    //load task 2 instructions
+		AC.playSound();
+		Debug.Log("second task started");
+		TableTwo.SetActive(false);
+		taskTracker = 2;
+		twoStart = Time.time;
+	}
+
+	public IEnumerator WaitForFade3(int wait)
+	{
+		yield return new WaitForSeconds(wait);
+		RS.switchRoom();
+		FD.Fade(false, true);
+		print("Calling fade out");
+		yield return new WaitForSeconds(wait);
+		StartCoroutine(Wait(5, 14));    //load task 3 instructions
+		AC.playSound();
+		Debug.Log("third task started");
+		TableThree.SetActive(false);
+		taskTracker = 3;
+		threeStart = Time.time;
+	}
+
+	void Start()
+    {
+		calipers.SetActive(false);
+		TableOne.SetActive(false);
+		active = true;
+		taskActive = false;
+		caliperStart = false;
+		tmStart = false;
+		current = 0;
+		taskTracker = 0;
+        text = TextBox.GetComponent<Text>();
+		instructions[0] = ("Welcome! This is Module 1 of the VASC Sea Turtle Simulation.");
+		instructions[1] = ("During this simulation, you will complete three tasks.");
+		instructions[2] = ("Before you begin, let's go over the tools you'll be using.");
+		instructions[3] = ("First, use your grip button (middle finger) to pick up the calipers on the left side of the table.");
+		instructions[4] = ("Good job. Press the A button on that controller to extend and the B button to retract the calipers.");
+		instructions[5] = ("Looks like you've got the hang of it. Now it's time to use them. Extend the calipers to measure the container on the table by following the yellow arrow.");
+		instructions[6] = ("Nice work! We're done with the calipers for now. Next, pick up the tape measure on the right side of the table.");
+		instructions[7] = ("As you can see, when you're holding the tape measure, the tape will automatically follow your other hand.");
+		instructions[8] = ("Use the tape measure to measure the clipboard, following the yellow arrow.");
+		instructions[9] = ("Great! Now that you know how to use the tools, you're ready to go. Move to the blue waypoint to get started.");
+		instructions[10] = ("Your first task is to measure this sea turtle using the calipers on the flippers and the tape measure on the shell.");
+		instructions[11] = ("Good job! You finished the first task! Move to the waypoint to continue.");
+		instructions[12] = ("This task needs you to identify the sea turtles that appear on the table. Use your laser pointer to click the Load Turtle button to begin.");
+		instructions[13] = ("Nice job! You finished the second task! Move to the waypoint to continue.");
+		instructions[14] = ("This task needs you to identify the sets of turtle tracks that appear on the table. Click the Load Tracks button to begin.");
+		instructions[15] = ("Excellent work! You finished the third task! That's all for this Module.");
+		text.text = instructions[current];
+		Debug.Log(text.text);
+
+		//begin with the welcome bits
+		//play audio clip
+		StartCoroutine(Wait(5, 1));
+		StartCoroutine(Wait(10, 2));
+		StartCoroutine(Wait(14, 3));		//this loads first instructions for tool table
+	}
+
+	void Update()
+    {
+        if (!playedFirst)
+        {
+			AC.playSound();
+				playedFirst = true;
+			taskActive = true;
+		}
+		
+		//start first activity is player is in proximity
+		if (Vector3.Distance(playerTracker.transform.position, TableOne.transform.position) < range && !taskActive && taskTracker == 0)
+		{
+			FD.Fade(true, false);
+			taskActive = true;
+			StartCoroutine(WaitForFade1(2));
+
+		}
+		//start second activity is player is in proximity and first activity has been completed
+		if (Vector3.Distance(playerTracker.transform.position, TableTwo.transform.position) < range && !taskActive && taskTracker == 1)
+		{
+			FD.Fade(true, false);
+			taskActive = true;
+			StartCoroutine(WaitForFade2(2));
+		}
+		//start third activity if player is in proximity and second activity has been completed
+		if (Vector3.Distance(playerTracker.transform.position, TableThree.transform.position) < range && !taskActive && taskTracker == 2)
+		{
+			FD.Fade(true, false);
+			taskActive = true;
+			StartCoroutine(WaitForFade3(2));
+		}
+	}
+
+	
+	//toggle the panel on and off
+	public void togglePanel(){
+		active = !active;
+		if(active){
+			InstructionPanel.SetActive(true);
+		}
+		else{
+			InstructionPanel.SetActive(false);
+		}
+	}
+	
+	//change to the next or previous panel
+	public void changePanel(int value){
+		text.text = instructions[value];
+		current = value;
+		//NextText.transform.GetChild(0).gameObject.GetComponent<Text>().color = new Color32(82, 94, 231, 255);//original
+		//PrevText.transform.GetChild(0).gameObject.GetComponent<Text>().color = new Color32(82, 94, 231, 255);
+	}
+
+	public void pickUpCal()
+    {
+		if(caliperStart == false)
+        {
+			caliperStart = true;
+			changePanel(4);
+			AC.playSound();
+        }
+    }
+
+	public void pickUpTM()
+    {
+		if(tmStart == false)
+        {
+			tmStart = true;
+			changePanel(7);
+			AC.playSound();
+			StartCoroutine(Wait(8, 8));
+		}
+	}
+}

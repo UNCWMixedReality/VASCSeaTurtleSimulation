@@ -1,0 +1,32 @@
+﻿{
+    "StartTime": "<DateTime>",
+    "EndTime": "<DateTime>",
+    "Student": {
+        "Id": "<Int>",
+        "FirstName": "<String>",
+        "LastName": "<String>"
+    },
+    "SessionMovement": {
+        "MovementID<Int>": {
+            "Timestamp": "<DateTime>",
+            "Root": "<Vector3>",
+            "Radius": "<Float>",
+            "Name": "<String>"
+        }
+    },
+    "SessionDecision": {
+        "DecisionID<String>": {
+            "Timestamp": "<DateTime>",
+            "DecisionValue": "<String>",
+            "TaskName": "<String>",
+            "TaskCurrentValue": "<String>"
+        }
+    },
+    "SessionInteraction": {
+        "InteractionID<String>": {
+            "Timestamp": "<DateTime>",
+            "WasPickedUp": "<Bool>",
+            "ObjectName": "<String>"
+        }
+    }
+}

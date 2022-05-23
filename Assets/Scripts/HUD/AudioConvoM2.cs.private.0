@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioConvoM2 : MonoBehaviour
+{
+    public AudioSource M201;
+    public AudioSource M202;
+    public AudioSource M203;
+    public AudioSource M204;
+    public AudioSource M205;
+    public AudioSource M206;
+    public AudioSource M207;
+    public AudioSource M208;
+    public AudioSource M209;
+    public AudioSource M210;
+    public AudioSource M211;
+    public AudioSource M212;
+    public AudioSource M213;
+
+    private Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
+    private int backlog = 0; //This keeps track of whether there is a soundclip that is waiting to be played
+    private AudioSource temp;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        audioInstructions.Enqueue(M201);
+        audioInstructions.Enqueue(M202);
+        audioInstructions.Enqueue(M203);
+        audioInstructions.Enqueue(M204);
+        audioInstructions.Enqueue(M205);
+        audioInstructions.Enqueue(M206);
+        audioInstructions.Enqueue(M207);
+        audioInstructions.Enqueue(M208);
+        audioInstructions.Enqueue(M209);
+        audioInstructions.Enqueue(M210);
+        audioInstructions.Enqueue(M211);
+        audioInstructions.Enqueue(M212);
+        audioInstructions.Enqueue(M213);
+        temp = M201;
+    }
+
+    public void playSound()
+    {
+        if (!temp.isPlaying)
+        {
+            temp = audioInstructions.Dequeue();
+            temp.Play();
+        }
+        else
+        {
+            backlog++;
+        }
+    }
+
+    void Update()
+    {
+        if(backlog > 0)
+        {
+            if (!temp.isPlaying)
+            {
+                backlog--;
+                temp = audioInstructions.Dequeue();
+                temp.Play();
+            }
+        }
+    }
+}

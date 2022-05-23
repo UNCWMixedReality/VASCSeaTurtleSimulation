@@ -1,0 +1,184 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+        <title>S.C.A.N Panel</title>
+        <link rel=stylesheet type="text/css" href="/home/styles/style.css" />
+    
+    </head>
+    
+    <body class="bg-teal">
+
+        <script src="/home/scripts/connectionConfig.js"></script>
+
+        <script>
+
+            var connection;
+            var msgTypes = ["JSON", "TEXT", "DBUG", "WSID"];
+            var objectData;
+
+            function connect() {
+
+                if (connection) {
+                    get_obj = "Get All Remotes...";
+                    document.getElementById("ws_connect").onclick = "connection.send('BuiltIn|getObjects|json')";
+                    document.getElementById("ws_connect").innerHTML = get_obj;
+                    return "Connect";
+                }
+
+                if (!serverAddress) {
+                    connection = new WebSocket('ws://172.16.1.3:11000');
+                } else {
+                    connection = new WebSocket('ws://' + serverAddress);
+                }
+
+                connection.onopen = function () {
+                    console.log('+++ WS Open');
+                    addLog("Connection Established");
+                    connection.send("BuiltIn|connect");
+                };
+
+                connection.onmessage = function (msg) {
+
+                    switch (msg.data.slice(0, 4)) {
+                        case msgTypes[0]:
+                            parseObjectJSON(msg.data.slice(5));
+                            break;
+                        case msgTypes[1]:
+                            parseObjectJSON(msg.data.slice(5));
+                            break;
+                        case msgTypes[2]:
+                            addLog(msg.data.slice(5));
+                            break;
+                        case msgTypes[3]:
+                            sim = JSON.parse(msg.data.slice(5));
+                            document.getElementById("s_name").innerHTML = "Simulation: " +
+                                sim.Simulation + "<br><span style='font-size: 12px'> Session ID: " + sim.ID + "</span>";
+                            break;
+                        default:
+                            addLog(msg.data);
+                    }
+
+                    console.log('+++ Message Length: ', msg.data.length);
+
+                }
+
+                connection.onerror = function (msg) {
+                    console.error("ERROR: ", msg.error);
+                };
+
+                connection.onclose = function (data) {
+                    console.log(">>> Socket Closed | Code: ", data.code);
+                }
+
+                get_obj = "Get All Remotes...";
+                document.getElementById("ws_connect").setAttribute('onclick', "connection.send('BuiltIn|getObjects|json')");
+                document.getElementById("ws_connect").innerHTML = get_obj;
+                return "Connect";
+
+            }
+
+            function addLog(debug) {
+
+                var message = document.createElement("p");
+                message.classList.add("debug-message");
+                message.innerHTML = debug;
+                document.getElementById("console").appendChild(message);
+
+            }
+
+            function getVoidAttribute(id, comp, method) {
+
+                connection.send("Direct|" + id + "|" + comp + "|" + method);
+
+            }
+
+            function parseObjectJSON(json) {
+
+                objectData = JSON.parse(json);
+
+                for (var i = 0; i < objectData.Objects.length; i++) {
+
+                    var out_box = document.createElement("div");
+                    out_box.classList.add("output-box");
+                    out_box.classList.add("brd-top-yellow");
+                    out_box.classList.add("shadow-light");
+                    out_box.classList.add("c-white");
+                    out_box.classList.add("bg-green");
+                    var output = "";
+
+                    var od = objectData.Objects;
+                    output += "<br> ID: " + od[i].ID;
+                    output += "<br> Name: " + od[i].Name;
+                    output += "<br> Settings: <div class=\"output-settings-list\"><ul>";
+
+                    for (var j = 0; j < od[i].Settings.length; j++) {
+
+                        output += "<li>" + od[i].Settings[j].Component + "<ul>";
+
+                        for (var k = 0; k < od[i].Settings[j].Methods.length; k++) {
+
+                            var g = 1
+
+                            if (k > 0) {
+                                while (od[i].Settings[j].Methods[k].Name == od[i].Settings[j].Methods[k - 1].Name) {
+                                    g++;
+                                    k++;
+                                }
+                            }
+
+                            if (od[i].Settings[j].Methods[k].ReturnType != "System.Void" && od[i].Settings[j].Methods[k].Paramaters.length == 0) {
+
+                                output += "<li class=\"method-item\"><a class=\"object-function-link\" onclick=\"getVoidAttribute('" +
+                                    od[i].ID + "', '" + od[i].Settings[j].Component + "', '" + od[i].Settings[j].Methods[k].Name
+                                    + "') \">" + od[i].Settings[j].Methods[k].Name + "</a></li>";
+                            }
+                            else if (g > 1) {
+                                output += "<li class=\"method-item\">" + od[i].Settings[j].Methods[k].Name + " (x" + g + ")</li>";
+                            }
+                            else {
+                                output += "<li class=\"method-item\">" + od[i].Settings[j].Methods[k].Name + "</li>";
+                            }
+
+                        }
+
+                        output += "</ul></li>";
+
+                    }
+
+                    output += "</ul></div><br>";
+
+                    out_box.innerHTML = output;
+                    document.getElementById("output").appendChild(out_box);
+
+                }
+
+            }
+
+        </script>
+
+        <div class="header bg-green shadow-light">
+
+            <p class="header-title">Virtual Access to STEM Careers</p>
+            <img src="/home/media/SCANLogo.svg" class="scan-logo" />
+            <img src="/home/media/uncw.svg" class="uncw-logo" />
+            <img src="/home/media/NSF.png" class="nsf-logo" />
+
+        </div>
+
+        <div class="connect">
+            <div id="ws_connect" onclick="connect();" class="connect-btn-txt bg-green c-white shadow-light brd-top-yellow">Connect to Unity Runtime<br><span style="font-size: 22px">172.16.1.3:11000</span></div>
+            <br>
+            <div id="output" class="output-box-container"></div>
+        </div>
+
+        <div id="console" class="console-window">
+
+        </div>
+
+    </body>
+    
+</html>

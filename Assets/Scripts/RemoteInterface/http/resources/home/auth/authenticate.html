@@ -1,0 +1,103 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>VASC Login</title>
+    <link rel=stylesheet type="text/css" href="/home/styles/style.css" />
+
+</head>
+
+<body class="bg-navy">
+
+    <script>
+
+        var connection;
+        var state = 0;
+
+        // Init WebSocket connection
+        function init() {
+
+            connection = new WebSocket('ws://127.0.0.1:8080');
+
+            connection.onopen = function () {
+                console.log('+++ WS Open');
+                connection.send("0|connect");
+                showLoginForm();
+                state = 1;
+            };
+
+            connection.onmessage = function (msg) {
+
+                console.log(msg);
+
+                if (msg.data.substr(0, 13) == "id_99|session") {
+                    document.cookie = msg.data.substr(6);
+                    location.href = "/vasc";
+                } else if (msg.data.substr(0, 5) == "id_99") {
+                    showInvalidMessage();
+                }
+
+            };
+        }
+
+        function showInvalidMessage() {
+
+            document.getElementById("invalid-login").style.display = "inline-block";
+
+            document.getElementById("field-pass").value = "";
+
+        }
+
+        function showLoginForm() {
+
+            document.getElementById("box-1").style.display = "inline-block";
+
+        }
+
+        function login() {
+
+            var username = document.getElementById("field-user").value;
+            var password = document.getElementById("field-pass").value;
+
+            connection.send("id_99|login|" + username + "|" + password);
+
+        }
+
+    </script>
+
+    <div id="welcome-box">
+
+        <div id="box-1" class="login-text-box shadow-light">
+
+            <p id="login-welcome" class="shadow-light"><img src="/home/media/vasc.png" /></p>
+
+            <div id="login-box">
+
+                <p id="invalid-login">Incorrect Username/Password</p>
+
+                <form id="auth" action="/vasc" method="post">
+                    <label style="display:inline-block; width:110px;" for="username">Username: </label>
+                    <input id="field-user" type="text" name="username" /><br />
+                    <label style="display:inline-block;width:110px;" for="username">Password: </label>
+                    <input id="field-pass" type="password" name="password" />
+                </form>
+            </div>
+
+            <div onclick="login();" id="submit-button" class="shadow-light">
+
+                <p>Login</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>init();</script>
+
+</body>
+
+</html>

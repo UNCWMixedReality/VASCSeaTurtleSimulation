@@ -1,0 +1,56 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioConvoTutorial : MonoBehaviour
+{
+    public AudioSource T1;
+    public AudioSource T2;
+    public AudioSource T3;
+    public AudioSource T4;
+    public AudioSource T5;
+    public AudioSource T6;
+    public AudioSource T7;
+
+    private Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
+    private int backlog = 0; //This keeps track of whether there is a soundclip that is waiting to be played
+    private AudioSource temp;
+
+    void Start()
+    {
+        audioInstructions.Enqueue(T1);
+        audioInstructions.Enqueue(T2);
+        audioInstructions.Enqueue(T3);
+        audioInstructions.Enqueue(T4);
+        audioInstructions.Enqueue(T5);
+        audioInstructions.Enqueue(T6);
+        audioInstructions.Enqueue(T7);
+        temp = T1;
+    }
+
+    public void playSound()
+    {
+        if (!temp.isPlaying)
+        {
+            temp = audioInstructions.Dequeue();
+            temp.Play();
+        }
+        else
+        {
+            backlog++;
+        }
+    }
+
+    void Update()
+    {
+        if (backlog > 0)
+        {
+            if (!temp.isPlaying)
+            {
+                backlog--;
+                temp = audioInstructions.Dequeue();
+                temp.Play();
+            }
+        }
+    }
+}

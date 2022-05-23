@@ -1,0 +1,67 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioConvo : MonoBehaviour
+{
+    public AudioSource M101;
+    public AudioSource M102;
+    public AudioSource M103;
+    public AudioSource M104;
+    public AudioSource M105;
+    public AudioSource M106;
+    public AudioSource M107;
+    public AudioSource M108;
+    public AudioSource M109;
+    public AudioSource M110;
+    public AudioSource M111;
+    public AudioSource M112;
+
+    public Table_Turtle_Manager turtles;
+    public Table_Tracks_Manager tracks;
+
+    private Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
+    private int backlog = 0; //This keeps track of whether there is a soundclip that is waiting to be played
+    private AudioSource temp;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        audioInstructions.Enqueue(M101);
+        audioInstructions.Enqueue(M102);
+        audioInstructions.Enqueue(M103);
+        audioInstructions.Enqueue(M104);
+        audioInstructions.Enqueue(M105);
+        audioInstructions.Enqueue(M106);
+        audioInstructions.Enqueue(M107);
+        audioInstructions.Enqueue(M108);
+        audioInstructions.Enqueue(M109);
+        audioInstructions.Enqueue(M110);
+        audioInstructions.Enqueue(M111);
+        audioInstructions.Enqueue(M112);
+        temp = M101;
+    }
+
+    public void playSound()
+    {
+        if (!temp.isPlaying && !turtles.lastPlayed.isPlaying && !tracks.lastPlayed.isPlaying){
+            temp = audioInstructions.Dequeue();
+            temp.Play();
+        }
+        else
+        {
+            backlog++;
+        }
+    }
+
+    void Update()
+    {
+        if (backlog > 0){
+            if (!temp.isPlaying && !turtles.lastPlayed.isPlaying && !tracks.lastPlayed.isPlaying){
+                backlog--;
+                temp = audioInstructions.Dequeue();
+                temp.Play();
+            }
+        }
+    }
+}

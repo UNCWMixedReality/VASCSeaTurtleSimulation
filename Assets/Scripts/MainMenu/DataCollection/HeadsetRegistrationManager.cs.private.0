@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class HeadsetRegistrationManager : MonoBehaviour
+{
+
+    class Headset
+    {
+        public string device_id;
+    }
+
+    public GameObject RegisteringHeadsetContainer;
+    public GameObject RegistrationCompleteContainer;
+    public GameObject HeadsetRefIDContainer;
+    public TextMesh HeadsetRefText;
+
+    private readonly string PROD_API_KEY = "5gjPQ5pR.0qkIOviB2jL37e1AUi2MLBx36FVPlqUS";
+    private readonly string DEV_API_KEY = "5geExWWA.quPbv9Mtup3ARYGZlVDc5SpRPaogsmim";
+    private readonly string PROD_API_ENDPOINT = "https://vr.uncw.edu/VASC/api/v1/";
+    private readonly string DEV_API_ENDPOINT = "http://localhost:8009/api/v1/";
+    private readonly bool dev = false;
+
+    bool registered = false;
+
+
+    string device_id = null;
+    string API_KEY = null;
+    string API_ENDPOINT = null;
+
+    // Start is called before the first frame update
+    async void Start()
+    {
+  
+        device_id = SystemInfo.deviceUniqueIdentifier;
+        await CheckHeadsetRegistrationStatus();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    async Task CheckHeadsetRegistrationStatus()
+    {
+
+        (bool, bool, string) results = await APIManager.CheckHeadsetRegistrationStatus(device_id);
+
+        if (results.Item1)
+        {
+            LogManager.LogMessage($"Results from Headset Registration check: {results.Item3}");
+            registered = results.Item2;
+            LogManager.LogMessage($"Derived registration status: {registered.ToString()}");
+        } else
+        {
+            LogManager.LogMessage(results.Item3, true);
+        }
+
+        await PopulateSettingsScreen();
+
+    }
+
+
+    async Task PopulateSettingsScreen()
+    {
+
+        if (registered)
+        {
+            RegistrationCompleteContainer.SetActive(true);
+            HeadsetRefIDContainer.SetActive(true);
+            HeadsetRefText.text = $"{HeadsetRefText.text}{device_id}";
+        } else
+        {
+            RegisteringHeadsetContainer.SetActive(true);
+
+            (bool, bool, string) results = await APIManager.RegisterHeadset(device_id);
+
+            if (results.Item1 is false)
+            {
+                RegisteringHeadsetContainer.SetActive(false);
+                RegistrationCompleteContainer.SetActive(true);
+                HeadsetRefIDContainer.SetActive(true);
+                HeadsetRefText.text = $"Error! {results.Item3}";
+            } else
+            {
+                RegisteringHeadsetContainer.SetActive(false);
+                RegistrationCompleteContainer.SetActive(true);
+                HeadsetRefIDContainer.SetActive(true);
+                HeadsetRefText.text = $"{HeadsetRefText.text}{device_id}";
+            }
+
+        }
+    }
+
+
+
+
+}

@@ -1,0 +1,194 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VASC Control Panel</title>
+    <link rel=stylesheet type="text/css" href="/home/styles/style.css" />
+</head>
+
+<body class="bg-navy">
+
+    <script src="/home/scripts/control.js"></script>
+
+    <div id="header" class="c-white bg-teal shadow-light">
+
+        <img src="/home/media/vasc.png" />
+
+        <div id="toolbar">
+            <a class="tool-element c-white" href="#status">Status</a>
+            <a class="tool-element c-white" href="#users">Users</a>
+            <a class="tool-element c-white" href="#config">Configuration</a>
+            <a class="tool-element c-white" href="#live">Live View</a>
+            <a class="tool-element c-white" href="#education">Education</a>
+        </div>
+
+    </div>
+
+    <br />
+    <div id="popups">
+
+        <div class="popup" id="users-table-create-list-popup">
+
+            <div>
+
+                <p style="font-size: 24px; background-color: #081F29; margin: 0; padding-top: 12px; padding-bottom: 12px;" class="shadow-light">Create New Users List</p>
+
+                <div id="users-table-create-form">
+                    <p class="form-prompt">Enter new list name:</p>
+                    <input type="text" id="users-table-create-list-name" />
+                    <br />
+                    <p class="form-prompt">Select .CSV file with User data</p>
+                    <input type="file" id="users-table-create-list-file" accept=".csv" />
+                </div>
+
+                <br /><br />
+
+                <div onclick="usersTableCreateList();" id="users-table-create-form-submit" class="shadow-light">
+                    <p style="margin-top: 10px;">Submit</p>
+                </div>
+
+            </div>
+
+            <p class="popups-close" onclick="hidePopup();">&#x2716 Close Window</p>
+
+        </div>
+
+        <div class="popup" id="users-table-show-user">
+
+            <div>
+
+                <p style="font-size: 24px; background-color: #081F29; margin: 0; padding-top: 12px; padding-bottom: 12px;" class="shadow-light">User Details</p>
+
+                <div id="users-table-show-user-form">
+                    <p class="form-prompt">Username:&nbsp;&nbsp;<input type="text" id="users-table-show-user-form-Username" readonly/></p>
+                    <p class="form-prompt">First Name:&nbsp;&nbsp;<input type="text" id="users-table-show-user-form-FirstName" /></p>
+                    <p class="form-prompt">Last Name:&nbsp;&nbsp;<input type="text" id="users-table-show-user-form-LastName" /></p>
+                    <p class="form-prompt">Reading Level:&nbsp;&nbsp;<input type="text" id="users-table-show-user-form-ReadLevel" /></p>
+                    <p class="form-prompt">Permission Level:&nbsp;&nbsp;<input type="text" id="users-table-show-user-form-Permission" /></p>
+                </div>
+
+                <br /><br />
+
+                <div onclick="usersTableModifyUser();" id="users-table-show-user-form-submit" class="shadow-light">
+                    <p style="margin-top: 10px;">Submit</p>
+                </div>
+
+            </div>
+
+            <p class="popups-close" onclick="hidePopup();">&#x2716 Close Window</p>
+
+        </div>
+
+    </div>
+
+    <br id="status" />
+    <div id="status-module" class="module-template border-red border-red bg-light shadow-light">
+
+        <p class="module-type bg-red">&nbsp;STATUS</p>
+
+        <div class="module-feature">
+            <p><b class="module-feature-header">VASC Running</b></p>
+            <p>Scene Loaded: <span id="d-status-current-scene">PRELOAD</span></p>
+            <p>VR Mode: <span id="d-status-vr-mode">Yes</span></p>
+            <p>Framerate: <span id="d-status-framerate">Unknown</span></p>
+        </div>
+
+        <div class="module-feature">
+            <p><b class="module-feature-header">Change Module</b></p><br />
+            <div class="module-feature-button shadow-faint" onclick="changeScene('Module_01');">Load Module 1</div><br />
+            <div class="module-feature-button shadow-faint" onclick="changeScene('Module_02');">Load Module 2</div>
+        </div>
+
+        <p id="status-console-header" class="bg-teal shadow-light">Console</p>
+
+        <div id="status-console" class="shadow-light">
+            <div id="status-console-messages"></div>
+        </div>
+
+    </div>
+
+    <br />
+    <div id="users-module" class="module-template border-red bg-light shadow-light">
+
+        <p class="module-type bg-red">&nbsp;USERS</p>
+
+        <div class="module-feature">
+            <p><b class="module-feature-header">VASC Users</b></p>
+        </div>
+
+        <br />
+
+        <div>
+
+            <div id="users-table-options">
+                <div>&bull; Select user list:&nbsp;<select id="users-table-select"></select>&nbsp;or <div class="module-feature-button shadow-faint" onclick="showPopup('users-table-create-list-popup');" id="users-table-create-list">Create New List</div></div>
+            </div>
+
+            <div id="users" class="module-feature"><p>List Name: <b id="user-table-name" class="module-feature-header">List Name</b></p></div>
+            <table id="user-table">
+
+                <tr class="user-table-row user-table-header">
+                    <th>USERNAME</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>MODULE 1</th>
+                    <th>MODULE 2</th>
+                    <th>MODULE 3</th>
+                    <th>READING LEVEL</th>
+                    <th>USER</th>
+                    <th>DEVICE</th>
+                    <th>ACTIONS</th>
+                </tr>
+
+            </table>
+
+        </div>
+
+        </div>
+
+    <br id="config" />
+    <div id="config-module" class="module-template border-red bg-light shadow-light">
+
+        <p class="module-type bg-red">&nbsp;CONFIGURATION</p>
+
+        <div class="module-feature">
+            <p><b class="module-feature-header">Configure VASC Settings</b></p>
+            <p>Under Development</p>
+            <img class="in-progress-img" src="/home/media/fix.svg" />
+        </div>
+
+    </div>
+
+    <br id="live" />
+    <div id="live-module" class="module-template border-red bg-light shadow-light">
+
+        <p class="module-type bg-red">&nbsp;LIVE VIEW</p>
+        <div class="module-feature">
+            <p><b class="module-feature-header">View Simulation Live</b></p>
+            <p>Under Development</p>
+            <img class="in-progress-img" src="/home/media/fix.svg" />
+        </div>
+
+    </div>
+
+    <br id="education" />
+    <div id="edu-module" class="module-template border-red bg-light shadow-light">
+
+        <p class="module-type bg-red">&nbsp;EDUCATION</p>
+
+        <div class="module-feature">
+
+            <p><b class="module-feature-header">Modify VASC Curriculum</b></p>
+            <p>Under Development</p>
+            <img class="in-progress-img" src="/home/media/fix.svg" />
+
+        </div>
+
+    </div>
+    <br /><br />
+
+</body>
+
+</html>

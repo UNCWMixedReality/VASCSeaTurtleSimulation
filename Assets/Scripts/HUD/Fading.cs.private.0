@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Fading : MonoBehaviour
+{
+    public CanvasGroup fade;
+    
+    public float fadeDuration = 1f;
+    public float displayImageDuration = 1f;
+
+    public bool inToOut;
+    public bool OutToIn;
+
+    float m_Timer;
+    double m_counter = 1;
+
+    void Start()
+    {
+        inToOut = true;
+        OutToIn = false;
+    }
+
+    
+    void Update()
+    {
+        if(inToOut) //fading out from black
+        {
+            m_counter -= 0.01;
+            fade.alpha = Convert.ToSingle(m_counter);
+            //print(fade.alpha);
+            //print(m_counter);
+            if(m_counter <= 0) //fade out is finished
+            {
+                inToOut = false;
+                m_counter = 1;
+                //print(m_counter);
+            }
+        }
+
+        if(OutToIn) //fading in to black
+        {
+            m_Timer += Time.deltaTime;
+            fade.alpha = m_Timer / fadeDuration;
+            //print(fade.alpha);
+            if(m_Timer > fadeDuration + displayImageDuration)
+            {
+                OutToIn = false;
+                m_Timer = 0;
+            }
+        }
+    }
+
+
+    public void Fade(bool fadingIn, bool fadingOut)
+    {
+        OutToIn = fadingIn;
+        inToOut = fadingOut;
+    }
+}

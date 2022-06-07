@@ -385,7 +385,7 @@ namespace CurvedUI
             //we check for a sudden change in text's fontMaterialTexture. This is a very hacky way, but the only one working reliably for now.
             if (myText)
             {
-                if (myText.cachedTextGenerator.verts.Count > 0 && myText.cachedTextGenerator.verts[0].uv0 != savedTextUV0)
+                if (myText.cachedTextGenerator.verts.Count > 0 && myText.cachedTextGenerator.verts[0].uv0 != (Vector4)savedTextUV0)
                 {
                     //Debug.Log("tess req - texture");
                     savedTextUV0 = myText.cachedTextGenerator.verts[0].uv0;
@@ -621,8 +621,8 @@ namespace CurvedUI
         /// <param name="quad">Quad.</param>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        private Vector2 _uv0;
-        private Vector2 _uv1;
+        private Vector4 _uv0;
+        private Vector4 _uv1;
         private Vector3 _pos;
         UIVertex TesselateQuad(float x, float y)
         {

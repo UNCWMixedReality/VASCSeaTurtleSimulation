@@ -12,20 +12,17 @@ namespace DataCollection
         public string currentChoice = null;
         public string correctChoice = null;
         public string taskID = null;
-        protected override void OnSelectExit(XRBaseInteractor baseInteractable)
+        protected override void OnSelectExited(SelectExitEventArgs args)
         {
-            if (correctChoice == null)
-            {
-                correctChoice = DcDataLogging.CorrectAnswers[taskID];
-            }
-            base.OnSelectExit(baseInteractable);
+            base.OnSelectExited(args);
+            correctChoice ??= DcDataLogging.CorrectAnswers.GetValueOrDefault(taskID, null);
             DcDataLogging.LogDecision(new Models.Decision(
                 SceneManager.GetActiveScene().name,
                 DateTime.Now,
                 currentChoice,
                 correctChoice,
                 taskID
-                ));
+            ));
         }
     }
 }

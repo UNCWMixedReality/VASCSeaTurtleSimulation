@@ -10,16 +10,16 @@ namespace DataCollection
 {
     public class DcTeleportationArea : TeleportationArea
     {
-        protected override void OnSelectExit(XRBaseInteractor baseInteractable)
+        protected override void OnSelectExited(SelectExitEventArgs args)
         {
-            base.OnSelectExit(baseInteractable);
-            var position = baseInteractable.transform.position;
+            base.OnSelectExited(args);
+            var position = args.interactableObject.transform.position;
             DcDataLogging.LogMovement(new Models.Movement(
                 new System.Numerics.Vector3(
                     position.x, 
                     position.y,
                     position.z
-                    ),
+                ),
                 SceneManager.GetActiveScene().name,
                 DateTime.Now
             ));

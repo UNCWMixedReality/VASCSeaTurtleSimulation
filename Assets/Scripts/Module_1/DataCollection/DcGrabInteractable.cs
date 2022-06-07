@@ -11,9 +11,9 @@ namespace DataCollection
 {
     public class DcGrabInteractable : XRGrabInteractable
     {
-        protected override void OnSelectEnter(XRBaseInteractor baseInteractable)
+        protected override void OnSelectEntered(SelectEnterEventArgs args)
         {
-            base.OnSelectEnter(baseInteractable);
+            base.OnSelectEntered(args);
             DcDataLogging.LogInteraction(new Interaction(
                 DateTime.Now, 
                 true,
@@ -22,9 +22,9 @@ namespace DataCollection
             ));
         }
 
-        protected override void OnActivate(XRBaseInteractor baseInteractor)
+        protected override void OnActivated(ActivateEventArgs args)
         {
-            base.OnActivate(baseInteractor);
+            base.OnActivated(args);
             DcDataLogging.LogInteraction(new Interaction(
                 DateTime.Now, 
                 true,

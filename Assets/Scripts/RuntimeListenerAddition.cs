@@ -18,13 +18,13 @@ public class RuntimeListenerAddition : MonoBehaviour
 
         ListenerManager = GetComponent<XRSimpleInteractable>();
 
-        ListenerManager.onSelectExit.AddListener(OnSelectExit);
+        ListenerManager.onSelectExited.AddListener(OnSelectExit);
 
     }
 
     protected void OnDisable()
     {
-        ListenerManager.onSelectExit.RemoveListener(OnSelectExit);
+        ListenerManager.onSelectExited.RemoveListener(OnSelectExit);
 
     }
 

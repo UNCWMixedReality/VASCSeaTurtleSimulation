@@ -44,7 +44,7 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if(stage == 1)
         {
-            Destroy(firstDoor);
+            firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
             //doorA.Play();
             ACT.playSound();
             IMT.changePanel(3);
@@ -60,7 +60,9 @@ public class TutorialFunctionality : MonoBehaviour
         audiofeedback.playSelection();
         if (stage == 2)
         {
-            Destroy(secondDoor);
+            firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
+            secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
+
             //doorB.Play();
             ACT.playSound();
             IMT.changePanel(5);

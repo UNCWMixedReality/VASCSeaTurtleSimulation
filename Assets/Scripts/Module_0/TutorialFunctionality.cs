@@ -62,7 +62,7 @@ public class TutorialFunctionality : MonoBehaviour
         {
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
             secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
-
+ 
             //doorB.Play();
             ACT.playSound();
             IMT.changePanel(5);

@@ -93,6 +93,10 @@ namespace DataCollection
 
         public static void ExportData()
         {
+            if (!Directory.Exists($"{Application.persistentDataPath}/Log"))
+            {
+                Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
+            }
             JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new DateTimeNullableConverter());
             string New_GUID = Guid.NewGuid().ToString();

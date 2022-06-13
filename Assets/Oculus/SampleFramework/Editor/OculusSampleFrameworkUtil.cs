@@ -17,7 +17,7 @@ permissions and limitations under the License.
 #if UNITY_EDITOR
 using UnityEditor;
 
-[InitializeOnLoadAttribute]
+//[InitializeOnLoadAttribute]
 public class OculusSampleFrameworkUtil
 {
   static OculusSampleFrameworkUtil()

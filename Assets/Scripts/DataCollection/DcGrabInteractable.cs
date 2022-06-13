@@ -22,12 +22,12 @@ namespace DataCollection
             ));
         }
 
-        protected override void OnActivated(ActivateEventArgs args)
+        protected override void OnSelectExited(SelectExitEventArgs args)
         {
-            base.OnActivated(args);
+            base.OnSelectExited(args);
             DcDataLogging.LogInteraction(new Interaction(
-                DateTime.Now, 
-                true,
+                DateTime.Now,
+                false,
                 this.name,
                 SceneManager.GetActiveScene().name
             ));

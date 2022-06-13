@@ -1,23 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
 {
-    //once upon a time we were going to let players select which animal shows up on their instruction panel
     //this script handles choosing the character in the main menu
 
+    //different .png models of the characters
     public GameObject char1;
     public GameObject char2;
     public GameObject char3;
     public GameObject char4;
     public GameObject char5;
 
+    //different audio files for each monster
     public AudioSource monster1;
     public AudioSource monster2;
     public AudioSource monster3;
     public AudioSource monster4;
     public AudioSource monster5;
+
+    public GameObject playerChar;
 
     private int current = 0;
     private GameObject[] charArray = new GameObject[5];
@@ -41,47 +45,30 @@ public class SelectCharacter : MonoBehaviour
 
     public void nextChar()
     {
-        if (current == 4)
-        {
-            charArray[current].SetActive(false);
-            current = 0;
-            charArray[current].SetActive(true);
-            monsterArray[current].Play();
-        }
-        else
-        {
-            charArray[current].SetActive(false);
-            current++;
-            charArray[current].SetActive(true);
-            monsterArray[current].Play();
-        }
+        //set the current object to inactive, switch to next, and set to active
+        charArray[current].SetActive(false);
+        current += 1;
+        current %= 5;
+        charArray[current].SetActive(true);
+        monsterArray[current].Play();
     }
 
     public void prevChar()
     {
-        if (current == 0)
-        {
-            charArray[current].SetActive(false);
-            current = 4;
-            charArray[current].SetActive(true);
-            monsterArray[current].Play();
-        }
-        else
-        {
-            charArray[current].SetActive(false);
-            current--;
-            charArray[current].SetActive(true);
-            monsterArray[current].Play();
-        }
-    }
+        //set the current object to inactive, switch to prev, and set to active
+        Debug.Log("Current is" + current);
+        charArray[current].SetActive(false);
+        current -= 1;
+        Debug.Log("Current is" + current);
+        current = 5 - (-(current) % 5);
+        Debug.Log("Current is" + current);
 
-    public int GetCharacterID()
-    {
-        return current;
+        charArray[current].SetActive(true);
+        monsterArray[current].Play();
     }
 
     public void SaveCharacterID()
     {
-        Debug.Log("Function not written yet, but will store the selected character to the persistent database to be used throughout the different scenes.");
+        playerChar.GetComponent<Image>().sprite = charArray[current].GetComponent<Image>().sprite;
     }
 }

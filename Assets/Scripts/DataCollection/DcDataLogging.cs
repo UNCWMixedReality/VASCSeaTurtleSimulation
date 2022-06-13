@@ -88,11 +88,13 @@ namespace DataCollection
             Session.End();
             //SubmitDataToServer();
             ExportData();
-            
+            Debug.Log("exporting data");
         }
 
         public static void ExportData()
         {
+            Debug.Log("exporting data");
+
             if (!Directory.Exists($"{Application.persistentDataPath}/Log"))
             {
                 Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
@@ -105,6 +107,7 @@ namespace DataCollection
                 
                 serializer.Serialize(file, DcDataLogging.Session);
             }
+            Debug.Log("data exported");
 
         }
 

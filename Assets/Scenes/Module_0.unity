@@ -2374,6 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42d1ca08c6684a418d3186350b9675c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerChar: {fileID: 0}
 --- !u!1 &379888320
 GameObject:
   m_ObjectHideFlags: 0
@@ -36006,7 +36007,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1665102166}
+        m_TargetAssemblyTypeName: TutorialFunctionality, Assembly-CSharp
+        m_MethodName: firstButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -36039,19 +36052,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnDeactivate:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1665102166}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: firstButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   currentChoice: 
   correctChoice: 
   taskID: 

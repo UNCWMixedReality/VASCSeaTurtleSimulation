@@ -17603,6 +17603,7 @@ GameObject:
   - component: {fileID: 1016587924}
   - component: {fileID: 1016587923}
   - component: {fileID: 1016587922}
+  - component: {fileID: 1016587926}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -17974,6 +17975,20 @@ Transform:
   m_Father: {fileID: 665206529}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016587926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016587920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a2d274210696d4cae241b898a67ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1016587921}
+  canvas: {fileID: 1892894148}
 --- !u!1001 &1018012476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26273,8 +26288,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597626089}
-  m_LocalRotation: {x: -0.075912945, y: 0.8642448, z: 0.13725618, w: 0.47799474}
-  m_LocalPosition: {x: -67.60538, y: -19.024313, z: -20.17588}
+  m_LocalRotation: {x: 0.15970686, y: 0.7339749, z: 0.18499689, w: -0.6336804}
+  m_LocalPosition: {x: -42.000214, y: -0.660584, z: -35.867443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29482,7 +29497,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1892894153
 Canvas:
   m_ObjectHideFlags: 0

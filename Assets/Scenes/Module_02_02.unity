@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8411,6 +8411,46 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1882084717}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_OnSelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 746810344}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_useGravity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5215394526026581342, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
       propertyPath: m_Layer
@@ -15509,6 +15549,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &746810344 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5215394525628640477, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+    type: 3}
+  m_PrefabInstance: {fileID: 590975258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &755249057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4975455595100048, guid: e201a24a09e942042b93390d0444d728,
@@ -17392,7 +17438,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &889918701
 Canvas:
   m_ObjectHideFlags: 0
@@ -17491,8 +17537,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893972328}
-  m_LocalRotation: {x: -0.19495438, y: 0.7613311, z: 0.26590133, w: 0.558269}
-  m_LocalPosition: {x: -22.031332, y: -41.448044, z: -41.955753}
+  m_LocalRotation: {x: -0.0569595, y: 0.7412549, z: 0.064039, w: 0.6657295}
+  m_LocalPosition: {x: -3.7313676, y: -0.7667248, z: -21.987822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

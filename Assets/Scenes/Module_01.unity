@@ -3937,7 +3937,7 @@ GameObject:
   - component: {fileID: 236404794}
   - component: {fileID: 236404788}
   m_Layer: 9
-  m_Name: Tape Measure
+  m_Name: Tool Table Tape Measure
   m_TagString: TapeMeasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8726,6 +8726,8 @@ GameObject:
   - component: {fileID: 536777178}
   - component: {fileID: 536777180}
   - component: {fileID: 536777179}
+  - component: {fileID: 536777182}
+  - component: {fileID: 536777181}
   m_Layer: 9
   m_Name: moving_part
   m_TagString: Untagged
@@ -8775,7 +8777,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 410b012c5293434488a98efc7725c502, type: 2}
   - {fileID: -389402008792246631, guid: 0271e4507124862409a8c729f094a649, type: 3}
-  - {fileID: 7922251121040759823, guid: 0271e4507124862409a8c729f094a649, type: 3}
+  - {fileID: 2100000, guid: ac10137f891c9c84e93ddc57ab35d5a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8805,6 +8807,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536777177}
   m_Mesh: {fileID: -2152472422909247179, guid: 0271e4507124862409a8c729f094a649, type: 3}
+--- !u!114 &536777181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536777177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12900426d1676a42b765db03ad85b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &536777182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536777177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
 --- !u!1 &557175092
 GameObject:
   m_ObjectHideFlags: 0
@@ -10814,9 +10842,42 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &745724985
-RectTransform:
+  m_IsActive: 1
+--- !u!114 &736135481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55736f9d0a4d0ca49a1ce47636a344c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextBox: {fileID: 25550235}
+  InstructionPanel: {fileID: 199979120}
+  playerTracker: {fileID: 1431857967}
+  TableOne: {fileID: 1732410175}
+  TableTwo: {fileID: 1023519473}
+  TableThree: {fileID: 1161177207}
+  calipers: {fileID: 1332255354}
+  container: {fileID: 8296172669023160253}
+  tapeMeasure: {fileID: 236404786}
+  clipboard: {fileID: 557175092}
+  calipersMsr: {fileID: 1877166837}
+  tapeMeasureMsr: {fileID: 1976188144}
+  loadTurtle: {fileID: 724122281}
+  loadTrack: {fileID: 1954132427}
+  AC: {fileID: 1552559268}
+  RS: {fileID: 736135486}
+  FD: {fileID: 736135487}
+  oneStart: 0
+  twoStart: 0
+  threeStart: 0
+  active: 0
+  taskActive: 0
+  range: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11254,7 +11315,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 410b012c5293434488a98efc7725c502, type: 2}
   - {fileID: -389402008792246631, guid: 0271e4507124862409a8c729f094a649, type: 3}
-  - {fileID: 7922251121040759823, guid: 0271e4507124862409a8c729f094a649, type: 3}
+  - {fileID: 2100000, guid: ac10137f891c9c84e93ddc57ab35d5a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13521,7 +13582,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &919087001
 Canvas:
   m_ObjectHideFlags: 0
@@ -17393,7 +17454,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1220677553
 Canvas:
   m_ObjectHideFlags: 0
@@ -18724,7 +18785,7 @@ GameObject:
   - component: {fileID: 1332255357}
   - component: {fileID: 1332255356}
   m_Layer: 9
-  m_Name: Calipers
+  m_Name: Tool Table Calipers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9946,7 +9946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414914367}
   m_LocalRotation: {x: -0, y: -0.65836924, z: -0, w: 0.7526952}
-  m_LocalPosition: {x: -34.62068, y: 6.874272, z: 0.5162468}
+  m_LocalPosition: {x: -36.6, y: 6.874272, z: -3.9}
   m_LocalScale: {x: 16.93881, y: 21.42733, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10144,7 +10144,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 513
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -10341,8 +10341,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 446961765}
-  - component: {fileID: 446961766}
-  - component: {fileID: 446961764}
+  - component: {fileID: 446961772}
+  - component: {fileID: 446961773}
   - component: {fileID: 446961768}
   - component: {fileID: 446961769}
   - component: {fileID: 446961770}
@@ -10355,40 +10355,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &446961764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446961763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ac6aa52599124499e740cdf8f89a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextBox: {fileID: 1223114221}
-  InstructionPanel: {fileID: 1892894148}
-  EggPanel: {fileID: 764771429}
-  playerTracker: {fileID: 75477046}
-  MarkerExcavate: {fileID: 1417105029}
-  MarkerMeasure: {fileID: 2138541543}
-  MarkerReplace: {fileID: 0}
-  MarkerDig: {fileID: 0}
-  MarkerCover: {fileID: 0}
-  MarkerSign: {fileID: 0}
-  oneStart: 0
-  twoStart: 0
-  threeStart: 0
-  fourStart: 0
-  fiveStart: 0
-  sixStart: 0
-  AC: {fileID: 821080209}
-  IT: {fileID: 446961770}
-  gloves: {fileID: 21795976}
-  VP: {fileID: 446961771}
-  taskActive: 0
-  range: 2
 --- !u!4 &446961765
 Transform:
   m_ObjectHideFlags: 0
@@ -10404,48 +10370,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &446961766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446961763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2b548edf3fc504eb78f10ae154f406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerDetect: {fileID: 849567367}
-  eggManager: {fileID: 782176903}
-  eggRelocation: {fileID: 0}
-  nestSand: {fileID: 0}
-  nestManager: {fileID: 0}
-  nestSign: {fileID: 0}
-  backup: {fileID: 0}
-  instMan: {fileID: 446961764}
-  audiofeedback: {fileID: 446961768}
-  PM2: {fileID: 446961767}
-  wrongBucket: 0
-  GEggA: {fileID: 2138712414}
-  GEggB: {fileID: 299414630}
-  GEggC: {fileID: 1538120821}
-  GEggD: {fileID: 884143878}
-  GEggE: {fileID: 1453288695}
-  GEggF: {fileID: 1351926454}
-  BEggA: {fileID: 466892092}
-  BEggB: {fileID: 491174368}
-  CEggA: {fileID: 119334900}
-  CEggB: {fileID: 1582828093}
-  PSign: {fileID: 0}
-  WholeSign: {fileID: 0}
-  oneTime: 0
-  twoTime: 0
-  threeTime: 0
-  fourTime: 0
-  fiveTime: 0
-  sixTime: 0
-  totalTime: 0
 --- !u!114 &446961767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10544,6 +10468,71 @@ MonoBehaviour:
   ReplaceVid: {fileID: 1046588381}
   CoverVid: {fileID: 2137045457}
   VisualAid: {fileID: 857494697}
+--- !u!114 &446961772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446961763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2e99f0371138840aa108db48e8e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerDetect: {fileID: 849567367}
+  eggManager: {fileID: 782176903}
+  instMan: {fileID: 446961773}
+  audiofeedback: {fileID: 446961768}
+  PM2: {fileID: 446961767}
+  wrongBucket: 0
+  GEggA: {fileID: 2138712414}
+  GEggB: {fileID: 299414630}
+  GEggC: {fileID: 1538120821}
+  GEggD: {fileID: 884143878}
+  GEggE: {fileID: 1453288695}
+  GEggF: {fileID: 1351926454}
+  BEggA: {fileID: 466892092}
+  BEggB: {fileID: 491174368}
+  CEggA: {fileID: 119334900}
+  CEggB: {fileID: 1582828093}
+  oneTime: 0
+  twoTime: 0
+  threeTime: 0
+  fourTime: 0
+  fiveTime: 0
+  sixTime: 0
+  totalTime: 0
+--- !u!114 &446961773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446961763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c40e77202045945bc42620455a3209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextBox: {fileID: 1223114221}
+  InstructionPanel: {fileID: 1892894148}
+  EggPanel: {fileID: 764771429}
+  playerTracker: {fileID: 75477046}
+  MarkerExcavate: {fileID: 1417105029}
+  MarkerMeasure: {fileID: 2138541543}
+  oneStart: 0
+  twoStart: 0
+  threeStart: 0
+  fourStart: 0
+  fiveStart: 0
+  sixStart: 0
+  AC: {fileID: 821080209}
+  IT: {fileID: 446961770}
+  gloves: {fileID: 21795976}
+  VP: {fileID: 446961771}
+  taskActive: 0
+  range: 2
 --- !u!1 &451609954
 GameObject:
   m_ObjectHideFlags: 0
@@ -12938,14 +12927,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598179037}
-  m_LocalRotation: {x: -0, y: -0.6247196, z: -0, w: 0.7808492}
-  m_LocalPosition: {x: 60.079315, y: 6.874272, z: -12.383755}
+  m_LocalRotation: {x: -0, y: -0.68364555, z: -0, w: 0.7298143}
+  m_LocalPosition: {x: 63.3, y: 6.874272, z: -8.010002}
   m_LocalScale: {x: 16.938812, y: 21.42733, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1392265121}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -77.323006, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -86.258, z: 0}
 --- !u!4 &598933412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4779998117587278, guid: e201a24a09e942042b93390d0444d728,
@@ -16467,7 +16456,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -26273,8 +26262,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597626089}
-  m_LocalRotation: {x: -0.075912945, y: 0.8642448, z: 0.13725618, w: 0.47799474}
-  m_LocalPosition: {x: -67.60538, y: -19.024313, z: -20.17588}
+  m_LocalRotation: {x: 0.29169735, y: 0.24183331, z: 0.07642499, w: -0.9222736}
+  m_LocalPosition: {x: -35.83546, y: -11.786575, z: -52.873764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27952,7 +27941,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 513
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}

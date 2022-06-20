@@ -858,6 +858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
       propertyPath: m_TagString
       value: Egg
       objectReference: {fileID: 0}
@@ -2251,7 +2256,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -2645,7 +2650,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -3509,6 +3514,11 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
@@ -5936,7 +5946,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -6394,6 +6404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
       propertyPath: m_TagString
       value: Egg
       objectReference: {fileID: 0}
@@ -6514,7 +6529,6 @@ GameObject:
   - component: {fileID: 496219722}
   - component: {fileID: 496219721}
   - component: {fileID: 496219716}
-  - component: {fileID: 496219720}
   - component: {fileID: 496219719}
   - component: {fileID: 496219718}
   - component: {fileID: 496219717}
@@ -6554,11 +6568,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b80132766c21e41b4938678fa6427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DigVid: {fileID: 0}
-  SortVid: {fileID: 0}
-  ReplaceVid: {fileID: 0}
-  CoverVid: {fileID: 0}
-  VisualAid: {fileID: 0}
+  DigVid: {fileID: 596894569}
+  SortVid: {fileID: 1233551800}
+  ReplaceVid: {fileID: 1376933523}
+  CoverVid: {fileID: 875996828}
+  VisualAid: {fileID: 69015623}
 --- !u!114 &496219718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6571,13 +6585,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c1365087bd5b44f9043302afb43915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1: {fileID: 0}
-  P2: {fileID: 0}
-  P3: {fileID: 0}
-  P4: {fileID: 0}
-  P5: {fileID: 0}
-  P6: {fileID: 0}
-  P7: {fileID: 0}
+  P1: {fileID: 504590401}
+  P2: {fileID: 439648539}
+  P3: {fileID: 2084566158}
+  P4: {fileID: 559603591}
+  P5: {fileID: 1298741581}
+  P6: {fileID: 1335181061}
+  P7: {fileID: 1354874677}
 --- !u!114 &496219719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6608,21 +6622,6 @@ MonoBehaviour:
   egg5noOutline: {fileID: 1500104699}
   egg6noOutline: {fileID: 1289124778}
   signnoOutline: {fileID: 1737189370}
---- !u!114 &496219720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496219715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b266c529772de7643aab4d634d0da813, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Goodtext: {fileID: 0}
-  Badtext: {fileID: 0}
-  Totaltext: {fileID: 0}
 --- !u!114 &496219721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6635,12 +6634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ac6aa52599124499e740cdf8f89a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextBox: {fileID: 0}
-  InstructionPanel: {fileID: 0}
-  EggPanel: {fileID: 0}
-  playerTracker: {fileID: 0}
-  MarkerExcavate: {fileID: 0}
-  MarkerMeasure: {fileID: 0}
+  TextBox: {fileID: 694275738}
+  InstructionPanel: {fileID: 816662495}
+  playerTracker: {fileID: 18120595}
   MarkerReplace: {fileID: 734970057}
   MarkerDig: {fileID: 996711013}
   MarkerCover: {fileID: 979932824}
@@ -6653,7 +6649,6 @@ MonoBehaviour:
   sixStart: 0
   AC: {fileID: 1595912499}
   IT: {fileID: 496219719}
-  gloves: {fileID: 0}
   VP: {fileID: 496219717}
   taskActive: 0
   range: 2
@@ -6680,16 +6675,6 @@ MonoBehaviour:
   audiofeedback: {fileID: 496219716}
   PM2: {fileID: 496219718}
   wrongBucket: 0
-  GEggA: {fileID: 0}
-  GEggB: {fileID: 0}
-  GEggC: {fileID: 0}
-  GEggD: {fileID: 0}
-  GEggE: {fileID: 0}
-  GEggF: {fileID: 0}
-  BEggA: {fileID: 0}
-  BEggB: {fileID: 0}
-  CEggA: {fileID: 0}
-  CEggB: {fileID: 0}
   PSign: {fileID: 1298638537}
   WholeSign: {fileID: 57972022}
   oneTime: 0
@@ -7457,7 +7442,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -9835,7 +9820,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -15290,7 +15275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &734970058
 Transform:
   m_ObjectHideFlags: 0
@@ -18364,7 +18349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &979932825
 Transform:
   m_ObjectHideFlags: 0
@@ -18477,7 +18462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996711014
 Transform:
   m_ObjectHideFlags: 0
@@ -18590,7 +18575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1005778508
 Transform:
   m_ObjectHideFlags: 0
@@ -21479,6 +21464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
       propertyPath: m_TagString
       value: Egg
       objectReference: {fileID: 0}
@@ -21847,7 +21837,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -22852,6 +22842,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
       propertyPath: m_TagString
       value: Egg
       objectReference: {fileID: 0}
@@ -23604,7 +23599,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
@@ -23670,7 +23665,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
@@ -30292,6 +30287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d697062c91214479310cfa35291c72,
+        type: 3}
       propertyPath: m_TagString
       value: Egg
       objectReference: {fileID: 0}
@@ -35707,7 +35707,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 512
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}

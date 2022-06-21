@@ -224,7 +224,7 @@ namespace cakeslice
 					for (int v = 0; v < outline.SharedMaterials.Length; v++)
 					{
 						Material m = null;
-
+						
 						if (outline.SharedMaterials[v].HasProperty("_MainTex") && outline.SharedMaterials[v].mainTexture != null && outline.SharedMaterials[v])
 						{
 							foreach (Material g in materialBuffer)

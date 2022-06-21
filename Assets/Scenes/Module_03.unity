@@ -8648,8 +8648,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912633309}
-  m_LocalRotation: {x: -0.045807056, y: 0.6254425, z: 0.036829032, w: 0.77805334}
-  m_LocalPosition: {x: 2.7054844, y: -13.260629, z: -12.234463}
+  m_LocalRotation: {x: 0.087172285, y: 0.89959055, z: 0.21045254, w: -0.37262255}
+  m_LocalPosition: {x: -16.801567, y: -13.133737, z: 57.818367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11625,6 +11625,7 @@ GameObject:
   - component: {fileID: 1249905114}
   - component: {fileID: 1249905116}
   - component: {fileID: 1249905115}
+  - component: {fileID: 1249905117}
   m_Layer: 5
   m_Name: Visual Aid
   m_TagString: Untagged
@@ -11690,6 +11691,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249905113}
   m_CullTransparentMesh: 0
+--- !u!114 &1249905117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249905113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42d1ca08c6684a418d3186350b9675c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1264809241
 GameObject:
   m_ObjectHideFlags: 0
@@ -16160,7 +16173,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1742055188
 Canvas:
   m_ObjectHideFlags: 0

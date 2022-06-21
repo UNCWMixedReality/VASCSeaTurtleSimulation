@@ -26,7 +26,7 @@ public class InstructionUpdater : MonoBehaviour
     private Text text;
     
     // Game object that holds the audio portion of the instructions
-    public AudioConvoM2 AC;
+    public AudioM2_1 InstructionAudio;
     // holds the text portion of the instructions
     private string[] instructions = new string[9];
 
@@ -77,7 +77,7 @@ public class InstructionUpdater : MonoBehaviour
         /*
          * play sound
          */
-        AC.playSound();
+        InstructionAudio.playSound();
     }
 
 }

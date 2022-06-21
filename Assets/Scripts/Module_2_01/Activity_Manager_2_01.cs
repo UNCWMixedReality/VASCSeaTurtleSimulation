@@ -54,12 +54,6 @@ public class Activity_Manager_2_01 : MonoBehaviour
 	void Start()
 	{
 		EggToggle();
-		ttf = GameObject.FindGameObjectsWithTag("Data");
-		Debug.Log(ttf + " is the gameobject for the output data");
-		if (ttf.Length == 0)
-		{
-			Debug.Log("no data output found");
-		}
 	}
 
 	// Update is called once per frame

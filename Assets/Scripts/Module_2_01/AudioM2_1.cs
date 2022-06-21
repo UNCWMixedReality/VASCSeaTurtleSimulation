@@ -6,11 +6,12 @@ public class AudioM2_1 : MonoBehaviour
 {
     //This script handles the audio portion of the instructions for Module 2
     //GameObjects with AudioSource component
-    public AudioSource M201;
-    public AudioSource M202;
-    public AudioSource M203;
-    public AudioSource M204;
-    public AudioSource M205;
+    //The variable name describes when the audio should be played. ie: the first audio should be play when the player "enteredScene"
+    public AudioSource enteredScene;
+    public AudioSource movedToNest;
+    public AudioSource putOnGloves;
+    public AudioSource dugNest;
+    public AudioSource sortedEggs;
 
     //this queue is ued to store files in order
     private Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
@@ -24,24 +25,29 @@ public class AudioM2_1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Enqueue audio files
-        audioInstructions.Enqueue(M201);
-        audioInstructions.Enqueue(M202);
-        audioInstructions.Enqueue(M203);
-        audioInstructions.Enqueue(M204);
-        audioInstructions.Enqueue(M205);
         //set current file to first
-        temp = M201;
+        temp = enteredScene;
+        //Enqueue audio files
+        audioInstructions.Enqueue(enteredScene);
+        audioInstructions.Enqueue(movedToNest);
+        audioInstructions.Enqueue(putOnGloves);
+        audioInstructions.Enqueue(dugNest);
+        audioInstructions.Enqueue(sortedEggs);
+        
     }
 
     //Plays audio file at the top of the queue
     public void playSound()
     {
-        //checks if a different audio file is playing
-        if (!temp.isPlaying)
+        if (temp is null)
         {
             temp = audioInstructions.Dequeue();
             temp.Play();
+        }
+        //checks if a different audio file is playing
+        else if (!temp.isPlaying)
+        {
+            
         }
         //increments backlog if a file is currently playing
         else
@@ -62,5 +68,10 @@ public class AudioM2_1 : MonoBehaviour
                 temp.Play();
             }
         }
+    }
+
+    public float GetLength()
+    {
+        return temp.clip.length;
     }
 }

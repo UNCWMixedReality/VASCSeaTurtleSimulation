@@ -23,12 +23,12 @@ public class InstructionUpdater : MonoBehaviour
     // Gameobject under canvas that is responsible for displaying text
     public GameObject TextBox;
     // the text component of TextBox
-    private Text text;
+    public Text text;
     
     // Game object that holds the audio portion of the instructions
     public AudioM2_1 InstructionAudio;
     // holds the text portion of the instructions
-    private string[] instructions = new string[9];
+    private string[] instructions = new string[5];
 
     //keeps track of the current instruction being displayed
     private int current;
@@ -39,28 +39,25 @@ public class InstructionUpdater : MonoBehaviour
 
     public void Start()
     {
-        //we first need to initialize our variables.
-        text = TextBox.GetComponent<Text>();
-
-        instructions[0] = ("Welcome! This is part one of the Nest Relocation Module");
-        instructions[1] = ("During this simulation, you will move sea turtle eggs from an endangered nest to a safer one.");
-        instructions[2] = ("When you're ready, go ahead and move to the first marker to get started.");
-        instructions[3] = ("Your first task is to dig up this turtle nest. First, grab the blue gloves to put them on.");
-        instructions[4] = ("Great job! Now, carefully dig in the sand using your hands until you can see the eggs.");
-        instructions[5] = ("Good job! You're ready to move on to the next task.");
-        instructions[6] = ("Next, these eggs need to be carefully moved. Some are cracked, though, and will need to be separated from the good eggs.");
-        instructions[7] = ("Examine the eggs, and put them in the red bucket if they're cracked, or the green bucket if they aren't.");
-        instructions[8] = ("Good job! You have completed VASC module 2 part 1.");
+        instructions[0] = ("Welcome! This is part one of the Nest Relocation Module. Move to the marker to begin.");
+        instructions[1] = ("Your first task is to dig up this turtle nest. First, grab the blue gloves to put them on.");
+        instructions[2] = ("Great job! Now, carefully dig in the sand using your hands until you can see the eggs.");
+        instructions[3] = ("Good job! Next, these eggs need to be carefully moved. Examine the eggs, and put them in the red bucket if they're cracked, or the green bucket if they aren't.");
+        instructions[4] = ("Good job! You have completed VASC module 2 part 1.");
 
         current = 0;
     }
 
     //this function calls two functions to set the text and play the audio for the current instruction.
-    public void RunInstructions()
+    public IEnumerator RunInstructions()
     {
+        //change text and play audio
         SetInstructionText();
         PlayInstructionAudio();
         progressBar.TickProgressBar();
+        //determine how long the audio needs to play and wait for that long
+        float audioClipLength = InstructionAudio.GetLength();
+        yield return new WaitForSecondsRealtime(audioClipLength);
         current += 1;
     }
 

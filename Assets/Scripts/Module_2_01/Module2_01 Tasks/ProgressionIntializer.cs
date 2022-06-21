@@ -15,15 +15,11 @@ public class ProgressionIntializer : MonoBehaviour
 
 	public InstructionUpdater InstrUpdater;
 	public New_Activity_Manager ActivityMan;
+	public TaskManager taskMan;
 
 	public GameObject EggPanel;
 	public GameObject MarkerExcavate;
 	public GameObject MarkerMeasure;
-	public bool taskActive;
-	public int current;
-	public Text text;
-	public GameObject TextBox;
-	public string[] instructions = new string[8];
 
     void Start()
     {
@@ -32,15 +28,9 @@ public class ProgressionIntializer : MonoBehaviour
 		MarkerExcavate.SetActive(false);
 		MarkerMeasure.SetActive(false);
 
-		//begin with welcome bits
-		//play audio clips
-		StartCoroutine(Wait(3, 1));
-		StartCoroutine(Wait(7, 2));
-	}
-
-    // Update is called once per frame
-    public IEnumerator Wait(int a, int b)
-    {
-		yield return new WaitForSeconds(a);
+		//Run the intial instructions
+		//I'm gonna change this so it only needs to be called once.
+		StartCoroutine(InstrUpdater.RunInstructions());
+		StartCoroutine(InstrUpdater.RunInstructions());
 	}
 }

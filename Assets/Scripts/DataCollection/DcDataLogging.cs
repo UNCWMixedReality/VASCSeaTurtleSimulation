@@ -23,8 +23,7 @@ namespace DataCollection
 
         static DcDataLogging()
         {
-            // TODO read in largest sessionID from json file
-            // _sessionID = this.LoadLatestSessionId();
+            SessionId = LoadLatestSessionId().ToString();
         }
         
         public static void SetCorrectAnswer(string taskId, string correctAnswer)
@@ -42,11 +41,13 @@ namespace DataCollection
         private static int LoadLatestSessionId()
         {
             string[] files;
-            // TODO count the amount of files in Log folder
             try
             {
-                files = Directory.GetFiles("Log");
-                LogManager.LogMessage($"Found Files! Here's a path: {files[0].ToString()}");
+                files = Directory.GetFiles($"{Application.persistentDataPath}/Log");
+                if (files.Length > 0)
+                {
+                    LogManager.LogMessage($"Found Files! Here's a path: {files[0]}");
+                }
             }
             catch (DirectoryNotFoundException)
             {
@@ -101,10 +102,8 @@ namespace DataCollection
             }
             JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new DateTimeNullableConverter());
-            string New_GUID = Guid.NewGuid().ToString();
-            using (StreamWriter file = new StreamWriter($"{Application.persistentDataPath}/Log/Session-{New_GUID}.json"))
+            using (StreamWriter file = new StreamWriter($"{Application.persistentDataPath}/Log/Session-{Session.Id}.json"))
             {
-                
                 serializer.Serialize(file, DcDataLogging.Session);
             }
             Debug.Log("data exported");
@@ -115,11 +114,12 @@ namespace DataCollection
         {
             string NewServerPayload = JsonConvert.SerializeObject(DcDataLogging.Session);
             LogManager.LogMessage($"Session Data: {NewServerPayload.Substring(0, 30)}");
-            var ConnectionCheck = APIManager.HeadsetIsConnectedToInternet();
-            (bool, string) results = await APIManager.SubmitNewSessionDataToServer(NewServerPayload);
+            if (await APIManager.HeadsetIsConnectedToInternet())
+            {
+                (bool, string) results = await APIManager.SubmitNewSessionDataToServer(NewServerPayload);
 
-            LogManager.LogMessage($"{results.Item1.ToString()} - {results.Item2}");
-            
+                LogManager.LogMessage($"{results.Item1.ToString()} - {results.Item2}");
+            }
         }
 
         public static void LogInteraction(Interaction data)

@@ -7,9 +7,9 @@ public class New_Activity_Manager : MonoBehaviour
 {
 
     //number of activities completed
-    public int activityCount;
+    public int activityCount { get; set; }
     //stores the time when activities are completed
-    public float[] activityTimes;
+    public float[] activityTimes { get; set; }
 
     public void MarkActivityCompletion()
     {

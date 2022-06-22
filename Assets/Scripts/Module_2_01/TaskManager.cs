@@ -10,9 +10,9 @@ public class TaskManager : MonoBehaviour
     public InstructionUpdater instrUpdater;
 
     //number of tasks completed
-    public int taskCount;
+    public int taskCount { get; set; }
     //time each task was completed
-    public float[] taskTimes;
+    public float[] taskTimes { get; set; }
 
     //game objects used in tasks
     public GameObject excavationWaypoint;

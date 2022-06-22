@@ -28,24 +28,37 @@ public class InstructionUpdater : MonoBehaviour
     // Game object that holds the audio portion of the instructions
     public AudioM2_1 InstructionAudio;
     // holds the text portion of the instructions
-    public string[] instructions = new string[5];
+    public string[] instructions { get; set; }
 
     //keeps track of the current instruction being displayed
-    public int current;
+    public int current { get; set; }
 
     //progress bar
     public ProgressM2 progressBar;
 
+    private bool audioPlaying;
+    private float audioClipLength;
     //this function calls two functions to set the text and play the audio for the current instruction.
     public IEnumerator RunInstructions()
     {
-        //change text and play audio
+        //if instructions are currently being read, wait to update until they are completed.
+        if (audioPlaying)
+        {
+            //get the length of the current clip
+            audioClipLength = InstructionAudio.GetLength();
+            //wait that long
+            yield return new WaitForSecondsRealtime(audioClipLength);
+        }
+        //set text and play audio
         SetInstructionText();
-        PlayInstructionAudio();
         progressBar.TickProgressBar();
+        audioPlaying = true;
+        PlayInstructionAudio();
         //determine how long the audio needs to play and wait for that long
-        float audioClipLength = InstructionAudio.GetLength();
+        audioClipLength = InstructionAudio.GetLength();
         yield return new WaitForSecondsRealtime(audioClipLength);
+        //now the audio should be done playing.
+        audioPlaying = false;
         current += 1;
     }
 

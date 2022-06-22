@@ -17,6 +17,7 @@ public class ProgressionIntializer : MonoBehaviour
 	public New_Activity_Manager activityMan;
 	public TaskManager taskMan;
 	public AudioM2_1 audioPlayer;
+	public ProgressM2 progressBar;
 
     void Start()
     {
@@ -47,17 +48,25 @@ public class ProgressionIntializer : MonoBehaviour
 		audioPlayer.audioInstructions.Enqueue(audioPlayer.sortedEggs);
 
 		//intialize InstructionUpdater variables
+		instrUpdater.instructions = new string[5];
 		instrUpdater.instructions[0] = ("Welcome! This is part one of the Nest Relocation Module. Move to the marker to begin.");
 		instrUpdater.instructions[1] = ("Your first task is to dig up this turtle nest. First, grab the blue gloves to put them on.");
 		instrUpdater.instructions[2] = ("Great job! Now, carefully dig in the sand using your hands until you can see the eggs.");
 		instrUpdater.instructions[3] = ("Good job! Next, these eggs need to be carefully moved. Examine the eggs, and put them in the red bucket if they're cracked, or the green bucket if they aren't.");
 		instrUpdater.instructions[4] = ("Good job! You have completed VASC module 2 part 1.");
-
 		instrUpdater.current = 0;
 
 		//intialize ActivityManager variables
 		activityMan.activityCount = 0;
 		activityMan.activityTimes = new float[2];
+
+		//intialize progress bar
+		progressBar.pArray = new GameObject[5];
+		progressBar.pArray[0] = progressBar.P1;
+		progressBar.pArray[1] = progressBar.P2;
+		progressBar.pArray[2] = progressBar.P3;
+		progressBar.pArray[3] = progressBar.P4;
+		progressBar.pArray[4] = progressBar.P5;
 
 		//the first task is just entering the scene lol
 		taskMan.MarkTaskCompletion();

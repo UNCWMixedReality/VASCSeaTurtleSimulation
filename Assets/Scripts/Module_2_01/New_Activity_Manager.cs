@@ -9,13 +9,8 @@ public class New_Activity_Manager : MonoBehaviour
     //number of activities completed
     public int activityCount;
     //stores the time when activities are completed
-    private float[] activityTimes;
+    public float[] activityTimes;
 
-    public void Start()
-    {
-        activityCount = 0;
-        activityTimes = new float[2];
-    }
     public void MarkActivityCompletion()
     {
         // save time of activity completion

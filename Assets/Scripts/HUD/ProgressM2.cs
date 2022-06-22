@@ -13,16 +13,7 @@ public class ProgressM2 : MonoBehaviour
     public GameObject P7;
 
     private int current = 0;
-    private GameObject[] pArray = new GameObject[7];
-
-    void Start()
-    {
-       
-        pArray[3] = P4;
-        pArray[4] = P5;
-        pArray[5] = P6;
-        pArray[6] = P7;
-    }
+    public GameObject[] pArray = new GameObject[7];
 
     public void TickProgressBar()
     {

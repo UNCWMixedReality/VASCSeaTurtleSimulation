@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
+    /*
+     * There are 5 tasks in module 2, this script is used to mark tasks as complete and to setup the scene for the next task
+     * tasks: enter scene, teleport to nest, put on gloves, dig up nest, sort eggs
+     * 
+     * So for instance, when the player puts on gloves, the function MarkTaskCompleted() is called which increments the task count and calls PrepareDigging()
+     * so the player can start the next task of digging up the egg nest.
+     * 
+     */
 
-    //reference to activity manager script
+
+    //reference to activity manager script and instruction updater
     public New_Activity_Manager activityManager;
     public InstructionUpdater instrUpdater;
 
@@ -32,17 +41,30 @@ public class TaskManager : MonoBehaviour
 
     public void MarkTaskCompletion()
     {
+
+        /*
+         * 
+         * This is the primary function for this class, every time a tasks gets completed this function is called
+         * 
+         * We log the time the task was completed, increment the number of tasks done, and determine what setup, if any, needs to be performed for the next task.
+         *     and we run the instructions for the next task.
+         */
+
+
         //mark completion time
         taskTimes[taskCount] = Time.time;
         //update number of completed tasks
         taskCount += 1;
-        Debug.Log("The task count is, " + (taskCount));
+        //Debug.Log("The task count is, " + (taskCount));
+
+
+
         //this is true if the player has completed the first task by entering the scene
         if (taskCount == 1)
         {
             //set everything up for the second task.
             PrepareExcavationStart();
-            StartCoroutine(instrUpdater.RunInstructions());
+            instrUpdater.RunInstructions();
         }
 
         //this is true if the player has completed the second task by entering the excavation waypoint
@@ -50,7 +72,7 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the third task
             PrepareGloves();
-            StartCoroutine(instrUpdater.RunInstructions());
+            instrUpdater.RunInstructions();
         }
 
         //this is true if the player has completed the third task by putting on the gloves
@@ -58,7 +80,7 @@ public class TaskManager : MonoBehaviour
         {
             //sets everything up for the fourth task
             PrepareDigging();
-            StartCoroutine(instrUpdater.RunInstructions());
+            instrUpdater.RunInstructions();
         }
         
         //this is true if the player hsa completed the fourth task by digging up the nest
@@ -66,7 +88,7 @@ public class TaskManager : MonoBehaviour
         {
             activityManager.MarkActivityCompletion();
             PrepareSorting();
-            StartCoroutine(instrUpdater.RunInstructions());
+            instrUpdater.RunInstructions();
         }
         //true if the fifth and final task is completed
         if (taskCount == 5)
@@ -77,11 +99,13 @@ public class TaskManager : MonoBehaviour
 
     public void PrepareExcavationStart()
     {
+        //so the player knows where to teleport
         excavationWaypoint.SetActive(true);
     }
 
     public void PrepareGloves()
     {
+        //turn off waypoint and set gloves active so player can put them on
         excavationWaypoint.SetActive(false);
         gloveL.SetActive(true);
         gloveR.SetActive(true);
@@ -89,6 +113,7 @@ public class TaskManager : MonoBehaviour
 
     public void PrepareDigging()
     {
+        //set eggs active so player can dig up nest
         egg1.SetActive(true);
         egg2.SetActive(true);
         egg3.SetActive(true);
@@ -104,6 +129,7 @@ public class TaskManager : MonoBehaviour
 
     public void PrepareSorting()
     {
+        //turns on the panel that shows how many eggs have been sorted
         eggCounterPanel.SetActive(true);
     }
 }

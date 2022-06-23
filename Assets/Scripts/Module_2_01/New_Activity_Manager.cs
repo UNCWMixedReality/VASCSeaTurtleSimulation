@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class New_Activity_Manager : MonoBehaviour
 {
+    /*
+     * 
+     * At the moment this just ends the scene when all activities are completed, this could be extended to provide more functionality fairly easily if needed.
+     * 
+     */
+
 
     //number of activities completed
     public int activityCount { get; set; }

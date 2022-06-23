@@ -5,19 +5,14 @@ using UnityEngine;
 public class AudioM2_1 : MonoBehaviour
 {
     //This script handles the audio portion of the instructions for Module 2
-    //GameObjects with AudioSource component
-    //The variable name describes when the audio should be played. ie: the first audio should be play when the player "enteredScene"
-    public AudioSource enteredScene;
-    public AudioSource movedToNest;
-    public AudioSource putOnGloves;
-    public AudioSource dugNest;
-    public AudioSource sortedEggs;
 
-    //this queue is ued to store files in order
-    public Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
 
-    //this keep track of how many files are waiting to be played
-    private int backlog = 0;
+    //GameObject with AudioSource components
+    public AudioSource[] audioInstructions = new AudioSource[5];
+    public int currentIdx { get; set; }
+
+    //this queue is used to store files in order
+    //public Queue<AudioSource> audioInstructions = new Queue<AudioSource>();
 
     //this is used to keep track of the current audio file, is updated throughout
     public AudioSource temp { get; set; }
@@ -26,13 +21,20 @@ public class AudioM2_1 : MonoBehaviour
     public void playSound()
     {
 
-        temp = audioInstructions.Dequeue();
-        temp.Play();
+        if (currentIdx > 0 && audioInstructions[currentIdx - 1].isPlaying)
+        {
+            audioInstructions[currentIdx - 1].Stop();
+        }
 
+        audioInstructions[currentIdx].Play();
+        currentIdx++;
     }
+
+
 
     public float GetLength()
     {
         return temp.clip.length;
     }
+
 }

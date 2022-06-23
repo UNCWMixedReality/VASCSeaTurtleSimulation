@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class New_Activity_Manager : MonoBehaviour
 {
+    /*
+     * 
+     * At the moment this just ends the scene when all activities are completed, this could be extended to provide more functionality fairly easily if needed.
+     * 
+     */
+
 
     //number of activities completed
-    public int activityCount;
+    public int activityCount { get; set; }
     //stores the time when activities are completed
-    public float[] activityTimes;
+    public float[] activityTimes { get; set; }
 
     public void MarkActivityCompletion()
     {

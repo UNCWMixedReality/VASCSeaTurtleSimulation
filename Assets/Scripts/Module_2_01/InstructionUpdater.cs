@@ -20,32 +20,36 @@ public class InstructionUpdater : MonoBehaviour
 
     // Instruction canvas attached to left controller that displays instructions/character/progress
     public GameObject InstructionPanel;
-    // Gameobject under canvas that is responsible for displaying text
     public GameObject TextBox;
-    // the text component of TextBox
     public Text text;
-    
-    // Game object that holds the audio portion of the instructions
-    public AudioM2_1 InstructionAudio;
-    // holds the text portion of the instructions
-    public string[] instructions = new string[5];
-
-    //keeps track of the current instruction being displayed
-    public int current;
-
-    //progress bar
     public ProgressM2 progressBar;
 
-    //this function calls two functions to set the text and play the audio for the current instruction.
-    public IEnumerator RunInstructions()
+    //Holds the audio/text portion of the instructions
+    public AudioM2_1 instructionAudio;
+    public string[] instructions { get; set; }
+
+
+    //keeps track of the current instruction being displayed and the number of instructions that have been queued
+    public int current { get; set; }
+    public int queueCount { get; set; }
+
+    //helper variables so that we don't play overlapping audio
+    private bool audioPlaying;
+    private float audioClipLength;
+    private float[] audioEndTime = { 0, 0, 0, 0, 0 };
+
+    public void RunInstructions()
     {
-        //change text and play audio
+        /*
+         * This is the primary function in this script, it performs the three necessary steps in running the next set of instructions
+         * Marks the progress bar, sets the instruction text, and plays the instruction audio
+         */
+
+        //set text, mark progress bar, and play audio
         SetInstructionText();
-        PlayInstructionAudio();
         progressBar.TickProgressBar();
-        //determine how long the audio needs to play and wait for that long
-        float audioClipLength = InstructionAudio.GetLength();
-        yield return new WaitForSecondsRealtime(audioClipLength);
+        PlayInstructionAudio();
+    
         current += 1;
     }
 
@@ -62,7 +66,7 @@ public class InstructionUpdater : MonoBehaviour
         /*
          * play sound
          */
-        InstructionAudio.playSound();
+        instructionAudio.playSound();
     }
 
 }

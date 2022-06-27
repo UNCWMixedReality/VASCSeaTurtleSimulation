@@ -43,7 +43,6 @@ public class TaskManager : MonoBehaviour
     {
 
         /*
-         * 
          * This is the primary function for this class, every time a tasks gets completed this function is called
          * 
          * We log the time the task was completed, increment the number of tasks done, and determine what setup, if any, needs to be performed for the next task.
@@ -68,7 +67,7 @@ public class TaskManager : MonoBehaviour
         }
 
         //this is true if the player has completed the second task by entering the excavation waypoint
-        if (taskCount == 2)
+        else if (taskCount == 2)
         {
             //set everything up for the third task
             PrepareGloves();
@@ -76,7 +75,7 @@ public class TaskManager : MonoBehaviour
         }
 
         //this is true if the player has completed the third task by putting on the gloves
-        if (taskCount == 3)
+        else if (taskCount == 3)
         {
             //sets everything up for the fourth task
             PrepareDigging();
@@ -84,14 +83,14 @@ public class TaskManager : MonoBehaviour
         }
         
         //this is true if the player hsa completed the fourth task by digging up the nest
-        if (taskCount == 4)
+        else if (taskCount == 4)
         {
             activityManager.MarkActivityCompletion();
             PrepareSorting();
             instrUpdater.RunInstructions();
         }
         //true if the fifth and final task is completed
-        if (taskCount == 5)
+        else if (taskCount == 5)
         {
             activityManager.MarkActivityCompletion();
         }

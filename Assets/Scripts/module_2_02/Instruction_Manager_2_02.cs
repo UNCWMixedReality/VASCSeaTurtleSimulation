@@ -1,4 +1,3 @@
-﻿
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -7,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InstructionManagerM2 : MonoBehaviour
+public class Instruction_Manager_2_02 : MonoBehaviour
 {
 	//the textbox that will display the instructions
 	public GameObject TextBox;
@@ -15,13 +14,12 @@ public class InstructionManagerM2 : MonoBehaviour
 	//the Canvas gameobject
 	public GameObject InstructionPanel;
 	//the panel that displays the sorted eggs
-	
+	public GameObject EggPanel;
 
 	//tracks the player's location
 	public GameObject playerTracker;
 
 	//references to the waypoints
-	
 	public GameObject MarkerReplace;
 	public GameObject MarkerDig;
 	public GameObject MarkerCover;
@@ -54,7 +52,6 @@ public class InstructionManagerM2 : MonoBehaviour
 	//scripts referenced
 	public AudioConvoM2 AC;
 	public InteractableToggle IT;
-	//public Gloves gloves;
 	public VideoPlayer VP;
 
 	//tracks when the first instructions are loaded
@@ -81,29 +78,19 @@ public class InstructionManagerM2 : MonoBehaviour
 		//index is the index of the instruction in the list that you want to display
 		yield return new WaitForSeconds(wait);
 		changePanel(index);
-		//execute specific code based on which instruction is being displayed
-		//activate gloves
-		if (index == 2)
-		{
-			yield return new WaitForSeconds(4);
-			
-			//gloves.pickupL.SetActive(true);
-			//gloves.pickupR.SetActive(true);
-        }
 	}
 
 	void Start()
-    {
-		
-		
-		MarkerReplace.SetActive(true);
+	{
+		EggPanel.SetActive(false);
+		MarkerReplace.SetActive(false);
 		MarkerDig.SetActive(false);
 		MarkerCover.SetActive(false);
 		MarkerSign.SetActive(false);
 		taskActive = false;
 		current = 0;
 		taskTracker = 2;
-        text = TextBox.GetComponent<Text>();
+		text = TextBox.GetComponent<Text>();
 		instructions[0] = ("Welcome! This is Module 2 of the VASC Sea Turtle Simlation.");
 		instructions[1] = ("During this simulation, you will move sea turtle eggs from an endangered nest to a safer one.");//
 		instructions[2] = ("When you're ready, go ahead and move to the first marker to get started.");
@@ -124,22 +111,16 @@ public class InstructionManagerM2 : MonoBehaviour
 
 		//begin with welcome bits
 		//play audio clips
-		StartCoroutine(Wait(3, 1));
-		StartCoroutine(Wait(7, 2));
-    }
+		//StartCoroutine(Wait(3, 1));
+		//StartCoroutine(Wait(7, 2));
+	}
 
-    void Update()
-    {
-		//this just make sure the first instruction plays, as audio can be finicky when loading from another scene
-		if (!playedFirst)
-		{
-			AC.playSound();
-			playedFirst = true;
-		}
-
+	void Update()
+	{
 		
 		//start third activity if player is in range
-		if(Vector3.Distance(playerTracker.transform.position, MarkerReplace.transform.position) < range && !taskActive && taskTracker == 2){
+		if (Vector3.Distance(playerTracker.transform.position, MarkerReplace.transform.position) < range && !taskActive && taskTracker == 2)
+		{
 			changePanel(8); //load task 3 instructions
 			AC.playSound();
 			VP.nextVidPlay();
@@ -152,7 +133,8 @@ public class InstructionManagerM2 : MonoBehaviour
 			threeStart = Time.time;
 		}
 		//start fourth activity if player is in range
-		if(Vector3.Distance(playerTracker.transform.position, MarkerDig.transform.position) < range && !taskActive && taskTracker == 3){
+		if (Vector3.Distance(playerTracker.transform.position, MarkerDig.transform.position) < range && !taskActive && taskTracker == 3)
+		{
 			changePanel(10);
 			AC.playSound();
 			VP.nextVidPlay();
@@ -163,7 +145,8 @@ public class InstructionManagerM2 : MonoBehaviour
 			fourStart = Time.time;
 		}
 		//start fifth activity if player is in range
-		if(Vector3.Distance(playerTracker.transform.position, MarkerCover.transform.position) < range && !taskActive && taskTracker == 4){
+		if (Vector3.Distance(playerTracker.transform.position, MarkerCover.transform.position) < range && !taskActive && taskTracker == 4)
+		{
 			changePanel(12);
 			AC.playSound();
 			IT.toggle(3, 9);
@@ -173,8 +156,8 @@ public class InstructionManagerM2 : MonoBehaviour
 			fiveStart = Time.time;
 		}
 		//start sixth activity if player is in range
-		if(Vector3.Distance(playerTracker.transform.position, MarkerSign.transform.position) < range && !taskActive && taskTracker == 5)
-        {
+		if (Vector3.Distance(playerTracker.transform.position, MarkerSign.transform.position) < range && !taskActive && taskTracker == 5)
+		{
 			changePanel(14);
 			AC.playSound();
 			IT.toggle(4, 9);
@@ -182,16 +165,18 @@ public class InstructionManagerM2 : MonoBehaviour
 			taskTracker++;
 			taskActive = true;
 			sixStart = Time.time;
-        }
-    }
-	
+		}
+	}
+
 	//change to the next or previous panel
-	public void changePanel(int value){
+	public void changePanel(int value)
+	{
 		text.text = instructions[value];
 		current = value;
-		if(value == 6)
-        {
+		if (value == 6)
+		{
 			VP.nextVidPlay();
-        }
+		}
 	}
 }
+

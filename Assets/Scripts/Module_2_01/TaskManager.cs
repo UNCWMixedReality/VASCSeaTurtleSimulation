@@ -93,6 +93,7 @@ public class TaskManager : MonoBehaviour
         //true if the fifth and final task is completed
         if (taskCount == 5)
         {
+            instrUpdater.RunInstructions();
             activityManager.MarkActivityCompletion();
         }
     }

@@ -28,13 +28,14 @@ public class New_Activity_Manager : MonoBehaviour
         // if all activities are completed, then end the module
         if (activityCount == 2)
         {
-            EndSimulation();
+            StartCoroutine(EndSimulation());
         }
     }
 
-    private void EndSimulation()
+    private IEnumerator EndSimulation()
     {
         // just loads the main scene
+        yield return new WaitForSecondsRealtime(5);
         SceneManager.LoadScene("Main");
     }
 }

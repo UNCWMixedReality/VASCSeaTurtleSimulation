@@ -20,7 +20,7 @@ namespace DataCollection.Models
             IEnumerable<Interaction> interactions = null, IEnumerable<Activity> activities = null)
         {
             Id = id;
-            StartTime = (startTime is null) ? DateTime.UtcNow : startTime;
+            StartTime = startTime ?? DateTime.UtcNow;
             EndTime = endTime;
             Student = student;
             Movements = new Dictionary<string, Movement>();

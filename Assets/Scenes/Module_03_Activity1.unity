@@ -6511,7 +6511,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710082391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.00000017881392, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6521,7 +6521,7 @@ Transform:
   - {fileID: 320604823}
   - {fileID: 1132594879}
   - {fileID: 1792705615}
-  m_Father: {fileID: 1987455113}
+  m_Father: {fileID: 2078144461}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &713007953
@@ -9003,8 +9003,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912633309}
-  m_LocalRotation: {x: 0.36497667, y: 0.08977262, z: 0.034095056, w: -0.926051}
-  m_LocalPosition: {x: 0.19126701, y: -9.637417, z: -0.10836792}
+  m_LocalRotation: {x: 0.09693417, y: 0.903, z: 0.30175146, w: -0.29007033}
+  m_LocalPosition: {x: 10.923937, y: -11.762244, z: 4.3017883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10419,7 +10419,7 @@ Transform:
   - {fileID: 855675035}
   - {fileID: 1159313109}
   - {fileID: 561063200}
-  - {fileID: 1987455113}
+  - {fileID: 2078144461}
   - {fileID: 1589375668}
   - {fileID: 911910732}
   - {fileID: 1580554204}
@@ -15227,7 +15227,7 @@ MonoBehaviour:
   TextBox: {fileID: 814294432}
   InstructionPanel: {fileID: 1742055184}
   EggPanel: {fileID: 0}
-  playerTracker: {fileID: 1987455108}
+  playerTracker: {fileID: 2078144460}
   MarkerExcavate: {fileID: 0}
   MarkerMeasure: {fileID: 0}
   MarkerReplace: {fileID: 0}
@@ -19582,111 +19582,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 1
   eraseRenderer: 0
---- !u!1 &1987455108
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987455113}
-  - component: {fileID: 1987455112}
-  - component: {fileID: 1987455111}
-  - component: {fileID: 1987455110}
-  - component: {fileID: 1987455109}
-  m_Layer: 0
-  m_Name: XR Rig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1987455109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987455108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_System: {fileID: 1987455110}
-  m_TurnAmount: 45
-  m_DebounceTime: 0.5
-  m_EnableTurnLeftRight: 1
-  m_EnableTurnAround: 1
-  m_DelayTime: 0
-  m_TurnUsage: 0
-  m_Controllers:
-  - {fileID: 559252785}
-  - {fileID: 320604819}
-  m_DeadZone: 0.75
---- !u!114 &1987455110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987455108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Timeout: 10
-  m_XROrigin: {fileID: 1987455112}
---- !u!114 &1987455111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987455108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_System: {fileID: 1987455110}
-  m_DelayTime: 0
---- !u!114 &1987455112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987455108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7448815bd5148434682b3d931066cd10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  m_OriginBaseGameObject: {fileID: 1987455108}
-  m_CameraFloorOffsetObject: {fileID: 710082391}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.36144
-  m_CameraGameObject: {fileID: 1914948472}
---- !u!4 &1987455113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987455108}
-  m_LocalRotation: {x: -0, y: 0.8769997, z: -0, w: -0.480491}
-  m_LocalPosition: {x: 8.027773, y: -2.0415978, z: 1.123291}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 710082392}
-  m_Father: {fileID: 1052502764}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 237.435, z: 0}
 --- !u!1001 &1993302564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20350,6 +20245,110 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2077070175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2078144460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078144461}
+  - component: {fileID: 2078144465}
+  - component: {fileID: 2078144464}
+  - component: {fileID: 2078144463}
+  - component: {fileID: 2078144462}
+  m_Layer: 0
+  m_Name: XR Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2078144461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078144460}
+  m_LocalRotation: {x: 0, y: 0.8769996, z: -0, w: -0.4804912}
+  m_LocalPosition: {x: 8.027773, y: -2.041598, z: 1.123291}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 710082392}
+  m_Father: {fileID: 1052502764}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 237.435, z: 0}
+--- !u!114 &2078144462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078144460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 2078144464}
+  m_TurnAmount: 45
+  m_DebounceTime: 0.5
+  m_EnableTurnLeftRight: 1
+  m_EnableTurnAround: 1
+  m_DelayTime: 0
+  m_TurnUsage: 0
+  m_Controllers:
+  - {fileID: 559252785}
+  - {fileID: 320604819}
+  m_DeadZone: 0.75
+--- !u!114 &2078144463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078144460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 2078144464}
+  m_DelayTime: 0
+--- !u!114 &2078144464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078144460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Timeout: 10
+  m_XROrigin: {fileID: 2078144465}
+--- !u!114 &2078144465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078144460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 1914948473}
+  m_OriginBaseGameObject: {fileID: 2078144460}
+  m_CameraFloorOffsetObject: {fileID: 710082391}
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 1.1176
 --- !u!1 &2109116132
 GameObject:
   m_ObjectHideFlags: 0

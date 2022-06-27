@@ -3498,6 +3498,7 @@ GameObject:
   - component: {fileID: 196502657}
   - component: {fileID: 196502656}
   - component: {fileID: 196502655}
+  - component: {fileID: 196502659}
   m_Layer: 8
   m_Name: Terrain1
   m_TagString: Untagged
@@ -3550,7 +3551,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 196502659}
+        m_TargetAssemblyTypeName: TeleportationHelperM2_2, Assembly-CSharp
+        m_MethodName: CheckPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -3650,6 +3663,24 @@ Transform:
   m_Father: {fileID: 857336097}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &196502659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196502654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc0e18f45e5e4e41bbff4db69828156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskMan: {fileID: 496219727}
+  relocationWaypoint: {fileID: 734970057}
+  digWaypoint: {fileID: 996711013}
+  coverWaypoint: {fileID: 979932824}
+  signWaypoint: {fileID: 1005778507}
+  player: {fileID: 18120595}
 --- !u!1 &208677903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6417,7 +6448,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496219715}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15046,7 +15077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &734970058
 Transform:
   m_ObjectHideFlags: 0
@@ -17030,7 +17061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893972328}
   m_LocalRotation: {x: -0.20633277, y: 0.6153888, z: 0.17177461, w: 0.74109167}
-  m_LocalPosition: {x: 30.57499, y: -11.965587, z: -55.323116}
+  m_LocalPosition: {x: -7.6188335, y: -13.972386, z: -48.427883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30981,7 +31012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1638590923
 AudioListener:
   m_ObjectHideFlags: 0

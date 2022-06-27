@@ -44,10 +44,26 @@ public class TaskManagerM2_2 : MonoBehaviour
         taskCount += 1;
         //Debug.Log("The task count is, " + (taskCount));
 
+        //true when the user completes the first task by entering the scene
+        if (taskCount == 1)
+        {
+            relocationWaypoint.SetActive(true);
+        }
+
+        //true when the user completes the second task by entering the relocation waypoint
+        else if (taskCount == 2)
+        {
+            PrepareReplacement();
+        }
 
 
-        //this is true if the player has completed the first task by entering the scene
+        //Run the next set of instructions
         instrUpdater.RunInstructions();
+    }
+
+    public void PrepareReplacement()
+    {
+        //A
     }
 
 }

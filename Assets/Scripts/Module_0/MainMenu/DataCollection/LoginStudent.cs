@@ -40,6 +40,10 @@ public class LoginStudent : MonoBehaviour
 
     public void BeginSession()
     {
+        if (DcDataLogging.Student == null)
+        {
+            DcDataLogging.Student = new Student("NO NAME ENTERED", "");
+        }
         DcDataLogging.BeginSession();
     }
 

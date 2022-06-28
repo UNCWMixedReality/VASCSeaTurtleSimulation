@@ -5,8 +5,7 @@ using UnityEngine;
 //handles moving the wireframe cage over the covered nest, attached to a placeholder
 public class NestCage : MonoBehaviour
 {
-	public TaskManagerM2_2 taskMan;		
-	public NestCovering cover;
+	public TaskManagerM2_2 taskMan;
 	
 	//tracks if the cage has been set in place
 	void OnTriggerEnter(Collider col)

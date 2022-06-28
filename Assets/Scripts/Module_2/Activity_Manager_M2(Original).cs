@@ -146,7 +146,7 @@ public class Activity_Manager_02_02 : MonoBehaviour
 				instMan.taskActive = false;
 				PM2.TickProgressBar();
 			}
-			*/
+			
 			//if the sign has been placed around the nest
 			if (nestSign.taskDone == true && !sixDone)
             {
@@ -159,7 +159,7 @@ public class Activity_Manager_02_02 : MonoBehaviour
 				instMan.AC.playSound();
 				instMan.taskActive = false;
 				PM2.TickProgressBar();
-			}
+			}*/
 			//if all tasks have been completed
 			if (oneDone && twoDone && threeDone && fourDone && fiveDone && sixDone && !complete)
             {

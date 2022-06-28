@@ -38,7 +38,14 @@ public class TaskManagerM2_2 : MonoBehaviour
 
     public GameObject shovel;
     public GameObject nestSandCollider;
+
     public GameObject cage;
+    public GameObject nestCageCollider;
+
+    public GameObject sign;
+    public GameObject signCollider;
+
+    public GameObject nestEnclosure;
 
     public void MarkTaskCompletion()
     {
@@ -92,6 +99,24 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             PrepareCovering();
         }
+
+        //true when the user completes the seventh task by placing the cage
+        else if(taskCount == 7)
+        {
+            PrepareSign();
+        }
+
+        //true when the user completes the eighth task by grabbing the sign
+        else if (taskCount == 8)
+        {
+            PrepareSignPlacement();
+        }
+
+        //true when user completes the ninth task by placing the sign
+        else if (taskCount == 9)
+        {
+            PrepareEnd();
+        }
         //Run the next set of instructions
         instrUpdater.RunInstructions();
     }
@@ -138,6 +163,23 @@ public class TaskManagerM2_2 : MonoBehaviour
 
     private void PrepareCovering()
     {
-        //a
+        nestCageCollider.SetActive(true);
+    }
+
+    private void PrepareSign()
+    {
+        //outline and enable grabbing
+        sign.GetComponent<Outline>().enabled = true;
+        sign.GetComponent<DcGrabInteractable>().enabled = true;
+    }
+
+    private void PrepareSignPlacement()
+    {
+        signCollider.SetActive(true);
+    }
+
+    private void PrepareEnd()
+    {
+        nestEnclosure.SetActive(true);
     }
 }

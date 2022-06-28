@@ -22,7 +22,7 @@ public class TutorialFunctionality : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+        if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
         {
             firstSnapTurn();
         }
@@ -60,7 +60,7 @@ public class TutorialFunctionality : MonoBehaviour
         audiofeedback.playSelection();
         if (stage == 2)
         {
-            firstDoor.GetComponent<Animator>().SetTrigger("trigger_close");
+            firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
             secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
  
             //doorB.Play();

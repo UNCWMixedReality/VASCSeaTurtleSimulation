@@ -60,7 +60,7 @@ public class TutorialFunctionality : MonoBehaviour
         audiofeedback.playSelection();
         if (stage == 2)
         {
-            firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
+            firstDoor.GetComponent<Animator>().SetTrigger("trigger_close");
             secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
  
             //doorB.Play();

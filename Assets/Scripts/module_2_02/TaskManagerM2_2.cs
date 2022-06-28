@@ -35,6 +35,7 @@ public class TaskManagerM2_2 : MonoBehaviour
     public GameObject goodEgg4;
     public GameObject goodEgg5;
     public GameObject goodEgg6;
+    public GameObject eggPlaceholder;
 
     public GameObject shovel;
     public GameObject nestSandCollider;
@@ -153,6 +154,9 @@ public class TaskManagerM2_2 : MonoBehaviour
             eggList[x].GetComponent<Outline>().enabled = true;
             eggList[x].GetComponent<DcGrabInteractable>().enabled = true;
         }
+
+        //activate placement collider
+        eggPlaceholder.SetActive(true);
     }
 
     private void PrepareShovel()
@@ -164,6 +168,8 @@ public class TaskManagerM2_2 : MonoBehaviour
             eggList[x].GetComponent<Outline>().enabled = false;
             eggList[x].GetComponent<DcGrabInteractable>().enabled = false;
         }
+        //deactivate egg placement collider
+        eggPlaceholder.SetActive(false);
 
         //now we need to enable the shovel
         shovel.GetComponent<DcGrabInteractable>().enabled = true;

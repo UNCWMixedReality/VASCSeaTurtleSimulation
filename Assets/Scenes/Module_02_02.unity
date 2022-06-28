@@ -6205,8 +6205,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 496219723}
-  - component: {fileID: 496219722}
-  - component: {fileID: 496219721}
   - component: {fileID: 496219716}
   - component: {fileID: 496219718}
   - component: {fileID: 496219725}
@@ -6255,68 +6253,6 @@ MonoBehaviour:
   P3: {fileID: 2084566158}
   P4: {fileID: 559603591}
   P5: {fileID: 1298741581}
---- !u!114 &496219721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496219715}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ac6aa52599124499e740cdf8f89a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextBox: {fileID: 694275738}
-  InstructionPanel: {fileID: 816662495}
-  playerTracker: {fileID: 18120595}
-  MarkerReplace: {fileID: 734970057}
-  MarkerDig: {fileID: 996711013}
-  MarkerCover: {fileID: 979932824}
-  MarkerSign: {fileID: 1005778507}
-  oneStart: 0
-  twoStart: 0
-  threeStart: 0
-  fourStart: 0
-  fiveStart: 0
-  sixStart: 0
-  AC: {fileID: 1595912499}
-  IT: {fileID: 0}
-  VP: {fileID: 0}
-  taskActive: 0
-  range: 2
---- !u!114 &496219722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496219715}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2b548edf3fc504eb78f10ae154f406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerDetect: {fileID: 0}
-  eggManager: {fileID: 0}
-  eggRelocation: {fileID: 0}
-  nestSand: {fileID: 560989584}
-  nestManager: {fileID: 1665367834}
-  nestSign: {fileID: 1298638539}
-  backup: {fileID: 0}
-  instMan: {fileID: 496219721}
-  audiofeedback: {fileID: 496219716}
-  PM2: {fileID: 496219718}
-  wrongBucket: 0
-  PSign: {fileID: 1298638537}
-  WholeSign: {fileID: 57972022}
-  oneTime: 0
-  twoTime: 0
-  threeTime: 0
-  fourTime: 0
-  fiveTime: 0
-  sixTime: 0
-  totalTime: 0
 --- !u!4 &496219723
 Transform:
   m_ObjectHideFlags: 0
@@ -6403,7 +6339,7 @@ MonoBehaviour:
   activityManager: {fileID: 496219728}
   instrUpdater: {fileID: 496219726}
   relocationWaypoint: {fileID: 734970057}
-  diggingWaypoint: {fileID: 0}
+  diggingWaypoint: {fileID: 996711013}
   goodEgg1: {fileID: 1335991967}
   goodEgg2: {fileID: 95032898}
   goodEgg3: {fileID: 519054496}

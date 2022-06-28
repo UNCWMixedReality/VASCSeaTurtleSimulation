@@ -62,12 +62,12 @@ public class TaskManagerM2_2 : MonoBehaviour
         taskTimes[taskCount] = Time.time;
         //update number of completed tasks
         taskCount += 1;
-        //Debug.Log("The task count is, " + (taskCount));
+        Debug.Log("The task count is, " + (taskCount));
 
         //true when the user completes the first task by entering the scene
         if (taskCount == 1)
         {
-            relocationWaypoint.SetActive(true);
+            PrepareScene();
         }
 
         //true when the user completes the second task by entering the relocation waypoint
@@ -79,6 +79,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         //true when the user completes the third task by successfully placing the eggs
         else if (taskCount == 3)
         {
+            activityManager.MarkActivityCompletion();
             PrepareShovel();
         }
 
@@ -115,18 +116,40 @@ public class TaskManagerM2_2 : MonoBehaviour
         //true when user completes the ninth task by placing the sign
         else if (taskCount == 9)
         {
+            activityManager.MarkActivityCompletion();
             PrepareEnd();
         }
         //Run the next set of instructions
         instrUpdater.RunInstructions();
     }
 
+    private void PrepareScene()
+    {
+        relocationWaypoint.SetActive(true);
+
+        //stop outlining the shovel
+        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = false;
+
+        //stop outlining the cage
+        cage.GetComponent<Outline>().enabled = false;
+
+        //stop outling the sign
+        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
+        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
+    }
     private void PrepareReplacement()
     {
+        //removes the waypoint
+        relocationWaypoint.SetActive(false);
+
         //outlines eggs so they can be seen and enables the grab functionality
         GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
-        for (int x = 0; x <= eggList.Length; x++)
+        for (int x = 0; x < eggList.Length; x++)
         {
+            eggList[x].SetActive(true);
             eggList[x].GetComponent<Outline>().enabled = true;
             eggList[x].GetComponent<DcGrabInteractable>().enabled = true;
         }
@@ -136,7 +159,7 @@ public class TaskManagerM2_2 : MonoBehaviour
     {
         //we no longer need to outline/grab the eggs, so turn those components off
         GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
-        for (int x = 0; x <= eggList.Length; x++)
+        for (int x = 0; x < eggList.Length; x++)
         {
             eggList[x].GetComponent<Outline>().enabled = false;
             eggList[x].GetComponent<DcGrabInteractable>().enabled = false;
@@ -144,12 +167,25 @@ public class TaskManagerM2_2 : MonoBehaviour
 
         //now we need to enable the shovel
         shovel.GetComponent<DcGrabInteractable>().enabled = true;
+
+        //outline the shovel
+        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
+        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
+        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = true;
+        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = true;
+
     }
 
     private void PrepareDigging()
     {
         diggingWaypoint.SetActive(true);
         nestSandCollider.SetActive(true);
+
+        //stop outlining the shovel
+        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = false;
+        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = false;
     }
 
     private void PrepareCage()
@@ -163,18 +199,31 @@ public class TaskManagerM2_2 : MonoBehaviour
 
     private void PrepareCovering()
     {
+        //stop outlining the cage
+        cage.GetComponent<Outline>().enabled = false;
+
         nestCageCollider.SetActive(true);
     }
 
     private void PrepareSign()
     {
-        //outline and enable grabbing
-        sign.GetComponent<Outline>().enabled = true;
+        //stop grabbing the cage 
+        cage.GetComponent<DcGrabInteractable>().enabled = false;
+
+        //outline and enable grabbing the sign
+        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
+        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
+
         sign.GetComponent<DcGrabInteractable>().enabled = true;
     }
 
     private void PrepareSignPlacement()
     {
+        //stop outling the sign
+        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
+        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
+
+        //activate the placement collider
         signCollider.SetActive(true);
     }
 

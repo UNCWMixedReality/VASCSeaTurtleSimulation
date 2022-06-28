@@ -15,6 +15,7 @@ public class RelocationTracker : MonoBehaviour
     public void UpdateEggCount()
     {
         eggsPlaced += 1;
+        Debug.Log(eggsPlaced);
         if (eggsPlaced == 6)
         {
             taskMan.MarkTaskCompletion();

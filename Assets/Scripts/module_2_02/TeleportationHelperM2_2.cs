@@ -15,9 +15,6 @@ public class TeleportationHelperM2_2 : MonoBehaviour
 
     //used to calculate distance between player and various waypoints
     public GameObject relocationWaypoint;
-    public GameObject digWaypoint;
-    public GameObject coverWaypoint;
-    public GameObject signWaypoint;
     public GameObject player;
 
 
@@ -25,7 +22,7 @@ public class TeleportationHelperM2_2 : MonoBehaviour
 
     //helper variables for readability
     private bool playerInRange;
-    private float range = 2.5f;
+    private float range = 3.5f;
 
 
     private void Start()

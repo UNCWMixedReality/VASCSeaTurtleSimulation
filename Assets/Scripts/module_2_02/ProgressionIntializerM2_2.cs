@@ -59,7 +59,7 @@ public class ProgressionIntializerM2_2 : MonoBehaviour
 		activityMan.activityTimes = new float[3];
 
 		//intialize progress bar
-		progressBar.pArray = new GameObject[6];
+		progressBar.pArray = new GameObject[5];
 		progressBar.pArray[0] = progressBar.P1;
 		progressBar.pArray[1] = progressBar.P2;
 		progressBar.pArray[2] = progressBar.P3;

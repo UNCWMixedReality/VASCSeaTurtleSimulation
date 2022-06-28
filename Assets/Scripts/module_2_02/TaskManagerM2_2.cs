@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
+using DataCollection;
 
 public class TaskManagerM2_2 : MonoBehaviour
 {
@@ -25,6 +27,13 @@ public class TaskManagerM2_2 : MonoBehaviour
 
     //game objects used in tasks
     public GameObject relocationWaypoint;
+
+    public GameObject goodEgg1;
+    public GameObject goodEgg2;
+    public GameObject goodEgg3;
+    public GameObject goodEgg4;
+    public GameObject goodEgg5;
+    public GameObject goodEgg6;
 
 
     public void MarkTaskCompletion()
@@ -56,14 +65,40 @@ public class TaskManagerM2_2 : MonoBehaviour
             PrepareReplacement();
         }
 
+        //true when the user completes the third task by successfully placing the eggs
+        else if (taskCount == 3)
+        {
+            PrepareDigging();
+        }
+
+        //true when the user completes the fourth task by grabbing the shovel
 
         //Run the next set of instructions
         instrUpdater.RunInstructions();
     }
 
-    public void PrepareReplacement()
+    private void PrepareReplacement()
     {
-        //A
+        //outlines eggs so they can be seen and enables the grab functionality
+        GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
+        for (int x = 0; x <= eggList.Length; x++)
+        {
+            eggList[x].GetComponent<Outline>().enabled = true;
+            eggList[x].GetComponent<DcGrabInteractable>().enabled = true;
+        }
+    }
+
+    private void PrepareDigging()
+    {
+        //we no longer need to outline/grab the eggs, so turn those components off
+        GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
+        for (int x = 0; x <= eggList.Length; x++)
+        {
+            eggList[x].GetComponent<Outline>().enabled = false;
+            eggList[x].GetComponent<DcGrabInteractable>().enabled = false;
+        }
+
+        //now we need to enable the shovel
     }
 
 }

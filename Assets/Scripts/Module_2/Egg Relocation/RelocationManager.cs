@@ -12,7 +12,7 @@ public class RelocationManager : MonoBehaviour
 	public EggRelocation egg4;
 	public EggRelocation egg5;
 	public EggRelocation egg6;
-
+	/*
 	void Update()
     {
 		if(!taskDone && egg1.placed && egg2.placed && egg3.placed && egg4.placed && egg5.placed && egg6.placed)
@@ -20,4 +20,6 @@ public class RelocationManager : MonoBehaviour
 			taskDone = true;
         }
     }
+	*/
 }
+

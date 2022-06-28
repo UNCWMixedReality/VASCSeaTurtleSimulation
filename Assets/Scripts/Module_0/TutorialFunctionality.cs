@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataCollection;
+using DataCollection.Models;
 using UnityEngine;
 //using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -32,6 +35,10 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if (stage == 0)
         {
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name
+                ));
             stage++;
             audiofeedback.playGood();
             displaySnapTurn();

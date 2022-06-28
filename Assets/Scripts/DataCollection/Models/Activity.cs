@@ -27,5 +27,12 @@ namespace DataCollection.Models
             Timestamp = timestamp;
             ExtraData = extraData;
         }
+
+        public Activity(DateTime timestamp, string scene)
+        {
+            Id = (ActivityCount++).ToString();
+            Scene = scene;
+            Timestamp = timestamp;
+        }
     }
 }

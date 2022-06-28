@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataCollection;
+using DataCollection.Models;
 using UnityEngine;
 //using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -32,11 +35,15 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if (stage == 0)
         {
+            
             stage++;
             audiofeedback.playGood();
             displaySnapTurn();
-            Debug.Log("First Teleport");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Teleport"
+            ));
         }
     }
 
@@ -50,8 +57,11 @@ public class TutorialFunctionality : MonoBehaviour
             IMT.changePanel(3);
             stage++;
             audiofeedback.playGood();
-            Debug.Log("First Snap Turn");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Snap Turn"
+            ));
         }
     }
 
@@ -68,8 +78,11 @@ public class TutorialFunctionality : MonoBehaviour
             IMT.changePanel(5);
             stage++;
             audiofeedback.playGood();
-            Debug.Log("First Object Grab");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Object Grab"
+                ));
         }
     }
 
@@ -79,8 +92,11 @@ public class TutorialFunctionality : MonoBehaviour
         {
             audiofeedback.playGood();
             SceneManager.LoadScene("Main");
-            Debug.Log("First Button Click");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Button Click"
+                ));
         }
 
     }

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 //keeps track of all activities in module 2
 public class Activity_Manager_M2 : MonoBehaviour
-{
+{ 
 	public LayerDetect layerDetect;
 	public EggManager eggManager;
 	public RelocationManager eggRelocation;
@@ -70,6 +70,7 @@ public class Activity_Manager_M2 : MonoBehaviour
 				PM2.TickProgressBar();
 			}
 			//if sand has been moved over the nest
+			/*
 			if (nestSand.isCovered == true && !fourDone){
 				fourDone = true;
 				audiofeedback.playCompletion();
@@ -82,6 +83,8 @@ public class Activity_Manager_M2 : MonoBehaviour
 				instMan.taskActive = false;
 				PM2.TickProgressBar();
 			}
+			
+			
 			//if the cage has been placed over the nest
 			if (nestManager.taskDone ==  true && !fiveDone){
 				fiveDone = true;
@@ -95,6 +98,7 @@ public class Activity_Manager_M2 : MonoBehaviour
 				instMan.taskActive = false;
 				PM2.TickProgressBar();
 			}
+			
 			//if the sign has been placed around the nest
 			if (nestSign.taskDone == true && !sixDone)
             {
@@ -107,7 +111,7 @@ public class Activity_Manager_M2 : MonoBehaviour
 				instMan.AC.playSound();
 				instMan.taskActive = false;
 				PM2.TickProgressBar();
-			}
+			}*/
 			//if all tasks have been completed
 			if (threeDone && fourDone && fiveDone && sixDone && !complete)
             {

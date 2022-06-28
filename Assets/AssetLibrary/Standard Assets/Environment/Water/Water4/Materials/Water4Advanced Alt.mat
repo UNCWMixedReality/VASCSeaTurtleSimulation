@@ -7,10 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water4Advanced
+  m_Name: Water4Advanced Alt
   m_Shader: {fileID: 4800000, guid: 475c4a4e617a8401b84ca7b32c7cc460, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _BLENDENABLETHIS_ON
+  - _NORMALMAP
+  - _SECONDARYENABLETHIS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,12 +23,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: fb6566c21f717904f83743a5a76dd0b0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Caustics:
         m_Texture: {fileID: 2800000, guid: eb9e91ee4c264b942a46baeec92ca0a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubemapCustomCubemap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DecalTex:
@@ -36,8 +47,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: ff6e0fbcfc24e4f95a2711ea0e73dd6a, type: 3}
         m_Scale: {x: 0.014, y: 0.014}
         m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DisplacementHeightMap:
         m_Texture: {fileID: 2800000, guid: a782b26d6436b48d9882906b9f8ca31a, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Fresnel:
@@ -49,9 +76,29 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e6f8288974c664a309d6c66de636978c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 1, y: 1}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PrimaryHeightmap:
+        m_Texture: {fileID: 2800000, guid: 228b2c301ad35c9449ab45f3112f090e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PrimaryNormalmap:
+        m_Texture: {fileID: 2800000, guid: 6ed99089d8d6dbf4bbeb2ecef32d71c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ReflectionTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -70,6 +117,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SecondDisplacementHeightMap:
         m_Texture: {fileID: 2800000, guid: 4facc21e08e3a43ed97c930f7dae6e7b, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondaryHeightmap:
+        m_Texture: {fileID: 2800000, guid: 228b2c301ad35c9449ab45f3112f090e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondaryNormalmap:
+        m_Texture: {fileID: 2800000, guid: 6ed99089d8d6dbf4bbeb2ecef32d71c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShoreTex:
@@ -103,55 +158,97 @@ Material:
     m_Ints: []
     m_Floats:
     - _Ambient: 1
+    - _BaseisasEmission: 0
+    - _BlendBlendAlpha: 0.5400593
+    - _BlendBlendDistance: 0.6824926
+    - _BlendEnableThis: 1
+    - _Brightness: 0.4
+    - _BumpScale: 1
+    - _CubemapFresnel: 4.316328
+    - _CubemapGlossiness: 1
+    - _CubemapStrength: 0.4807122
+    - _CubemapUseCustomCubemap: 0
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
     - _Displacement: 0.27863377
     - _DisplacementTiling: 18.586807
+    - _DstBlend: 0
     - _FadeExp: 0.91503274
     - _FoamWaveDependency: 0.10205479
     - _FresnelPower: 1.7931035
-    - _FresnelScale: 0.6571428
+    - _FresnelScale: 0.65
     - _GerstnerIntensity: 1.6714286
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
     - _HeightDisplacement: 3.2722514
     - _InvFade: 0.628783
     - _InvFadeDepthFade: 0.07197756
     - _InvFadeFoam: 0.1217
+    - _Metallic: 0
+    - _Mode: 0
     - _NormalsDisplacement: 0
+    - _OcclusionStrength: 1
+    - _OverallGloss: 0.796635
+    - _OverallMetallic: 0.9128559
+    - _OverallNormalStrength: 0.7343698
+    - _OverallWaveHeight: 2.826293
+    - _Parallax: 0.02
+    - _PrimaryHeightStrength: 0.5
     - _ReflDistort: 0.9267696
     - _RefrDistort: 1.4393286
+    - _SSRefractionDecaydistance: 50
+    - _SSRefractionRefractionFresnel: 5
+    - _SSRefractionStrength: 0
+    - _SecondaryEnableThis: 1
+    - _SecondaryHeightStrength: 0.5
     - _Shininess: 313.21838
     - _ShoreTiling: 56.862743
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _Speed: 0.4137931
+    - _SrcBlend: 1
+    - _TessellationFarCap: 20
+    - _TessellationNearCap: 0
+    - _TessellationStrength: 2.48368
+    - _UVSec: 0
     - _WaterDepth: 40.98077
     - _WaveCapsAmount: 0.18275861
     - _WaveFoamDistort: 0.27931035
     - _WaveScale: 0.046289656
+    - _ZWrite: 1
     m_Colors:
     - WaveSpeed: {r: 1.086165, g: 4.440575, b: 12.105146, a: -3.0206447}
     - _AnimationDirection: {r: 2, g: 4, b: 2, a: -1}
     - _AnimationTiling: {r: 0.04582553, g: 0.0182, b: 0.045714468, a: 0.027129691}
-    - _BaseColor: {r: 0.15370905, g: 0.26813015, b: 0.29850745, a: 0.82}
-    - _BumpDirection: {r: 20, g: 20, b: 20, a: -40}
+    - _BaseColor: {r: 0.22761656, g: 0.5188679, b: 0.5008769, a: 0.82}
+    - _BlendColor: {r: 0, g: 0.6442697, b: 0.7720588, a: 1}
+    - _BumpDirection: {r: 15, g: 15, b: 15, a: -15}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
     - _BumpTiling: {r: 0.12, g: 0.07, b: 0.08, a: 0.06}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CubemapBaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DepthColor: {r: 0.027511697, g: 0.14179105, b: 0.13226777, a: 0.4627451}
     - _DepthColorFade: {r: 0.8880597, g: 0.27834705, b: 0.44463244, a: 0.22352941}
     - _Displacement: {r: 6.6371665, g: 20.353983, b: -1, a: -0.681416}
     - _DisplacementXz: {r: 0.6499999, g: -2.9203715, b: 1.6599998, a: -3.9363046}
-    - _DistortParams: {r: 1.96, g: 0.46, b: 1.8530641, a: -0.53142846}
+    - _DistortParams: {r: 1.5, g: 0.87, b: 12, a: -0.53142846}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Extinction: {r: 4.5, g: 75, b: 300, a: 1}
     - _Foam: {r: 0.48, g: 0.48666668, b: 0, a: 0}
     - _FoamWaveParams: {r: 0, g: 0.24918434, b: 3.3395782, a: 1}
     - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _GAmplitude: {r: 0.14, g: 0.4, b: 0.175, a: 0.225}
+    - _GAmplitude: {r: 0.14, g: 0.16, b: 0.175, a: 0.225}
     - _GDirectionAB: {r: 0.46914357, g: 0.35405126, b: -0.2, a: 0.1}
     - _GDirectionCD: {r: 0.7033888, g: -0.6799999, b: 0.7175735, a: -0.2}
     - _GFrequency: {r: 0.5, g: 0.38, b: 0.59, a: 0.6}
     - _GSpeed: {r: -3, g: 2, b: 1, a: 3}
     - _GSteepness: {r: 7, g: 2, b: 3, a: 1.85}
     - _HorizonColor: {r: 0.052907113, g: 0.24486735, b: 0.2835821, a: 1}
-    - _InvFadeParemeter: {r: 0.22, g: 0.1, b: 0.04310345, a: 0}
+    - _InvFadeParemeter: {r: 0.2, g: 0.04, b: 0.04310345, a: 0}
     - _MainTex_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _ReflectionColor: {r: 0.5794164, g: 0.6849238, b: 0.76119405, a: 0.43137255}
+    - _PrimaryUandVspeedZWNotused: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _ReflectionColor: {r: 0.501513, g: 0.630259, b: 0.6603774, a: 0.43137255}
     - _ReflectionTex_ST: {r: 1, g: 1, b: 0, a: 0}
     - _ReflectiveColorCube_ST: {r: 1, g: 1, b: 0, a: 0}
     - _ReflectiveColor_ST: {r: 1, g: 1, b: 0, a: 0}
@@ -159,6 +256,7 @@ Material:
     - _RefrColorDepth: {r: 0.050066825, g: 0.23134327, b: 0.17049524, a: 1}
     - _RefractionFog: {r: 0.50543475, g: 0.50543475, b: 0.50543475, a: 0.5}
     - _RefractionTex_ST: {r: 1, g: 1, b: 0, a: 0}
+    - _SecondaryUandVspeedZWNotused: {r: -0.05, g: -0.075, b: 0, a: 0}
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShorePerturbation: {r: 0, g: 0, b: 0, a: 0}
     - _ShoreTiling: {r: 1, g: 1, b: 0.1, a: 0.1}
@@ -166,7 +264,7 @@ Material:
     - _UnderwaterColor: {r: 0.6950323, g: 0.89552236, b: 0.7502397, a: 1}
     - _WaveOffset: {r: 1, g: 1, b: -0.01, a: -0.01}
     - _WaveScale4: {r: 0.1, g: 0.1, b: 0.01, a: 0.01}
-    - _WorldLightDir: {r: 0.9847187, g: -0.17359081, b: 0.013992131, a: 0}
+    - _WorldLightDir: {r: -0.030375138, g: -0.20139083, b: -0.97903997, a: 0}
   m_BuildTextureStacks: []
 --- !u!1002 &2100001
 EditorExtensionImpl:

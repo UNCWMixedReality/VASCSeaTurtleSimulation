@@ -2,15 +2,22 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water-LargeSea
   m_Shader: {fileID: 4800000, guid: 77f9e5f353f368743bdad57d76181f42, type: 3}
-  m_ShaderKeywords: BLEND_ENABLED SECOND_ENABLED THIRD_ENABLED _BLENDENABLETHIS_ON
-    _CULL_BACK _SECONDARYENABLETHIS_ON _SECONDWAVEENABLETHIS_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - BLEND_ENABLED
+  - SECOND_ENABLED
+  - THIRD_ENABLED
+  - _BLENDENABLETHIS_ON
+  - _CULL_BACK
+  - _SECONDARYENABLETHIS_ON
+  - _SECONDWAVEENABLETHIS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -140,6 +147,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: e301598b44ff05645941635071beb282, type: 3}
         m_Scale: {x: 20, y: 20}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BaseisasEmission: 0
     - _BlendBlendAlpha: 0
@@ -213,3 +221,4 @@ Material:
     - _SecondaryUandVspeedZWNotused: {r: -0.05, g: -0.075, b: 0, a: 0}
     - _ThirdWaveUandVspeed: {r: -0.00445, g: -0.00755, b: 0, a: 0}
     - _ThirdWaveUandVspeedZWNotused: {r: -0.05, g: -0.075, b: 0, a: 0}
+  m_BuildTextureStacks: []

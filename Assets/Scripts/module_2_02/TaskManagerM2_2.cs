@@ -27,6 +27,7 @@ public class TaskManagerM2_2 : MonoBehaviour
 
     //game objects used in tasks
     public GameObject relocationWaypoint;
+    public GameObject diggingWaypoint;
 
     public GameObject goodEgg1;
     public GameObject goodEgg2;
@@ -35,6 +36,9 @@ public class TaskManagerM2_2 : MonoBehaviour
     public GameObject goodEgg5;
     public GameObject goodEgg6;
 
+    public GameObject shovel;
+    public GameObject nestSandCollider;
+    public GameObject cage;
 
     public void MarkTaskCompletion()
     {
@@ -68,11 +72,26 @@ public class TaskManagerM2_2 : MonoBehaviour
         //true when the user completes the third task by successfully placing the eggs
         else if (taskCount == 3)
         {
-            PrepareDigging();
+            PrepareShovel();
         }
 
         //true when the user completes the fourth task by grabbing the shovel
+        else if (taskCount == 4)
+        {
+            PrepareDigging();
+        }
 
+        //true when the user completes the fifth task by covering the nest with sand
+        else if (taskCount == 5)
+        {
+            PrepareCage();
+        }
+
+        //true when the user completes the sixth task by grabbing the cage
+        else if (taskCount == 6)
+        {
+            PrepareCovering();
+        }
         //Run the next set of instructions
         instrUpdater.RunInstructions();
     }
@@ -88,7 +107,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         }
     }
 
-    private void PrepareDigging()
+    private void PrepareShovel()
     {
         //we no longer need to outline/grab the eggs, so turn those components off
         GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
@@ -99,6 +118,26 @@ public class TaskManagerM2_2 : MonoBehaviour
         }
 
         //now we need to enable the shovel
+        shovel.GetComponent<DcGrabInteractable>().enabled = true;
     }
 
+    private void PrepareDigging()
+    {
+        diggingWaypoint.SetActive(true);
+        nestSandCollider.SetActive(true);
+    }
+
+    private void PrepareCage()
+    {
+        diggingWaypoint.SetActive(false);
+
+        //outline and enable grabbing
+        cage.GetComponent<Outline>().enabled = true;
+        cage.GetComponent<DcGrabInteractable>().enabled = true;
+    }
+
+    private void PrepareCovering()
+    {
+        //a
+    }
 }

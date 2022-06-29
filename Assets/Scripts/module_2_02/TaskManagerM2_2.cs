@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
 using DataCollection;
+using DataCollection.Models;
+using UnityEngine.SceneManagement;
 
 public class TaskManagerM2_2 : MonoBehaviour
 {
@@ -74,6 +77,13 @@ public class TaskManagerM2_2 : MonoBehaviour
         else if (taskCount == 2)
         {
             PrepareReplacement();
+            //Logs the player entering the relocation waypoint
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Entered relocation waypoint"
+                ));
+            
         }
 
         //true when the user completes the third task by successfully placing the eggs
@@ -81,36 +91,72 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             activityManager.MarkActivityCompletion();
             PrepareShovel();
+            //Logs the player placing the eggs in the nest
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Successfully placed eggs in the new nest"
+                ));
         }
 
         //true when the user completes the fourth task by grabbing the shovel
         else if (taskCount == 4)
         {
             PrepareDigging();
+            //Logs activity for grabbing the shovel
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Grabbed shovel"
+                ));
         }
 
         //true when the user completes the fifth task by covering the nest with sand
         else if (taskCount == 5)
         {
             PrepareCage();
+            //Logs activity for covering nest with sand
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Covered nest with sand"
+                ));
         }
 
         //true when the user completes the sixth task by grabbing the cage
         else if (taskCount == 6)
         {
             PrepareCovering();
+            //Logs activity for grabbing cage
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Cage grabbed"
+                ));
         }
 
         //true when the user completes the seventh task by placing the cage
         else if(taskCount == 7)
         {
             PrepareSign();
+            //Logs activity for placing the cage
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Cage Placed"
+                ));
         }
 
         //true when the user completes the eighth task by grabbing the sign
         else if (taskCount == 8)
         {
             PrepareSignPlacement();
+            //Logs activity for grabbing the sign
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Sign grabbed"
+                ));
         }
 
         //true when user completes the ninth task by placing the sign
@@ -118,6 +164,12 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             activityManager.MarkActivityCompletion();
             PrepareEnd();
+            //Logs activity for placing the sign
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Sign placed"
+                ));
         }
         //Run the next set of instructions
         instrUpdater.RunInstructions();

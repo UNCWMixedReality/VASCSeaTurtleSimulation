@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DataCollection;
+using DataCollection.Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TaskManager : MonoBehaviour
 {
@@ -72,6 +76,12 @@ public class TaskManager : MonoBehaviour
             //set everything up for the third task
             PrepareGloves();
             instrUpdater.RunInstructions();
+            //Logs activity for entering waypoint
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Entered excavation waypoint"
+                ));
         }
 
         //this is true if the player has completed the third task by putting on the gloves
@@ -80,6 +90,12 @@ public class TaskManager : MonoBehaviour
             //sets everything up for the fourth task
             PrepareDigging();
             instrUpdater.RunInstructions();
+            //Logs activity for putting on gloves
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Put on Gloves"
+            ));
         }
         
         //this is true if the player hsa completed the fourth task by digging up the nest
@@ -88,12 +104,25 @@ public class TaskManager : MonoBehaviour
             activityManager.MarkActivityCompletion();
             PrepareSorting();
             instrUpdater.RunInstructions();
+            //Logs activity for digging up nest
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Dug up the nest"
+            ));
         }
+        
         //true if the fifth and final task is completed
         else if (taskCount == 5)
         {
             instrUpdater.RunInstructions();
             activityManager.MarkActivityCompletion();
+            //Logs an activity for finishing egg sorting
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now, 
+                SceneManager.GetActiveScene().name,
+                "Finished sorting eggs"
+            ));
         }
     }
 

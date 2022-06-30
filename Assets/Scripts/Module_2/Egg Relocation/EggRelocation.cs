@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DataCollection;
 
 
 public class EggRelocation : MonoBehaviour
@@ -22,11 +23,14 @@ public class EggRelocation : MonoBehaviour
 
 			//set the egg position to the position of an attach point, just cycle through each attach point [0, 5] inclusive based on how many eggs have already been placed
 			transform.position = placeholder.transform.GetChild(eggsPlaced).position;
+
 			//update number of eggs placed 
 			placeholder.GetComponent<RelocationTracker>().UpdateEggCount();
+
 			//freeze egg in place
 			GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-			
+			GetComponent<DcGrabInteractable>().enabled = false;
+
 			audiofeedback.playGood();
 		}
 	}

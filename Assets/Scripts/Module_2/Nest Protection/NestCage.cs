@@ -18,7 +18,7 @@ public class NestCage : MonoBehaviour
 			//deactivate self
 			gameObject.SetActive(false);
 
-			taskMan.MarkTaskCompletion();
+			taskMan.MarkTaskCompletion(6);
 		}
 	}
 }

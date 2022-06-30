@@ -20,7 +20,7 @@ public class NestSign : MonoBehaviour
 
             gameObject.SetActive(false);
 
-            taskMan.MarkTaskCompletion();
+            taskMan.MarkTaskCompletion(8);
         }
     }
 }

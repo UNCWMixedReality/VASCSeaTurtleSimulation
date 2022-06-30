@@ -21,7 +21,7 @@ public class TexttoFile : MonoBehaviour
 	
 	//these will get completion times for individual activities
 	private Activity_Manager AMOne;
-	private Activity_Manager_M2 AMTwo;
+	
 
     private bool said = false;
 	private bool sceneChange = false;
@@ -111,7 +111,6 @@ public class TexttoFile : MonoBehaviour
 		if(SceneManager.GetActiveScene().name == "Module_02" && !sceneChange){
 			sceneChange = true;
 			IMTwo = GameObject.Find("[Manager]").GetComponent<InstructionManagerM2>();
-			AMTwo = GameObject.Find("[Manager]").GetComponent<Activity_Manager_M2>();
 			Debug.Log("Module 2 managers successfully get");
 		}
     }
@@ -141,35 +140,4 @@ public class TexttoFile : MonoBehaviour
 		Debug.Log("M1 Info get");
 	}
 	
-	public void GetMTwoInfo(){
-		//******module 2******
-		//a1
-		DataList[27] = "Start: " + IMTwo.oneStart + " seconds";
-		DataList[28] = "Finish: " + AMTwo.oneTime + " seconds";
-		//a2
-		DataList[31] = "Start: " + IMTwo.twoStart + " seconds";
-		DataList[32] = "Finish: " + AMTwo.twoTime + " seconds";
-		DataList[33] = "Eggs misplaced: " + AMTwo.wrongBucket;
-		DataList[34] = "Eggs placed before measured: beans";
-		//a3
-		DataList[37] = "Start: " + IMTwo.threeStart + " seconds";
-		DataList[38] = "Finish: " + AMTwo.threeTime + " seconds";
-		//a4
-		DataList[41] = "Start: " + IMTwo.fourStart + " seconds";
-		DataList[42] = "Finish: " + AMTwo.fourTime + " seconds";
-		//a5
-		DataList[45] = "Start: " + IMTwo.fiveStart + " seconds";
-		DataList[46] = "Finish: " + AMTwo.fiveTime + " seconds";
-		
-		DataList[48] = "Completion Timestamp: " + AMTwo.totalTime + " seconds";
-		//******totals******
-		DataList[58] = "M2 Activity 1: " + (AMTwo.oneTime - IMTwo.oneStart) + " seconds";
-		DataList[59] = "M2 Activity 2: " + (AMTwo.twoTime - IMTwo.twoStart) + " seconds";
-		DataList[60] = "M2 Activity 3: " + (AMTwo.threeTime - IMTwo.threeStart) + " seconds";
-		DataList[61] = "M2 Activity 4: " + (AMTwo.fourTime - IMTwo.fourStart) + " seconds";
-		DataList[62] = "M2 Activity 5: " + (AMTwo.fiveTime - IMTwo.fiveStart) + " seconds";
-		DataList[63] = "Module 2: " + (AMTwo.totalTime - timeAtSceneChange) + " seconds";
-		
-		Debug.Log("M2 info get");
-	}
 }

@@ -67,6 +67,6 @@ public class ProgressionIntializerM2_2 : MonoBehaviour
 		progressBar.pArray[4] = progressBar.P5;
 
 		//the first task is just entering the scene, so now that setup is done, mark it as complete
-		taskMan.MarkTaskCompletion();
+		taskMan.MarkTaskCompletion(0);
 	}
 }

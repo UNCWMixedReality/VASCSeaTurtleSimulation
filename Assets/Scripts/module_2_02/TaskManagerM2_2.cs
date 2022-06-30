@@ -147,6 +147,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         digMan.DisableShovelHighlight();
         cageMan.DisableCageHighlight();
         signMan.DisableSignHighlight();
+        signMan.FreezeSign();
     }
 
     private void LogTask(string message)

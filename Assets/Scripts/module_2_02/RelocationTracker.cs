@@ -18,7 +18,7 @@ public class RelocationTracker : MonoBehaviour
         Debug.Log(eggsPlaced);
         if (eggsPlaced == 6)
         {
-            taskMan.MarkTaskCompletion();
+            taskMan.MarkTaskCompletion(2);
         }
     }
 }

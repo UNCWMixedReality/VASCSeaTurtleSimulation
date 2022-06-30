@@ -5672,11 +5672,11 @@ MonoBehaviour:
       - m_Target: {fileID: 496219727}
         m_TargetAssemblyTypeName: TaskManagerM2_2, Assembly-CSharp
         m_MethodName: MarkTaskCompletion
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6297,20 +6297,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activityManager: {fileID: 496219728}
   instrUpdater: {fileID: 496219726}
+  relocMan: {fileID: 0}
+  digMan: {fileID: 0}
+  cageMan: {fileID: 0}
+  signMan: {fileID: 0}
   relocationWaypoint: {fileID: 734970057}
-  diggingWaypoint: {fileID: 996711013}
-  goodEgg1: {fileID: 1335991967}
-  goodEgg2: {fileID: 95032898}
-  goodEgg3: {fileID: 519054496}
-  goodEgg4: {fileID: 2009549873}
-  goodEgg5: {fileID: 684478899}
-  goodEgg6: {fileID: 138567778}
-  shovel: {fileID: 1237672183}
-  nestSandCollider: {fileID: 560989580}
-  cage: {fileID: 445881888}
-  nestCageCollider: {fileID: 1665367832}
-  sign: {fileID: 590975259}
-  signCollider: {fileID: 1298638537}
   nestEnclosure: {fileID: 57972022}
 --- !u!114 &496219728
 MonoBehaviour:
@@ -8016,7 +8007,7 @@ PrefabInstance:
     - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
@@ -8055,6 +8046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
+      propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -8086,12 +8082,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5215394525628640472, guid: cc4663d3e0f2b1f4994b1e0a90dbe706, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc4663d3e0f2b1f4994b1e0a90dbe706, type: 3}
---- !u!1 &590975259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5215394525628640474, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
-    type: 3}
-  m_PrefabInstance: {fileID: 590975258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &590975260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5215394525628640473, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
@@ -14922,6 +14912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 727092806}
+  - component: {fileID: 727092807}
   m_Layer: 0
   m_Name: =Dig=
   m_TagString: Untagged
@@ -14948,6 +14939,21 @@ Transform:
   m_Father: {fileID: 1896873726}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727092807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727092805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5704129250ff8fe4b8bc179d6223d3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shovel: {fileID: 0}
+  nestSandCollider: {fileID: 0}
+  diggingWaypoint: {fileID: 0}
 --- !u!1 &734970057
 GameObject:
   m_ObjectHideFlags: 0
@@ -18760,8 +18766,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059272411}
-  m_LocalRotation: {x: -0.0427404, y: 0.75919974, z: 0.05022795, w: 0.64750767}
-  m_LocalPosition: {x: 21.441277, y: -4.937874, z: -50.735924}
+  m_LocalRotation: {x: 0, y: 0.86478037, z: 0, w: 0.50215036}
+  m_LocalPosition: {x: 12.78, y: -1.4299998, z: -44.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21048,11 +21054,11 @@ MonoBehaviour:
       - m_Target: {fileID: 496219727}
         m_TargetAssemblyTypeName: TaskManagerM2_2, Assembly-CSharp
         m_MethodName: MarkTaskCompletion
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -30732,6 +30738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1677025585}
+  - component: {fileID: 1677025586}
   m_Layer: 0
   m_Name: =Cover=
   m_TagString: Untagged
@@ -30756,6 +30763,20 @@ Transform:
   m_Father: {fileID: 1896873726}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1677025586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677025584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a456211a6692d454097164bf863832ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cage: {fileID: 0}
+  nestCageCollider: {fileID: 0}
 --- !u!1001 &1685510661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32597,6 +32618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892949050}
+  - component: {fileID: 1892949051}
   m_Layer: 0
   m_Name: 'Activity 1: Relocate Eggs'
   m_TagString: Untagged
@@ -32626,6 +32648,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1892949051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892949049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bd099aa4431df478eece0008edd783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goodEgg1: {fileID: 0}
+  goodEgg2: {fileID: 0}
+  goodEgg3: {fileID: 0}
+  goodEgg4: {fileID: 0}
+  goodEgg5: {fileID: 0}
+  goodEgg6: {fileID: 0}
+  relocationWaypoint: {fileID: 0}
 --- !u!1 &1896873725
 GameObject:
   m_ObjectHideFlags: 0
@@ -33026,6 +33067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969795985}
+  - component: {fileID: 1969795986}
   m_Layer: 0
   m_Name: =Sign=
   m_TagString: Untagged
@@ -33050,6 +33092,20 @@ Transform:
   m_Father: {fileID: 1896873726}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969795986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969795984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff1617b2c4b5104ba122d09c82290ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sign: {fileID: 0}
+  signCollider: {fileID: 0}
 --- !u!1001 &1973892514
 PrefabInstance:
   m_ObjectHideFlags: 0

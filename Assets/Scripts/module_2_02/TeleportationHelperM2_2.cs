@@ -44,7 +44,7 @@ public class TeleportationHelperM2_2 : MonoBehaviour
         if (playerInRange && !taskTwoCompleted)
         {
             taskTwoCompleted = true;
-            taskMan.MarkTaskCompletion();
+            taskMan.MarkTaskCompletion(1);
         }
     }
 }

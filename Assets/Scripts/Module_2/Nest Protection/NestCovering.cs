@@ -34,7 +34,7 @@ public class NestCovering : MonoBehaviour
 			gameObject.SetActive(false);
 
 			//task completed
-			taskMan.MarkTaskCompletion();
+			taskMan.MarkTaskCompletion(4);
 		}
 	}
 }

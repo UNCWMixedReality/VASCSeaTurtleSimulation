@@ -18,39 +18,27 @@ public class TaskManagerM2_2 : MonoBehaviour
      * 
      */
 
-
+    //class variables
+    #region
     //reference to activity manager script and instruction updater
     public NewActivityManM2_2 activityManager;
     public InstructionUpdaterM2_2 instrUpdater;
 
-    //number of tasks completed
+    //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
-    //time each task was completed
     public float[] taskTimes { get; set; }
 
     //game objects used in tasks
+    public RelocationManager relocMan;
+    public DigManager digMan;
+    public CageManager cageMan;
+    public SignManager signMan;
+
     public GameObject relocationWaypoint;
-    public GameObject diggingWaypoint;
-
-    public GameObject goodEgg1;
-    public GameObject goodEgg2;
-    public GameObject goodEgg3;
-    public GameObject goodEgg4;
-    public GameObject goodEgg5;
-    public GameObject goodEgg6;
-
-    public GameObject shovel;
-    public GameObject nestSandCollider;
-
-    public GameObject cage;
-    public GameObject nestCageCollider;
-
-    public GameObject sign;
-    public GameObject signCollider;
-
     public GameObject nestEnclosure;
+    #endregion
 
-    public void MarkTaskCompletion()
+    public void MarkTaskCompletion(int taskID)
     {
 
         /*
@@ -61,12 +49,20 @@ public class TaskManagerM2_2 : MonoBehaviour
          */
 
 
-        //mark completion time
+        //this will check if a task is completed that should not be completed yet or has already been completed
+        if (taskID != taskCount)
+        {
+            return;
+        }
+
+
+        //mark completion time, update task count
         taskTimes[taskCount] = Time.time;
-        //update number of completed tasks
         taskCount += 1;
         Debug.Log("The task count is, " + (taskCount));
 
+        //perform approrpriate setup based on which task was completed
+        #region
         //true when the user completes the first task by entering the scene
         if (taskCount == 1)
         {
@@ -76,101 +72,69 @@ public class TaskManagerM2_2 : MonoBehaviour
         //true when the user completes the second task by entering the relocation waypoint
         else if (taskCount == 2)
         {
-            PrepareReplacement();
-            //Logs the player entering the relocation waypoint
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Entered relocation waypoint"
-                ));
-            
+            LogTask("Entered relocation waypoint");
+            relocMan.PrepareRelocation();            
         }
 
         //true when the user completes the third task by successfully placing the eggs
         else if (taskCount == 3)
         {
+            LogTask("Successfully placed eggs in the new nest");
+            relocMan.EndRelocation();
+            digMan.PrepareShovel();
             activityManager.MarkActivityCompletion();
-            PrepareShovel();
-            //Logs the player placing the eggs in the nest
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                "Successfully placed eggs in the new nest"
-                ));
         }
 
         //true when the user completes the fourth task by grabbing the shovel
         else if (taskCount == 4)
         {
-            PrepareDigging();
-            //Logs activity for grabbing the shovel
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Grabbed shovel"
-                ));
+            LogTask("Grabbed shovel");
+            digMan.DisableShovelHighlight();
+            digMan.PrepareDigging();
         }
 
         //true when the user completes the fifth task by covering the nest with sand
         else if (taskCount == 5)
         {
-            PrepareCage();
-            //Logs activity for covering nest with sand
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Covered nest with sand"
-                ));
+            LogTask("Covered nest with sand");
+            digMan.EndDigging();
+            cageMan.PrepareCage();
         }
 
         //true when the user completes the sixth task by grabbing the cage
         else if (taskCount == 6)
         {
-            PrepareCovering();
-            //Logs activity for grabbing cage
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Cage grabbed"
-                ));
+            LogTask("Cage grabbed");
+            cageMan.DisableCageHighlight();
+            cageMan.PrepareCovering();
         }
 
         //true when the user completes the seventh task by placing the cage
         else if(taskCount == 7)
         {
-            PrepareSign();
-            //Logs activity for placing the cage
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Cage Placed"
-                ));
+            LogTask("Cage placed");
+            cageMan.EndCovering();
+            signMan.PrepareSign();
         }
 
         //true when the user completes the eighth task by grabbing the sign
         else if (taskCount == 8)
         {
-            PrepareSignPlacement();
-            //Logs activity for grabbing the sign
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Sign grabbed"
-                ));
+            LogTask("Sign grabbed");
+            signMan.DisableSignHighlight();
+            signMan.PreparePlacement();
         }
 
         //true when user completes the ninth task by placing the sign
         else if (taskCount == 9)
         {
-            activityManager.MarkActivityCompletion();
+            LogTask("Sign placed");
+            signMan.EndPlacement();
             PrepareEnd();
-            //Logs activity for placing the sign
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
-                "Sign placed"
-                ));
+            activityManager.MarkActivityCompletion();
         }
+        #endregion
+
         //Run the next set of instructions
         instrUpdater.RunInstructions();
     }
@@ -179,104 +143,22 @@ public class TaskManagerM2_2 : MonoBehaviour
     {
         relocationWaypoint.SetActive(true);
 
-        //stop outlining the shovel
-        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = false;
-
-        //stop outlining the cage
-        cage.GetComponent<Outline>().enabled = false;
-
-        //stop outling the sign
-        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
-        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
-    }
-    private void PrepareReplacement()
-    {
-        //removes the waypoint
-        relocationWaypoint.SetActive(false);
-
-        //outlines eggs so they can be seen and enables the grab functionality
-        GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
-        for (int x = 0; x < eggList.Length; x++)
-        {
-            eggList[x].SetActive(true);
-            eggList[x].GetComponent<Outline>().enabled = true;
-            eggList[x].GetComponent<DcGrabInteractable>().enabled = true;
-        }
+        //stop outlining the shovel, cage, sign
+        digMan.DisableShovelHighlight();
+        cageMan.DisableCageHighlight();
+        signMan.DisableSignHighlight();
     }
 
-    private void PrepareShovel()
+    private void LogTask(string message)
     {
-        //we no longer need to outline/grab the eggs, so turn those components off
-        GameObject[] eggList = { goodEgg1, goodEgg2, goodEgg3, goodEgg4, goodEgg5, goodEgg6 };
-        for (int x = 0; x < eggList.Length; x++)
-        {
-            eggList[x].GetComponent<Outline>().enabled = false;
-            eggList[x].GetComponent<DcGrabInteractable>().enabled = false;
-        }
-
-        //now we need to enable the shovel
-        shovel.GetComponent<DcGrabInteractable>().enabled = true;
-
-        //outline the shovel
-        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
-        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
-        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = true;
-        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = true;
-
-    }
-
-    private void PrepareDigging()
-    {
-        diggingWaypoint.SetActive(true);
-        nestSandCollider.SetActive(true);
-
-        //stop outlining the shovel
-        shovel.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = false;
-        shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = false;
-    }
-
-    private void PrepareCage()
-    {
-        diggingWaypoint.SetActive(false);
-
-        //outline and enable grabbing
-        cage.GetComponent<Outline>().enabled = true;
-        cage.GetComponent<DcGrabInteractable>().enabled = true;
-    }
-
-    private void PrepareCovering()
-    {
-        //stop outlining the cage
-        cage.GetComponent<Outline>().enabled = false;
-
-        nestCageCollider.SetActive(true);
-    }
-
-    private void PrepareSign()
-    {
-        //stop grabbing the cage 
-        cage.GetComponent<DcGrabInteractable>().enabled = false;
-
-        //outline and enable grabbing the sign
-        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
-        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
-
-        sign.GetComponent<DcGrabInteractable>().enabled = true;
-    }
-
-    private void PrepareSignPlacement()
-    {
-        //stop outling the sign
-        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
-        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
-
-        //activate the placement collider
-        signCollider.SetActive(true);
+        /*
+         * logs when a task is completed with the appropriate information
+         */
+        DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                message
+                ));
     }
 
     private void PrepareEnd()

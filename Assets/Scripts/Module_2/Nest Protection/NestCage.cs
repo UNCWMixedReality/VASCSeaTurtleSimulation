@@ -11,9 +11,7 @@ public class NestCage : MonoBehaviour
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.name == "Cage")
-		{
-			//snap cage in place
-			col.transform.position = transform.position;
+		{ 
 
 			//deactivate self
 			gameObject.SetActive(false);

@@ -184,6 +184,23 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     private void PrepareWaypoint()
     {
-        //
+        waypoint.SetActive(true);
+    }
+
+    public void TeleportationCompleted()
+    {
+        //determine when teleporting is an act of completing a task and complete the corresponding task.
+        if (taskCount == 6)
+        {
+            MarkTaskCompletion(6);
+        }
+        else if (taskCount == 11)
+        {
+            MarkTaskCompletion(11);
+        }
+        else if (taskCount == 16)
+        {
+            MarkTaskCompletion(16);
+        }
     }
 }

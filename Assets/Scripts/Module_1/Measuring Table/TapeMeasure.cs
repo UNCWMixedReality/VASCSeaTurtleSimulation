@@ -52,6 +52,8 @@ public class TapeMeasure : MonoBehaviour
     private LineRenderer line;
     private string activeHand;
 
+    public NewTaskManagerM1 taskMan;
+
     void Start()
     {
         line = this.gameObject.GetComponent<LineRenderer>(); //Initialize line renderer to not be visible.
@@ -116,9 +118,10 @@ public class TapeMeasure : MonoBehaviour
                 measureText.text = "82 cm";
                 StopAllCoroutines();
                 verticalMeasured = true;
-                shellVerticalArrow.color = arrowGreen;
+                //shellVerticalArrow.color = arrowGreen;
                 StartCoroutine(Pause());
                 audiofeedback.playGood();
+                taskMan.MarkTaskCompletion(9);
             }
         }
         else if (side1Coll.collided && side2Coll.collided) //If hands are touching horizontal shell colliders, change images.
@@ -132,6 +135,7 @@ public class TapeMeasure : MonoBehaviour
                 shellHorizontalArrow.color = arrowGreen;
                 StartCoroutine(Pause());
                 audiofeedback.playGood();
+                taskMan.MarkTaskCompletion(10);
             }
         }
 

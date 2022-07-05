@@ -10324,6 +10324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682818996}
   - component: {fileID: 682818998}
+  - component: {fileID: 682818999}
   m_Layer: 0
   m_Name: Table_Identify_Tracks
   m_TagString: Untagged
@@ -10360,7 +10361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682818995}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c9f04f34f2e48c4aa269b4390bd9f69, type: 3}
   m_Name: 
@@ -10400,6 +10401,27 @@ MonoBehaviour:
   GreenButton: {fileID: 1819006654}
   LoggerheadButton: {fileID: 1403614491}
   LeatherbackButton: {fileID: 885387723}
+  tableManager: {fileID: 0}
+--- !u!114 &682818999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682818995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e6775c72ae4c646b455230d65fc622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Green_Tracks: {fileID: 0}
+  Loggerhead_Tracks: {fileID: 0}
+  Leatherback_Tracks: {fileID: 0}
+  Begin: {fileID: 0}
+  GreenButton: {fileID: 0}
+  LoggerheadButton: {fileID: 0}
+  LeatherbackButton: {fileID: 0}
+  R0: {fileID: 0}
 --- !u!1 &699695404
 GameObject:
   m_ObjectHideFlags: 0

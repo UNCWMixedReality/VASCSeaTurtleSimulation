@@ -56,7 +56,7 @@ public class Table_Tracks_Manager : MonoBehaviour
 	public Button GreenButton;
 	public Button LoggerheadButton;
 	public Button LeatherbackButton;
-    //public TableManager tableManager;
+    public TableManager tableManager;
 
     private GameObject[] trocks = new GameObject[3];
     private int currentTrackNum = -1;
@@ -73,7 +73,7 @@ public class Table_Tracks_Manager : MonoBehaviour
 
     void Start()
     {
-        orderTrocks();
+        //orderTrocks();
 
         Load.SetActive(false);
 
@@ -143,7 +143,6 @@ public class Table_Tracks_Manager : MonoBehaviour
         }
 
     }
-
     public void nextTrack() //Will be called by the TableManager script to start the activity.
     {
         if (currentTrackNum < 3 - 1) //Don't run if at the end of the list
@@ -213,7 +212,7 @@ public class Table_Tracks_Manager : MonoBehaviour
     }
 
 
-    public IEnumerator scaleUp(int index) //Scales up the active turtle.
+    /*public IEnumerator scaleUp(int index) //Scales up the active turtle.
     {
         float timer = 0f;
         Vector3 startScale = new Vector3(0, 0, 0);
@@ -225,9 +224,9 @@ public class Table_Tracks_Manager : MonoBehaviour
             trocks[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale the turtle up
             yield return null;
         }
-    }
+    }*/
 
-    public IEnumerator scaleDown(int index) //Scales down the inactive turtle.
+    /*public IEnumerator scaleDown(int index) //Scales down the inactive turtle.
     {
         float timer = 0f;
         Vector3 startScale = new Vector3(1, 1, 1);
@@ -239,25 +238,25 @@ public class Table_Tracks_Manager : MonoBehaviour
             trocks[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale the turtle up
             yield return null;
         }
-    }
+    }*/
 
     public bool getTask3Done()
     {
         return task3Done;
     }
 	
-	private void Correct()
+	private void Correct() // 7/5 - Implemented all but audio feedback
 	{
-		correct.color = new Color(1, 1, 1, 1);
-        incorrect.color = new Color(1, 1, 1, 0);
-        rightCountre++;
+		//correct.color = new Color(1, 1, 1, 1);
+        //incorrect.color = new Color(1, 1, 1, 0);
+        //rightCountre++;
         audiofeedback.playGood();
 	}
 	
-	private void Incorrect()
+	private void Incorrect() // 7/5 - Implemented all but audio feedback
 	{
-		correct.color = new Color(1, 1, 1, 0);
-        incorrect.color = new Color(1, 1, 1, 1);
+		//correct.color = new Color(1, 1, 1, 0);
+        //incorrect.color = new Color(1, 1, 1, 1);
         audiofeedback.playBad();
         playNoise(wrongButton, wrongButton.Length);
 	}
@@ -292,7 +291,7 @@ public class Table_Tracks_Manager : MonoBehaviour
         }
     }
 
-    private void orderTrocks()
+   /* private void orderTrocks()
     {
         //randomizes the order the tracks appear in
         var orderOfTrock = RO.randomize(3);
@@ -307,5 +306,5 @@ public class Table_Tracks_Manager : MonoBehaviour
         {
             print(item);
         }
-    }
+    } */
 }

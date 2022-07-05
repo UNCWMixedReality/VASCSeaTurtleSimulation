@@ -46,11 +46,11 @@ public class NewTaskManagerM1 : MonoBehaviour
         }
         else if (taskCount == 2)
         {
-            //toolTable.PrepareCaliperTest();
+            toolTable.FirstCalPickUp();
         }
         else if (taskCount == 3)
         {
-            //toolTable.PrepareJar();
+            toolTable.PrepareJar();
         }
         else if (taskCount == 4)
         {

@@ -55,15 +55,17 @@ public class Calipers : MonoBehaviour
     CalipersCollision leftCalipScript;
     CalipersCollision rightCalipScript;
 
+    public NewTaskManagerM1 taskMan;
 
     void Start()
     {
         movingPartStartingPos = NewMovingPart.transform.localPosition;
         leftCalipScript = CalipersLeft.GetComponent<CalipersCollision>();
         rightCalipScript = CalipersRight.GetComponent<CalipersCollision>();
-
+        /*
         frontFinArrow.color = arrowTransparentYellow;
         backFinArrow.color = arrowTransparentYellow;
+        */
     }
 
     IEnumerator Pause()
@@ -122,10 +124,10 @@ public class Calipers : MonoBehaviour
                 audiofeedback.playGood();
                 StopAllCoroutines();
                 frontMeasured = true;
-                frontFinArrow.color = arrowGreen;
+                //frontFinArrow.color = arrowGreen;
                 calipersTextBig.text = "14cm";
                 StartCoroutine(Pause());
-                prog.TickProgressBar();
+                taskMan.MarkTaskCompletion(7);
             }
         }
         else if (leftCalipScript.backCollided && rightCalipScript.backCollided) //Back fins successfully measured
@@ -138,10 +140,10 @@ public class Calipers : MonoBehaviour
                 audiofeedback.playGood();
                 StopAllCoroutines();
                 backMeasured = true;
-                backFinArrow.color = arrowGreen;
+                //backFinArrow.color = arrowGreen;
                 calipersTextBig.text = "13.5cm";
                 StartCoroutine(Pause());
-                prog.TickProgressBar();
+                taskMan.MarkTaskCompletion(8);
             }
         }
 

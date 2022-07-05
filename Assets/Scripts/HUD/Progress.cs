@@ -20,8 +20,8 @@ public class Progress : MonoBehaviour
 
     //tracks the current task
     private int current = 0;
-    private GameObject[] pArray = new GameObject[11];
-
+    public GameObject[] pArray { get; set; }
+    /*
     void Start()
     {
         //fill the array with the images
@@ -37,7 +37,7 @@ public class Progress : MonoBehaviour
         pArray[9] = P10;
         pArray[10] = P11;
     }
-
+    */
     public void TickProgressBar()
     {
         //activate the next sphere on the progress indicator, is independent of order events are completed in

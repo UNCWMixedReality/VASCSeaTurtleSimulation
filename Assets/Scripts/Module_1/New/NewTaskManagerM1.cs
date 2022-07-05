@@ -40,89 +40,134 @@ public class NewTaskManagerM1 : MonoBehaviour
 
         //perform appropriate set up based on current task count
         #region
+
+        //true when user completes first task by entering the scene
         if(taskCount == 1)
         {
             PrepareScene();
         }
+
+        //true when user completes second task by grabbing the calipers
         else if (taskCount == 2)
         {
             toolTable.FirstCalPickUp();
         }
+
+        //true when user completes third task by testing the calipers
         else if (taskCount == 3)
         {
             toolTable.PrepareJar();
         }
+
+        //true when user completes fourth task by measuring the jar
         else if (taskCount == 4)
         {
             //toolTable.PrepareTM();
         }
+
+        //true when user completes fifth task by picking up the tape measurer
         else if (taskCount == 5)
         {
             //toolTable.PrepareClipboard();
         }
+
+        //true when user completes sixth task by measuring the clipboard
         else if (taskCount == 6)
         {
+            activityMan.MarkActivityCompletion();
             PrepareWaypoint();
         }
+
+        //true when user completes seventh task by entering the waypoint
         else if (taskCount == 7)
         {
             //measureTable.PrepareFrontFin();
         }
+
+        //true when user completes eighth task by measuring the front fin
         else if (taskCount == 8)
         {
             //measureTable.PrepareBackFin();
         }
+
+        //true when user completes ninth task by measuring the back fin
         else if (taskCount == 9)
         {
             //measureTable.PrepareShellLength();
         }
+
+        //true when user completes tenth task by measuring the shell length
         else if (taskCount == 10)
         {
             //measureTable.PrepareShellWidth();
         }
+
+        //true when user completes 11th task by measuring shell width
         else if (taskCount == 11)
         {
+            activityMan.MarkActivityCompletion();
             PrepareWaypoint();
         }
+
+        //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
             //identifyTable.PrepareBegin();
         }
+
+        //true when user completes 13th task by selecting begin
         else if (taskCount == 13)
         {
             //identifyTable.PrepareQuestion1();
         }
+
+        //true when user completes 14th task by answering the first question
         else if (taskCount == 14)
         {
             //identifyTable.PrepareQuestion2();
         }
+
+        //true when user completes 15th task by answering the second question
         else if (taskCount == 15)
         {
             //identifyTable.PrepareQuestion3();
         }
+
+        //true when user completes 16th task by answering the third question
         else if (taskCount == 16)
         {
+            activityMan.MarkActivityCompletion();
             PrepareWaypoint();
         }
+
+        //true when user completes 17th task by entering the waypoint
         else if (taskCount == 17)
         {
             //trackTable.PrepareBegin();
         }
+
+        //true when user completes 18th task by selecting begin
         else if (taskCount == 18)
         {
             //trackTable.PrepareQuestion1();
         }
+
+        //true when user completes the 19th task by answering the first question
         else if (taskCount == 19)
         {
             //trackTable.PrepareQuestion2();
         }
+
+        //true when user completes the 20th task by answering the second question
         else if (taskCount == 20)
         {
             //trackTable.PrepareQuestion3();
         }
+
+        //true when user completes the 21st task by answering the third question
         else if (taskCount == 21)
         {
-            EndScene();
+            activityMan.MarkActivityCompletion();
         }
 
         #endregion
@@ -138,11 +183,6 @@ public class NewTaskManagerM1 : MonoBehaviour
     }
 
     private void PrepareWaypoint()
-    {
-        //
-    }
-
-    private void EndScene()
     {
         //
     }

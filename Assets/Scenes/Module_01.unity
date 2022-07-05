@@ -10973,6 +10973,7 @@ GameObject:
   - component: {fileID: 736135487}
   - component: {fileID: 736135488}
   - component: {fileID: 736135489}
+  - component: {fileID: 736135490}
   m_Layer: 2
   m_Name: '[Manager]'
   m_TagString: Untagged
@@ -11162,6 +11163,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e62a7b270b28a4bb3c98bc51effa49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &736135490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee33bc15b144e945a1b78a94bf273d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instrUpdater: {fileID: 0}
+  activityMan: {fileID: 0}
+  toolTable: {fileID: 0}
+  measureTable: {fileID: 0}
+  identifyTable: {fileID: 0}
+  trackTable: {fileID: 0}
+  waypoint: {fileID: 0}
+  toolCalipers: {fileID: 0}
 --- !u!4 &737521046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 318739f295fa3ec4e97ef5abf3bdce0c,
@@ -19250,6 +19271,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 736135480}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

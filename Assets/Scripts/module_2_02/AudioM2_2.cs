@@ -31,7 +31,7 @@ public class AudioM2_2 : MonoBehaviour
 
     public float GetLength()
     {
-        return temp.clip.length;
+        return audioInstructions[currentIdx].clip.length;
     }
 
 }

@@ -18,6 +18,12 @@ public class NewTaskManagerM1 : MonoBehaviour
     public NewMeasuringManagerM1 measureTable;
     public NewIdentificationManagerM1 identifyTable;
     public NewTrackManagerM1 trackTable;
+
+    //waypoint
+    public GameObject waypoint;
+
+    //tool table objects
+    public GameObject toolCalipers;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -36,12 +42,17 @@ public class NewTaskManagerM1 : MonoBehaviour
         #region
         if(taskCount == 1)
         {
-            //
+            PrepareScene();
         }
         #endregion
         //run the next set of instructions
         //instrUpdater.RunInstructions();
 
 
+    }
+
+    private void PrepareScene()
+    {
+        toolCalipers.SetActive(true);
     }
 }

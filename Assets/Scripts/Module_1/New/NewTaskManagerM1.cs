@@ -81,25 +81,25 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes seventh task by entering the waypoint
         else if (taskCount == 7)
         {
-            //measureTable.PrepareFrontFin();
+            measureTable.PrepareFrontFin();
         }
 
         //true when user completes eighth task by measuring the front fin
         else if (taskCount == 8)
         {
-            //measureTable.PrepareBackFin();
+            measureTable.PrepareBackFin();
         }
 
         //true when user completes ninth task by measuring the back fin
         else if (taskCount == 9)
         {
-            //measureTable.PrepareShellLength();
+            measureTable.PrepareShellLength();
         }
 
         //true when user completes tenth task by measuring the shell length
         else if (taskCount == 10)
         {
-            //measureTable.PrepareShellWidth();
+            measureTable.PrepareShellWidth();
         }
 
         //true when user completes 11th task by measuring shell width

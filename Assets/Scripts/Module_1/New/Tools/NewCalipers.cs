@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class NewCalipers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public XRRayInteractor leftHand;
+    public XRRayInteractor rightHand;
+    private string activeHand;
 
-    // Update is called once per frame
-    void Update()
+    public void PickedUp()
     {
-        
+        if leftHand.selectTarget.tag == "caliper";
     }
 }

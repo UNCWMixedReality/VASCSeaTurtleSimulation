@@ -44,6 +44,87 @@ public class NewTaskManagerM1 : MonoBehaviour
         {
             PrepareScene();
         }
+        else if (taskCount == 2)
+        {
+            //toolTable.PrepareCaliperTest();
+        }
+        else if (taskCount == 3)
+        {
+            //toolTable.PrepareJar();
+        }
+        else if (taskCount == 4)
+        {
+            //toolTable.PrepareTM();
+        }
+        else if (taskCount == 5)
+        {
+            //toolTable.PrepareClipboard();
+        }
+        else if (taskCount == 6)
+        {
+            PrepareWaypoint();
+        }
+        else if (taskCount == 7)
+        {
+            //measureTable.PrepareFrontFin();
+        }
+        else if (taskCount == 8)
+        {
+            //measureTable.PrepareBackFin();
+        }
+        else if (taskCount == 9)
+        {
+            //measureTable.PrepareShellLength();
+        }
+        else if (taskCount == 10)
+        {
+            //measureTable.PrepareShellWidth();
+        }
+        else if (taskCount == 11)
+        {
+            PrepareWaypoint();
+        }
+        else if (taskCount == 12)
+        {
+            //identifyTable.PrepareBegin();
+        }
+        else if (taskCount == 13)
+        {
+            //identifyTable.PrepareQuestion1();
+        }
+        else if (taskCount == 14)
+        {
+            //identifyTable.PrepareQuestion2();
+        }
+        else if (taskCount == 15)
+        {
+            //identifyTable.PrepareQuestion3();
+        }
+        else if (taskCount == 16)
+        {
+            PrepareWaypoint();
+        }
+        else if (taskCount == 17)
+        {
+            //trackTable.PrepareBegin();
+        }
+        else if (taskCount == 18)
+        {
+            //trackTable.PrepareQuestion1();
+        }
+        else if (taskCount == 19)
+        {
+            //trackTable.PrepareQuestion2();
+        }
+        else if (taskCount == 20)
+        {
+            //trackTable.PrepareQuestion3();
+        }
+        else if (taskCount == 21)
+        {
+            EndScene();
+        }
+
         #endregion
         //run the next set of instructions
         //instrUpdater.RunInstructions();
@@ -54,5 +135,15 @@ public class NewTaskManagerM1 : MonoBehaviour
     private void PrepareScene()
     {
         toolCalipers.SetActive(true);
+    }
+
+    private void PrepareWaypoint()
+    {
+        //
+    }
+
+    private void EndScene()
+    {
+        //
     }
 }

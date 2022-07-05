@@ -36,7 +36,7 @@ public class TMDemo : MonoBehaviour
     private LineRenderer line;
     private string activeHand;
 
-    public NewActivityManagerM1 taskMan;
+    public NewTaskManagerM1 taskMan;
 
     void Start()
     {

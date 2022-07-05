@@ -105,6 +105,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 11th task by measuring shell width
         else if (taskCount == 11)
         {
+            measureTable.FinishTable();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
         }

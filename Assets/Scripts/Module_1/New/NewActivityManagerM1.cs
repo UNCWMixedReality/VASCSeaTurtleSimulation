@@ -34,7 +34,7 @@ public class NewActivityManagerM1 : MonoBehaviour
     private IEnumerator EndSimulation()
     {
         // just loads the main scene
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(10);
         SceneManager.LoadScene("Main");
     }
 }

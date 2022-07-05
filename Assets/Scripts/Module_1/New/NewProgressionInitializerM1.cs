@@ -45,10 +45,22 @@ public class NewProgressionInitializerM1 : MonoBehaviour
 		instrUpdater.instructions[2] = ("Now, use the calipers to measure the jar on the table.");
 		instrUpdater.instructions[3] = ("Great job, we will also be using a tape measurer in this module. Grab the tape measurer on the table.");
 		instrUpdater.instructions[4] = ("You'll notice that the tape measurer automatically measures the distance between your two hands. Try measuring the clipboard on the table with the tape measurer.");
-		instrUpdater.instructions[5] = ("Great work, you've successfully used the calipers and tape measurer! Move to the blue waypoint to begin your first task.");
-		instrUpdater.instructions[6] = ("a");
-		instrUpdater.instructions[7] = ("Good job! Move the sign to the designated position.");
-		instrUpdater.instructions[8] = ("Good job! You have successfully completed part two of the nest relocation module.");
+		instrUpdater.instructions[5] = ("Great work, you've successfully used the calipers and tape measurer! Move to the blue waypoint to begin your first activity.");
+		instrUpdater.instructions[6] = ("During this activity you will measure a sea turtle using calipers and a tape measure. Pick up the calipers and measure the turtles front fin.");
+		instrUpdater.instructions[7] = ("Now use the calipers to measure the back fin.");
+		instrUpdater.instructions[8] = ("Great work! Now use the tape measure to measure the length of the turtles shell.");
+		instrUpdater.instructions[9] = ("Now measure the width of the turtles shell");
+		instrUpdater.instructions[10] = ("Great work! You've successfully measured this turtle. Move to the blue waypoint to start the next activity");
+		instrUpdater.instructions[11] = ("In this activity, you will identify the species of various turtles. Select begin to start");
+		instrUpdater.instructions[12] = ("Identify the first turtle by selecting one of the answer options");
+		instrUpdater.instructions[13] = ("Correct! {info blob} now identify the next turtle");
+		instrUpdater.instructions[14] = ("Correct! {info blob} now identify the third turtle");
+		instrUpdater.instructions[15] = ("Correct! {info blob} now move to the waypoint to start the next activity");
+		instrUpdater.instructions[16] = ("In this activity, you will identify which turtle species the tracks belong to. To start, select begin");
+		instrUpdater.instructions[17] = ("Select which turtle the tracks match by choosing from the options listed");
+		instrUpdater.instructions[18] = ("Correct {info blob} now identify the next set of tracks");
+		instrUpdater.instructions[19] = ("Correct {info blob} now identify the third set of tracks");
+		instrUpdater.instructions[20] = ("Correct! {info blob} you have successfully completed module 1.");
 
 		instrUpdater.current = 0;
 		instrUpdater.queueCount = 0;

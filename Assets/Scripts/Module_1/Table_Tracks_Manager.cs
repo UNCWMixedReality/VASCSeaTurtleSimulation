@@ -150,7 +150,7 @@ public class Table_Tracks_Manager : MonoBehaviour
             print("Next Track");
             if (currentTrackNum == -1) //If this is the first turtle
             {
-                StartCoroutine(scaleUp(0));
+                //StartCoroutine(scaleUp(0));
                 audiofeedback.playSelection();
                 //enable button selection
                 GreenButton.interactable = true;
@@ -162,8 +162,8 @@ public class Table_Tracks_Manager : MonoBehaviour
             }
             else //If this is the second or third turtle
             {
-                StartCoroutine(scaleDown(currentTrackNum));
-                StartCoroutine(scaleUp(currentTrackNum + 1));
+                //StartCoroutine(scaleDown(currentTrackNum));
+                //StartCoroutine(scaleUp(currentTrackNum + 1));
                 // line added by Blake to log correct choices
                 DcDataLogging.SetCorrectAnswer("TrackGuessing", new [] {
                     "Loggerhead", "Leatherback"}[currentTrackNum]);
@@ -173,7 +173,7 @@ public class Table_Tracks_Manager : MonoBehaviour
         }
         else //End of activity
         {
-            StartCoroutine(scaleDown(currentTrackNum));
+            //StartCoroutine(scaleDown(currentTrackNum));
         }
     }
 

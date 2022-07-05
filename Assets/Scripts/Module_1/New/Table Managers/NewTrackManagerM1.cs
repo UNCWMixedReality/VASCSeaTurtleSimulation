@@ -55,7 +55,7 @@ public class NewTrackManagerM1 : MonoBehaviour
 
     #region ScaleUp/Down methods
 
-    public IEnumerator scaleUp(int index) //Scales up the active turtle
+    public IEnumerator ScaleUp(int index) //Scales up the active turtle
     {
         float timer = 0f;
         Vector3 startScale = new Vector3(0, 0, 0);
@@ -69,7 +69,7 @@ public class NewTrackManagerM1 : MonoBehaviour
         }
     }
 
-    public IEnumerator scaleDown(int index) //Scales down the inactive turtle
+    public IEnumerator ScaleDown(int index) //Scales down the inactive turtle
     {
         float timer = 0f;
         Vector3 startScale = new Vector3(1, 1, 1);
@@ -129,7 +129,7 @@ public class NewTrackManagerM1 : MonoBehaviour
         {
             if (currentTrackNum == -1)
             {
-                StartCoroutine(scaleUp(0));
+                StartCoroutine(ScaleUp(0));
                 //Enable Buttons
                 GreenButton.interactable = true;
                 LoggerheadButton.interactable = true;
@@ -139,8 +139,8 @@ public class NewTrackManagerM1 : MonoBehaviour
             }
             else //Second or Third Turtles
             {
-                StartCoroutine(scaleDown(currentTrackNum));
-                StartCoroutine(scaleUp(currentTrackNum + 1));
+                StartCoroutine(ScaleDown(currentTrackNum));
+                StartCoroutine(ScaleUp(currentTrackNum + 1));
                 //Copied Line added by Blake
                 DcDataLogging.SetCorrectAnswer("TrackGuessing", new [] {
                     "Loggerhead", "Leatherback"}[currentTrackNum]);
@@ -148,7 +148,7 @@ public class NewTrackManagerM1 : MonoBehaviour
         }
         else //End of Activity
         {
-            StartCoroutine(scaleDown(currentTrackNum));
+            StartCoroutine(ScaleDown(currentTrackNum));
         }
     }
 

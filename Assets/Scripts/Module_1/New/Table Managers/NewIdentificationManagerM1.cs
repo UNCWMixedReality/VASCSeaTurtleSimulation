@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class NewIdentificationManagerM1 : MonoBehaviour
 {
 
-
+    //class variables
+    #region
     //references to the turtle models
     public GameObject Loggerhead;
     public GameObject Hawksbill;
@@ -25,71 +26,54 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     public Image incorrect;
     public Image correct;
 
-    //number of incorrect answers
+    //number of incorrect/correct answers
     public int wrong = 0;
+    public int right = 0;
 
     //references to necessary scripts
     public NewTaskManagerM1 taskMan;
-
     public AudioFeedback audiofeedback;
     public RandomOrder RO;
 
-    private bool task2Done = false;
-
-    
-    private int currentTurtleNum = -1;
-    private int rightCounter = 0;
     private float scaleDuration = 2;
+    #endregion
 
-    public void SetNextTurtle(int idx) //Will be called by the TableManager script to start the activity.
+    public void SetNextTurtle(int idx)
     {
+        /*
+         * This scales up the current turtle so it is visible
+         */
+        if (idx > 0)
+        {
+            StartCoroutine(scaleDown(idx-1));
+        }
+
         StartCoroutine(scaleUp(idx));
         // line added by Blake to log correct choices
         DcDataLogging.SetCorrectAnswer("TurtleGuessing", new[] {
-                    "Loggerhead" , "Hawksbill", "Leatherback"}[currentTurtleNum]);
-        if (currentTurtleNum == -1) //If this is the first turtle
-            {
-                StartCoroutine(scaleUp(0));
-                
-                // line added by Blake to log correct choices
-                DcDataLogging.SetCorrectAnswer("TurtleGuessing", "Loggerhead");
-            }
-            else //If this is the second or third turtle
-            {
-                StartCoroutine(scaleDown(currentTurtleNum));
-                StartCoroutine(scaleUp(currentTurtleNum + 1));
-                // line added by Blake to log correct choices
-                DcDataLogging.SetCorrectAnswer("TurtleGuessing", new[] {
-                    "Hawksbill", "Leatherback"}[currentTurtleNum]);
-            }
+                    "Loggerhead" , "Hawksbill", "Leatherback"}[turtleIdx]);
 
-            currentTurtleNum += 1;
+        turtleIdx++;
 
     }
 
-    public void selectTurtle(string turtleName)//will be called when the user selects turtle
+    public void CheckAnswer(string turtleName)//will be called when the user selects a answer button
     {
-        if (turtleName == "Loggerhead" && TurtleList[currentTurtleNum] == Loggerhead)
+        if (turtleName == "Loggerhead" && TurtleList[turtleIdx - 1] == Loggerhead)
         {
-            print("Loggerhead correct choice");
             Correct();
         }
-        else if (turtleName == "Hawksbill" && TurtleList[currentTurtleNum] == Hawksbill)
+        else if (turtleName == "Hawksbill" && TurtleList[turtleIdx - 1] == Hawksbill)
         {
-            print("Hawksbill correct choice");
             Correct();
         }
-        else if (turtleName == "Leatherback" && TurtleList[currentTurtleNum] == Leatherback)
+        else if (turtleName == "Leatherback" && TurtleList[turtleIdx - 1] == Leatherback)
         {
-            print("Leatherback correct choice");
             Correct();
         }
         else
         {
-            print("Incorrect choice");
             Incorrect();
-            wrong++;
-
         }
     }
 
@@ -121,17 +105,13 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         }
     }
 
-    public bool getTask2Done()
-    {
-        return task2Done;
-    }
-
     private void Correct()
     {
         correct.color = new Color(1, 1, 1, 1);
         incorrect.color = new Color(1, 1, 1, 0);
-        rightCounter++;
+        right++;
         audiofeedback.playGood();
+        taskMan.MarkTaskCompletion(turtleIdx + 12);
 
     }
 
@@ -139,6 +119,7 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     {
         correct.color = new Color(1, 1, 1, 0);
         incorrect.color = new Color(1, 1, 1, 1);
+        wrong++;
         audiofeedback.playBad();
     }
 
@@ -154,7 +135,6 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         TurtleList[orderOfTurtles[2] - 1] = Leatherback;
  
     }
-
 
     public void PrepareTurtleIdentification()
     {
@@ -189,5 +169,11 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         LoggerheadButton.SetActive(true);
         HawksbillButton.SetActive(true);
         LeatherbackButton.SetActive(true);
+    }
+
+    public void SetNextQuestion()
+    {
+        SetNextTurtle(turtleIdx);
+
     }
 }

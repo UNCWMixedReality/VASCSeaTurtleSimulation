@@ -112,25 +112,25 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
-            //identifyTable.PrepareBegin();
+            identifyTable.PrepareBegin();
         }
 
         //true when user completes 13th task by selecting begin
         else if (taskCount == 13)
         {
-            //identifyTable.PrepareQuestion1();
+            identifyTable.PrepareQuestion1();
         }
 
         //true when user completes 14th task by answering the first question
         else if (taskCount == 14)
         {
-            //identifyTable.PrepareQuestion2();
+            identifyTable.PrepareQuestion2();
         }
 
         //true when user completes 15th task by answering the second question
         else if (taskCount == 15)
         {
-            //identifyTable.PrepareQuestion3();
+            identifyTable.PrepareQuestion3();
         }
 
         //true when user completes 16th task by answering the third question

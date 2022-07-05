@@ -62,13 +62,13 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes fourth task by measuring the jar
         else if (taskCount == 4)
         {
-            //toolTable.PrepareTM();
+            toolTable.PrepareTM();
         }
 
         //true when user completes fifth task by picking up the tape measurer
         else if (taskCount == 5)
         {
-            //toolTable.PrepareClipboard();
+            toolTable.PrepareClipboard();
         }
 
         //true when user completes sixth task by measuring the clipboard

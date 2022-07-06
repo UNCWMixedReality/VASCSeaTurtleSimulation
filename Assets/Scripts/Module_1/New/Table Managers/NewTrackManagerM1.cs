@@ -8,47 +8,57 @@ using DataCollection;
 public class NewTrackManagerM1 : MonoBehaviour
 {
     #region Class Variables
-
+    
+    //Necessary Scripts
+    public NewTaskManagerM1 taskMan;
+    public AudioFeedback audiofeedback;
+    public RandomOrder R0; 
+    
     //Tracks
     public GameObject Green_Tracks;
     public GameObject Loggerhead_Tracks;
     public GameObject Leatherback_Tracks;
 
-    private GameObject[] trocks = new GameObject[3];
-    private int currentTrackNum = -1;   // Unsure of intended use
-    private int rightCountre = 0;       // ^^
-    private float scaleDuration1 = 2;   //
-    public RandomOrder R0;              // ^^
+    private GameObject[] TrackList;
+    
+    //private int currentTrackNum = -1; 
+    private int trackIdx;
+    private float scaleDuration1 = 2;   
+                                        
     //Buttons
-    public GameObject Begin;
-    public Button GreenButton;
-    public Button LoggerheadButton;
-    public Button LeatherbackButton;
+    public GameObject BeginButton;
+    public GameObject GreenButton;
+    public GameObject LoggerheadButton;
+    public GameObject LeatherbackButton;
+    
     //Answers
     public Image incorrect;
     public Image correct;
+    
+    //Number of incorrect/correct answers
+    public int wrong = 0;
+    public int right = 0;
+    
     //Things I wish I understood
     
     #endregion
-
-    #region Audio Stuff
     
-    
-
-    #endregion
-
     #region Correct/Incorrect Answer Methods
     
     private void Correct()
     {
         correct.color = new Color(1, 1, 1, 1);
         incorrect.color = new Color(1, 1, 1, 0);
-        rightCountre++;
+        right++;
+        audiofeedback.playGood();
+        taskMan.MarkTaskCompletion(trackIdx + 18);
     }
     private void Incorrect()
     {
         correct.color = new Color(1, 1, 1, 0);
         incorrect.color = new Color(1, 1, 1, 1);
+        wrong++;
+        audiofeedback.playBad();
     }
     
     #endregion
@@ -64,7 +74,7 @@ public class NewTrackManagerM1 : MonoBehaviour
         while (timer < scaleDuration1)
         {
             timer += Time.deltaTime;
-            trocks[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale the turtle up
+            TrackList[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale the turtle up
             yield return null;
         }
     }
@@ -78,100 +88,91 @@ public class NewTrackManagerM1 : MonoBehaviour
         while (timer < scaleDuration1)
         {
             timer += Time.deltaTime;
-            trocks[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale turtle down
+            TrackList[index].transform.localScale = startScale + distance * timer / scaleDuration1; //Scale turtle down
             yield return null;
         }
     }
 
     #endregion
-    public void PrepareBegin()
+    public void PrepareTrackIdentification()
     {
-        orderTrocks();
-        Begin.SetActive(false); // May need to be set to true
-        //Disabling Button Interaction
-        GreenButton.interactable = false;
-        LoggerheadButton.interactable = false;
-        LeatherbackButton.interactable = false;
+        //Initialize list then order it
+        TrackList = new GameObject[3];
+        orderTracks();
+        trackIdx = 0;
+        
         //Activating Tracks
         for (int i = 0; i < 3; i++)
         {
-            trocks[i].transform.localScale = new Vector3(0, 0, 0);
-            trocks[i].SetActive(true);
+            TrackList[i].transform.localScale = new Vector3(0, 0, 0);
+            TrackList[i].SetActive(true);
         }
+        
+        //Activate begin button
+        BeginButton.SetActive(true);
+        
+        //Disable answer buttons
+        LoggerheadButton.SetActive(false);
+        GreenButton.SetActive(false);
+        LeatherbackButton.SetActive(false);
+        
     }
 
-    public void PrepareQuestion1()
+    public void SetNxtTrack(int idx)
     {
-        nextTrack();
-    }
-
-    public void PrepareQuestion2()
-    {
-        nextTrack();
-    }
-
-    public void PrepareQuestion3()
-    {
-        nextTrack();
-    }
-
-    private void orderTrocks() //Randomizes the order in which tracks appear
-    {
-        var orderOfTrock = R0.randomize(3);
-        trocks[orderOfTrock[0] - 1] = Green_Tracks;
-        trocks[orderOfTrock[1] - 1] = Loggerhead_Tracks;
-        trocks[orderOfTrock[2] - 1] = Leatherback_Tracks;
-    }
-
-    public void nextTrack()
-    {
-        if (currentTrackNum < 3 - 1) //Stops if at end of list
+        //Scales up the current turtle
+        if (idx > 0)
         {
-            if (currentTrackNum == -1)
-            {
-                StartCoroutine(ScaleUp(0));
-                //Enable Buttons
-                GreenButton.interactable = true;
-                LoggerheadButton.interactable = true;
-                LeatherbackButton.interactable = true;
-                //Copied line added by Blake
-                DcDataLogging.SetCorrectAnswer("TrackGuessing", "Green");
-            }
-            else //Second or Third Turtles
-            {
-                StartCoroutine(ScaleDown(currentTrackNum));
-                StartCoroutine(ScaleUp(currentTrackNum + 1));
-                //Copied Line added by Blake
-                DcDataLogging.SetCorrectAnswer("TrackGuessing", new [] {
-                    "Loggerhead", "Leatherback"}[currentTrackNum]);
-            }
+            StartCoroutine(ScaleDown(idx - 1));
         }
-        else //End of Activity
-        {
-            StartCoroutine(ScaleDown(currentTrackNum));
-        }
+
+        StartCoroutine(ScaleUp(idx));
+        //Line added by Blake to log correct choices
+        DcDataLogging.SetCorrectAnswer("Track Guessing", new[]
+            { "Loggerhead", "Green", "Leatherback" }[trackIdx]);
+
+        trackIdx++; 
     }
 
-    public void selectTracks(string trackName)
+    public void CheckAnswer(string trackName) //Called when user selects a button
     {
-        if (trackName == "Green" && trocks[currentTrackNum] == Green_Tracks)
+        if (trackName == "Green" && TrackList[trackIdx - 1] == Green_Tracks)
         {
             Correct();
-            //Mark Task Completion? (this would then call prepare nxt question)
         }
-        else if (trackName == "Loggerhead" && trocks[currentTrackNum] == Loggerhead_Tracks)
+        else if (trackName == "Loggerhead" && TrackList[trackIdx - 1] == Loggerhead_Tracks)
         {
             Correct();
-            //MTC
         }
-        else if (trackName == "Leatherback" && trocks[currentTrackNum] == Leatherback_Tracks)
+        else if (trackName == "Leatherback" && TrackList[trackIdx - 1] == Leatherback_Tracks)
         {
             Correct();
-            //MTC
         }
         else
         {
             Incorrect();
         }
+    }
+    
+    private void orderTracks() //Randomizes the order in which tracks appear
+    {
+        var orderOfTrack = R0.randomize(3);
+        TrackList[orderOfTrack[0] - 1] = Green_Tracks;
+        TrackList[orderOfTrack[1] - 1] = Loggerhead_Tracks;
+        TrackList[orderOfTrack[2] - 1] = Leatherback_Tracks;
+    }
+
+    public void PrepareQuestions()
+    {
+        audiofeedback.playSelection();
+        //Enable selection buttons
+        LoggerheadButton.SetActive(true);
+        GreenButton.SetActive(true);
+        LeatherbackButton.SetActive(true);
+    }
+
+    public void SetNextQuestion()
+    {
+        SetNxtTrack(trackIdx);
     }
 }

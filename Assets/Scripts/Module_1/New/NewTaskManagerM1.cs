@@ -145,25 +145,26 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 17th task by entering the waypoint
         else if (taskCount == 17)
         {
-            //trackTable.PrepareBegin();
+            trackTable.PrepareTrackIdentification();
         }
 
         //true when user completes 18th task by selecting begin
         else if (taskCount == 18)
         {
-            //trackTable.PrepareQuestion1();
+            trackTable.PrepareQuestions();
+            trackTable.SetNextQuestion();
         }
 
         //true when user completes the 19th task by answering the first question
         else if (taskCount == 19)
         {
-            //trackTable.PrepareQuestion2();
+            trackTable.SetNextQuestion();
         }
 
         //true when user completes the 20th task by answering the second question
         else if (taskCount == 20)
         {
-            //trackTable.PrepareQuestion3();
+            trackTable.SetNextQuestion();
         }
 
         //true when user completes the 21st task by answering the third question

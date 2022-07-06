@@ -43,11 +43,12 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         /*
          * This scales up the current turtle so it is visible
          */
+        Debug.Log("The index is " + idx);
         if (idx > 0)
         {
             StartCoroutine(scaleDown(idx-1));
         }
-
+        TurtleList[idx].SetActive(true);
         StartCoroutine(scaleUp(idx));
         // line added by Blake to log correct choices
         DcDataLogging.SetCorrectAnswer("TurtleGuessing", new[] {

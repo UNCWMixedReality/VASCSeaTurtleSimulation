@@ -51,7 +51,7 @@ public class NewTrackManagerM1 : MonoBehaviour
         incorrect.color = new Color(1, 1, 1, 0);
         right++;
         audiofeedback.playGood();
-        taskMan.MarkTaskCompletion(trackIdx + 18);
+        taskMan.MarkTaskCompletion(trackIdx + 17);
     }
     private void Incorrect()
     {
@@ -164,6 +164,7 @@ public class NewTrackManagerM1 : MonoBehaviour
 
     public void PrepareQuestions()
     {
+        Debug.Log("This is working");
         audiofeedback.playSelection();
         //Enable selection buttons
         LoggerheadButton.SetActive(true);

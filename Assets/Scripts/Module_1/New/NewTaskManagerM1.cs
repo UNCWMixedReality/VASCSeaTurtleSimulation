@@ -8,6 +8,8 @@ public class NewTaskManagerM1 : MonoBehaviour
     #region
     public NewInstructionUpdaterM1 instrUpdater;
     public NewActivityManagerM1 activityMan;
+    public RoomSwitch roomSwitch;
+    public Fading fading;
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
@@ -81,6 +83,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes seventh task by entering the waypoint
         else if (taskCount == 7)
         {
+            StartCoroutine(SetNextTable());
             measureTable.PrepareFrontFin();
         }
 
@@ -113,6 +116,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
+            StartCoroutine(SetNextTable());
             identifyTable.PrepareTurtleIdentification();
         }
 
@@ -145,6 +149,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 17th task by entering the waypoint
         else if (taskCount == 17)
         {
+            StartCoroutine(SetNextTable());
             trackTable.PrepareTrackIdentification();
         }
 
@@ -175,7 +180,7 @@ public class NewTaskManagerM1 : MonoBehaviour
 
         #endregion
         //run the next set of instructions
-        //instrUpdater.RunInstructions();
+        instrUpdater.RunInstructions();
 
 
     }
@@ -205,5 +210,13 @@ public class NewTaskManagerM1 : MonoBehaviour
         {
             MarkTaskCompletion(16);
         }
+    }
+
+    public IEnumerator SetNextTable()
+    {
+        yield return new WaitForSeconds(2);
+        roomSwitch.switchRoom();
+        fading.Fade(false, true);
+        yield return new WaitForSeconds(2);
     }
 }

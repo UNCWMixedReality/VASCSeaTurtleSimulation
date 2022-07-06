@@ -16,6 +16,8 @@ public class NewActivityManagerM1 : MonoBehaviour
     //stores the time when activities are completed
     public float[] activityTimes { get; set; }
 
+    public AudioSource EndAudio;
+
     public void MarkActivityCompletion()
     {
         // save time of activity completion
@@ -34,7 +36,9 @@ public class NewActivityManagerM1 : MonoBehaviour
     private IEnumerator EndSimulation()
     {
         // just loads the main scene
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(5);
+        EndAudio.Play();
+        yield return new WaitForSecondsRealtime(5);
         SceneManager.LoadScene("Main");
     }
 }

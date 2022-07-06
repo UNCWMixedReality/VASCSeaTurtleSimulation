@@ -26,6 +26,7 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     //tool table objects
     public GameObject toolCalipers;
+    public AudioFeedback audiofeedback;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -52,12 +53,14 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes second task by grabbing the calipers
         else if (taskCount == 2)
         {
+            audiofeedback.playGood();
             toolTable.FirstCalPickUp();
         }
 
         //true when user completes third task by testing the calipers
         else if (taskCount == 3)
         {
+            audiofeedback.playGood();
             toolTable.PrepareJar();
         }
 
@@ -70,12 +73,14 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes fifth task by picking up the tape measurer
         else if (taskCount == 5)
         {
+            audiofeedback.playGood();
             toolTable.PrepareClipboard();
         }
 
         //true when user completes sixth task by measuring the clipboard
         else if (taskCount == 6)
         {
+            audiofeedback.playGood();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
         }

@@ -27,9 +27,7 @@ public class NewToolManagerM1 : MonoBehaviour
    
    public void PrepareJar() // Prepares Jar for measuring
    {
-      container.transform.GetChild(1).gameObject.SetActive(true);
-      container.transform.GetChild(2).gameObject.SetActive(true);
-      container.transform.GetChild(3).gameObject.SetActive(true);
+        container.SetActive(true);
    }
    
    public void PrepareTM() // First Tape Measure PickUp
@@ -38,8 +36,6 @@ public class NewToolManagerM1 : MonoBehaviour
    }
    public void PrepareClipboard() // Prepares Clipboard for measuring
    {
-      clipboard.transform.GetChild(1).gameObject.SetActive(true);
-      clipboard.transform.GetChild(2).gameObject.SetActive(true);
-      clipboard.transform.GetChild(3).gameObject.SetActive(true);
+        clipboard.SetActive(true);
    }
 }

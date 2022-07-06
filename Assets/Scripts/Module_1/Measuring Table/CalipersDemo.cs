@@ -98,7 +98,7 @@ public class CalipersDemo : MonoBehaviour
         {
             activeHand = "right";
         }
-        Debug.Log(activeHand);
+        //Debug.Log(activeHand);
     }
 
     public void FixedUpdate()
@@ -155,12 +155,12 @@ public class CalipersDemo : MonoBehaviour
                     taskMan.MarkTaskCompletion(2);
                 }
 
-                print("extend");
+                //print("extend");
                 if(length < 12)
                 {
                     length++;
                 }
-                print(length);
+                //print(length);
                 movingPart.transform.localPosition = new Vector3(movingPartStartingPos.x + (-length/100), movingPart.transform.localPosition.y, movingPart.transform.localPosition.z);
                 calipersText.text = (14-(-(movingPart.transform.localPosition.x * 100) + 4 + 5.2)).ToString("F1") + "cm";
                 
@@ -171,12 +171,12 @@ public class CalipersDemo : MonoBehaviour
             }
             if (retract)
             {
-                print("retract");
+                //print("retract");
                 if(length > -2)
                 {
                     length--;
                 }
-                print(length);
+                //print(length);
                 movingPart.transform.localPosition = new Vector3(movingPartStartingPos.x + (-length / 100), movingPart.transform.localPosition.y, movingPart.transform.localPosition.z);
                 calipersText.text = (14-(-(movingPart.transform.localPosition.x * 100) + 4 + 5.2)).ToString("F1") + "cm";
 
@@ -190,7 +190,7 @@ public class CalipersDemo : MonoBehaviour
             //move moving part accordingly
             if (touchPad != Vector2.zero)
             {
-                print(touchPad.y);
+                //print(touchPad.y);
                 //moves calipers based on control stick input
                 movingPart.transform.localPosition = new Vector3(movingPartStartingPos.x + (touchPad.y / 4), movingPart.transform.localPosition.y, movingPart.transform.localPosition.z);
                 calipersText.text = (-(movingPart.transform.localPosition.x * 100) + 4 + 5.2).ToString("F1") + "cm";

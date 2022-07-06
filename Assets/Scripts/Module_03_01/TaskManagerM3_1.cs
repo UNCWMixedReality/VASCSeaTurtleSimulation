@@ -35,6 +35,7 @@ public class TaskManagerM3_1 : MonoBehaviour
 
     public GameObject TableWaypoint;
     public GameObject TurtleWaypoint;
+    public bool waypoint = true;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -74,7 +75,6 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             Debug.Log("Entered table waypoint");
             //LogTask("Entered table waypoint");
-            TableWaypoint.SetActive(false);
             cleanMan.PrepareCloth();
             activityManager.MarkActivityCompletion();
 
@@ -84,6 +84,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         else if (taskCount == 3)
         {
             Debug.Log("Picked up cloth");
+            FlipWaypoint();
             cleanMan.PrepareClean();
             //LogTask("Successfully picked up cloth");
         }
@@ -93,32 +94,43 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             //LogTask("Cleaned shell");
             Debug.Log("Cleaned shell");
-
+            FlipWaypoint();
+            GPSMan.PrepareGPS();
         }
 
         //true when the user completes the fifth task by picking up the GPS
         else if (taskCount == 5)
         {
             //LogTask("Picked up GPS");
+            Debug.Log("Picked up GPS");
+            FlipWaypoint();
+            GPSMan.PrepareGPSPlace();
+
         }
 
         //true when the user completes the sixth task by placing the GPS
         else if (taskCount == 6)
         {
             //LogTask("Placed GPS");
+            Debug.Log("Placed GPS");
+            FlipWaypoint();
+            pasteMan.PrepareShovel();
         }
 
         //true when the user completes the seventh task by picking up shovel
         else if(taskCount == 7)
         {
             //LogTask("Picked up shovel");
-
+            Debug.Log("Picked up Shovel");
+            FlipWaypoint();
+            pasteMan.PreparePaste();
         }
 
-        //true when the user completes the eighth task by pasting GPS on back using shovel
+        //true when the user completes the eighth task by pasting GPS on shell using shovel
         else if (taskCount == 8)
         {
             //LogTask("Pasted GPS on shell");
+            Debug.Log("Pasted GPS on shell");
             PrepareEnd();
             activityManager.MarkActivityCompletion();
         }
@@ -132,8 +144,10 @@ public class TaskManagerM3_1 : MonoBehaviour
     {
 
         // Activate table waypoint and disable all objects not used at first
-        TableWaypoint.SetActive(true);
+        FlipWaypoint();
         cleanMan.DisableCloth();
+        GPSMan.DisableGPS();
+        pasteMan.DisableShovelHighlight();
 
     }
 
@@ -151,5 +165,12 @@ public class TaskManagerM3_1 : MonoBehaviour
 
     private void PrepareEnd()
     {
+    }
+    
+    private void FlipWaypoint()
+    {
+        TableWaypoint.SetActive(waypoint);
+        TurtleWaypoint.SetActive(!waypoint);
+        waypoint = !waypoint;
     }
 }

@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataCollection;
+using cakeslice;
 
 public class PlacePaste : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public TaskManagerM3_1 taskMan;
+	public Material pasteMaterial;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	void OnTriggerEnter(Collider col)
+	{
+		Debug.Log("collision detected");
+		if (col.name == "Shovel")
+		{
+			col.transform.GetChild(6).gameObject.SetActive(false);
+			gameObject.GetComponent<MeshRenderer>().material = pasteMaterial;
+			gameObject.GetComponent<Outline>().enabled = false;
+
+			taskMan.MarkTaskCompletion(7);
+
+		}
+	}
 }
+

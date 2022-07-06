@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataCollection;
+using cakeslice;
 
 public class GPSManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject GPS;
+    public GameObject GPSCollider;
+
+
+
+    public void PrepareGPS()
     {
-        
+        Debug.Log("Cloth Prepared");
+        GPS.GetComponent<DcGrabInteractable>().enabled = true;
+        GPS.GetComponent<Outline>().enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PrepareGPSPlace()
     {
-        
+        GPS.GetComponent<Outline>().enabled = false;
+        GPSCollider.SetActive(true);
+    }
+
+    public void DisableGPS()
+    {
+        GPS.GetComponent<Outline>().enabled = false;
+        GPS.GetComponent<DcGrabInteractable>().enabled = false;
+
     }
 }

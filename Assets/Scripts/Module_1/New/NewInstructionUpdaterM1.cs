@@ -36,18 +36,15 @@ public class NewInstructionUpdaterM1 : MonoBehaviour
          * Marks the progress bar, sets the instruction text, and plays the instruction audio
          */
 
-        //set text, mark progress bar, and play audio
+        //set text and play audio
         SetInstructionText();
-        //progressBar.TickProgressBar();
         PlayInstructionAudio();
-
         current += 1;
-        /*
-        if (current % 2 == 1)
+
+        if (current == 3 || current == 4 || current == 6 || current == 9 || current == 11 || current == 14 || current == 15 || current == 16 || current == 19 || current == 20 || current == 21)
         {
             progressBar.TickProgressBar();
         }
-        */
     }
 
     public void SetInstructionText()

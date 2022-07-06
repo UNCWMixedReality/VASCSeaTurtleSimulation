@@ -222,9 +222,7 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     public void SetNextTable()
     {
-        //yield return new WaitForSeconds(2);
         roomSwitch.switchRoom();
         fading.Fade(false, true);
-        //yield return new WaitForSeconds(2);
     }
 }

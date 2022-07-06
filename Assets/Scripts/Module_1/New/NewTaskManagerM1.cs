@@ -83,7 +83,8 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes seventh task by entering the waypoint
         else if (taskCount == 7)
         {
-            StartCoroutine(SetNextTable());
+            DisableWaypoint();
+            SetNextTable();
             measureTable.PrepareFrontFin();
         }
 
@@ -116,7 +117,8 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
-            StartCoroutine(SetNextTable());
+            DisableWaypoint();
+            SetNextTable();
             identifyTable.PrepareTurtleIdentification();
         }
 
@@ -149,7 +151,8 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 17th task by entering the waypoint
         else if (taskCount == 17)
         {
-            StartCoroutine(SetNextTable());
+            DisableWaypoint();
+            SetNextTable();
             trackTable.PrepareTrackIdentification();
         }
 
@@ -195,6 +198,11 @@ public class NewTaskManagerM1 : MonoBehaviour
         waypoint.SetActive(true);
     }
 
+    private void DisableWaypoint()
+    {
+        waypoint.SetActive(false);
+    }
+
     public void TeleportationCompleted()
     {
         //determine when teleporting is an act of completing a task and complete the corresponding task.
@@ -212,11 +220,11 @@ public class NewTaskManagerM1 : MonoBehaviour
         }
     }
 
-    public IEnumerator SetNextTable()
+    public void SetNextTable()
     {
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         roomSwitch.switchRoom();
         fading.Fade(false, true);
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
     }
 }

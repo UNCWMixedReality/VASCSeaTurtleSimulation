@@ -18445,6 +18445,7 @@ GameObject:
   - component: {fileID: 1239477025}
   - component: {fileID: 1239477027}
   - component: {fileID: 1239477028}
+  - component: {fileID: 1239477029}
   m_Layer: 0
   m_Name: Table_Identify_Turtle
   m_TagString: Untagged
@@ -18525,6 +18526,28 @@ MonoBehaviour:
   taskMan: {fileID: 736135490}
   audiofeedback: {fileID: 736135484}
   RO: {fileID: 736135489}
+--- !u!114 &1239477029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239477023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b246d7ef1cf6e4aab2a6002d39ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loggerheadFact: Loggerhead turtles get their name from the shape of their heads
+    and powerful jaws.
+  hawksbillFact: Hawksbill turtles like to nest in small groups far away from people
+  leatherbackFact: Leatherback turtles are the largest species of sea turtle in the
+    whole world.
+  loggerheadAudio: {fileID: 8300000, guid: 67b2addcf73a95c40a330b15f4bac14f, type: 3}
+  hawksbillAudio: {fileID: 8300000, guid: 10184441cf2cb03409c7b81594af5bf5, type: 3}
+  leatherbackAudio: {fileID: 8300000, guid: bba2aa44333b9054d8f3a1730de60d4f, type: 3}
+  instrAudio: {fileID: 736135493}
+  instrText: {fileID: 736135492}
 --- !u!1 &1240949976
 GameObject:
   m_ObjectHideFlags: 0
@@ -31931,7 +31954,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Did you know? Loggerhead turtles get their name from the shape of their
-    heads an powerful jaws.
+    heads and powerful jaws.
 --- !u!222 &2066479996
 CanvasRenderer:
   m_ObjectHideFlags: 0

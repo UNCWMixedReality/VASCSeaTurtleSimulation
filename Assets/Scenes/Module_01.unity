@@ -6231,95 +6231,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415444616}
   m_CullTransparentMesh: 0
---- !u!1 &430274952
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 430274955}
-  - component: {fileID: 430274954}
-  - component: {fileID: 430274956}
-  m_Layer: 0
-  m_Name: Main Camera (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!20 &430274954
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430274952}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &430274955
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430274952}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.52, z: -3.58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 736135482}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &430274956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430274952}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dfe94feb5628a4686ea7c8f4205521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 4ce64dae775ee55428ec470ed2682ea8, type: 2}
 --- !u!1 &433444628
 GameObject:
   m_ObjectHideFlags: 0
@@ -10321,6 +10232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682818996}
   - component: {fileID: 682819000}
+  - component: {fileID: 682819001}
   m_Layer: 0
   m_Name: Table_Identify_Tracks
   m_TagString: Untagged
@@ -10365,6 +10277,7 @@ MonoBehaviour:
   taskMan: {fileID: 736135490}
   audiofeedback: {fileID: 736135484}
   R0: {fileID: 736135489}
+  instructionSetter: {fileID: 682819001}
   Green_Tracks: {fileID: 705862691}
   Loggerhead_Tracks: {fileID: 263909740}
   Leatherback_Tracks: {fileID: 2074365821}
@@ -10376,6 +10289,29 @@ MonoBehaviour:
   correct: {fileID: 952280955}
   wrong: 0
   right: 0
+--- !u!114 &682819001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682818995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6737e38f928694eaccf835975534d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loggerheadFact: Sometimes, loggerhead turtles carry colonies of small plants and
+    animals on their backs.
+  greenFact: Green turtles are the only species of sea turtles that are herbivores.
+    That means they eat plants
+  leatherbackFact: Leatherback turtles like to make their nests on warm, tropical
+    beaches.
+  loggerheadAudio: {fileID: 0}
+  greenAudio: {fileID: 0}
+  leatherbackAudio: {fileID: 0}
+  instrAudio: {fileID: 736135493}
+  instrText: {fileID: 736135492}
 --- !u!1 &699695404
 GameObject:
   m_ObjectHideFlags: 0
@@ -11008,8 +10944,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 430274955}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18526,6 +18461,7 @@ MonoBehaviour:
   taskMan: {fileID: 736135490}
   audiofeedback: {fileID: 736135484}
   RO: {fileID: 736135489}
+  instrSetter: {fileID: 1239477029}
 --- !u!114 &1239477029
 MonoBehaviour:
   m_ObjectHideFlags: 0

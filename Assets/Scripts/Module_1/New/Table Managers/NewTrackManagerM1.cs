@@ -12,7 +12,8 @@ public class NewTrackManagerM1 : MonoBehaviour
     //Necessary Scripts
     public NewTaskManagerM1 taskMan;
     public AudioFeedback audiofeedback;
-    public RandomOrder R0; 
+    public RandomOrder R0;
+    public TrackInstructions instructionSetter;
     
     //Tracks
     public GameObject Green_Tracks;
@@ -160,6 +161,8 @@ public class NewTrackManagerM1 : MonoBehaviour
         TrackList[orderOfTrack[0] - 1] = Green_Tracks;
         TrackList[orderOfTrack[1] - 1] = Loggerhead_Tracks;
         TrackList[orderOfTrack[2] - 1] = Leatherback_Tracks;
+
+        instructionSetter.SetInstructions(orderOfTrack[1] - 1, orderOfTrack[0] - 1, orderOfTrack[2] - 1);
     }
 
     public void PrepareQuestions()

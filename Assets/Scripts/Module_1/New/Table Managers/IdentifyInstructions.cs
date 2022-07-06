@@ -25,10 +25,10 @@ public class IdentifyInstructions : MonoBehaviour
 
         instrAudio.audioInstructions[leatherbackIdx + 13].clip = leatherbackAudio;
         instrText.instructions[leatherbackIdx + 13] += leatherbackFact;
-
-        instrText.instructions[13] += ("Now identify the next turtle");
-        instrText.instructions[14] += ("Now identify the next turtle");
-        instrText.instructions[15] += ("Move to the blue waypoint to start the next task.");
+        
+        instrText.instructions[13] += (" Now identify the next turtle");
+        instrText.instructions[14] += (" Now identify the next turtle");
+        instrText.instructions[15] += (" Move to the blue waypoint to start the next task.");
 
     }
 }

@@ -34,6 +34,7 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     public NewTaskManagerM1 taskMan;
     public AudioFeedback audiofeedback;
     public RandomOrder RO;
+    public IdentifyInstructions instrSetter;
 
     private float scaleDuration = 2;
     #endregion
@@ -134,7 +135,9 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         TurtleList[orderOfTurtles[0] - 1] = Loggerhead;
         TurtleList[orderOfTurtles[1] - 1] = Hawksbill;
         TurtleList[orderOfTurtles[2] - 1] = Leatherback;
- 
+
+        instrSetter.SetInstructions(orderOfTurtles[0] - 1, orderOfTurtles[1] - 1, orderOfTurtles[2] - 1);
+
     }
 
     public void PrepareTurtleIdentification()

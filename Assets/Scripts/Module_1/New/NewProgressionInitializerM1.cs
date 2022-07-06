@@ -53,9 +53,9 @@ public class NewProgressionInitializerM1 : MonoBehaviour
 		instrUpdater.instructions[10] = ("Great work! You've successfully measured this turtle. Move to the blue waypoint to start the next activity");
 		instrUpdater.instructions[11] = ("In this activity, you will identify the species of various turtles. Select begin to start");
 		instrUpdater.instructions[12] = ("Identify the first turtle by selecting one of the answer options");
-		instrUpdater.instructions[13] = ("Correct!");
-		instrUpdater.instructions[14] = ("Correct!");
-		instrUpdater.instructions[15] = ("Correct!");
+		instrUpdater.instructions[13] = ("Correct! ");
+		instrUpdater.instructions[14] = ("Correct! ");
+		instrUpdater.instructions[15] = ("Correct! ");
 		instrUpdater.instructions[16] = ("In this activity, you will identify which turtle species the tracks belong to. To start, select begin");
 		instrUpdater.instructions[17] = ("Select which turtle the tracks match by choosing from the options listed");
 		//instrUpdater.instructions[18] = ("Correct Now identify the next set of tracks");

@@ -18,10 +18,10 @@ public class NewInstructionUpdaterM1 : MonoBehaviour
     public GameObject InstructionPanel;
     public GameObject TextBox;
     public Text text;
-    public ProgressM2 progressBar;
+    public Progress progressBar;
 
     //Holds the audio/text portion of the instructions
-    public AudioM2_2 instructionAudio;
+    public NewInstructionAudioM1 instructionAudio;
     public string[] instructions { get; set; }
 
 
@@ -63,6 +63,6 @@ public class NewInstructionUpdaterM1 : MonoBehaviour
         /*
          * play sound
          */
-        instructionAudio.playSound();
+        instructionAudio.PlaySound();
     }
 }

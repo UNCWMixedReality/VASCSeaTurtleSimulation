@@ -4085,7 +4085,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 736135481}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: pickUpTM
         m_Mode: 1
@@ -8537,7 +8537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 526690801}
-  - component: {fileID: 526690802}
+  - component: {fileID: 526690803}
   m_Layer: 0
   m_Name: Tool Table
   m_TagString: Untagged
@@ -8567,7 +8567,7 @@ Transform:
   m_Father: {fileID: 1389529674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 89.733, z: 0}
---- !u!114 &526690802
+--- !u!114 &526690803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8576,17 +8576,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 526690800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9daaa1ec6cb189740974344399ac60e7, type: 3}
+  m_Script: {fileID: 11500000, guid: a5c169c1dff21b642bb9fdf93a9b9a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   calipers: {fileID: 1332255354}
   tm: {fileID: 236404786}
-  Container: {fileID: 1839355386}
-  Clipboard: {fileID: 1083877699}
-  instMan: {fileID: 736135481}
-  activityManager: {fileID: 736135483}
-  audiofeedback: {fileID: 736135484}
-  prog: {fileID: 736135485}
+  container: {fileID: 8296172669023160253}
+  clipboard: {fileID: 557175092}
 --- !u!1 &532489623
 GameObject:
   m_ObjectHideFlags: 0
@@ -10323,8 +10319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 682818996}
-  - component: {fileID: 682818998}
-  - component: {fileID: 682818999}
+  - component: {fileID: 682819000}
   m_Layer: 0
   m_Name: Table_Identify_Tracks
   m_TagString: Untagged
@@ -10354,55 +10349,7 @@ Transform:
   m_Father: {fileID: 1967014539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &682818998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682818995}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c9f04f34f2e48c4aa269b4390bd9f69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Green_Tracks: {fileID: 705862691}
-  Loggerhead_Tracks: {fileID: 263909740}
-  Leatherback_Tracks: {fileID: 2074365821}
-  Load: {fileID: 1954132427}
-  instMan: {fileID: 736135481}
-  audiofeedback: {fileID: 736135484}
-  prog: {fileID: 736135485}
-  RO: {fileID: 736135489}
-  incorrect: {fileID: 162086726}
-  correct: {fileID: 952280955}
-  wrong: 0
-  Wrong1: {fileID: 788367689}
-  Wrong2: {fileID: 1125649491}
-  Wrong3: {fileID: 2054670056}
-  Wrong4: {fileID: 1094723185}
-  Wrong5: {fileID: 773820349}
-  LGH1: {fileID: 1125516972}
-  LGH2: {fileID: 1724623668}
-  GRN1: {fileID: 433444630}
-  GRN2: {fileID: 1925707507}
-  GRN3: {fileID: 276731343}
-  LTB1: {fileID: 756359330}
-  LTB2: {fileID: 1722862513}
-  LGHScreen1: {fileID: 1117646484}
-  LGHScreen2: {fileID: 1979758327}
-  GRNScreen1: {fileID: 1484452442}
-  GRNScreen2: {fileID: 319646416}
-  GRNScreen3: {fileID: 808369832}
-  LTBScreen1: {fileID: 850682945}
-  LTBScreen2: {fileID: 1254293597}
-  lastPlayed: {fileID: 788367689}
-  backlog: 0
-  GreenButton: {fileID: 1819006654}
-  LoggerheadButton: {fileID: 1403614491}
-  LeatherbackButton: {fileID: 885387723}
-  tableManager: {fileID: 0}
---- !u!114 &682818999
+--- !u!114 &682819000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10414,14 +10361,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e6775c72ae4c646b455230d65fc622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Green_Tracks: {fileID: 0}
-  Loggerhead_Tracks: {fileID: 0}
-  Leatherback_Tracks: {fileID: 0}
-  Begin: {fileID: 0}
-  GreenButton: {fileID: 0}
-  LoggerheadButton: {fileID: 0}
-  LeatherbackButton: {fileID: 0}
-  R0: {fileID: 0}
+  Green_Tracks: {fileID: 705862691}
+  Loggerhead_Tracks: {fileID: 263909740}
+  Leatherback_Tracks: {fileID: 2074365821}
+  R0: {fileID: 736135489}
+  Begin: {fileID: 1954132427}
+  GreenButton: {fileID: 1819006654}
+  LoggerheadButton: {fileID: 1403614491}
+  LeatherbackButton: {fileID: 885387723}
+  incorrect: {fileID: 162086726}
+  correct: {fileID: 952280955}
 --- !u!1 &699695404
 GameObject:
   m_ObjectHideFlags: 0
@@ -11026,15 +10975,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736135482}
-  - component: {fileID: 736135483}
-  - component: {fileID: 736135481}
   - component: {fileID: 736135484}
   - component: {fileID: 736135485}
   - component: {fileID: 736135486}
   - component: {fileID: 736135487}
   - component: {fileID: 736135488}
   - component: {fileID: 736135489}
+  - component: {fileID: 736135491}
   - component: {fileID: 736135490}
+  - component: {fileID: 736135493}
+  - component: {fileID: 736135494}
+  - component: {fileID: 736135492}
   m_Layer: 2
   m_Name: '[Manager]'
   m_TagString: Untagged
@@ -11042,41 +10993,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &736135481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736135480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55736f9d0a4d0ca49a1ce47636a344c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextBox: {fileID: 25550235}
-  InstructionPanel: {fileID: 199979120}
-  playerTracker: {fileID: 517370639}
-  TableOne: {fileID: 1732410175}
-  TableTwo: {fileID: 1023519473}
-  TableThree: {fileID: 1161177207}
-  calipers: {fileID: 1332255354}
-  container: {fileID: 8296172669023160253}
-  tapeMeasure: {fileID: 236404786}
-  clipboard: {fileID: 557175092}
-  calipersMsr: {fileID: 1877166837}
-  tapeMeasureMsr: {fileID: 1976188144}
-  loadTurtle: {fileID: 724122281}
-  loadTrack: {fileID: 1954132427}
-  AC: {fileID: 1552559268}
-  RS: {fileID: 736135486}
-  FD: {fileID: 736135487}
-  oneStart: 0
-  twoStart: 0
-  threeStart: 0
-  active: 0
-  taskActive: 0
-  range: 2
 --- !u!4 &736135482
 Transform:
   m_ObjectHideFlags: 0
@@ -11093,36 +11009,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &736135483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736135480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22196363e4cacc45944543bab064bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tableTool: {fileID: 526690802}
-  tableMeasuringManager: {fileID: 2047634395}
-  tableTurtleManager: {fileID: 1239477026}
-  tableTrackManager: {fileID: 682818998}
-  instMan: {fileID: 736135481}
-  ttf: {fileID: 1527160399}
-  TableOne: {fileID: 1732410175}
-  TableTwo: {fileID: 1023519473}
-  TableThree: {fileID: 1161177207}
-  Shiny: {fileID: 1169877067}
-  Normal: {fileID: 522037638}
-  toolTime: 0
-  oneTime: 0
-  twoWrong: 0
-  twoTime: 0
-  threeWrong: 0
-  threeTime: 0
-  totalTime: 0
 --- !u!114 &736135484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11236,14 +11122,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee33bc15b144e945a1b78a94bf273d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instrUpdater: {fileID: 0}
-  activityMan: {fileID: 0}
-  toolTable: {fileID: 0}
-  measureTable: {fileID: 0}
-  identifyTable: {fileID: 0}
+  instrUpdater: {fileID: 736135492}
+  activityMan: {fileID: 736135491}
+  toolTable: {fileID: 526690803}
+  measureTable: {fileID: 2047634396}
+  identifyTable: {fileID: 1239477028}
   trackTable: {fileID: 0}
-  waypoint: {fileID: 0}
-  toolCalipers: {fileID: 0}
+  waypoint: {fileID: 1056145355}
+  toolCalipers: {fileID: 1332255354}
+--- !u!114 &736135491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56de99899bea77439baf71c23d7f820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &736135492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9292ac6a57051d4c9f93987a53074ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InstructionPanel: {fileID: 199979120}
+  TextBox: {fileID: 25550235}
+  text: {fileID: 25550237}
+  progressBar: {fileID: 736135485}
+  instructionAudio: {fileID: 736135493}
+--- !u!114 &736135493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbb14ef1fc992141a853845920ad4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioInstructions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &736135494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736135480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ecac38dec747c4b9602f311b888084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instrUpdater: {fileID: 736135492}
+  activityMan: {fileID: 736135491}
+  taskMan: {fileID: 736135490}
+  audioPlayer: {fileID: 736135493}
+  progressBar: {fileID: 736135485}
 --- !u!4 &737521046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 318739f295fa3ec4e97ef5abf3bdce0c,
@@ -13515,7 +13481,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTracks
         m_Mode: 5
@@ -13545,7 +13511,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Tracks_Manager, Assembly-CSharp
         m_MethodName: selectTracks
         m_Mode: 5
@@ -14106,7 +14072,7 @@ MonoBehaviour:
   activePosition: {x: 1, y: 0, z: 0}
   unactivePosition: {x: 1, y: -1.5, z: 0}
   floorHole: {fileID: 2119971354}
-  tableTurtleManager: {fileID: 1239477026}
+  tableTurtleManager: {fileID: 0}
 --- !u!4 &943604218
 Transform:
   m_ObjectHideFlags: 0
@@ -18293,8 +18259,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1239477024}
   - component: {fileID: 1239477025}
-  - component: {fileID: 1239477026}
   - component: {fileID: 1239477027}
+  - component: {fileID: 1239477028}
   m_Layer: 0
   m_Name: Table_Identify_Turtle
   m_TagString: Untagged
@@ -18337,54 +18303,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2223133, y: 0.78403866, z: 2.0543997}
   m_Center: {x: -0.000000059604645, y: 0.40016383, z: 0.009527564}
---- !u!114 &1239477026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239477023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51283aa12344ff648aaf1dce1c515b18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Loggerhead: {fileID: 869881498}
-  Hawksbill: {fileID: 1405368305}
-  Leatherback: {fileID: 1125285978}
-  Load: {fileID: 724122281}
-  incorrect: {fileID: 1219027793}
-  correct: {fileID: 2020826625}
-  wrong: 0
-  Wrong1: {fileID: 788367689}
-  Wrong2: {fileID: 1125649491}
-  Wrong3: {fileID: 2054670056}
-  Wrong4: {fileID: 1094723185}
-  Wrong5: {fileID: 773820349}
-  LGH1: {fileID: 133063880}
-  LGH2: {fileID: 1944112001}
-  HKB1: {fileID: 4412004}
-  HKB2: {fileID: 30037446}
-  HKB3: {fileID: 1907486102}
-  LTB1: {fileID: 1827790881}
-  LTB2: {fileID: 760225220}
-  LGHScreen1: {fileID: 2066479993}
-  LGHScreen2: {fileID: 1571842244}
-  HKBScreen1: {fileID: 1495166793}
-  HKBScreen2: {fileID: 745724984}
-  HKBScreen3: {fileID: 168095006}
-  LTBScreen1: {fileID: 711477169}
-  LTBScreen2: {fileID: 1575357204}
-  lastPlayed: {fileID: 788367689}
-  backlog: 0
-  instMan: {fileID: 736135481}
-  audiofeedback: {fileID: 736135484}
-  prog: {fileID: 736135485}
-  RO: {fileID: 736135489}
-  LoggerheadButton: {fileID: 1742252495}
-  HawksbillButton: {fileID: 1251543412}
-  LeatherbackButton: {fileID: 1796849996}
-  activityManager: {fileID: 736135483}
 --- !u!114 &1239477027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18397,6 +18315,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b36493300bd3354b932019efa2dff56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1239477028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239477023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e726dbc0cf6fc549ac86b5a1539b52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loggerhead: {fileID: 869881498}
+  Hawksbill: {fileID: 1405368305}
+  Leatherback: {fileID: 1125285978}
+  BeginButton: {fileID: 724122281}
+  LoggerheadButton: {fileID: 1742252493}
+  HawksbillButton: {fileID: 1251543410}
+  LeatherbackButton: {fileID: 1796849994}
+  incorrect: {fileID: 1219027793}
+  correct: {fileID: 2020826625}
+  wrong: 0
+  right: 0
+  taskMan: {fileID: 736135490}
+  audiofeedback: {fileID: 736135484}
+  RO: {fileID: 736135489}
 --- !u!1 &1240949976
 GameObject:
   m_ObjectHideFlags: 0
@@ -18914,7 +18858,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -18944,7 +18888,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Turtle_Manager, Assembly-CSharp
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -19538,7 +19482,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 736135481}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: pickUpCal
         m_Mode: 1
@@ -19679,7 +19623,7 @@ MonoBehaviour:
   rightHand: {fileID: 52951845}
   placeholder: {fileID: 2127636884}
   audiofeedback: {fileID: 736135484}
-  taskMan: {fileID: 0}
+  taskMan: {fileID: 736135490}
 --- !u!65 &1332255358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20756,7 +20700,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTracks
         m_Mode: 5
@@ -20786,7 +20730,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Tracks_Manager, Assembly-CSharp
         m_MethodName: selectTracks
         m_Mode: 5
@@ -22595,8 +22539,8 @@ MonoBehaviour:
   M110: {fileID: 260414586}
   M111: {fileID: 1384172089}
   M112: {fileID: 1359879664}
-  turtles: {fileID: 1239477026}
-  tracks: {fileID: 682818998}
+  turtles: {fileID: 0}
+  tracks: {fileID: 0}
 --- !u!1001 &1557549995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25409,7 +25353,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -25439,7 +25383,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Turtle_Manager, Assembly-CSharp
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -26198,7 +26142,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -26228,7 +26172,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239477026}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Turtle_Manager, Assembly-CSharp
         m_MethodName: selectTurtle
         m_Mode: 5
@@ -26596,7 +26540,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: selectTracks
         m_Mode: 5
@@ -26626,7 +26570,7 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Tracks_Manager, Assembly-CSharp
         m_MethodName: selectTracks
         m_Mode: 5
@@ -29378,7 +29322,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: nextTrack
         m_Mode: 1
@@ -29420,7 +29364,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 682818998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Table_Tracks_Manager, Assembly-CSharp
         m_MethodName: nextTrack
         m_Mode: 1
@@ -30928,7 +30872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047634394}
   - component: {fileID: 2047634393}
-  - component: {fileID: 2047634395}
+  - component: {fileID: 2047634396}
   m_Layer: 0
   m_Name: Table_Measuring
   m_TagString: Untagged
@@ -30974,7 +30918,7 @@ Transform:
   m_Father: {fileID: 1372913124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &2047634395
+--- !u!114 &2047634396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30983,15 +30927,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2047634392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571e02add55c2a74dbd0e4e7f483ea03, type: 3}
+  m_Script: {fileID: 11500000, guid: c9ca02e512dcc2847bd42d5f889c0f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backFinsCheck: {fileID: 1230669263}
+  FrontFin: {fileID: 180951954}
+  FrontFinArrow: {fileID: 794614883}
+  frontFinsX: {fileID: 1456951638}
   frontFinsCheck: {fileID: 903412869}
+  topFins: {fileID: 1342916640}
+  BackFin: {fileID: 1939569400}
+  BackFinArrow: {fileID: 632206729}
+  backFinsX: {fileID: 267806950}
+  backFinsCheck: {fileID: 1230669263}
+  bottomFins: {fileID: 1425510640}
+  verticalLine: {fileID: 1782158659}
+  horizontalLine: {fileID: 599580645}
+  shellImage: {fileID: 1912286971}
+  ShellX: {fileID: 1932372367}
   ShellCheck: {fileID: 1503182338}
-  instMan: {fileID: 736135481}
-  audiofeedback: {fileID: 736135484}
-  activityManager: {fileID: 736135483}
+  ShellLength: {fileID: 1604097577}
+  ShellVerticalArrow: {fileID: 1359937831}
+  ShellWidth: {fileID: 1742511364}
+  ShellHorizontalArrow: {fileID: 678289486}
 --- !u!1 &2048219599
 GameObject:
   m_ObjectHideFlags: 0

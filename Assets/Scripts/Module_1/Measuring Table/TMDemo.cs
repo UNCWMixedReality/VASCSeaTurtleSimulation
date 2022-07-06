@@ -37,6 +37,7 @@ public class TMDemo : MonoBehaviour
     private string activeHand;
 
     public NewTaskManagerM1 taskMan;
+    public AudioFeedback audiofeedback;
 
     void Start()
     {

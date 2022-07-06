@@ -151,7 +151,6 @@ public class CalipersDemo : MonoBehaviour
                 if (moved == false)
                 {
                     //marks completion of controlling the calipers
-
                     taskMan.MarkTaskCompletion(2);
                 }
 

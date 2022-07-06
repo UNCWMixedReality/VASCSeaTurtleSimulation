@@ -164,7 +164,6 @@ public class NewTrackManagerM1 : MonoBehaviour
 
     public void PrepareQuestions()
     {
-        Debug.Log("This is working");
         audiofeedback.playSelection();
         //Enable selection buttons
         LoggerheadButton.SetActive(true);

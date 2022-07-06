@@ -124,7 +124,7 @@ public class TapeMeasure : MonoBehaviour
                 taskMan.MarkTaskCompletion(9);
             }
         }
-        else if (side1Coll.collided && side2Coll.collided) //If hands are touching horizontal shell colliders, change images.
+        if (side1Coll.collided && side2Coll.collided) //If hands are touching horizontal shell colliders, change images.
         {
             if (!horizontalMeasured)
             {

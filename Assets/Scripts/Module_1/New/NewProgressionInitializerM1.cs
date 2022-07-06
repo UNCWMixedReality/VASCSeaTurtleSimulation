@@ -67,7 +67,7 @@ public class NewProgressionInitializerM1 : MonoBehaviour
 
 		//intialize ActivityManager variables
 		activityMan.activityCount = 0;
-		activityMan.activityTimes = new float[3];
+		activityMan.activityTimes = new float[4];
 
 		//intialize progress bar
 		progressBar.pArray = new GameObject[11];

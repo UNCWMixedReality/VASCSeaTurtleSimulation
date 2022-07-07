@@ -4,7 +4,7 @@ using UnityEngine;
 using DataCollection;
 using cakeslice;
 
-public class GPSManager : MonoBehaviour
+public class DNAManager : MonoBehaviour
 {
     public GameObject syringe;
     public GameObject syringeCollider;
@@ -35,8 +35,8 @@ public class GPSManager : MonoBehaviour
 
     public void DisableDNA()
     {
-        GPS.GetComponent<Outline>().enabled = false;
-        GPS.GetComponent<DcGrabInteractable>().enabled = false;
+        syringe.GetComponent<Outline>().enabled = false;
+        syringe.GetComponent<DcGrabInteractable>().enabled = false;
 
     }
 }

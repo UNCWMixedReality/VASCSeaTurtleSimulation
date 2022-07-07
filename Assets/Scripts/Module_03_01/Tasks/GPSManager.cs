@@ -13,7 +13,7 @@ public class GPSManager : MonoBehaviour
 
     public void PrepareGPS()
     {
-        Debug.Log("Cloth Prepared");
+        Debug.Log("GPS Prepared");
         GPS.GetComponent<DcGrabInteractable>().enabled = true;
         GPS.GetComponent<Outline>().enabled = true;
     }

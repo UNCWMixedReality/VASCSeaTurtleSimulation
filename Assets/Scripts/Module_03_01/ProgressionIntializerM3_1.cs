@@ -32,7 +32,7 @@ public class ProgressionIntializerM3_1 : MonoBehaviour
 
 		//intialize TaskManager variables
 		taskMan.taskCount = 0;
-		taskMan.taskTimes = new float[9];
+		taskMan.taskTimes = new float[13];
 
 		//intialize audiom2_1 variables
 		//set current file to first
@@ -40,31 +40,40 @@ public class ProgressionIntializerM3_1 : MonoBehaviour
 		audioPlayer.currentIdx = 0;
 
 		//intialize InstructionUpdater variables
-		instrUpdater.instructions = new string[9];
-		instrUpdater.instructions[0] = ("Welcome! This is part two of the Nest Relocation Module. Move to the marker to begin.");
-		instrUpdater.instructions[1] = ("Your first task is to place the eggs in their new nest. Grab the eggs from the green bucket and place them in the nest");
-		instrUpdater.instructions[2] = ("Great job! Next, we need to cover the nest with sand. Grab the shovel to begin.");
-		instrUpdater.instructions[3] = ("Use the shovel to move the sand pile on top of the nest.");
-		instrUpdater.instructions[4] = ("Good job! Next, we need to cover the nest with a protective cage. Grab the cage to begin.");
-		instrUpdater.instructions[5] = ("Move the cage so it covers the nest.");
-		instrUpdater.instructions[6] = ("Next, we need to place a sign near the nest. Grab the sign to begin.");
-		instrUpdater.instructions[7] = ("Good job! Move the sign to the designated position.");
-		instrUpdater.instructions[8] = ("Good job! You have successfully completed part two of the nest relocation module.");
+		instrUpdater.instructions = new string[13];
+		instrUpdater.instructions[0] = ("Welcome! This is the Turtle Encounter Module. Move to the marker to begin.");
+		instrUpdater.instructions[1] = ("Your first task is to take a DNA sample from the turtle. Pick up the syringe from the table to begin.");
+		instrUpdater.instructions[2] = ("Draw a DNA sample from the turtle.");
+		instrUpdater.instructions[3] = ("Press the A button to draw the DNA sample.");
+		instrUpdater.instructions[4] = ("Great job! Next, deposit the DNA sample into the test tube on the table.");
+		instrUpdater.instructions[5] = ("Press the A button to deposit the DNA sample.");
+		instrUpdater.instructions[6] = ("Good job! Now it is time to clean the turtle's shell. Grab the cloth from the table to begin.");
+		instrUpdater.instructions[7] = ("Wipe the turtle's shell until it is clean.");
+		instrUpdater.instructions[8] = ("Great job! Next, we need to put the GPS Tracker in place. Pick up the GPS to begin.");
+		instrUpdater.instructions[9] = ("Place the GPS on the upper half of the turtles shell.");
+		instrUpdater.instructions[10] = ("Good job! Next, we need to secure the GPS tracker using the paste. Grab the shovel to begin.");
+		instrUpdater.instructions[11] = ("Put the paste on the tracker.");
+		instrUpdater.instructions[12] = ("Good job! You have successfully completed the turtle encounter module.");
+
+
+
 
 		instrUpdater.current = 0;
 		instrUpdater.queueCount = 0;
 
 		//intialize ActivityManager variables
 		activityMan.activityCount = 0;
-		activityMan.activityTimes = new float[3];
+		activityMan.activityTimes = new float[5];
 
 		//intialize progress bar
-		progressBar.pArray = new GameObject[5];
+		progressBar.pArray = new GameObject[7];
 		progressBar.pArray[0] = progressBar.P1;
 		progressBar.pArray[1] = progressBar.P2;
 		progressBar.pArray[2] = progressBar.P3;
 		progressBar.pArray[3] = progressBar.P4;
 		progressBar.pArray[4] = progressBar.P5;
+		progressBar.pArray[5] = progressBar.P6;
+		progressBar.pArray[6] = progressBar.P7;
 
 		//the first task is just entering the scene, so now that setup is done, mark it as complete
 		taskMan.MarkTaskCompletion(0);

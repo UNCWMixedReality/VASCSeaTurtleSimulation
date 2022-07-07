@@ -96,6 +96,7 @@ public class TaskManagerM3_1 : MonoBehaviour
             Debug.Log("Cleaned shell");
             FlipWaypoint();
             GPSMan.PrepareGPS();
+            activityManager.MarkActivityCompletion();
         }
 
         //true when the user completes the fifth task by picking up the GPS
@@ -115,10 +116,11 @@ public class TaskManagerM3_1 : MonoBehaviour
             Debug.Log("Placed GPS");
             FlipWaypoint();
             pasteMan.PrepareShovel();
+            activityManager.MarkActivityCompletion();
         }
 
         //true when the user completes the seventh task by picking up shovel
-        else if(taskCount == 7)
+        else if (taskCount == 7)
         {
             //LogTask("Picked up shovel");
             Debug.Log("Picked up Shovel");
@@ -166,7 +168,7 @@ public class TaskManagerM3_1 : MonoBehaviour
     private void PrepareEnd()
     {
     }
-    
+
     private void FlipWaypoint()
     {
         TableWaypoint.SetActive(waypoint);

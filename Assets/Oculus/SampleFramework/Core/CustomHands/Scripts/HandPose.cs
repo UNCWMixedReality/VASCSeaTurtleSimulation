@@ -29,6 +29,7 @@ namespace OVRTouchSample
         [SerializeField]
         private bool m_allowThumbsUp = false;
         [SerializeField]
+       
         private HandPoseId m_poseId = HandPoseId.Default;
 
         public bool AllowPointing
@@ -40,6 +41,7 @@ namespace OVRTouchSample
         {
             get { return m_allowThumbsUp; }
         }
+       
 
         public HandPoseId PoseId
         {

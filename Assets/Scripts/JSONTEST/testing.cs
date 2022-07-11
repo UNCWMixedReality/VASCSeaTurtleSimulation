@@ -5,6 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 using OVRSimpleJSON;
 using UnityEngine.UI;
+using DataCollection;
 
 public class testing : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class testing : MonoBehaviour
             // Get all of the players choices.
 
             Player player = new Player();
+            DcDataLogging.Student = new DataCollection.Models.Student(adjname.text, nounname.text); //
             string username = adjname.text + " " + nounname.text;
             string CharacterSelected = charactername.text;
             string CharacterNumber = whatNum.text;
@@ -135,7 +137,7 @@ public class testing : MonoBehaviour
 
         
         // Refresh everything so that our file and list are up to date with each other in real time.
-        UnityEditor.AssetDatabase.Refresh();
+        //UnityEditor.AssetDatabase.Refresh();
 
        
 

@@ -7,36 +7,46 @@ using cakeslice;
 public class DNAManager : MonoBehaviour
 {
     public GameObject syringe;
-    public GameObject syringeCollider;
+    public GameObject turtleCollider;
     public GameObject tubeCollider;
+    public GameObject tubeOutline;
+    public GameObject[] syringeOutlines;
 
 
+
+    public void PrepareSyringe()
+    {
+        syringe.GetComponent<DcGrabInteractable>().enabled = true;
+        DisableSyringeOutline(true);
+    }
 
     public void PrepareDNA()
     {
-        Debug.Log("DNA Prepared");
-        syringe.GetComponent<DcGrabInteractable>().enabled = true;
-        syringe.GetComponent<Outline>().enabled = true;
+        DisableSyringeOutline(false);
+        turtleCollider.SetActive(true);
     }
 
-    public void PrepareDNAShellCollider()
+    public void PrepareTube()
     {
-        syringe.GetComponent<Outline>().enabled = false;
-        syringeCollider.SetActive(true);
-        syringeCollider.GetComponent<Outline>().enabled = true;
-    }
-
-    public void PrepareDNATubeCollider()
-    {
-        syringe.GetComponent<Outline>().enabled = false;
         tubeCollider.SetActive(true);
-        tubeCollider.GetComponent<Outline>().enabled = true;
+        tubeOutline.GetComponent<Outline>().enabled = true;
     }
 
+    // Disable all colliders and outlines for the DNA activity
     public void DisableDNA()
     {
-        syringe.GetComponent<Outline>().enabled = false;
         syringe.GetComponent<DcGrabInteractable>().enabled = false;
+        DisableSyringeOutline(false);
+        tubeCollider.SetActive(false);
+        turtleCollider.SetActive(false);
+        tubeOutline.GetComponent<Outline>().enabled = false;
+    }
 
+    private void DisableSyringeOutline(bool disabled)
+    {
+        foreach (GameObject outline in syringeOutlines)
+        {
+            outline.GetComponent<Outline>().enabled = disabled;
+        }
     }
 }

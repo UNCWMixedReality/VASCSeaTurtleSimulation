@@ -18,7 +18,7 @@ public class PlacePaste : MonoBehaviour
 			gameObject.GetComponent<MeshRenderer>().material = pasteMaterial;
 			gameObject.GetComponent<Outline>().enabled = false;
 
-			taskMan.MarkTaskCompletion(7);
+			taskMan.MarkTaskCompletion(10);
 
 		}
 	}

@@ -26,7 +26,7 @@ public class NewActivityManM3_1 : MonoBehaviour
         activityCount += 1;
 
         // if all activities are completed, then end the module
-        if (activityCount == 4)
+        if (activityCount == 3)
         {
             StartCoroutine(EndSimulation());
         }

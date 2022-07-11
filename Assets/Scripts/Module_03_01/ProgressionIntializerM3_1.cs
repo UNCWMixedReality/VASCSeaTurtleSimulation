@@ -40,20 +40,18 @@ public class ProgressionIntializerM3_1 : MonoBehaviour
 		audioPlayer.currentIdx = 0;
 
 		//intialize InstructionUpdater variables
-		instrUpdater.instructions = new string[13];
+		instrUpdater.instructions = new string[12];
 		instrUpdater.instructions[0] = ("Welcome! This is the Turtle Encounter Module. Move to the marker to begin.");
 		instrUpdater.instructions[1] = ("Your first task is to take a DNA sample from the turtle. Pick up the syringe from the table to begin.");
-		instrUpdater.instructions[2] = ("Draw a DNA sample from the turtle.");
-		instrUpdater.instructions[3] = ("Press the A button to draw the DNA sample.");
-		instrUpdater.instructions[4] = ("Great job! Next, deposit the DNA sample into the test tube on the table.");
-		instrUpdater.instructions[5] = ("Press the A button to deposit the DNA sample.");
-		instrUpdater.instructions[6] = ("Good job! Now it is time to clean the turtle's shell. Grab the cloth from the table to begin.");
-		instrUpdater.instructions[7] = ("Wipe the turtle's shell until it is clean.");
-		instrUpdater.instructions[8] = ("Great job! Next, we need to put the GPS Tracker in place. Pick up the GPS to begin.");
-		instrUpdater.instructions[9] = ("Place the GPS on the upper half of the turtles shell.");
-		instrUpdater.instructions[10] = ("Good job! Next, we need to secure the GPS tracker using the paste. Grab the shovel to begin.");
-		instrUpdater.instructions[11] = ("Put the paste on the tracker.");
-		instrUpdater.instructions[12] = ("Good job! You have successfully completed the turtle encounter module.");
+		instrUpdater.instructions[2] = ("Draw a DNA sample from the turtle's head or front flippers using the A button.");
+		instrUpdater.instructions[3] = ("Great job! Next, deposit the DNA sample into the test tube on the table using the B button.");
+		instrUpdater.instructions[4] = ("Good job! Now it is time to clean the turtle's shell. Grab the cloth from the table to begin.");
+		instrUpdater.instructions[5] = ("Wipe the turtle's shell until it is clean.");
+		instrUpdater.instructions[6] = ("Great job! Next, we need to put the GPS Tracker in place. Pick up the GPS to begin.");
+		instrUpdater.instructions[7] = ("Place the GPS on the upper half of the turtles shell.");
+		instrUpdater.instructions[8] = ("Good job! Next, we need to secure the GPS tracker using the paste. Grab the shovel to begin.");
+		instrUpdater.instructions[9] = ("Put the paste on the tracker.");
+		instrUpdater.instructions[10] = ("Good job! You have successfully completed the turtle encounter module.");
 
 
 
@@ -63,7 +61,7 @@ public class ProgressionIntializerM3_1 : MonoBehaviour
 
 		//intialize ActivityManager variables
 		activityMan.activityCount = 0;
-		activityMan.activityTimes = new float[5];
+		activityMan.activityTimes = new float[7];
 
 		//intialize progress bar
 		progressBar.pArray = new GameObject[7];

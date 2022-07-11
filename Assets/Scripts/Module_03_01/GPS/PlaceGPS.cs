@@ -19,7 +19,7 @@ public class PlaceGPS : MonoBehaviour
 
 			gameObject.SetActive(false);
 
-			taskMan.MarkTaskCompletion(5);
+			taskMan.MarkTaskCompletion(8);
 
 		}
 	}

@@ -33,7 +33,7 @@ public class CleanShell : MonoBehaviour
 				case 2:
 					turtle.GetComponent<MeshRenderer>().material = dirtPhases[0];
 					cleanParticles.Play();
-					taskMan.MarkTaskCompletion(3);
+					taskMan.MarkTaskCompletion(6);
 					break;
 			}
 

@@ -32,6 +32,7 @@ public class TaskManagerM3_1 : MonoBehaviour
     public CleanManager cleanMan;
     public GPSManager GPSMan;
     public PasteManager pasteMan;
+    public DNAManager dnaMan;
 
     public ProgressM3 progressBar;
 
@@ -72,27 +73,40 @@ public class TaskManagerM3_1 : MonoBehaviour
             PrepareScene();
         }
 
+        // true when player uses teleport beacon to progress
         else if (taskCount == 2)
         {
-
+            Debug.Log("Entered table waypoint");
+            dnaMan.PrepareSyringe();
+            activityManager.MarkActivityCompletion();
         }
+
+
+        // DNA Activity
+        // True when player picks up syringe, prepares DNA colliders
         else if (taskCount == 3)
         {
-
+            Debug.Log("Picked up syringe");
+            FlipWaypoint();
+            dnaMan.PrepareDNA();
         }
+
+        // true when player draws the DNA sample, perpares the test tube hitboxes
         else if (taskCount == 4)
         {
+            Debug.Log("Took DNA sample");
+            FlipWaypoint();
+            dnaMan.PrepareTube();
 
         }
 
-        //true when the user completes the second task by entering the relocation waypoint
+        // true when player deposits sample into test tube, prepares cleanging activity
         else if (taskCount == 5)
         {
-            Debug.Log("Entered table waypoint");
-            //LogTask("Entered table waypoint");
+            Debug.Log("Deposited DNA sample");
             cleanMan.PrepareCloth();
+            dnaMan.DisableDNA();
             activityManager.MarkActivityCompletion();
-
         }
 
         //true when the user completes the third task by successfully picking up cloth
@@ -111,7 +125,6 @@ public class TaskManagerM3_1 : MonoBehaviour
             Debug.Log("Cleaned shell");
             FlipWaypoint();
             GPSMan.PrepareGPS();
-            activityManager.MarkActivityCompletion();
         }
 
         //true when the user completes the fifth task by picking up the GPS
@@ -131,7 +144,6 @@ public class TaskManagerM3_1 : MonoBehaviour
             Debug.Log("Placed GPS");
             FlipWaypoint();
             pasteMan.PrepareShovel();
-            activityManager.MarkActivityCompletion();
         }
 
         //true when the user completes the seventh task by picking up shovel
@@ -165,7 +177,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         cleanMan.DisableCloth();
         GPSMan.DisableGPS();
         pasteMan.DisableShovelHighlight();
-
+        dnaMan.DisableDNA();
     }
 
     private void LogTask1(string message)

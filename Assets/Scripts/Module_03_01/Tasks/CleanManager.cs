@@ -22,7 +22,6 @@ public class CleanManager : MonoBehaviour
     public void PrepareClean()
     {
         cloth.GetComponent<Outline>().enabled = false;
-        shellCollider.SetActive(true);
     }
 
     public void DisableCloth()

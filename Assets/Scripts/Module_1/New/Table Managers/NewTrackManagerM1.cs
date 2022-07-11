@@ -19,8 +19,8 @@ public class NewTrackManagerM1 : MonoBehaviour
     public GameObject Green_Tracks;
     public GameObject Loggerhead_Tracks;
     public GameObject Leatherback_Tracks;
-
     private GameObject[] TrackList;
+    public string correctAnswer;
     
     //private int currentTrackNum = -1; 
     private int trackIdx;
@@ -139,18 +139,35 @@ public class NewTrackManagerM1 : MonoBehaviour
     {
         if (trackName == "Green" && TrackList[trackIdx - 1] == Green_Tracks)
         {
+            taskMan.LogDecision(trackName, "Green", "Correctly answered Turtle Identification question number " + trackIdx);
             Correct();
         }
         else if (trackName == "Loggerhead" && TrackList[trackIdx - 1] == Loggerhead_Tracks)
         {
+            taskMan.LogDecision(trackName, "Loggerhead", "Correctly answered Turtle Identification question number " + trackIdx);
             Correct();
         }
         else if (trackName == "Leatherback" && TrackList[trackIdx - 1] == Leatherback_Tracks)
         {
+            taskMan.LogDecision(trackName, "Leatherback", "Correctly answered Turtle Identification question number " + trackIdx);
             Correct();
         }
         else
         {
+            if (TrackList[trackIdx - 1] == Loggerhead_Tracks)
+            {
+                correctAnswer = "Loggerhead";
+            }
+            else if (TrackList[trackIdx - 1] == Green_Tracks)
+            {
+                correctAnswer = "Green";
+            }
+            else
+            {
+                correctAnswer = "Leatherback";
+            }
+
+            taskMan.LogDecision(trackName, correctAnswer, "Incorrectly answered Turtle Identification question number" + trackIdx);
             Incorrect();
         }
     }

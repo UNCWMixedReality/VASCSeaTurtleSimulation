@@ -15,7 +15,7 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     public GameObject Leatherback;
     private GameObject[] TurtleList;
     private int turtleIdx;
-
+    private string correctAnswer;
     //screen buttons
     public GameObject BeginButton;
     public GameObject LoggerheadButton;
@@ -51,10 +51,6 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         }
         TurtleList[idx].SetActive(true);
         StartCoroutine(scaleUp(idx));
-        // line added by Blake to log correct choices
-        DcDataLogging.SetCorrectAnswer("TurtleGuessing", new[] {
-                    "Loggerhead" , "Hawksbill", "Leatherback"}[turtleIdx]);
-
         turtleIdx++;
 
     }
@@ -63,18 +59,35 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     {
         if (turtleName == "Loggerhead" && TurtleList[turtleIdx - 1] == Loggerhead)
         {
+            taskMan.LogDecision(turtleName, "Loggerhead", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else if (turtleName == "Hawksbill" && TurtleList[turtleIdx - 1] == Hawksbill)
         {
+            taskMan.LogDecision(turtleName, "Hawksbill", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else if (turtleName == "Leatherback" && TurtleList[turtleIdx - 1] == Leatherback)
         {
+            taskMan.LogDecision(turtleName, "Leatherback", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else
-        {
+        {   
+            if (TurtleList[turtleIdx - 1] == Loggerhead)
+            {
+                correctAnswer = "Loggerhead";
+            }
+            else if (TurtleList[turtleIdx - 1] == Hawksbill)
+            {
+                correctAnswer = "Hawksbill";
+            }
+            else
+            {
+                correctAnswer = "Leatherback";
+            }
+
+            taskMan.LogDecision(turtleName, correctAnswer , "Incorrectly answered Turtle Identification question number" + turtleIdx);
             Incorrect();
         }
     }

@@ -3,12 +3,34 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using Newtonsoft.Json;
-
+using OVRSimpleJSON;
+using UnityEngine.UI;
 
 public class testing : MonoBehaviour
 {
     // To Access text from the file
     public TextAsset UserInfo;
+    
+    public GameObject buttonPrefab;
+    public GameObject buttonParent;
+    
+
+
+
+    public Sprite monster1;
+    public Sprite monster2;
+    public Sprite monster3;
+    public Sprite monster4;
+    public Sprite monster5;
+    public Sprite monster6;
+    public Sprite monster7;
+    public Sprite monster8;
+
+    public GameObject mainMenu;
+    // storing all game objects created here to destroy() later, otherwise they will keep replicating
+    private int count;
+
+
 
 
     // Everytime we make a selection we make sure that we update the list so that it can be seen later for login selection.
@@ -55,8 +77,9 @@ public class testing : MonoBehaviour
 
         
     }
-
     
+
+
 
     // on confirm selection in "Create Profile" --> "UsernameSelect" --> "Confirm" gameobject
     public void getData()
@@ -109,12 +132,95 @@ public class testing : MonoBehaviour
 
 
         }
+
+        
         // Refresh everything so that our file and list are up to date with each other in real time.
         UnityEditor.AssetDatabase.Refresh();
 
+       
+
+    }
+    public void transferData()
+    {
+
+        if(count< myPlayerData.player.Length)
+        {
+            for (int i = count; i < myPlayerData.player.Length; i++)
+                    {
+
+                        string playerinfo = JsonConvert.SerializeObject(myPlayerData.player[i]);
+                        string monsterinfo = JsonConvert.SerializeObject(myPlayerData.player[i]);
+                        playerinfo = playerinfo.Remove(0, 13);
+                        int monIndex = monsterinfo.LastIndexOf("}") - 2;
+
+                        while (playerinfo.Contains("\"") == true)
+                        {
+                            int index = playerinfo.LastIndexOf("\"");
+                            if (index > 0)
+                            {
+                                playerinfo = playerinfo.Substring(0, index);
+                            }
+                        }
+                        GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
+                        // change the username
+                        newButton.GetComponent<ProfileButton>().profileText.text = playerinfo;
+
+                        char whichMonster = monsterinfo[monIndex];
+                        int intval = (int)char.GetNumericValue(whichMonster);
+
+                        if (intval == 1)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster1;
+                        }
+                        else if (intval == 2)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster2;
+                        }
+                        else if (intval == 3)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster3;
+                        }
+                        else if (intval == 4)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster4;
+                        }
+                        else if (intval == 5)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster5;
+                        }
+                        else if (intval == 6)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster6;
+                        }
+                        else if (intval == 7)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster7;
+                        }
+                        else if (intval == 8)
+                        {
+                            newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster8;
+                        }
+                            count++;
+
+                    } 
+        }
+
+        
+    }
+     public void SelectProfile(int character_num, string username)
+        {
+            
+
+        }
 
 
-    } 
+    
+    public void BackButton()
+    {
+        
+      
+           
+    }
 }
 
 

@@ -33,6 +33,8 @@ public class TaskManagerM3_1 : MonoBehaviour
     public GPSManager GPSMan;
     public PasteManager pasteMan;
 
+    public ProgressM3 progressBar;
+
     public GameObject TableWaypoint;
     public GameObject TurtleWaypoint;
     public bool waypoint = true;
@@ -70,8 +72,21 @@ public class TaskManagerM3_1 : MonoBehaviour
             PrepareScene();
         }
 
-        //true when the user completes the second task by entering the relocation waypoint
         else if (taskCount == 2)
+        {
+
+        }
+        else if (taskCount == 3)
+        {
+
+        }
+        else if (taskCount == 4)
+        {
+
+        }
+
+        //true when the user completes the second task by entering the relocation waypoint
+        else if (taskCount == 5)
         {
             Debug.Log("Entered table waypoint");
             //LogTask("Entered table waypoint");
@@ -81,7 +96,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the third task by successfully picking up cloth
-        else if (taskCount == 3)
+        else if (taskCount == 6)
         {
             Debug.Log("Picked up cloth");
             FlipWaypoint();
@@ -90,7 +105,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the fourth task by cleaning shell
-        else if (taskCount == 4)
+        else if (taskCount == 7)
         {
             //LogTask("Cleaned shell");
             Debug.Log("Cleaned shell");
@@ -100,7 +115,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the fifth task by picking up the GPS
-        else if (taskCount == 5)
+        else if (taskCount == 8)
         {
             //LogTask("Picked up GPS");
             Debug.Log("Picked up GPS");
@@ -110,7 +125,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the sixth task by placing the GPS
-        else if (taskCount == 6)
+        else if (taskCount == 9)
         {
             //LogTask("Placed GPS");
             Debug.Log("Placed GPS");
@@ -120,7 +135,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the seventh task by picking up shovel
-        else if (taskCount == 7)
+        else if (taskCount == 10)
         {
             //LogTask("Picked up shovel");
             Debug.Log("Picked up Shovel");
@@ -129,7 +144,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         }
 
         //true when the user completes the eighth task by pasting GPS on shell using shovel
-        else if (taskCount == 8)
+        else if (taskCount == 11)
         {
             //LogTask("Pasted GPS on shell");
             Debug.Log("Pasted GPS on shell");

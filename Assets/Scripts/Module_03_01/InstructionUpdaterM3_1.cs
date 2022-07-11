@@ -43,12 +43,6 @@ public class InstructionUpdaterM3_1 : MonoBehaviour
         //set text, mark progress bar, and play audio
         SetInstructionText();
         PlayInstructionAudio();
-
-        current += 1;
-        if (current > 1)
-        {
-            progressBar.TickProgressBar();
-        }
     }
 
     public void SetInstructionText()

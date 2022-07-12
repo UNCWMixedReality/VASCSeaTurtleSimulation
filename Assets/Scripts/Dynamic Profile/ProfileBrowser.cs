@@ -69,6 +69,8 @@ public class ProfileBrowser : MonoBehaviour
     {
         // here is where you can make buttons do stuff
         Debug.Log("Loaded profile - ( " + username + " )" + " with the profile picture - ( " + character_num + " )");
+
+
     }
 
     public void BackButton()

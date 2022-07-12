@@ -15,6 +15,7 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     public GameObject Leatherback;
     private GameObject[] TurtleList;
     private int turtleIdx;
+    public string[] AnswerOrder;
 
     //screen buttons
     public GameObject BeginButton;
@@ -51,10 +52,8 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         }
         TurtleList[idx].SetActive(true);
         StartCoroutine(scaleUp(idx));
-        // line added by Blake to log correct choices
-        DcDataLogging.SetCorrectAnswer("TurtleGuessing", new[] {
-                    "Loggerhead" , "Hawksbill", "Leatherback"}[turtleIdx]);
-
+        //Line added by Blake to log correct choices
+        DcDataLogging.SetCorrectAnswer("Turtle Guessing", AnswerOrder[turtleIdx]);
         turtleIdx++;
 
     }
@@ -74,7 +73,7 @@ public class NewIdentificationManagerM1 : MonoBehaviour
             Correct();
         }
         else
-        {
+        {  
             Incorrect();
         }
     }
@@ -135,6 +134,11 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         TurtleList[orderOfTurtles[0] - 1] = Loggerhead;
         TurtleList[orderOfTurtles[1] - 1] = Hawksbill;
         TurtleList[orderOfTurtles[2] - 1] = Leatherback;
+
+        AnswerOrder = new string[3];
+        AnswerOrder[orderOfTurtles[0] - 1] = "Loggerhead";
+        AnswerOrder[orderOfTurtles[1] - 1] = "Hawksbill";
+        AnswerOrder[orderOfTurtles[2] - 1] = "Leatherback";
 
         instrSetter.SetInstructions(orderOfTurtles[0] - 1, orderOfTurtles[1] - 1, orderOfTurtles[2] - 1);
 

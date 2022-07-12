@@ -12,10 +12,10 @@ namespace DataCollection
         public string currentChoice = null;
         public string correctChoice = null;
         public string taskID = null;
-        protected override void OnSelectExited(SelectExitEventArgs args)
+        protected override void OnSelectEntered(SelectEnterEventArgs args)
         {
-            base.OnSelectExited(args);
-            correctChoice ??= DcDataLogging.CorrectAnswers.GetValueOrDefault(taskID, null);
+            base.OnSelectEntered(args);
+            correctChoice = DcDataLogging.CorrectAnswers.GetValueOrDefault(taskID, null);
             DcDataLogging.LogDecision(new Models.Decision(
                 SceneManager.GetActiveScene().name,
                 DateTime.Now,

@@ -257,15 +257,4 @@ public class NewTaskManagerM1 : MonoBehaviour
             message
         ));
     }
-
-    public void LogDecision(string answer, string correctanswer, string taskID)
-    {
-        DcDataLogging.LogDecision(new Decision(
-            SceneManager.GetActiveScene().name,
-            DateTime.Now,
-            answer, 
-            correctanswer,
-            taskID
-        ));
-    }
 }

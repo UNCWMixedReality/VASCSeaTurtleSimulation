@@ -15,7 +15,8 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     public GameObject Leatherback;
     private GameObject[] TurtleList;
     private int turtleIdx;
-    private string correctAnswer;
+    public string[] AnswerOrder;
+
     //screen buttons
     public GameObject BeginButton;
     public GameObject LoggerheadButton;
@@ -51,6 +52,8 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         }
         TurtleList[idx].SetActive(true);
         StartCoroutine(scaleUp(idx));
+        //Line added by Blake to log correct choices
+        DcDataLogging.SetCorrectAnswer("Turtle Guessing", AnswerOrder[turtleIdx]);
         turtleIdx++;
 
     }
@@ -59,35 +62,18 @@ public class NewIdentificationManagerM1 : MonoBehaviour
     {
         if (turtleName == "Loggerhead" && TurtleList[turtleIdx - 1] == Loggerhead)
         {
-            taskMan.LogDecision(turtleName, "Loggerhead", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else if (turtleName == "Hawksbill" && TurtleList[turtleIdx - 1] == Hawksbill)
         {
-            taskMan.LogDecision(turtleName, "Hawksbill", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else if (turtleName == "Leatherback" && TurtleList[turtleIdx - 1] == Leatherback)
         {
-            taskMan.LogDecision(turtleName, "Leatherback", "Correctly answered Turtle Identification question number " + turtleIdx);
             Correct();
         }
         else
-        {   
-            if (TurtleList[turtleIdx - 1] == Loggerhead)
-            {
-                correctAnswer = "Loggerhead";
-            }
-            else if (TurtleList[turtleIdx - 1] == Hawksbill)
-            {
-                correctAnswer = "Hawksbill";
-            }
-            else
-            {
-                correctAnswer = "Leatherback";
-            }
-
-            taskMan.LogDecision(turtleName, correctAnswer , "Incorrectly answered Turtle Identification question number" + turtleIdx);
+        {  
             Incorrect();
         }
     }
@@ -148,6 +134,11 @@ public class NewIdentificationManagerM1 : MonoBehaviour
         TurtleList[orderOfTurtles[0] - 1] = Loggerhead;
         TurtleList[orderOfTurtles[1] - 1] = Hawksbill;
         TurtleList[orderOfTurtles[2] - 1] = Leatherback;
+
+        AnswerOrder = new string[3];
+        AnswerOrder[orderOfTurtles[0] - 1] = "Loggerhead";
+        AnswerOrder[orderOfTurtles[1] - 1] = "Hawksbill";
+        AnswerOrder[orderOfTurtles[2] - 1] = "Leatherback";
 
         instrSetter.SetInstructions(orderOfTurtles[0] - 1, orderOfTurtles[1] - 1, orderOfTurtles[2] - 1);
 

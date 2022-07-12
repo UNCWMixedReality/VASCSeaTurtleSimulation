@@ -9,7 +9,6 @@ namespace DataCollection.Models
         public static int MovementCount;
         public string Id { get; }
         public Vector3 Root { get; }
-        public string Scene { get; }
         public DateTime Timestamp { get; }
 
         [JsonConstructor]
@@ -17,7 +16,6 @@ namespace DataCollection.Models
         {
             Id = id;
             Root = root;
-            Scene = scene;
             Timestamp = timestamp;
             MovementCount++;
         }
@@ -25,7 +23,6 @@ namespace DataCollection.Models
         {
             Id = (MovementCount++).ToString();
             Root = root;
-            Scene = scene;
             Timestamp = timestamp;
         }
     }

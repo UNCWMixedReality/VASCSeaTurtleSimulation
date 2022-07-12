@@ -6,6 +6,7 @@ namespace DataCollection.Models
 {
     public class Session
     {
+        public string SessionScene { get; set; }
         public string Id { get; }
         public DateTime? StartTime { get; }
         public DateTime? EndTime { get; private set; }
@@ -64,7 +65,7 @@ namespace DataCollection.Models
         public Session(string id, DateTime? startTime, DateTime? endTime, Student student,
             Dictionary<string, Movement> movements, Dictionary<string, Decision> decisions,
             Dictionary<string, Interaction> interactions, Dictionary<string, Activity> activities)
-        {
+        { 
             Id = id;
             Student = student;
             StartTime = startTime;

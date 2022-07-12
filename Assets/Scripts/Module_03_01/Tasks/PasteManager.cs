@@ -21,6 +21,7 @@ public class PasteManager : MonoBehaviour
         shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
         shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = true;
         shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = true;
+        UnfreezeShovel();
 
     }
 
@@ -38,5 +39,14 @@ public class PasteManager : MonoBehaviour
         shovel.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
         shovel.transform.GetChild(2).gameObject.GetComponent<Outline>().enabled = false;
         shovel.transform.GetChild(5).gameObject.GetComponent<Outline>().enabled = false;
+    }
+
+    public void FreezeShovel()
+    {
+        shovel.GetComponent<Rigidbody>().isKinematic = true;
+    }
+    public void UnfreezeShovel()
+    {
+        shovel.GetComponent<Rigidbody>().isKinematic = false;
     }
 }

@@ -8,7 +8,6 @@ using cakeslice;
 public class CleanManager : MonoBehaviour
 {
     public GameObject cloth;
-    public GameObject shellCollider;
 
 
 

@@ -37,8 +37,11 @@ public class TaskManagerM3_1 : MonoBehaviour
     public ProgressM3 progressBar;
 
     public GameObject TableWaypoint;
-    public GameObject TurtleWaypoint;
-    public bool waypoint = true;
+    public GameObject ShellWaypoint;
+    public GameObject HeadWaypoint;
+    public GameObject SyringeWaypoint;
+
+    public GameObject activeWaypoint;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -87,7 +90,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         else if (taskCount == 3)
         {
             Debug.Log("Picked up syringe");
-            FlipWaypoint();
+            FlipWaypoint(SyringeWaypoint, HeadWaypoint);
             dnaMan.PrepareDNA();
         }
 
@@ -95,7 +98,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         else if (taskCount == 4)
         {
             Debug.Log("Took DNA sample");
-            FlipWaypoint();
+            FlipWaypoint(HeadWaypoint, SyringeWaypoint);
             dnaMan.PrepareTube();
 
         }
@@ -113,7 +116,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         else if (taskCount == 6)
         {
             Debug.Log("Picked up cloth");
-            FlipWaypoint();
+            FlipWaypoint(SyringeWaypoint, ShellWaypoint);
             cleanMan.PrepareClean();
             //LogTask("Successfully picked up cloth");
         }
@@ -123,7 +126,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             //LogTask("Cleaned shell");
             Debug.Log("Cleaned shell");
-            FlipWaypoint();
+            FlipWaypoint(ShellWaypoint, TableWaypoint);
             GPSMan.PrepareGPS();
         }
 
@@ -132,7 +135,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             //LogTask("Picked up GPS");
             Debug.Log("Picked up GPS");
-            FlipWaypoint();
+            FlipWaypoint(TableWaypoint, ShellWaypoint);
             GPSMan.PrepareGPSPlace();
 
         }
@@ -142,7 +145,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             //LogTask("Placed GPS");
             Debug.Log("Placed GPS");
-            FlipWaypoint();
+            FlipWaypoint(ShellWaypoint, TableWaypoint);
             pasteMan.PrepareShovel();
         }
 
@@ -151,7 +154,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         {
             //LogTask("Picked up shovel");
             Debug.Log("Picked up Shovel");
-            FlipWaypoint();
+            FlipWaypoint(TableWaypoint, ShellWaypoint);
             pasteMan.PreparePaste();
         }
 
@@ -173,11 +176,12 @@ public class TaskManagerM3_1 : MonoBehaviour
     {
 
         // Activate table waypoint and disable all objects not used at first
-        FlipWaypoint();
+        FlipWaypoint(TableWaypoint, SyringeWaypoint);
         cleanMan.DisableCloth();
         GPSMan.DisableGPS();
         pasteMan.DisableShovelHighlight();
         dnaMan.DisableDNA();
+        pasteMan.FreezeShovel();
     }
 
     private void LogTask1(string message)
@@ -196,10 +200,12 @@ public class TaskManagerM3_1 : MonoBehaviour
     {
     }
 
-    private void FlipWaypoint()
+    private void FlipWaypoint(GameObject waypoint1, GameObject waypoint2)
     {
-        TableWaypoint.SetActive(waypoint);
-        TurtleWaypoint.SetActive(!waypoint);
-        waypoint = !waypoint;
+        // deactivates first waypoint and activates second waypoint
+        waypoint1.SetActive(false);
+        waypoint2.SetActive(true);
+        activeWaypoint = waypoint2;
+
     }
 }

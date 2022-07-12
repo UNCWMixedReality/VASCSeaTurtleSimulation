@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataCollection;
 using cakeslice;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class DNAManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class DNAManager : MonoBehaviour
     public GameObject tubeCollider;
     public GameObject tubeOutline;
     public GameObject[] syringeOutlines;
+    public GameObject leftController;
+    public GameObject rightController;
 
 
 

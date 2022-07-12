@@ -27,7 +27,11 @@ public class testing : MonoBehaviour
     public Sprite monster7;
     public Sprite monster8;
 
-    public GameObject mainMenu;
+    public GameObject profileBrowser;
+    public GameObject interactiveMap;
+
+
+    private List<GameObject> buttons = new List<GameObject>();
     // storing all game objects created here to destroy() later, otherwise they will keep replicating
     private int count;
 
@@ -167,6 +171,8 @@ public class testing : MonoBehaviour
                         // change the username
                         newButton.GetComponent<ProfileButton>().profileText.text = playerinfo;
 
+                        buttons.Add(newButton);
+
                         char whichMonster = monsterinfo[monIndex];
                         int intval = (int)char.GetNumericValue(whichMonster);
 
@@ -204,19 +210,30 @@ public class testing : MonoBehaviour
                         }
                             count++;
 
-                    } 
+                    newButton.GetComponent<Button>().onClick.AddListener(() =>
+                            SelectProfile(intval, playerinfo));
+
+                    buttons.Add(newButton);
+                    
+
+
+            }
+
         }
+        
 
         
     }
      public void SelectProfile(int character_num, string username)
         {
-            
+        Debug.Log("Loaded profile - ( " + username + " )" + " with the profile picture - ( " + character_num + " )");
+        profileBrowser.SetActive(false);
+        interactiveMap.SetActive(true);
 
-        }
+    }
 
 
-    
+
     public void BackButton()
     {
         

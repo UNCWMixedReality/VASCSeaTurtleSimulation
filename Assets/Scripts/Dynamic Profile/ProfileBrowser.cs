@@ -5,7 +5,6 @@ using Altimit.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Build.Content;
 
 
 public class ProfileBrowser : MonoBehaviour

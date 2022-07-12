@@ -39,6 +39,6 @@ public class NewActivityManagerM1 : MonoBehaviour
         yield return new WaitForSecondsRealtime(5);
         EndAudio.Play();
         yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Module_02_01");
     }
 }

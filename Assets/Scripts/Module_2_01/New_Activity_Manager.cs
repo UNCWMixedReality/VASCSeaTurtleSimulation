@@ -36,6 +36,6 @@ public class New_Activity_Manager : MonoBehaviour
     {
         // just loads the main scene
         yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Module_02_02");
     }
 }

@@ -11543,26 +11543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2b548edf3fc504eb78f10ae154f406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerDetect: {fileID: 849567367}
-  eggManager: {fileID: 782176903}
-  eggRelocation: {fileID: 1928984373}
-  nestSand: {fileID: 1853572295}
-  nestManager: {fileID: 1954408304}
-  nestSign: {fileID: 1754106583}
-  backup: {fileID: 0}
-  instMan: {fileID: 446961764}
-  audiofeedback: {fileID: 446961768}
-  PM2: {fileID: 446961767}
-  wrongBucket: 0
-  PSign: {fileID: 1754106581}
-  WholeSign: {fileID: 1767848797}
-  oneTime: 0
-  twoTime: 0
-  threeTime: 0
-  fourTime: 0
-  fiveTime: 0
-  sixTime: 0
-  totalTime: 0
 --- !u!114 &446961767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29409,6 +29389,9 @@ MonoBehaviour:
   worldSpaceMouseSensitivity: 1
   usedHand: 1
   pointerTransformOverride: {fileID: 0}
+  TouchControllerTransform: {fileID: 0}
+  InteractionButton: 8192
+  oculusCameraRig: {fileID: 0}
 --- !u!114 &1225592003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41519,37 +41502,37 @@ PrefabInstance:
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8072764
+      value: -0.6346853
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.120298
+      value: -4.380811
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.091293
+      value: 50.64088
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.23407209
+      value: 0.25686896
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.042497434
+      value: -0.05390701
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9555917
+      value: -0.94427407
       objectReference: {fileID: 0}
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17392169
+      value: -0.19864258
       objectReference: {fileID: 0}
     - target: {fileID: 1320533814198919288, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
@@ -43822,12 +43805,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4417149081627286, guid: c6a74181d4000004887343fb87b3c53a,
     type: 3}
   m_PrefabInstance: {fileID: 1487423763}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1767848797 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 24a37a1eea29e4e96847f125224083cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 929537279}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1767848800 stripped
 Transform:
@@ -46902,13 +46879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac432e637402e3a40b4b022d537729a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskDone: 0
-  egg1: {fileID: 177142219}
-  egg2: {fileID: 967797119}
-  egg3: {fileID: 1854752563}
-  egg4: {fileID: 1759739914}
-  egg5: {fileID: 1147022318}
-  egg6: {fileID: 1645383498}
 --- !u!4 &1928984374
 Transform:
   m_ObjectHideFlags: 0

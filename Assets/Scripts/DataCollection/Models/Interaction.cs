@@ -10,7 +10,6 @@ namespace DataCollection.Models
         public DateTime Timestamp { get; }
         public bool WasPickedUp { get; }
         public string Name { get; }
-        public string Scene { get; }
         [JsonConstructor]
         public Interaction(string id, DateTime timestamp, bool wasPickedUp, string name, string scene)
         {
@@ -18,7 +17,6 @@ namespace DataCollection.Models
             this.Timestamp = timestamp;
             this.WasPickedUp = wasPickedUp;
             this.Name = name;
-            this.Scene = scene;
             InteractionCount++;
         }
         public Interaction(DateTime timestamp, bool wasPickedUp, string name, string scene)
@@ -27,7 +25,6 @@ namespace DataCollection.Models
             this.Timestamp = timestamp;
             this.WasPickedUp = wasPickedUp;
             this.Name = name;
-            this.Scene = scene;
             InteractionCount++;
         }
         

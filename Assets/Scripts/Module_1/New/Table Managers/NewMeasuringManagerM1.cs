@@ -8,7 +8,9 @@ public class NewMeasuringManagerM1 : MonoBehaviour
 {
     // Class Variables
     #region Class Variables
-    
+    //tools
+    public GameObject tapeMeasure;
+    public GameObject calliper;
     //Front Fin
     public GameObject FrontFin;
     public SpriteRenderer FrontFinArrow;
@@ -56,6 +58,8 @@ public class NewMeasuringManagerM1 : MonoBehaviour
 
     public void PrepareShellLength() //Enables Shell length measuring
     {
+        calliper.SetActive(false);
+        tapeMeasure.SetActive(true);
         bottomFins.color = new Color(1, 1, 1, 1);
         backFinsX.color = new Color(1, 1, 1, 0);
         backFinsCheck.color = new Color(1, 1, 1, 1);

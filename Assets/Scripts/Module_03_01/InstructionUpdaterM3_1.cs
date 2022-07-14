@@ -47,7 +47,7 @@ public class InstructionUpdaterM3_1 : MonoBehaviour
         PlayInstructionAudio();
 
         current += 1;
-        if (current % 2 == 1 && current != 1)
+        if ((current % 2 == 1 && current > 3) || current == 2 )
         {
             progressBar.TickProgressBar();
         }

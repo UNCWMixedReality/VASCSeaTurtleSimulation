@@ -9,8 +9,7 @@ public class ProgressM3 : MonoBehaviour
     public GameObject P3;
     public GameObject P4;
     public GameObject P5;
-    public GameObject P6;
-    public GameObject P7;
+
 
     private int current = 0;
     public GameObject[] pArray { get; set; }

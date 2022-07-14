@@ -5856,6 +5856,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &445881897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445881888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade92a2e9b698584d9a7a694afb67132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &451670721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7750,6 +7762,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 5215394524733706021, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394524733706021, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6607f017f4ce25f419df4e80cb337f3b, type: 2}
     - target: {fileID: 5215394524733706022, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
       propertyPath: m_Enabled
@@ -7767,13 +7789,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640473, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640473, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3999996
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640473, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.76
+      value: -1.318
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640473, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
@@ -7834,6 +7861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394525628640477, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5215394525628640478, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
@@ -8080,6 +8112,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sign
       objectReference: {fileID: 0}
+    - target: {fileID: 5215394526044137078, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215394526044137078, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e9454c073583214aacdc860d18687ec, type: 2}
     - target: {fileID: 5215394526044137079, guid: cc4663d3e0f2b1f4994b1e0a90dbe706,
         type: 3}
       propertyPath: m_Enabled
@@ -9253,7 +9295,7 @@ GameObject:
   - component: {fileID: 681817018}
   m_Layer: 9
   m_Name: Shovel Sand
-  m_TagString: Untagged
+  m_TagString: Shovel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21313,6 +21355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8052994932809076077, guid: 864acf1aaf981fb4586e74d10119c310,
         type: 3}
+      propertyPath: m_TagString
+      value: Shovel
+      objectReference: {fileID: 0}
+    - target: {fileID: -8052994932809076077, guid: 864acf1aaf981fb4586e74d10119c310,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
@@ -21320,6 +21367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5102530947620581811, guid: 864acf1aaf981fb4586e74d10119c310,
+        type: 3}
+      propertyPath: m_TagString
+      value: Shovel
       objectReference: {fileID: 0}
     - target: {fileID: -5102530947620581811, guid: 864acf1aaf981fb4586e74d10119c310,
         type: 3}
@@ -21420,6 +21472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 864acf1aaf981fb4586e74d10119c310,
+        type: 3}
+      propertyPath: m_TagString
+      value: Shovel
       objectReference: {fileID: 0}
     - target: {fileID: 6962894308286029321, guid: 864acf1aaf981fb4586e74d10119c310,
         type: 3}
@@ -33320,6 +33377,7 @@ PrefabInstance:
     - target: {fileID: 1320533813328748447, guid: 028f4408ae642694295f289cf0d73beb,
         type: 3}
       propertyPath: m_LocalRotation.z
+
       value: -0.011795204
       objectReference: {fileID: 0}
     - target: {fileID: 1320533814198919288, guid: 028f4408ae642694295f289cf0d73beb,
@@ -33755,7 +33813,7 @@ GameObject:
   - component: {fileID: 1969795986}
   m_Layer: 0
   m_Name: =Sign=
-  m_TagString: Untagged
+  m_TagString: Sign
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

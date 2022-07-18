@@ -100,7 +100,6 @@ public class TaskManagerM3_1 : MonoBehaviour
             Debug.Log("Took DNA sample");
             FlipWaypoint(HeadWaypoint, SyringeWaypoint);
             dnaMan.PrepareTube();
-
         }
 
         // true when player deposits sample into test tube, prepares cleanging activity
@@ -127,6 +126,7 @@ public class TaskManagerM3_1 : MonoBehaviour
             //LogTask("Cleaned shell");
             Debug.Log("Cleaned shell");
             FlipWaypoint(ShellWaypoint, TableWaypoint);
+            cleanMan.DisableShellOutline();
             GPSMan.PrepareGPS();
         }
 

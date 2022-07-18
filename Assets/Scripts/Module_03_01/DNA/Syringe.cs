@@ -5,20 +5,20 @@ using UnityEngine;
 public class Syringe : MonoBehaviour
 {
     public GameObject syringe;
-    public GameObject syringeBody;
     public GameObject syringePlunger;
     public GameObject syringeSample;
     public GameObject tubeSample;
-    
+
+    public DrawDNA turtleCollider;
+    public DrawDNA tubeCollider;
+
+    public TaskManagerM3_1 taskMan;
+
     private Vector3 plugerStartingPos;
     private Vector3 sampleStartingScale;
     private Vector3 tubeSampleStartingScale;
 
-    public DrawDNA turtleCollider;
-    public DepositDNA tubeCollider;
-
-    public TaskManagerM3_1 taskMan;
-
+    [HideInInspector]
     public float length = 0;
 
 
@@ -32,9 +32,6 @@ public class Syringe : MonoBehaviour
 
     public void Update()
     {
-        bool extended = false;
-        bool retracted = false;
-
         // Checks if the syringe is colliding with turtle collider and if the extending buttons (A and X) are being pressed
         // if so, calls extend until length > 5.5, then marks task complete
         if (turtleCollider.collided && (OVRInput.Get(OVRInput.RawButton.A) || OVRInput.Get(OVRInput.RawButton.X)))

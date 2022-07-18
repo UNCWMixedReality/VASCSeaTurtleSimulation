@@ -10,6 +10,7 @@ public class CleanShell : MonoBehaviour
 	public GameObject turtle;
 	public ParticleSystem dirtParticles;
 	public ParticleSystem cleanParticles;
+	public ParticleSystem constantDirtParticles;
 	public int cleaned = 0;
 
 	//tracks if cloth has touched shell
@@ -23,6 +24,7 @@ public class CleanShell : MonoBehaviour
 			switch (cleaned)
             {
 				case 0:
+					constantDirtParticles.Stop();
 					turtle.GetComponent<MeshRenderer>().material = dirtPhases[1];
 					dirtParticles.Play();
 					break;

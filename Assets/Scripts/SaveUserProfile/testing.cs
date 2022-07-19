@@ -14,8 +14,15 @@ public class testing : MonoBehaviour
     
     public GameObject buttonPrefab;
     public GameObject buttonParent;
-    
-
+/*
+    public GameObject blueOct;
+    public GameObject pinkOct;
+    public GameObject turtle;
+    public GameObject orangeOct;
+    public GameObject jelly;
+    public GameObject Dolphan;
+    public GameObject stingray;
+    public GameObject seahorse;*/
 
 
     public Sprite monster1;
@@ -27,6 +34,9 @@ public class testing : MonoBehaviour
     public Sprite monster7;
     public Sprite monster8;
 
+
+
+    //public GameObject PlayersMonster;
     public GameObject profileBrowser;
     public GameObject interactiveMap;
 
@@ -36,12 +46,11 @@ public class testing : MonoBehaviour
     private int count;
 
 
-
-
     // Everytime we make a selection we make sure that we update the list so that it can be seen later for login selection.
     public void Update()
     {
         myPlayerData = JsonUtility.FromJson<PlayerData>(UserInfo.text);
+
     }
 
     [System.Serializable]
@@ -60,11 +69,8 @@ public class testing : MonoBehaviour
 
     }
 
-
-
     // create new player data
     public PlayerData myPlayerData = new PlayerData();
-
 
     // Access user selection for name choice, what character they want to be, and the number that character is.
     public TMP_InputField adjname;
@@ -82,8 +88,6 @@ public class testing : MonoBehaviour
 
         
     }
-    
-
 
 
     // on confirm selection in "Create Profile" --> "UsernameSelect" --> "Confirm" gameobject
@@ -109,6 +113,7 @@ public class testing : MonoBehaviour
             "\"CharacterSelected\":" + "\"" + CharacterSelected + "\"" + "," +
 
             "\"CharacterNumber\":" + "\"" + CharacterNumber + "\"" + "}]}");
+            
 
         }
 
@@ -139,10 +144,10 @@ public class testing : MonoBehaviour
 
         }
 
-        
-        // Refresh everything so that our file and list are up to date with each other in real time.
-        //UnityEditor.AssetDatabase.Refresh();
 
+        // Refresh everything so that our file and list are up to date with each other in real time.
+        //AssetDatabase.Refresh();
+        
        
 
     }
@@ -153,7 +158,6 @@ public class testing : MonoBehaviour
         {
             for (int i = count; i < myPlayerData.player.Length; i++)
                     {
-
                         string playerinfo = JsonConvert.SerializeObject(myPlayerData.player[i]);
                         string monsterinfo = JsonConvert.SerializeObject(myPlayerData.player[i]);
                         playerinfo = playerinfo.Remove(0, 13);
@@ -168,6 +172,7 @@ public class testing : MonoBehaviour
                             }
                         }
                         GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
+
                         // change the username
                         newButton.GetComponent<ProfileButton>().profileText.text = playerinfo;
 
@@ -207,6 +212,7 @@ public class testing : MonoBehaviour
                         else if (intval == 8)
                         {
                             newButton.GetComponent<ProfileButton>().profileSprite.sprite = monster8;
+                            
                         }
                             count++;
 
@@ -214,8 +220,6 @@ public class testing : MonoBehaviour
                             SelectProfile(intval, playerinfo));
 
                     buttons.Add(newButton);
-                    
-
 
             }
 
@@ -229,6 +233,39 @@ public class testing : MonoBehaviour
         Debug.Log("Loaded profile - ( " + username + " )" + " with the profile picture - ( " + character_num + " )");
         profileBrowser.SetActive(false);
         interactiveMap.SetActive(true);
+       /* PlayersMonster.SetActive(true);
+        if(character_num == 1)
+        {
+            blueOct.SetActive(true);
+        }
+        else if(character_num == 2)
+        {
+            pinkOct.SetActive(true);
+        }
+        else if (character_num == 3)
+        {
+            turtle.SetActive(true);
+        }
+        else if (character_num == 4)          put the players character on iteractive map if we want
+        {
+            orangeOct.SetActive(true);
+        }
+        else if (character_num == 5)
+        {
+            jelly.SetActive(true);
+        }
+        else if (character_num == 6)
+        {
+            Dolphan.SetActive(true);
+        }
+        else if (character_num == 7)
+        {
+            stingray.SetActive(true);
+        }
+        else if (character_num == 8)
+        {
+            seahorse.SetActive(true);
+        }*/
 
     }
 

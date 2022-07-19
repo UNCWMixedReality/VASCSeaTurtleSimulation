@@ -76,6 +76,13 @@ public class NewProgressionInitializerM1 : MonoBehaviour
 		progressBar.pArray[2] = progressBar.P3;
 		progressBar.pArray[3] = progressBar.P4;
 		progressBar.pArray[4] = progressBar.P5;
+		progressBar.pArray[5] = progressBar.P6;
+		progressBar.pArray[6] = progressBar.P7;
+		progressBar.pArray[7] = progressBar.P8;
+		progressBar.pArray[8] = progressBar.P9;
+		progressBar.pArray[9] = progressBar.P10;
+		progressBar.pArray[10] = progressBar.P11;
+
 
 		//the first task is just entering the scene, so now that setup is done, mark it as complete
 		taskMan.MarkTaskCompletion(0);

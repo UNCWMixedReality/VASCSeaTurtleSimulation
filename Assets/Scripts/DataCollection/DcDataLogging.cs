@@ -41,7 +41,7 @@ namespace DataCollection
         private static void LoadLatestSessionId()
         {
 
-            if (Models.Session.sessionCount == null)
+            if (Models.Session.sessionCount == 0)
             {
                 string[] files;
                 try

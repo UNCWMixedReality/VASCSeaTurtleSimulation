@@ -13,10 +13,12 @@ public class SignManager : MonoBehaviour
     {
         sign.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
+    public void UnFreezeSign()
+    {
+        sign.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
     public void PrepareSign()
     {
-        //unfreeze sign
-        sign.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         //outline and enable grabbing the sign
         sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
         sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;

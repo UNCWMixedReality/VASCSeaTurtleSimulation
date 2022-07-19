@@ -91,12 +91,14 @@ public class TutorialFunctionality : MonoBehaviour
         if (stage == 3)
         {
             audiofeedback.playGood();
-            SceneManager.LoadScene("Module_01");
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Completed first Button Click"
                 ));
+            DcDataLogging.EndSession();
+            SceneManager.LoadScene("JustModule");
+            
         }
 
     }

@@ -6,6 +6,7 @@ namespace DataCollection.Models
 {
     public class Session
     {
+        public static int sessionCount { get; set; }
         public string SessionScene { get; set; }
         public string Id { get; }
         public DateTime? StartTime { get; }
@@ -21,6 +22,52 @@ namespace DataCollection.Models
             IEnumerable<Interaction> interactions = null, IEnumerable<Activity> activities = null)
         {
             Id = id;
+            StartTime = startTime ?? DateTime.UtcNow;
+            EndTime = endTime;
+            Student = student;
+            Movements = new Dictionary<string, Movement>();
+            if (!(movements is null))
+            {
+                foreach (var movement in movements)
+                {
+                    Movements[movement.Id] = movement;
+                }
+            }
+
+            Decisions = new Dictionary<string, Decision>();
+            if (!(decisions is null))
+            {
+                foreach (var decision in decisions)
+                {
+                    Decisions[decision.Id] = decision;
+                }
+            }
+
+            Interactions = new Dictionary<string, Interaction>();
+            if (!(interactions is null))
+            {
+                foreach (var interaction in interactions)
+                {
+                    Interactions[interaction.Id] = interaction;
+                }
+            }
+
+            Activities = new Dictionary<string, Activity>();
+            if (!(activities is null))
+            {
+                foreach (var activity in activities)
+                {
+                    Activities[activity.Id] = activity;
+                }
+            }
+        }
+
+
+        public Session( Student student, DateTime? startTime = null, DateTime? endTime = null,
+            IEnumerable<Movement> movements = null, IEnumerable<Decision> decisions = null,
+            IEnumerable<Interaction> interactions = null, IEnumerable<Activity> activities = null)
+        {
+            Id = (sessionCount++).ToString();
             StartTime = startTime ?? DateTime.UtcNow;
             EndTime = endTime;
             Student = student;
@@ -79,11 +126,15 @@ namespace DataCollection.Models
         public void End(DateTime time)
         {
             EndTime = time;
+            DcDataLogging.ExportData();
+
         }
 
         public void End()
         {
             EndTime = DateTime.UtcNow;
+            DcDataLogging.ExportData();
+
         }
     }
 }

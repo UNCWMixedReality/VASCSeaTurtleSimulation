@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor.Build.Content;
+using UnityEngine.SceneManagement;
 
 
 public class ProfileBrowser : MonoBehaviour
@@ -69,6 +70,7 @@ public class ProfileBrowser : MonoBehaviour
     {
         // here is where you can make buttons do stuff
         Debug.Log("Loaded profile - ( " + username + " )" + " with the profile picture - ( " + character_num + " )");
+        SceneManager.LoadScene("JustModule");
 
 
     }

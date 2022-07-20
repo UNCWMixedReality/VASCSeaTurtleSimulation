@@ -47,4 +47,9 @@ public class LoginStudent : MonoBehaviour
         DcDataLogging.BeginSession();
     }
 
+    public void EndSession()
+    {
+        DcDataLogging.EndSession();
+    }
+
 }

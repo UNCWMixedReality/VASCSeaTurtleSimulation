@@ -97,7 +97,6 @@ public class TaskManagerM2_2 : MonoBehaviour
         else if (taskCount == 5)
         {
             LogTask("Covered nest with sand");
-            digMan.EndDigging();
             cageMan.PrepareCage();
         }
 

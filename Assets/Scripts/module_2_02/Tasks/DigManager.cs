@@ -8,7 +8,6 @@ public class DigManager : MonoBehaviour
 {
     public GameObject shovel;
     public GameObject nestSandCollider;
-    public GameObject diggingWaypoint;
 
     public void PrepareShovel()
     {
@@ -33,13 +32,7 @@ public class DigManager : MonoBehaviour
 
     public void PrepareDigging()
     {
-        diggingWaypoint.SetActive(true);
         nestSandCollider.SetActive(true);
     }
 
-    public void EndDigging()
-    {
-        diggingWaypoint.SetActive(false);
-
-    }
 }

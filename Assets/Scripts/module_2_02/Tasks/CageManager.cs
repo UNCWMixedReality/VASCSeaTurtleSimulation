@@ -34,8 +34,8 @@ public class CageManager : MonoBehaviour
         cage.GetComponent<DcGrabInteractable>().enabled = false;
 
         //put the cage where it belongs
-        cage.transform.position = new Vector3(33.4f, 3.16f, -52.3f);
-        cage.transform.rotation = new Quaternion(0, 0, 0, 0);
+        cage.transform.position = nestCageCollider.transform.position;
+        cage.transform.rotation = nestCageCollider.transform.rotation;
         cage.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         cage.GetComponent<Rigidbody>().useGravity = false;
         cage.GetComponent<Collider>().enabled = false;

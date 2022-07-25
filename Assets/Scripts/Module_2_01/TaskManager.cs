@@ -88,7 +88,6 @@ public class TaskManager : MonoBehaviour
         else if (taskCount == 3)
         {
             //sets everything up for the fourth task
-            PrepareDigging();
             instrUpdater.RunInstructions();
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
@@ -140,9 +139,11 @@ public class TaskManager : MonoBehaviour
         gloveR.SetActive(true);
     }
 
-    public void PrepareDigging()
+
+    public void PrepareSorting()
     {
-        //set eggs active so player can dig up nest
+        //turns on the panel that shows how many eggs have been sorted
+        eggCounterPanel.SetActive(true);
         egg1.SetActive(true);
         egg2.SetActive(true);
         egg3.SetActive(true);
@@ -153,12 +154,5 @@ public class TaskManager : MonoBehaviour
         crackedEgg2.SetActive(true);
         halfEgg1.SetActive(true);
         halfEgg2.SetActive(true);
-        
-    }
-
-    public void PrepareSorting()
-    {
-        //turns on the panel that shows how many eggs have been sorted
-        eggCounterPanel.SetActive(true);
     }
 }

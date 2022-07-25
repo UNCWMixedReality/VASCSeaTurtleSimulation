@@ -73,6 +73,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes fourth task by measuring the jar
         else if (taskCount == 4)
         {
+            audiofeedback.playGood();
             toolTable.PrepareTM();
             LogAct("Measured Jar with Calipers");
         }

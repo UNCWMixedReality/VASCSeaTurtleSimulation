@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class NewToolManagerM1 : MonoBehaviour
 {
-   public GameObject calipers;
-   public GameObject tm;
-   public GameObject container;
-   public GameObject clipboard;
+    public GameObject calipers;
+    public GameObject tm;
+    public GameObject container;
+    public GameObject clipboard;
+    public SpriteRenderer arrow;
    
-   private bool caliperStart = false;
+    private bool caliperStart = false;
    
    // Old Progression markers
    /* public SpriteRenderer Container;
@@ -20,22 +21,25 @@ public class NewToolManagerM1 : MonoBehaviour
     * private Color arrowGreen = new Color(0, 1, 0, 1);
    */
    
-   public void FirstCalPickUp() // Need to attach to on select enter for Calipers
-   {
-      caliperStart = true;
-   }
+    public void FirstCalPickUp() // Need to attach to on select enter for Calipers
+    {
+        caliperStart = true;
+    }
    
-   public void PrepareJar() // Prepares Jar for measuring
-   {
+    public void PrepareJar() // Prepares Jar for measuring
+    {
         container.SetActive(true);
-   }
+    }
    
-   public void PrepareTM() // First Tape Measure PickUp
-   {
-      tm.SetActive(true);
-   }
-   public void PrepareClipboard() // Prepares Clipboard for measuring
-   {
+    public void PrepareTM() // First Tape Measure PickUp
+    {
+        arrow.color = new Color(0, 1, 0, 1);
+        tm.SetActive(true);
+    }
+
+    public void PrepareClipboard() // Prepares Clipboard for measuring
+    {
         clipboard.SetActive(true);
-   }
+        arrow.enabled = false;
+    }
 }

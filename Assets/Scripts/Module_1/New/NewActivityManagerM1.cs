@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DataCollection;
 
 public class NewActivityManagerM1 : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class NewActivityManagerM1 : MonoBehaviour
         yield return new WaitForSecondsRealtime(5);
         EndAudio.Play();
         yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("Module_02_01");
+        DcDataLogging.EndSession();
+        SceneManager.LoadScene("JustModule");
     }
 }

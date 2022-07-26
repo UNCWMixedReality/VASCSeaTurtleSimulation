@@ -18,8 +18,8 @@ public class ToggleInstructionPanel : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick) || OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick))
         {
-            deactivated = !deactivated;
             instructionCanvas.SetActive(deactivated);
+            deactivated = !deactivated;
         }
     }
 }

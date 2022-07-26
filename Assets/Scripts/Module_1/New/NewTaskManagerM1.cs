@@ -24,6 +24,7 @@ public class NewTaskManagerM1 : MonoBehaviour
     public NewMeasuringManagerM1 measureTable;
     public NewIdentificationManagerM1 identifyTable;
     public NewTrackManagerM1 trackTable;
+    public TurtleMeasureManager turtMeasure;
 
     //waypoint
     public GameObject waypoint;
@@ -100,20 +101,24 @@ public class NewTaskManagerM1 : MonoBehaviour
         {
             DisableWaypoint();
             SetNextTable();
-            measureTable.PrepareFrontFin();
+            turtMeasure.prepareFrontFins();
+            turtMeasure.prepareCaliper();
         }
 
         //true when user completes eighth task by measuring the front fin
         else if (taskCount == 8)
         {
-            measureTable.PrepareBackFin();
+            turtMeasure.prepareBackFins();
+            audiofeedback.playGood();
             LogAct("Successfully Measured the Front Fin");
         }
 
         //true when user completes ninth task by measuring the back fin
         else if (taskCount == 9)
         {
-            measureTable.PrepareShellLength();
+            turtMeasure.prepareShellLength();
+            audiofeedback.playGood();
+
             LogAct("Successfully Measured the Back Fin");
         }
 

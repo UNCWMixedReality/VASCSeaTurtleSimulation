@@ -12942,7 +12942,7 @@ Transform:
   - {fileID: 924642860}
   - {fileID: 702140484}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665206528
 GameObject:
@@ -21177,6 +21177,9 @@ MonoBehaviour:
   worldSpaceMouseSensitivity: 1
   usedHand: 1
   pointerTransformOverride: {fileID: 0}
+  TouchControllerTransform: {fileID: 0}
+  InteractionButton: 8192
+  oculusCameraRig: {fileID: 0}
 --- !u!114 &1225592003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22738,6 +22741,7 @@ RectTransform:
   - {fileID: 1416476098}
   - {fileID: 1499675950}
   - {fileID: 240097181}
+  - {fileID: 1797858291}
   m_Father: {fileID: 1892894149}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32166,6 +32170,7 @@ GameObject:
   - component: {fileID: 1950818655}
   - component: {fileID: 1950818654}
   - component: {fileID: 1950818658}
+  - component: {fileID: 1950818659}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -32552,6 +32557,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionCanvas: {fileID: 1892894148}
+--- !u!114 &1950818659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950818652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee023f0a84ae654590779743d5cf048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1954188117
 GameObject:
   m_ObjectHideFlags: 0

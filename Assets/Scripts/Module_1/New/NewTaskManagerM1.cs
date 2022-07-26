@@ -31,6 +31,10 @@ public class NewTaskManagerM1 : MonoBehaviour
     //tool table objects
     public GameObject toolCalipers;
     public AudioFeedback audiofeedback;
+    
+    //button glow managers
+    public GlowManager glowLeft;
+    public GlowManager glowRight;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -59,6 +63,8 @@ public class NewTaskManagerM1 : MonoBehaviour
         {
             audiofeedback.playGood();
             toolTable.FirstCalPickUp();
+            glowRight.ToggleGlow(GlowManager.ID_AX);
+            glowRight.ToggleGlow(GlowManager.ID_BY);
             LogAct("First Caliper Pick-Up");
         }
 

@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DataCollection.Models
@@ -7,25 +8,22 @@ namespace DataCollection.Models
     {
         public static int ActivityCount;
         public string Id { get; }
-        public string Scene { get; }
         public DateTime Timestamp { get; }
-        public string ExtraData { get; }
+        public string ActivityDetail { get; }
         
         [JsonConstructor]
-        public Activity(string id, string scene, DateTime timestamp, string extraData)
+        public Activity(string id, string scene, DateTime timestamp, string activityDetail)
         {
             Id = id;
-            Scene = scene;
             Timestamp = timestamp;
-            ExtraData = extraData;
+            ActivityDetail = activityDetail;
             ActivityCount++;
         }
-        public Activity(string scene, DateTime timestamp, string extraData)
+        public Activity(DateTime timestamp, string scene, string activityDetail)  // First Attempt at what might be needed for activity log
         {
             Id = (ActivityCount++).ToString();
-            Scene = scene;
             Timestamp = timestamp;
-            ExtraData = extraData;
+            ActivityDetail = activityDetail;
         }
     }
 }

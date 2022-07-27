@@ -23,8 +23,12 @@ namespace DataCollection
 
         static DcDataLogging()
         {
+<<<<<<< HEAD:Assets/Scripts/Module_1/DataCollection/DcDataLogging.cs
             // TODO read in largest sessionID from json file
             // _sessionID = this.LoadLatestSessionId();
+=======
+            LoadLatestSessionId();
+>>>>>>> 580834f2351c37d24f6385e177437e02946edac1:Assets/Scripts/DataCollection/DcDataLogging.cs
         }
         
         public static void SetCorrectAnswer(string taskId, string correctAnswer)
@@ -39,8 +43,9 @@ namespace DataCollection
             }
         }
 
-        private static int LoadLatestSessionId()
+        private static void LoadLatestSessionId()
         {
+<<<<<<< HEAD:Assets/Scripts/Module_1/DataCollection/DcDataLogging.cs
             string[] files;
             // TODO count the amount of files in Log folder
             try
@@ -55,24 +60,47 @@ namespace DataCollection
             }
             return files.Length;
         }
+=======
+>>>>>>> 580834f2351c37d24f6385e177437e02946edac1:Assets/Scripts/DataCollection/DcDataLogging.cs
 
+            if (Models.Session.sessionCount == 0)
+            {
+                string[] files;
+                try
+                {
+                    files = Directory.GetFiles($"{Application.persistentDataPath}/Log");
+                    if (files.Length > 0)
+                    {
+                        LogManager.LogMessage($"Found Files! Here's a path: {files[0]}");
+                    }
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
+                    files = Array.Empty<string>();
+                }
+                Models.Session.sessionCount = files.Length;
+            }
+            
+        }
+        
         public static Models.Session BeginSession(Student student)
         {
             UnityEngine.Debug.Log("Beginning session");
             Student = student;
-            SessionId = LoadLatestSessionId().ToString();
-            Session = new Models.Session(SessionId, student);
+            LoadLatestSessionId();
+            Session = new Models.Session(student);
             Debug.Log(Session.ToString());
             return Session;
         }
-
+        
         public static Models.Session BeginSession()
         {
             UnityEngine.Debug.Log("Beginning session");
             if (DcDataLogging.Student != null)
             {
-                Session = new Models.Session(SessionId, DcDataLogging.Student);
-                SessionId = LoadLatestSessionId().ToString();
+                LoadLatestSessionId();
+                Session = new Models.Session(DcDataLogging.Student);
                 return Session;
             }
 
@@ -87,8 +115,7 @@ namespace DataCollection
             UnityEngine.Debug.Log("Ending session");
             Session.End();
             //SubmitDataToServer();
-            ExportData();
-            
+
         }
 
         public static void ExportData()

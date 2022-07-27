@@ -36,6 +36,9 @@ public class TMDemo : MonoBehaviour
     private LineRenderer line;
     private string activeHand;
 
+    public NewTaskManagerM1 taskMan;
+    public AudioFeedback audiofeedback;
+
     void Start()
     {
         line = this.gameObject.GetComponent<LineRenderer>(); //Initialize line renderer to not be visible.
@@ -99,6 +102,7 @@ public class TMDemo : MonoBehaviour
             Measured = true;
             Arrow.color = arrowGreen;
             StartCoroutine(Pause());
+            taskMan.MarkTaskCompletion(5);
         }
 
 

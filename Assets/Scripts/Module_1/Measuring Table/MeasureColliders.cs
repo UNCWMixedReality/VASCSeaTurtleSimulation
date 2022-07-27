@@ -26,7 +26,7 @@ public class MeasureColliders : MonoBehaviour
         if (col.gameObject.name == "Tape Measure" || col.gameObject.name == "Tape End Collider")
         {
             collided = true;
-            print("Measure col");
+            //print("Measure col");
         }
     }
 

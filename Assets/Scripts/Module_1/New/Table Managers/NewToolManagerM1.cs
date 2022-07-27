@@ -11,12 +11,13 @@ public class NewToolManagerM1 : MonoBehaviour
     public GameObject container;
     public GameObject clipboard;
     public GameObject[] arrows;
-    public GameObject calipButton;
-    public GameObject clipButtonText;
+    public GameObject tmIndicators;
+
          
     public void PrepareCaliper()
     {
         calipers.SetActive(true);
+        calipers.GetComponent<NewCaliper>().ShowButton();
     }
 
     public void PrepareJar() // Prepares Jar for measuring
@@ -33,6 +34,7 @@ public class NewToolManagerM1 : MonoBehaviour
 
     public void PrepareClipboard() // Prepares Clipboard for measuring
     {
+        tmIndicators.SetActive(true);
         clipboard.SetActive(true);
         arrows[0].SetActive(false);
         arrows[1].SetActive(true);

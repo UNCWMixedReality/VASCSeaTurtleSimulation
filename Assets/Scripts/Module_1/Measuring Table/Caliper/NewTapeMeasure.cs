@@ -53,7 +53,7 @@ public class NewTapeMeasure : MonoBehaviour
 
     IEnumerator GetHand()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         if (Vector3.Distance(this.transform.position, leftHand.transform.position) < Vector3.Distance(this.transform.position, rightHand.transform.position))
         {
             activeHand = "left";
@@ -113,7 +113,7 @@ public class NewTapeMeasure : MonoBehaviour
     {
         if (rightCollider.collided && leftCollider.collided)
         {
-            Debug.Log("tm Measured");
+            Debug.Log("TapeMeasuere Measured");
             measureText.text = measureLength;
             StopAllCoroutines();
             taskMan.MarkTaskCompletion(taskNum);

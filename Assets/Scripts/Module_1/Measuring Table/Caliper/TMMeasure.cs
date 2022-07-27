@@ -17,7 +17,6 @@ public class TMMeasure : MonoBehaviour
         if (col.name == "TapeBody" || col.name == "TapeHand")
         {
             collided = true;
-            Debug.Log("board collided with " + col.name);
         }
 
     }

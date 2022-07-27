@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using cakeslice;
 using DataCollection;
 
 public class TurtleMeasureManager : MonoBehaviour
@@ -17,6 +16,7 @@ public class TurtleMeasureManager : MonoBehaviour
     public GameObject tapeMeasure;
     public GameObject[] tmPlaceholders;
     public GameObject[] tmColliders;
+    public GameObject tmIndicators;
 
     // Shared Measure Objects
     public GameObject[] collidersPlaceholders;
@@ -27,21 +27,21 @@ public class TurtleMeasureManager : MonoBehaviour
     public GameObject[] outlineFill;
     public Sprite checkmark;
 
-    public void prepareCaliper()
+    public void prepareTools()
     {
+        // prepare calipers
         calipers.transform.position = collidersPlaceholders[0].transform.position;
         calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;
         calipers.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
         calipers.GetComponent<NewCaliper>().ResetCaliper();
         calipers.GetComponent<DcGrabInteractable>().enabled = true;
-        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
-    }
 
-    public void prepareTapeMeasure()
-    {
+        // prepare tape measure
+        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
         tapeMeasure.transform.position = collidersPlaceholders[1].transform.position;
         tapeMeasure.transform.rotation = collidersPlaceholders[1].transform.rotation;
         tapeMeasure.GetComponent<NewTapeMeasure>().tmPlaceholder = collidersPlaceholders[1];
+        tmIndicators.SetActive(false);
     }
 
     public void prepareFrontFins()
@@ -75,6 +75,8 @@ public class TurtleMeasureManager : MonoBehaviour
         tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
         calipers.GetComponent<DcGrabInteractable>().enabled = false;
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 9;
+        tmIndicators.SetActive(true);
+
         for (int i = 0; i < 2; i++)
         {
             tmColliders[i].transform.position = collidersPlaceholders[i + 6].transform.position;
@@ -90,6 +92,7 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellWidth()
     {
+
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 10;
         for (int i = 0; i < 2; i++)
         {
@@ -106,6 +109,7 @@ public class TurtleMeasureManager : MonoBehaviour
     public void finishMeasure()
     {
         outlineFill[3].SetActive(true);
+        tmIndicators.SetActive(false);
         arrows[3].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         ChangeImage(checks[2]);
     }

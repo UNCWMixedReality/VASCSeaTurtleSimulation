@@ -100,8 +100,7 @@ public class NewTaskManagerM1 : MonoBehaviour
             DisableWaypoint();
             SetNextTable();
             turtMeasure.prepareFrontFins();
-            turtMeasure.prepareCaliper();
-            turtMeasure.prepareTapeMeasure();
+            turtMeasure.prepareTools();
         }
 
         //true when user completes eighth task by measuring the front fin

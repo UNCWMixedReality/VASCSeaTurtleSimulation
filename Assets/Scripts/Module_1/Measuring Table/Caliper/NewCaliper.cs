@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class NewCaliper : MonoBehaviour
 {
@@ -54,7 +53,7 @@ public class NewCaliper : MonoBehaviour
                 if (firstAPress)
                 {
                     taskMan.MarkTaskCompletion(2);
-                    HideButton();
+                    button.SetActive(false);
                 }
                 retract();
             }
@@ -77,7 +76,7 @@ public class NewCaliper : MonoBehaviour
     {
         if (rightCollider.collided && leftCollider.collided)
         {
-            Debug.Log("tubeMeasured");
+            Debug.Log("Caliper Measured");
             taskMan.MarkTaskCompletion(taskNum);
         } 
     }
@@ -98,14 +97,9 @@ public class NewCaliper : MonoBehaviour
         length = 0;
     }
 
-    public void Showbutton()
+    public void ShowButton()
     {
         button.SetActive(true);
         buttonText.text = "A";
     }
-    public void HideButton()
-    {
-        button.SetActive(false);
-    }
-
 }

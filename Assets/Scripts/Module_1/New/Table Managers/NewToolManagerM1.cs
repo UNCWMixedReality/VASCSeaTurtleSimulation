@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
+using DataCollection;
 
 public class NewToolManagerM1 : MonoBehaviour
 {
@@ -9,18 +11,14 @@ public class NewToolManagerM1 : MonoBehaviour
     public GameObject container;
     public GameObject clipboard;
     public GameObject[] arrows;
-   
-    private bool caliperStart = false;
-   
-   // Old Progression markers
-   /* public SpriteRenderer Container;
-    * public SpriteRenderer Clipboard;
-    * private bool toolTaskDone = false;
-    * private bool containerDone = false;
-    * private bool clipboardDone = false;
-    * private Color arrowGreen = new Color(0, 1, 0, 1);
-   */
-      
+    public GameObject calipButton;
+    public GameObject clipButtonText;
+         
+    public void PrepareCaliper()
+    {
+        calipers.SetActive(true);
+    }
+
     public void PrepareJar() // Prepares Jar for measuring
     {
         container.SetActive(true);
@@ -39,9 +37,13 @@ public class NewToolManagerM1 : MonoBehaviour
         arrows[0].SetActive(false);
         arrows[1].SetActive(true);
         tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "70 cm";
+        calipers.GetComponent<DcGrabInteractable>().enabled = false;
     }
     public void FinishToolTable()
     {
         arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
     }
+
+
+
 }

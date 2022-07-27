@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using cakeslice;
+using DataCollection;
 
 public class TurtleMeasureManager : MonoBehaviour
 {
 
 
     // Fin Measure Objects
-    public GameObject caliper;
+    public GameObject calipers;
     public GameObject[] caliperColliders;
 
     // Shell Measure Objects
@@ -27,10 +29,12 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareCaliper()
     {
-        caliper.transform.position = collidersPlaceholders[0].transform.position;
-        caliper.transform.rotation = collidersPlaceholders[0].transform.rotation;
-        caliper.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
-        caliper.GetComponent<NewCaliper>().ResetCaliper();
+        calipers.transform.position = collidersPlaceholders[0].transform.position;
+        calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;
+        calipers.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
+        calipers.GetComponent<NewCaliper>().ResetCaliper();
+        calipers.GetComponent<DcGrabInteractable>().enabled = true;
+        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
     }
 
     public void prepareTapeMeasure()
@@ -42,7 +46,7 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareFrontFins()
     {
-        caliper.GetComponent<NewCaliper>().taskNum = 7;
+        calipers.GetComponent<NewCaliper>().taskNum = 7;
         for (int i=0; i < 2; i++)
         {
             caliperColliders[i].transform.position = collidersPlaceholders[i+2].transform.position;
@@ -52,7 +56,7 @@ public class TurtleMeasureManager : MonoBehaviour
     }
     public void prepareBackFins()
     {
-        caliper.GetComponent<NewCaliper>().taskNum = 8;
+        calipers.GetComponent<NewCaliper>().taskNum = 8;
         for (int i = 0; i < 2; i++)
         {
             caliperColliders[i].transform.position = collidersPlaceholders[i+4].transform.position;
@@ -68,6 +72,8 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellLength()
     {
+        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
+        calipers.GetComponent<DcGrabInteractable>().enabled = false;
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 9;
         for (int i = 0; i < 2; i++)
         {
@@ -109,6 +115,12 @@ public class TurtleMeasureManager : MonoBehaviour
         check.GetComponent<Image>().sprite = checkmark;
         check.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
         check.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 180, 0);
+    }
+    
+    public void DisableTools()
+    {
+        tapeMeasure.SetActive(false);
+        calipers.SetActive(false);
     }
 
 }

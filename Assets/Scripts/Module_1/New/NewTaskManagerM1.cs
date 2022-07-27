@@ -21,17 +21,15 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     //Table Manager Scripts
     public NewToolManagerM1 toolTable;
-    public NewMeasuringManagerM1 measureTable;
+    public TurtleMeasureManager turtMeasure;
     public NewIdentificationManagerM1 identifyTable;
     public NewTrackManagerM1 trackTable;
-    public TurtleMeasureManager turtMeasure;
+    public AudioFeedback audiofeedback;
+
 
     //waypoint
     public GameObject waypoint;
 
-    //tool table objects
-    public GameObject toolCalipers;
-    public AudioFeedback audiofeedback;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -52,7 +50,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes first task by entering the scene
         if(taskCount == 1)
         {
-            PrepareScene();
+            toolTable.PrepareCaliper();
         }
 
         //true when user completes second task by grabbing the calipers
@@ -145,6 +143,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
+            turtMeasure.DisableTools();
             DisableWaypoint();
             SetNextTable();
             identifyTable.PrepareTurtleIdentification();
@@ -216,11 +215,6 @@ public class NewTaskManagerM1 : MonoBehaviour
         instrUpdater.RunInstructions();
 
 
-    }
-
-    private void PrepareScene()
-    {
-        toolCalipers.SetActive(true);
     }
 
     private void PrepareWaypoint()

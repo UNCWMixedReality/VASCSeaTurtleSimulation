@@ -15,6 +15,9 @@ public class NewCaliper : MonoBehaviour
     public CaliperMeasure rightCollider;
     public CaliperMeasure leftCollider;
 
+    public GameObject button;
+    public Text buttonText;
+
     public NewTaskManagerM1 taskMan;
     public int taskNum;
 
@@ -40,15 +43,19 @@ public class NewCaliper : MonoBehaviour
             if (OVRInput.Get(OVRInput.RawButton.A) || OVRInput.Get(OVRInput.RawButton.X))
             {
                 if (!firstAPress)
+                {
                     firstAPress = true;
-                Debug.Log("extending");
+                    buttonText.text = "B";
+                }
                 extend();
             }
             else if (OVRInput.Get(OVRInput.RawButton.B) || OVRInput.Get(OVRInput.RawButton.Y))
             {
                 if (firstAPress)
+                {
                     taskMan.MarkTaskCompletion(2);
-                Debug.Log("retracting");
+                    HideButton();
+                }
                 retract();
             }
             checkMeasure();
@@ -90,4 +97,15 @@ public class NewCaliper : MonoBehaviour
         movingPart.transform.localPosition = new Vector3(movingPartStartingPos.x, movingPart.transform.localPosition.y, movingPart.transform.localPosition.z);
         length = 0;
     }
+
+    public void Showbutton()
+    {
+        button.SetActive(true);
+        buttonText.text = "A";
+    }
+    public void HideButton()
+    {
+        button.SetActive(false);
+    }
+
 }

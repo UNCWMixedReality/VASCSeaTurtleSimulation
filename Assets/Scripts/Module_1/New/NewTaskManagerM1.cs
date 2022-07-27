@@ -59,7 +59,6 @@ public class NewTaskManagerM1 : MonoBehaviour
         else if (taskCount == 2)
         {
             audiofeedback.playGood();
-            toolTable.FirstCalPickUp();
             LogAct("First Caliper Pick-Up");
         }
 
@@ -91,6 +90,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         else if (taskCount == 6)
         {
             audiofeedback.playGood();
+            toolTable.FinishToolTable();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
             LogAct("Measured Clipboard with Tape Measure");
@@ -103,6 +103,7 @@ public class NewTaskManagerM1 : MonoBehaviour
             SetNextTable();
             turtMeasure.prepareFrontFins();
             turtMeasure.prepareCaliper();
+            turtMeasure.prepareTapeMeasure();
         }
 
         //true when user completes eighth task by measuring the front fin
@@ -125,14 +126,17 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes tenth task by measuring the shell length
         else if (taskCount == 10)
         {
-            measureTable.PrepareShellWidth();
+            turtMeasure.prepareShellWidth();
+            audiofeedback.playGood();
+
             LogAct("Successfully Measured the Shell Length");
         }
 
         //true when user completes 11th task by measuring shell width
         else if (taskCount == 11)
         {
-            measureTable.FinishTable();
+            turtMeasure.finishMeasure();
+            audiofeedback.playGood();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
             LogAct("Successfully measured the Shell Width");

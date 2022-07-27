@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class TurtleMeasureManager : MonoBehaviour
 {
+
+
     // Fin Measure Objects
     public GameObject caliper;
-    public GameObject[] collidersPlaceholders;
     public GameObject[] caliperColliders;
-    public GameObject[] finArrows;
 
     // Shell Measure Objects
     public GameObject tapeMeasure;
     public GameObject[] tmPlaceholders;
     public GameObject[] tmColliders;
-    public GameObject[] shellArrows;
+
+    // Shared Measure Objects
+    public GameObject[] collidersPlaceholders;
+    public GameObject[] arrows;
 
     // UI elements
     public GameObject[] checks;
@@ -30,43 +33,53 @@ public class TurtleMeasureManager : MonoBehaviour
         caliper.GetComponent<NewCaliper>().ResetCaliper();
     }
 
+    public void prepareTapeMeasure()
+    {
+        tapeMeasure.transform.position = collidersPlaceholders[1].transform.position;
+        tapeMeasure.transform.rotation = collidersPlaceholders[1].transform.rotation;
+        tapeMeasure.GetComponent<NewTapeMeasure>().tmPlaceholder = collidersPlaceholders[1];
+    }
+
     public void prepareFrontFins()
     {
         caliper.GetComponent<NewCaliper>().taskNum = 7;
         for (int i=0; i < 2; i++)
         {
-            caliperColliders[i].transform.position = collidersPlaceholders[i+1].transform.position;
-            caliperColliders[i].transform.rotation = collidersPlaceholders[i+1].transform.rotation;
+            caliperColliders[i].transform.position = collidersPlaceholders[i+2].transform.position;
+            caliperColliders[i].transform.rotation = collidersPlaceholders[i+2].transform.rotation;
         }
-        finArrows[0].SetActive(true);
+        arrows[0].SetActive(true);
     }
     public void prepareBackFins()
     {
         caliper.GetComponent<NewCaliper>().taskNum = 8;
         for (int i = 0; i < 2; i++)
         {
-            caliperColliders[i].transform.position = collidersPlaceholders[i+3].transform.position;
-            caliperColliders[i].transform.rotation = collidersPlaceholders[i+3].transform.rotation;
+            caliperColliders[i].transform.position = collidersPlaceholders[i+4].transform.position;
+            caliperColliders[i].transform.rotation = collidersPlaceholders[i+4].transform.rotation;
         }
         ChangeImage(checks[0]);
         outlineFill[0].SetActive(true);
-        finArrows[0].SetActive(false);
-        finArrows[1].SetActive(true);
+        arrows[0].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+        arrows[1].SetActive(true);
     }
+
+
 
     public void prepareShellLength()
     {
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 9;
         for (int i = 0; i < 2; i++)
         {
-            tmColliders[i].transform.position = tmPlaceholders[i + 3].transform.position;
-            tmColliders[i].transform.rotation = tmPlaceholders[i + 3].transform.rotation;
+            tmColliders[i].transform.position = collidersPlaceholders[i + 6].transform.position;
+            tmColliders[i].transform.rotation = collidersPlaceholders[i + 6].transform.rotation;
         }
 
         ChangeImage(checks[1]);
         outlineFill[1].SetActive(true);
-        finArrows[1].SetActive(false);
-        shellArrows[0].SetActive(true);
+        arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+        arrows[2].SetActive(true);
+        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "80 cm";
     }
 
     public void prepareShellWidth()
@@ -74,19 +87,21 @@ public class TurtleMeasureManager : MonoBehaviour
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 10;
         for (int i = 0; i < 2; i++)
         {
-            tmColliders[i].transform.position = tmPlaceholders[i + 3].transform.position;
-            tmColliders[i].transform.rotation = tmPlaceholders[i + 3].transform.rotation;
+            tmColliders[i].transform.position = collidersPlaceholders[i + 8].transform.position;
+            tmColliders[i].transform.rotation = collidersPlaceholders[i + 8].transform.rotation;
         }
 
-        ChangeImage(checks[2]);
         outlineFill[2].SetActive(true);
-        shellArrows[0].SetActive(false);
-        shellArrows[1].SetActive(true);
+        arrows[2].SetActive(false);
+        arrows[3].SetActive(true);
+        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "65 cm";
     }
 
     public void finishMeasure()
     {
         outlineFill[3].SetActive(true);
+        arrows[3].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+        ChangeImage(checks[2]);
     }
 
     public void ChangeImage(GameObject check)

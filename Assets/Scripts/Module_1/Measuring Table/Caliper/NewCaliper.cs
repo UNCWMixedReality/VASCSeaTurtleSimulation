@@ -32,7 +32,7 @@ public class NewCaliper : MonoBehaviour
         movingPartStartingPos = movingPart.transform.localPosition;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         displayText.text = ((int)length).ToString() + "cm";
         floatingText.text = ((int)length).ToString() + "cm";

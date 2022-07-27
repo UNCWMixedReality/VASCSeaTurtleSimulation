@@ -5,10 +5,10 @@ using UnityEngine;
 public class NewToolManagerM1 : MonoBehaviour
 {
     public GameObject calipers;
-    public GameObject tm;
+    public GameObject tapeMeasure;
     public GameObject container;
     public GameObject clipboard;
-    public SpriteRenderer arrow;
+    public GameObject[] arrows;
    
     private bool caliperStart = false;
    
@@ -20,26 +20,28 @@ public class NewToolManagerM1 : MonoBehaviour
     * private bool clipboardDone = false;
     * private Color arrowGreen = new Color(0, 1, 0, 1);
    */
-   
-    public void FirstCalPickUp() // Need to attach to on select enter for Calipers
-    {
-        caliperStart = true;
-    }
-   
+      
     public void PrepareJar() // Prepares Jar for measuring
     {
         container.SetActive(true);
+        arrows[0].SetActive(true);
     }
    
     public void PrepareTM() // First Tape Measure PickUp
     {
-        arrow.color = new Color(0, 1, 0, 1);
-        tm.SetActive(true);
+        arrows[0].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+        tapeMeasure.SetActive(true);
     }
 
     public void PrepareClipboard() // Prepares Clipboard for measuring
     {
         clipboard.SetActive(true);
-        arrow.enabled = false;
+        arrows[0].SetActive(false);
+        arrows[1].SetActive(true);
+        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "70 cm";
+    }
+    public void FinishToolTable()
+    {
+        arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
     }
 }

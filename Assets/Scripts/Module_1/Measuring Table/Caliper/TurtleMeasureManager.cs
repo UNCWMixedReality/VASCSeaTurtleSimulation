@@ -22,6 +22,9 @@ public class TurtleMeasureManager : MonoBehaviour
     public GameObject[] collidersPlaceholders;
     public GameObject[] arrows;
 
+    public GameObject Shiny;
+    public GameObject Turtle;
+
     // UI elements
     public GameObject[] checks;
     public GameObject[] outlineFill;
@@ -29,6 +32,13 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareTools()
     {
+        float shiny = Random.Range(1, 8192);
+        if (shiny == 1)
+        {
+            Shiny.SetActive(true);
+            Turtle.SetActive(false);
+        }
+
         // prepare calipers
         calipers.transform.position = collidersPlaceholders[0].transform.position;
         calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;

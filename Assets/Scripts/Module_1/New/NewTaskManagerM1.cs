@@ -80,6 +80,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         else if (taskCount == 4)
         {
             toolTable.PrepareTM();
+            glowRight.ClearGlow();
             LogAct("Measured Jar with Calipers");
         }
 

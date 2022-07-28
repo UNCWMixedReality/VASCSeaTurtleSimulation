@@ -13,13 +13,13 @@ public class GlowManager : MonoBehaviour
     public const int ID_AX = 0;
     public const int ID_BY = 1;
     public const int ID_Oculus = 2;
-    public const int ID_TriggerFront = 3;
-    public const int ID_TriggerGrip = 4;
-    
-    public GameObject[] buttons;
+    public const int ID_ThumbStick = 3;
 
+    public GameObject[] buttons;
+    
     public void ToggleGlow(int id)
     {
+        // toggles glow of button specified with id
         if (id is < 0 or > 3) return;
         
         var btn = buttons[id];
@@ -28,9 +28,19 @@ public class GlowManager : MonoBehaviour
 
     public void ClearGlow()
     {
+        // deactivates glow of all buttons in attached glowManager
         foreach (var btn in buttons)
         {
             btn.SetActive(false);
         }
+    }
+    
+    public void NewGlow(int id)
+    {
+        // deactivates all glow, then activates glow of specified button
+        if (id is < 0 or > 3) return;
+        
+        ClearGlow();
+        ToggleGlow(id);
     }
 }

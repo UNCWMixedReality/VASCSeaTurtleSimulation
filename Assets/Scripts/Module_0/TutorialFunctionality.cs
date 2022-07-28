@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class TutorialFunctionality : MonoBehaviour
 {
+    public GlowManager glowLeft;
+    public GlowManager glowRight;
     public GameObject firstDoor;
     public GameObject secondDoor;
     public AudioSource doorA;
@@ -35,10 +37,11 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if (stage == 0)
         {
-            
             stage++;
             audiofeedback.playGood();
             displaySnapTurn();
+            glowRight.ToggleGlow(GlowManager.ID_ThumbStick);
+            glowLeft.ToggleGlow(GlowManager.ID_ThumbStick);
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
                 SceneManager.GetActiveScene().name,
@@ -51,6 +54,9 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if(stage == 1)
         {
+            glowRight.ClearGlow();
+            glowLeft.ClearGlow();
+            
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
             //doorA.Play();
             ACT.playSound();

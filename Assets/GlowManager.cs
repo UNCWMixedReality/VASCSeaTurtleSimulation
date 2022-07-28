@@ -5,16 +5,22 @@ using UnityEngine;
 public class GlowManager : MonoBehaviour
 {
     /*
+     * To access methods in this script, keep a reference to the GlowManager component attached
+     * to either left or right controller object. Right controller has A/B buttons, left has A/B.
+     * 
      * Constants below are used to reference button id when calling ToggleGlow()
-     * i.e. toggle glow on the X button by calling glowManagerInstance.ToggleGlow(GlowManager.ID_AX)
-     * A/B and X/Y are left/right controller dependent
+     * ID_AX is the index of the A and X button, ID_BY is B and Y.
+     * 
+     * i.e. toggle glow on the A button by calling glowManagerInstance.ToggleGlow(GlowManager.ID_AX)
+     * on the GlowManager instance attached to the right controller.
      */
     
     public const int ID_AX = 0;
     public const int ID_BY = 1;
     public const int ID_Oculus = 2;
     public const int ID_ThumbStick = 3;
-
+    
+    // buttons array should be populated in inspector, already done in Quest 2 controller prefabs
     public GameObject[] buttons;
     
     public void ToggleGlow(int id)

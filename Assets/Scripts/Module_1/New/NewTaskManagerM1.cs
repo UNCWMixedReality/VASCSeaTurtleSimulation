@@ -33,7 +33,7 @@ public class NewTaskManagerM1 : MonoBehaviour
     public AudioFeedback audiofeedback;
     
     //button glow managers
-    public GlowManager glowLeft;
+    public GlowManager glowLeft; //only needed if left controller buttons become useful at any point
     public GlowManager glowRight;
     #endregion
 

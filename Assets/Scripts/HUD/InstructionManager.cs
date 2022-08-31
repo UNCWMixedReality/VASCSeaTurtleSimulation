@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Linq;
+using Altimit.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,10 @@ public class InstructionManager : MonoBehaviour
 	public GameObject tapeMeasure;
 	//tool table clipboard reference
 	public GameObject clipboard;
+	//measuring table calipers reference
+	public GameObject calipersMsr;
+	//measuring table tape reference
+	public GameObject tapeMeasureMsr;
 	//loadturtle button
 	public GameObject loadTurtle;
 	//loadtracks button
@@ -139,6 +144,8 @@ public class InstructionManager : MonoBehaviour
 		RS.switchRoom();
 		FD.Fade(false, true);
 		print("Calling fade out");
+		calipersMsr.SetActive(true);	//enable calipers/tape for measuring table
+		tapeMeasureMsr.SetActive(true);
 		yield return new WaitForSeconds(wait);
 		changePanel(10);    //load task 1 instructions
 		AC.playSound();
@@ -155,6 +162,8 @@ public class InstructionManager : MonoBehaviour
 		RS.switchRoom();
 		FD.Fade(false, true);
 		print("Calling fade out");
+		calipersMsr.SetActive(false);	//disable calipers/tape for measuring table
+		tapeMeasureMsr.SetActive(false);
 		yield return new WaitForSeconds(wait);
 		StartCoroutine(Wait(6, 12));    //load task 2 instructions
 		AC.playSound();
@@ -182,6 +191,8 @@ public class InstructionManager : MonoBehaviour
 
 	void Start()
     {
+	    calipersMsr.SetActive(false);
+	    tapeMeasureMsr.SetActive(false);
 		calipers.SetActive(false);
 		TableOne.SetActive(false);
 		active = true;

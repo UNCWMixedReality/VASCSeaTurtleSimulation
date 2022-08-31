@@ -12,28 +12,33 @@ public class NewToolManagerM1 : MonoBehaviour
     public GameObject clipboard;
     public GameObject[] arrows;
     public GameObject tmIndicators;
+    public CompassManager compMan;
 
          
     public void PrepareCaliper()
     {
+        compMan.EnableCompass(calipers);
         calipers.SetActive(true);
         calipers.GetComponent<NewCaliper>().ShowButton();
     }
 
     public void PrepareJar() // Prepares Jar for measuring
     {
+        compMan.EnableCompass(container);
         container.SetActive(true);
         arrows[0].SetActive(true);
     }
    
     public void PrepareTM() // First Tape Measure PickUp
     {
+        compMan.EnableCompass(tapeMeasure);
         arrows[0].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         tapeMeasure.SetActive(true);
     }
 
     public void PrepareClipboard() // Prepares Clipboard for measuring
     {
+        compMan.DisableCompass();
         tmIndicators.SetActive(true);
         clipboard.SetActive(true);
         arrows[0].SetActive(false);

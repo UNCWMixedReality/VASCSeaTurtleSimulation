@@ -25,6 +25,7 @@ public class NewTaskManagerM1 : MonoBehaviour
     public NewIdentificationManagerM1 identifyTable;
     public NewTrackManagerM1 trackTable;
     public AudioFeedback audiofeedback;
+    public CompassManager compMan;
 
 
     //waypoint
@@ -219,11 +220,13 @@ public class NewTaskManagerM1 : MonoBehaviour
     private void PrepareWaypoint()
     {
         waypoint.SetActive(true);
+        compMan.EnableCompass(waypoint);
     }
 
     private void DisableWaypoint()
     {
         waypoint.SetActive(false);
+        compMan.DisableCompass();
     }
 
     public void TeleportationCompleted()

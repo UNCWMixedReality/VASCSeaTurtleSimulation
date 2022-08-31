@@ -21,6 +21,7 @@ public class TaskManager : MonoBehaviour
     //reference to activity manager script and instruction updater
     public New_Activity_Manager activityManager;
     public InstructionUpdater instrUpdater;
+    public CompassManager compMan;
 
     //number of tasks completed
     public int taskCount { get; set; }
@@ -67,6 +68,7 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the second task.
             PrepareExcavationStart();
+            compMan.EnableCompass(excavationWaypoint);
             instrUpdater.RunInstructions();
         }
 
@@ -75,6 +77,7 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the third task
             PrepareGloves();
+            compMan.EnableCompass(gloveL);
             instrUpdater.RunInstructions();
             //Logs activity for entering waypoint
             DcDataLogging.LogActivity(new Activity(
@@ -89,6 +92,7 @@ public class TaskManager : MonoBehaviour
         {
             //sets everything up for the fourth task
             instrUpdater.RunInstructions();
+            compMan.EnableCompass(egg1);
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now, 
@@ -102,6 +106,7 @@ public class TaskManager : MonoBehaviour
         {
             activityManager.MarkActivityCompletion();
             PrepareSorting();
+            compMan.DisableCompass();
             instrUpdater.RunInstructions();
             //Logs activity for digging up nest
             DcDataLogging.LogActivity(new Activity(

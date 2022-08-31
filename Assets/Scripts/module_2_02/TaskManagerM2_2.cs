@@ -33,6 +33,7 @@ public class TaskManagerM2_2 : MonoBehaviour
     public DigManager digMan;
     public CageManager cageMan;
     public SignManager signMan;
+    public CompassManager compMan;
 
     public GameObject relocationWaypoint;
     public GameObject nestEnclosure;
@@ -82,6 +83,7 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Successfully placed eggs in the new nest");
             relocMan.EndRelocation();
             digMan.PrepareShovel();
+            compMan.EnableCompass(digMan.shovel);
             activityManager.MarkActivityCompletion();
         }
 
@@ -90,6 +92,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             LogTask("Grabbed shovel");
             digMan.DisableShovelHighlight();
+            compMan.DisableCompass();
             digMan.PrepareDigging();
         }
 
@@ -98,6 +101,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             LogTask("Covered nest with sand");
             cageMan.PrepareCage();
+            compMan.EnableCompass(cageMan.cage);
         }
 
         //true when the user completes the sixth task by grabbing the cage
@@ -106,6 +110,7 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Cage grabbed");
             cageMan.DisableCageHighlight();
             cageMan.PrepareCovering();
+            compMan.DisableCompass();
         }
 
         //true when the user completes the seventh task by placing the cage
@@ -114,6 +119,7 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Cage placed");
             cageMan.EndCovering();
             signMan.PrepareSign();
+            compMan.EnableCompass(signMan.sign);
         }
 
         //true when the user completes the eighth task by grabbing the sign
@@ -122,6 +128,7 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Sign grabbed");
             signMan.DisableSignHighlight();
             signMan.PreparePlacement();
+            compMan.DisableCompass();
         }
 
         //true when user completes the ninth task by placing the sign

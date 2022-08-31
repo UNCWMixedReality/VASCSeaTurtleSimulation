@@ -18,13 +18,13 @@ public class WaypointPointers : MonoBehaviour
 
     public void FixedUpdate()
     {
-        waypointLocation = taskMan.activeWaypoint.transform.position;
-        arrowPos = waypointArrow.transform.position;
+        //waypointLocation = taskMan.activeWaypoint.transform.position;
+        //arrowPos = waypointArrow.transform.position;
 
-        float anglez = MathF.Atan2(arrowPos.y, waypointLocation.y) * Mathf.Rad2Deg;
-        float angley = MathF.Atan2(arrowPos.z, waypointLocation.z) * Mathf.Rad2Deg;
+        //float anglez = MathF.Atan2(arrowPos.y, waypointLocation.y) * Mathf.Rad2Deg;
+        //float angley = MathF.Atan2(arrowPos.z, waypointLocation.z) * Mathf.Rad2Deg;
 
-        waypointArrow.transform.rotation = Quaternion.Euler(0, angley, anglez);
+        //waypointArrow.transform.rotation = Quaternion.Euler(0, angley, anglez);
 
     }
 }

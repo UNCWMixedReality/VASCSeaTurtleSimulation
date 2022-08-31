@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using DataCollection;
 using DataCollection.Models;
 using UnityEngine;
-//using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TutorialFunctionality : MonoBehaviour
@@ -18,6 +17,8 @@ public class TutorialFunctionality : MonoBehaviour
     public AudioFeedback audiofeedback;
     public AudioConvoTutorial ACT;
     public IMTutorial IMT;
+    public CompassManager compMan;
+    public GameObject[] waypoints;
 
     private int stage = 0;
     private Vector2 touchPadL = new Vector2();
@@ -52,7 +53,8 @@ public class TutorialFunctionality : MonoBehaviour
         if(stage == 1)
         {
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
-            //doorA.Play();
+            waypoints[0].SetActive(true);
+            compMan.EnableCompass(waypoints[0]);
             ACT.playSound();
             IMT.changePanel(3);
             stage++;
@@ -72,8 +74,10 @@ public class TutorialFunctionality : MonoBehaviour
         {
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_close");
             secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
- 
-            //doorB.Play();
+            waypoints[0].SetActive(false);
+            waypoints[1].SetActive(true);
+            compMan.EnableCompass(waypoints[1]);
+
             ACT.playSound();
             IMT.changePanel(5);
             stage++;

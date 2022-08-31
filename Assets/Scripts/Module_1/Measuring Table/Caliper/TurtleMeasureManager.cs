@@ -14,7 +14,6 @@ public class TurtleMeasureManager : MonoBehaviour
 
     // Shell Measure Objects
     public GameObject tapeMeasure;
-    public GameObject[] tmPlaceholders;
     public GameObject[] tmColliders;
     public GameObject tmIndicators;
 
@@ -30,6 +29,8 @@ public class TurtleMeasureManager : MonoBehaviour
     public GameObject[] outlineFill;
     public Sprite checkmark;
 
+    public CompassManager compMan;
+
     public void prepareTools()
     {
         float shiny = Random.Range(1, 8192);
@@ -38,6 +39,8 @@ public class TurtleMeasureManager : MonoBehaviour
             Shiny.SetActive(true);
             Turtle.SetActive(false);
         }
+
+        compMan.EnableCompass(calipers);
 
         // prepare calipers
         calipers.transform.position = collidersPlaceholders[0].transform.position;
@@ -56,6 +59,7 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareFrontFins()
     {
+        compMan.EnableCompass(collidersPlaceholders[2]);
         calipers.GetComponent<NewCaliper>().taskNum = 7;
         for (int i=0; i < 2; i++)
         {
@@ -66,6 +70,7 @@ public class TurtleMeasureManager : MonoBehaviour
     }
     public void prepareBackFins()
     {
+        compMan.EnableCompass(collidersPlaceholders[4]);
         calipers.GetComponent<NewCaliper>().taskNum = 8;
         for (int i = 0; i < 2; i++)
         {
@@ -82,6 +87,7 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellLength()
     {
+        compMan.DisableCompass();
         tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
         calipers.GetComponent<DcGrabInteractable>().enabled = false;
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 9;
@@ -102,8 +108,8 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellWidth()
     {
-
         tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 10;
+
         for (int i = 0; i < 2; i++)
         {
             tmColliders[i].transform.position = collidersPlaceholders[i + 8].transform.position;
@@ -121,6 +127,7 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[3].SetActive(true);
         tmIndicators.SetActive(false);
         arrows[3].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+
         ChangeImage(checks[2]);
     }
 

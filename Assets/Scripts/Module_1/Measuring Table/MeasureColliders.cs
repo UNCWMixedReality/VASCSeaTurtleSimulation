@@ -23,7 +23,7 @@ public class MeasureColliders : MonoBehaviour
             //print("Hand col");
         }
 
-        if (col.CompareTag("TapeMeasure") || col.gameObject.name == "Tape End Collider")
+        if (col.gameObject.name == "Tape Measure" || col.gameObject.name == "Tape End Collider")
         {
             collided = true;
             //print("Measure col");

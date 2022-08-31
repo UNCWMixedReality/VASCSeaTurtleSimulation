@@ -172,7 +172,7 @@ public class SocialPlatformManager : MonoBehaviour
         Users.GetLoggedInUser().OnComplete(GetLoggedInUserCallback);
     }
 
-    void GetLoggedInUserCallback(Message<Oculus.Platform.Models.User> msg)
+    void GetLoggedInUserCallback(Message<User> msg)
     {
         if (msg.IsError)
         {

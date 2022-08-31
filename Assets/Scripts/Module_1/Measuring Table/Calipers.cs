@@ -167,12 +167,12 @@ public class Calipers : MonoBehaviour
             bool retract = false;
             //get button input based on current hand
             if (activeHand == "right"){
-				//touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+				touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.B);
                 retract = OVRInput.Get(OVRInput.RawButton.A);
             }
             if (activeHand == "left"){
-				//touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+				touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.Y);
                 retract = OVRInput.Get(OVRInput.RawButton.X);
             }

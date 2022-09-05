@@ -74,18 +74,16 @@ namespace DataCollection
         
         public static Models.Session BeginSession()
         {
-            UnityEngine.Debug.Log("Beginning session");
+            Debug.Log("Beginning session");
+            LoadLatestSessionId();
             if (DcDataLogging.Student != null)
             {
-                LoadLatestSessionId();
-                Session = new Models.Session(DcDataLogging.Student);
+                DcDataLogging.Session = new Models.Session(DcDataLogging.Student);
                 return Session;
             }
-
-            throw new Exception(
-                "DcDataLogging.Student is null. If calling BeginSession without a Student you" +
-                " must set this attribute yourself first."
-            );
+            Debug.Log("IMPORTANT DATA COLLECTION WARNING: Student was not set for this session");
+            DcDataLogging.Session = new Models.Session(new Student("NO NAME ENTERED", ""));
+            return Session;
         }
 
         public static void EndSession()

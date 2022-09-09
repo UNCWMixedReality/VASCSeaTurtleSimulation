@@ -20,7 +20,6 @@ namespace DataCollection
                     position.y,
                     position.z
                 ),
-                SceneManager.GetActiveScene().name,
                 DateTime.Now
             ));
         }

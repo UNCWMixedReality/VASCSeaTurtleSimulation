@@ -5,7 +5,7 @@ namespace DataCollection.Models
 {
     public class Student
     {
-        public static int StudentCount = 0;
+        private static int StudentCount;
         public string Id { get; }
         public string FirstName { get; }
         public string LastName { get; }

@@ -17,8 +17,7 @@ namespace DataCollection
             DcDataLogging.LogInteraction(new Interaction(
                 DateTime.Now, 
                 true,
-                this.name,
-                SceneManager.GetActiveScene().name
+                this.name
             ));
         }
 
@@ -28,8 +27,7 @@ namespace DataCollection
             DcDataLogging.LogInteraction(new Interaction(
                 DateTime.Now, 
                 false,
-                this.name,
-                SceneManager.GetActiveScene().name
+                this.name
             ));
         }
     }

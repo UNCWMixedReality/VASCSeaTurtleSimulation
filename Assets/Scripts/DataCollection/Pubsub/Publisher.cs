@@ -11,7 +11,7 @@ namespace DataCollection
          * It includes functionality to add/remove subscribers and functions to publish events of each type
          */
 
-        public static Dictionary<string, List<ISubscriber>> SubList = new Dictionary<string, List <ISubscriber>>()
+        public static Dictionary<string, List<ISubscriber>> SubList = new()
         {
             {"Decision", new List<ISubscriber>(){ } },
             {"Interaction", new List<ISubscriber>(){ } },

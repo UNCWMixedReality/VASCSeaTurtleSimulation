@@ -12,14 +12,14 @@ namespace DataCollection.Models
         public string ActivityDetail { get; }
         
         [JsonConstructor]
-        public Activity(string id, string scene, DateTime timestamp, string activityDetail)
+        public Activity(string id, DateTime timestamp, string activityDetail)
         {
             Id = id;
             Timestamp = timestamp;
             ActivityDetail = activityDetail;
             ActivityCount++;
         }
-        public Activity(DateTime timestamp, string scene, string activityDetail)  // First Attempt at what might be needed for activity log
+        public Activity(DateTime timestamp, string activityDetail)  // First Attempt at what might be needed for activity log
         {
             Id = (ActivityCount++).ToString();
             Timestamp = timestamp;

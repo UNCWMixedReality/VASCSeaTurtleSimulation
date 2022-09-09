@@ -5,13 +5,13 @@ namespace DataCollection.Models
 {
     public class Interaction
     {
-        public static int InteractionCount = 0;
+        private static int InteractionCount;
         public string Id { get; }
         public DateTime Timestamp { get; }
-        public bool WasPickedUp { get; }
+        private bool WasPickedUp { get; }
         public string Name { get; }
         [JsonConstructor]
-        public Interaction(string id, DateTime timestamp, bool wasPickedUp, string name, string scene)
+        public Interaction(string id, DateTime timestamp, bool wasPickedUp, string name)
         {
             this.Id = id;
             this.Timestamp = timestamp;
@@ -19,7 +19,7 @@ namespace DataCollection.Models
             this.Name = name;
             InteractionCount++;
         }
-        public Interaction(DateTime timestamp, bool wasPickedUp, string name, string scene)
+        public Interaction(DateTime timestamp, bool wasPickedUp, string name)
         {
             this.Id = (InteractionCount++).ToString();
             this.Timestamp = timestamp;

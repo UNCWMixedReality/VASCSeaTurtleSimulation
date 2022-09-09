@@ -18,12 +18,12 @@ public class Calipers : MonoBehaviour
     
     public Text calipersText;
     public Text calipersTextBig;
-    //public Image upperImage;
-    //public Image lowerImage;
-    //public Image frontFinsX;
-    //public Image frontFinsCheck;
-    //public Image backFinsX;
-    //public Image backFinsCheck;
+    public Image upperImage;
+    public Image lowerImage;
+    public Image frontFinsX;
+    public Image frontFinsCheck;
+    public Image backFinsX;
+    public Image backFinsCheck;
 
     public SpriteRenderer frontFinArrow;
     public SpriteRenderer backFinArrow;
@@ -55,17 +55,15 @@ public class Calipers : MonoBehaviour
     CalipersCollision leftCalipScript;
     CalipersCollision rightCalipScript;
 
-    public NewTaskManagerM1 taskMan;
 
     void Start()
     {
         movingPartStartingPos = NewMovingPart.transform.localPosition;
         leftCalipScript = CalipersLeft.GetComponent<CalipersCollision>();
         rightCalipScript = CalipersRight.GetComponent<CalipersCollision>();
-        /*
+
         frontFinArrow.color = arrowTransparentYellow;
         backFinArrow.color = arrowTransparentYellow;
-        */
     }
 
     IEnumerator Pause()
@@ -118,32 +116,32 @@ public class Calipers : MonoBehaviour
         {
             if (!frontMeasured)
             {
-                //upperImage.color = new Color(1, 1, 1, 1);
-                //frontFinsCheck.color = new Color(1, 1, 1, 1);
-                //frontFinsX.color = new Color(1, 1, 1, 0);
+                upperImage.color = new Color(1, 1, 1, 1);
+                frontFinsCheck.color = new Color(1, 1, 1, 1);
+                frontFinsX.color = new Color(1, 1, 1, 0);
                 audiofeedback.playGood();
                 StopAllCoroutines();
                 frontMeasured = true;
-                //frontFinArrow.color = arrowGreen;
+                frontFinArrow.color = arrowGreen;
                 calipersTextBig.text = "14cm";
                 StartCoroutine(Pause());
-                taskMan.MarkTaskCompletion(7);
+                prog.TickProgressBar();
             }
         }
         else if (leftCalipScript.backCollided && rightCalipScript.backCollided) //Back fins successfully measured
         {
             if (!backMeasured)
             {
-                //lowerImage.color = new Color(1, 1, 1, 1);
-                //backFinsX.color = new Color(1, 1, 1, 0);
-                //backFinsCheck.color = new Color(1, 1, 1, 1);
+                lowerImage.color = new Color(1, 1, 1, 1);
+                backFinsX.color = new Color(1, 1, 1, 0);
+                backFinsCheck.color = new Color(1, 1, 1, 1);
                 audiofeedback.playGood();
                 StopAllCoroutines();
                 backMeasured = true;
-                //backFinArrow.color = arrowGreen;
+                backFinArrow.color = arrowGreen;
                 calipersTextBig.text = "13.5cm";
                 StartCoroutine(Pause());
-                taskMan.MarkTaskCompletion(8);
+                prog.TickProgressBar();
             }
         }
 
@@ -167,12 +165,12 @@ public class Calipers : MonoBehaviour
             bool retract = false;
             //get button input based on current hand
             if (activeHand == "right"){
-				//touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+				touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.B);
                 retract = OVRInput.Get(OVRInput.RawButton.A);
             }
             if (activeHand == "left"){
-				//touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+				touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.Y);
                 retract = OVRInput.Get(OVRInput.RawButton.X);
             }

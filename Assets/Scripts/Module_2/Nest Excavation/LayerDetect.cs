@@ -7,7 +7,6 @@ public class LayerDetect : MonoBehaviour
     public GameObject particle;
     public GameObject prevLayer;
     public GameObject nextLayer;
-    public TaskManager taskMan;
 		
 	public bool taskDone = false;
     	
@@ -26,7 +25,6 @@ public class LayerDetect : MonoBehaviour
                 //move next layer up
                 nextLayer.transform.position = gameObject.transform.position;
 				taskDone = true;
-                taskMan.MarkTaskCompletion();
                 Destroy(gameObject);
             }
         }

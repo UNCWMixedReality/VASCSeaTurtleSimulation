@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DataCollection;
+using DataCollection.Models;
 using UnityEngine;
-//using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TutorialFunctionality : MonoBehaviour
@@ -15,6 +17,8 @@ public class TutorialFunctionality : MonoBehaviour
     public AudioFeedback audiofeedback;
     public AudioConvoTutorial ACT;
     public IMTutorial IMT;
+    public CompassManager compMan;
+    public GameObject[] waypoints;
 
     private int stage = 0;
     private Vector2 touchPadL = new Vector2();
@@ -22,7 +26,7 @@ public class TutorialFunctionality : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+        if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight) || OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight) || OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
         {
             firstSnapTurn();
         }
@@ -32,11 +36,15 @@ public class TutorialFunctionality : MonoBehaviour
     {
         if (stage == 0)
         {
+            
             stage++;
             audiofeedback.playGood();
             displaySnapTurn();
-            Debug.Log("First Teleport");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Teleport"
+            ));
         }
     }
 
@@ -45,13 +53,17 @@ public class TutorialFunctionality : MonoBehaviour
         if(stage == 1)
         {
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
-            //doorA.Play();
+            waypoints[0].SetActive(true);
+            compMan.EnableCompass(waypoints[0]);
             ACT.playSound();
             IMT.changePanel(3);
             stage++;
             audiofeedback.playGood();
-            Debug.Log("First Snap Turn");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Snap Turn"
+            ));
         }
     }
 
@@ -60,16 +72,21 @@ public class TutorialFunctionality : MonoBehaviour
         audiofeedback.playSelection();
         if (stage == 2)
         {
-            firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
+            firstDoor.GetComponent<Animator>().SetTrigger("trigger_close");
             secondDoor.GetComponent<Animator>().SetTrigger("trigger_start");
- 
-            //doorB.Play();
+            waypoints[0].SetActive(false);
+            waypoints[1].SetActive(true);
+            compMan.EnableCompass(waypoints[1]);
+
             ACT.playSound();
             IMT.changePanel(5);
             stage++;
             audiofeedback.playGood();
-            Debug.Log("First Object Grab");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Object Grab"
+                ));
         }
     }
 
@@ -78,9 +95,14 @@ public class TutorialFunctionality : MonoBehaviour
         if (stage == 3)
         {
             audiofeedback.playGood();
-            SceneManager.LoadScene("Main");
-            Debug.Log("First Button Click");
-            Debug.Log($"Stage: {stage}");
+            DcDataLogging.LogActivity(new Activity(
+                DateTime.Now,
+                SceneManager.GetActiveScene().name,
+                "Completed first Button Click"
+                ));
+            DcDataLogging.EndSession();
+            SceneManager.LoadScene("JustModule");
+            
         }
 
     }

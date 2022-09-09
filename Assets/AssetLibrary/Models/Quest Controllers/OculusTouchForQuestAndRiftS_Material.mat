@@ -15,14 +15,18 @@ MonoBehaviour:
   version: 2
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OculusTouchForQuestAndRiftS_Material
-  m_Shader: {fileID: 6, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _SPECULAR_COLOR
+  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _GLOSSINESS_FROM_BASE_ALPHA
+  - _SPECULARHIGHLIGHTS_OFF
+  - _SPECULAR_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -32,6 +36,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BMTTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BMTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BOTTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BOTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BTTTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BTTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f353c9f159bdb3b4d85fb826e8203c66, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -64,7 +92,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PTTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -72,14 +108,44 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _STTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SoftMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TPTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TRTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Amplitude: 0.25
+    - _BMEmit: 0
+    - _BMTEmit: 0
+    - _BOEmit: 0
+    - _BOTEmit: 0
+    - _BTEmit: 0
+    - _BTTEmit: 0
+    - _BaseEmit: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _ColorMask: 15
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -92,9 +158,11 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _PTEmit: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _STEmit: 0
     - _SampleGI: 0
     - _Shininess: 0
     - _Smoothness: 0
@@ -103,12 +171,35 @@ Material:
     - _SpecSource: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Surface: 0
+    - _TEmit: 0
+    - _TPEmit: 0
+    - _TREmit: 0
     - _UVSec: 0
+    - _UseUIAlphaClip: 0
+    - _Waves: 2
     - _ZWrite: 1
     m_Colors:
+    - _BMColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BMTColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BOColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BOTColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BTColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BTTColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.21960744, g: 0.21960744, b: 0.21960744, a: 0}
+    - _Black: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _PTColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _STColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _TColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TPColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TRColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

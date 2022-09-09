@@ -42,7 +42,10 @@ public class AudioConvoM2 : MonoBehaviour
         audioInstructions.Enqueue(M207);
         audioInstructions.Enqueue(M208);
         audioInstructions.Enqueue(M209);
-        
+        audioInstructions.Enqueue(M210);
+        audioInstructions.Enqueue(M211);
+        audioInstructions.Enqueue(M212);
+        audioInstructions.Enqueue(M213);
         //set current file to first
         temp = M201;
     }
@@ -62,7 +65,7 @@ public class AudioConvoM2 : MonoBehaviour
             backlog++;
         }
     }
-    /*
+
     void Update()
     {
         //if there is a backlog, this waits for the first opportunity to play the next instruction audio file and decrement the backlog counter
@@ -76,5 +79,4 @@ public class AudioConvoM2 : MonoBehaviour
             }
         }
     }
-    */
 }

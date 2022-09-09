@@ -18,11 +18,11 @@ public class TapeMeasure : MonoBehaviour
     public GameObject tapePoint;
     public GameObject tapeEndCol;
 
-    //public Image ShellX;
-    //public Image ShellCheck;
-    //public Image shellImage;
-    //public Image horizontalLine;
-    //public Image verticalLine;
+    public Image ShellX;
+    public Image ShellCheck;
+    public Image shellImage;
+    public Image horizontalLine;
+    public Image verticalLine;
     public Canvas measureCanvas;
     public Text measureText;
 
@@ -52,16 +52,14 @@ public class TapeMeasure : MonoBehaviour
     private LineRenderer line;
     private string activeHand;
 
-    public NewTaskManagerM1 taskMan;
-
     void Start()
     {
         line = this.gameObject.GetComponent<LineRenderer>(); //Initialize line renderer to not be visible.
         line.SetWidth(0.0F, 0.0F);
         line.SetVertexCount(2);
 
-        //shellVerticalArrow.color = arrowTransparentYellow; //Start arrows as transparent.
-        //shellHorizontalArrow.color = arrowTransparentYellow;
+        shellVerticalArrow.color = arrowTransparentYellow; //Start arrows as transparent.
+        shellHorizontalArrow.color = arrowTransparentYellow;
     }
 
     IEnumerator Pause()
@@ -114,33 +112,31 @@ public class TapeMeasure : MonoBehaviour
         {
             if (!verticalMeasured)
             {
-                //verticalLine.color = new Color(1, 1, 1, 1);
+                verticalLine.color = new Color(1, 1, 1, 1);
                 measureText.text = "82 cm";
                 StopAllCoroutines();
                 verticalMeasured = true;
-                //shellVerticalArrow.color = arrowGreen;
+                shellVerticalArrow.color = arrowGreen;
                 StartCoroutine(Pause());
                 audiofeedback.playGood();
-                taskMan.MarkTaskCompletion(9);
             }
         }
-        if (side1Coll.collided && side2Coll.collided) //If hands are touching horizontal shell colliders, change images.
+        else if (side1Coll.collided && side2Coll.collided) //If hands are touching horizontal shell colliders, change images.
         {
             if (!horizontalMeasured)
             {
-                //horizontalLine.color = new Color(1, 1, 1, 1);
+                horizontalLine.color = new Color(1, 1, 1, 1);
                 measureText.text = "68 cm";
                 StopAllCoroutines();
                 horizontalMeasured = true;
-                //shellHorizontalArrow.color = arrowGreen;
+                shellHorizontalArrow.color = arrowGreen;
                 StartCoroutine(Pause());
                 audiofeedback.playGood();
-                taskMan.MarkTaskCompletion(10);
             }
         }
 
         //If horizontal and vertical have been measured, turn whole shell green
-        /*if (horizontalLine.color == new Color(1, 1, 1, 1) && verticalLine.color == new Color(1, 1, 1, 1) && !shellcolorchanged)
+        if (horizontalLine.color == new Color(1, 1, 1, 1) && verticalLine.color == new Color(1, 1, 1, 1) && !shellcolorchanged)
         {
             verticalLine.color = new Color(1, 1, 1, 0);
             horizontalLine.color = new Color(1, 1, 1, 0);
@@ -149,7 +145,7 @@ public class TapeMeasure : MonoBehaviour
             ShellCheck.color = new Color(1, 1, 1, 1);
             shellcolorchanged = true;
             prog.TickProgressBar();
-        }*/
+        }
 
 
 

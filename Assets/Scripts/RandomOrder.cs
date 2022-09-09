@@ -14,4 +14,13 @@ public class RandomOrder : MonoBehaviour
 
         return shuffledList;
     }
+
+    void Start()
+    {
+        /*var result = randomize(3);
+        foreach(var item in result)
+        {
+            print(item);
+        }*/
+    }
 }

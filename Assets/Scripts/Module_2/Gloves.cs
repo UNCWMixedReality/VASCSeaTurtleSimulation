@@ -11,17 +11,19 @@ public class Gloves : MonoBehaviour
     public GameObject handL;
     public GameObject handR;
 
-    //changes the users hands to blue gloves.
+    public ProgressM2 PM2;
+
+    //snap the blue gloves to the players hands
     public void wearGloves()
     {
-        //turn off the gloves that we picked up
         pickupL.SetActive(false);
         pickupR.SetActive(false);
-        //turn off the controllers
         controllerL.SetActive(false);
         controllerR.SetActive(false);
-        //turn on the gloves attached to the controllers
+
         handL.SetActive(true);
         handR.SetActive(true);
+
+        PM2.TickProgressBar();
     }
 }

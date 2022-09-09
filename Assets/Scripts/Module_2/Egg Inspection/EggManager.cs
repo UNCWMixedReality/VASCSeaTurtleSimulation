@@ -22,9 +22,7 @@ public class EggManager : MonoBehaviour
 	public bool taskDone = false;
 
 	public AudioFeedback audiofeedback;
-
-	public TaskManager taskMan;
-
+	
 	private bool oneDone = false;
 	private bool twoDone = false;
 	private bool threeDone = false;
@@ -97,7 +95,6 @@ public class EggManager : MonoBehaviour
         }
 		if(oneDone && twoDone && threeDone && fourDone && fiveDone && sixDone && sevenDone && eightDone && nineDone && tenDone && !taskDone){
 			taskDone = true;
-			taskMan.MarkTaskCompletion();
 			wrongBuckets();
 		}
     }

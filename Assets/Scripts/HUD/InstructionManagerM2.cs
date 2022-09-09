@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.IO;
@@ -15,13 +14,14 @@ public class InstructionManagerM2 : MonoBehaviour
 	//the Canvas gameobject
 	public GameObject InstructionPanel;
 	//the panel that displays the sorted eggs
-	
+	public GameObject EggPanel;
 
 	//tracks the player's location
 	public GameObject playerTracker;
 
 	//references to the waypoints
-	
+	public GameObject MarkerExcavate;
+	public GameObject MarkerMeasure;
 	public GameObject MarkerReplace;
 	public GameObject MarkerDig;
 	public GameObject MarkerCover;
@@ -54,7 +54,7 @@ public class InstructionManagerM2 : MonoBehaviour
 	//scripts referenced
 	public AudioConvoM2 AC;
 	public InteractableToggle IT;
-	//public Gloves gloves;
+	public Gloves gloves;
 	public VideoPlayer VP;
 
 	//tracks when the first instructions are loaded
@@ -86,23 +86,24 @@ public class InstructionManagerM2 : MonoBehaviour
 		if (index == 2)
 		{
 			yield return new WaitForSeconds(4);
-			
-			//gloves.pickupL.SetActive(true);
-			//gloves.pickupR.SetActive(true);
+			MarkerExcavate.SetActive(true);
+			gloves.pickupL.SetActive(true);
+			gloves.pickupR.SetActive(true);
         }
 	}
 
 	void Start()
     {
-		
-		
-		MarkerReplace.SetActive(true);
+		EggPanel.SetActive(false);
+		MarkerExcavate.SetActive(false);
+		MarkerMeasure.SetActive(false);
+		MarkerReplace.SetActive(false);
 		MarkerDig.SetActive(false);
 		MarkerCover.SetActive(false);
 		MarkerSign.SetActive(false);
 		taskActive = false;
 		current = 0;
-		taskTracker = 2;
+		taskTracker = 0;
         text = TextBox.GetComponent<Text>();
 		instructions[0] = ("Welcome! This is Module 2 of the VASC Sea Turtle Simlation.");
 		instructions[1] = ("During this simulation, you will move sea turtle eggs from an endangered nest to a safer one.");//
@@ -137,7 +138,29 @@ public class InstructionManagerM2 : MonoBehaviour
 			playedFirst = true;
 		}
 
-		
+		//start first activity if player is in range
+		if(Vector3.Distance(playerTracker.transform.position, MarkerExcavate.transform.position) < range && !taskActive && taskTracker == 0 && MarkerExcavate.activeSelf){
+			changePanel(3); //load task 1 instructions
+			AC.playSound();
+			VP.nextVidPlay();
+			Debug.Log("first task started");
+			MarkerExcavate.SetActive(false);
+			taskTracker++;
+			taskActive = true;
+			oneStart = Time.time;
+		}
+		//start second activity if player is in range
+		if(Vector3.Distance(playerTracker.transform.position, MarkerMeasure.transform.position) < range && !taskActive && taskTracker == 1){
+			changePanel(5); //load task 2 instructions
+			AC.playSound();
+			Debug.Log("second task started");
+			MarkerMeasure.SetActive(false);
+			EggPanel.SetActive(true);
+			StartCoroutine(Wait(6, 6));
+			taskTracker++;
+			taskActive = true;
+			twoStart = Time.time;
+		}
 		//start third activity if player is in range
 		if(Vector3.Distance(playerTracker.transform.position, MarkerReplace.transform.position) < range && !taskActive && taskTracker == 2){
 			changePanel(8); //load task 3 instructions

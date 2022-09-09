@@ -1,0 +1,45 @@
+﻿{
+    "SessionID<int>": {
+        "start_time": "<DateTime> ?",
+        "end_time": "<DateTime> ?",
+        "StudentID<int>": {
+            "first_name": "<String>",
+            "last_name": "<String>"
+        },
+        "Logs": {
+            "LogID<int>": {
+                "Timestamp": "<DateTime>",
+                "line": "<String>"
+            }
+        },
+        "SessionMovement": {
+            "MovementID<Int>": {
+                "Timestamp": "<DateTime>",
+                "LocationID<Int>": {
+                    "Root": "<Vector3>",
+                    "Radius": "<Float>",
+                    "Name": "<String>"
+                }
+            }
+        },
+        "SessionDecision": {
+            "DecisionID<Int>": {
+                "Timestamp": "<DateTime>",
+                "DecisionValue": "<String> ?",
+                "TaskID<Int>": {
+                    "TaskName": "<String>",
+                    "TaskCurrentValue": "<String> ?"
+                }
+            }
+        },
+        "SessionInteraction": {
+            "InteractionID<Int>": {
+                "Timestamp": "<DateTime>",
+                "WasPickedUp": "<Bool>",
+                "ObjectID<Int>": {
+                    "ObjectName": "<String>"
+                }
+            }
+        }
+    }
+}

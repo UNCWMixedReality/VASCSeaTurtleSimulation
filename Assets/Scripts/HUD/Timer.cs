@@ -32,8 +32,8 @@ public class Timer : MonoBehaviour
             if (timerRemaining > 0)
             {
 
-                minuteText = Math.Floor(timerRemaining / 60).ToString("D2");
-                secondsText = Math.Floor(timerRemaining / 60).ToString("D2");
+                minuteText = Convert.ToInt32(Math.Floor(timerRemaining / 60)).ToString("D2");
+                secondsText = Convert.ToInt32(Math.Floor(timerRemaining % 60)).ToString("D2");
 
                 timer.text = minuteText + " : " + secondsText;
 

@@ -122,6 +122,7 @@ public class CalipersTut : MonoBehaviour
         else
         {
             calipers.transform.position = placeholder.transform.position;
+            calipers.transform.rotation = placeholder.transform.rotation;
             calipers.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }

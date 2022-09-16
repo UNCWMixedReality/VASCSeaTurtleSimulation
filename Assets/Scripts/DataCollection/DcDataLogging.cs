@@ -10,7 +10,7 @@ using DataCollection.Converters;
 using Newtonsoft.Json;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
-using System.Threading.Tasks;
+using DataCollection.PubSub;
 
 namespace DataCollection
 {
@@ -51,15 +51,17 @@ namespace DataCollection
                     {
                         LogManager.LogMessage($"Found Files! Here's a path: {files[0]}");
                     }
+                    Models.Session.sessionCount = files.Length;
                 }
                 catch (DirectoryNotFoundException)
                 {
                     Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
-                    files = Array.Empty<string>();
+                    Models.Session.sessionCount = 0;
                 }
-                Models.Session.sessionCount = files.Length;
             }
             
+            SessionId = Models.Session.sessionCount.ToString();
+
         }
         
         public static Models.Session BeginSession(Student student)
@@ -116,59 +118,48 @@ namespace DataCollection
                 LogManager.LogMessage($"{results.Item1.ToString()} - {results.Item2}");
             }
         }
+        
+        #region LogMethods
 
         public static void LogInteraction(Interaction data)
         {
-            if (Session.Interactions.ContainsKey(data.Id))
-            {
-                Session.Interactions[data.Id] = data;
-            }
-            else
-            {
-                Session.Interactions.Add(data.Id, data);
-            }
-            
+            // Add interaction to interactions log
+            Session.Interactions[data.Id] = data;
+            // Export data to json file on each interaction
             ExportData();
+            // Publish data to any subscribers
+            Publisher.PublishInteraction(data);
         }
 
         public static void LogDecision(Decision data)
         {
-            if (Session.Decisions.ContainsKey(data.Id))
-            {
-                Session.Decisions[data.Id] = data;
-            }
-            else
-            {
-                Session.Decisions.Add(data.Id, data);
-            }
+            // Add Decision to decisions log
+            Session.Decisions[data.Id] = data;
+            // Export data to json file on each interaction
             ExportData();
+            // Publish data to any subscribers
+            Publisher.PublishDecision(data);
         }
 
         public static void LogMovement(Movement data)
         {
-            if (Session.Movements.ContainsKey(data.Id))
-            {
-                Session.Movements[data.Id] = data;
-            }
-            else
-            {
-                Session.Movements.Add(data.Id, data);
-            }
+            // Add movement to movements log
+            Session.Movements[data.Id] = data;
+            // Export data to json file on each interaction
             ExportData();
+            // Publish data to any subscribers
+            Publisher.PublishMovement(data);
         }
 
         public static void LogActivity(Activity data)
         {
-            if (Session.Activities.ContainsKey(data.Id))
-            {
-                Session.Activities[data.Id] = data;
-            }
-            else
-            {
-                Session.Activities.Add(data.Id, data);
-            }
+            // Add activity to activities log
+            Session.Activities[data.Id] = data;
+            // Export data to json file on each interaction
             ExportData();
+            // Publish data to any subscribers
+            Publisher.PublishActivity(data);
         }
-
+        #endregion
     }
 }

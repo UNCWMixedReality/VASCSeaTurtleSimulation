@@ -28,7 +28,6 @@ public class ResetModule : MonoBehaviour
             {
                 DcDataLogging.LogActivity(new Activity(
                     DateTime.Now,
-                    SceneManager.GetActiveScene().name,
                     "Module Escape -- Back to Level Select"
                     ));
                 

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Session
+    public class Session: IDataModel
     {
         public static int sessionCount { get; set; }
         public string SessionScene { get; set; }

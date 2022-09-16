@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Decision
+    public class Decision: IDataModel
     {
         private static int DecisionCount;
         public string Id { get; }

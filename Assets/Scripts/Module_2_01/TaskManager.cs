@@ -81,8 +81,7 @@ public class TaskManager : MonoBehaviour
             instrUpdater.RunInstructions();
             //Logs activity for entering waypoint
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
+                DateTime.Now,
                 "Entered excavation waypoint"
                 ));
         }
@@ -95,8 +94,7 @@ public class TaskManager : MonoBehaviour
             compMan.EnableCompass(egg1);
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
+                DateTime.Now,
                 "Put on Gloves"
             ));
         }
@@ -110,8 +108,7 @@ public class TaskManager : MonoBehaviour
             instrUpdater.RunInstructions();
             //Logs activity for digging up nest
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
+                DateTime.Now,
                 "Dug up the nest"
             ));
         }
@@ -123,8 +120,7 @@ public class TaskManager : MonoBehaviour
             activityManager.MarkActivityCompletion();
             //Logs an activity for finishing egg sorting
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
-                SceneManager.GetActiveScene().name,
+                DateTime.Now,
                 "Finished sorting eggs"
             ));
         }

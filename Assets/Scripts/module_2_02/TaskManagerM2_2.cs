@@ -163,7 +163,6 @@ public class TaskManagerM2_2 : MonoBehaviour
          */
         DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
-                SceneManager.GetActiveScene().name,
                 message
                 ));
     }

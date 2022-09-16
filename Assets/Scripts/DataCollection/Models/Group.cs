@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Group
+    public class Group: IDataModel
     {
         public string Id { get; }
         public Dictionary<string, Student> Members { get; }

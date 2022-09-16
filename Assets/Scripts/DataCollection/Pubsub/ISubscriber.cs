@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using DataCollection.Models;
 
-namespace DataCollection 
+namespace DataCollection.PubSub
 {
     public interface ISubscriber
     {
-        public abstract void Callback();
+        public abstract void Callback(IDataModel data);
     }
 }

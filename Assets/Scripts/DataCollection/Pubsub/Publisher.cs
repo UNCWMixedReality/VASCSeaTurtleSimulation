@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace DataCollection
+using System.Collections.Generic;
+using DataCollection.Models;
+
+namespace DataCollection.PubSub
 {
     public static class Publisher
     {
@@ -29,8 +29,6 @@ namespace DataCollection
             {
                 SubList[event_type].Add(NewSub);
             }
-            //add subscriber to the master list
-            SubList["General"].Add(NewSub);
         }
 
         public static void RemoveSubscriber(ISubscriber OldSub, params string[] Types)
@@ -40,38 +38,43 @@ namespace DataCollection
             {
                 SubList[event_type].Remove(OldSub);
             }
-            //remove subscriber from the master list
-            SubList["General"].Remove(OldSub);
         }
 
         #region Publishers
         //invokes the callback method for the appropriate subscribers
-        public static void PublishEvent(string event_type="General")
+        public static void PublishEvent(IDataModel data, string event_type="General")
         {
             foreach (ISubscriber Sub in SubList[event_type])
             {
-                Sub.Callback();
+                Sub.Callback(data);
+            }
+            if (event_type != "General")
+            {
+                foreach (ISubscriber Sub in SubList["General"])
+                {
+                    Sub.Callback(data);
+                }
             }
         }
 
-        public static void PublishDecision()
+        public static void PublishDecision(Decision data)
         {
-            PublishEvent("Decision");
+            PublishEvent(data, "Decision");
         }
 
-        public static void PublishInteraction()
+        public static void PublishInteraction(Interaction data)
         {
-            PublishEvent("Interaction");
+            PublishEvent(data, "Interaction");
         }
 
-        public static void PublishMovement()
+        public static void PublishMovement(Movement data)
         {
-            PublishEvent("Movement");
+            PublishEvent(data, "Movement");
         }
 
-        public static void PublishActivity()
+        public static void PublishActivity(Activity data)
         {
-            PublishEvent("Activity");
+            PublishEvent(data,"Activity");
         }
 
         #endregion

@@ -42,7 +42,6 @@ public class TutorialFunctionality : MonoBehaviour
             displaySnapTurn();
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
-                SceneManager.GetActiveScene().name,
                 "Completed first Teleport"
             ));
         }
@@ -61,7 +60,6 @@ public class TutorialFunctionality : MonoBehaviour
             audiofeedback.playGood();
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
-                SceneManager.GetActiveScene().name,
                 "Completed first Snap Turn"
             ));
         }
@@ -84,7 +82,6 @@ public class TutorialFunctionality : MonoBehaviour
             audiofeedback.playGood();
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
-                SceneManager.GetActiveScene().name,
                 "Completed first Object Grab"
                 ));
         }
@@ -97,7 +94,6 @@ public class TutorialFunctionality : MonoBehaviour
             audiofeedback.playGood();
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now,
-                SceneManager.GetActiveScene().name,
                 "Completed first Button Click"
                 ));
             DcDataLogging.EndSession();

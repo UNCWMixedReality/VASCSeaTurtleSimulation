@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Interaction
+    public class Interaction: IDataModel
     {
         private static int InteractionCount;
         public string Id { get; }

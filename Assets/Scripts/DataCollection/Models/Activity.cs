@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Activity
+    public class Activity: IDataModel
     {
         public static int ActivityCount;
         public string Id { get; }

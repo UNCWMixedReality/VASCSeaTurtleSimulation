@@ -259,7 +259,6 @@ public class NewTaskManagerM1 : MonoBehaviour
          */
         DcDataLogging.LogActivity(new Activity(
             DateTime.Now,
-            SceneManager.GetActiveScene().name,
             message
         ));
     }

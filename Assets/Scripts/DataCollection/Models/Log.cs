@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace DataCollection.Models
 {
-    public class Log
+    public class Log: IDataModel
     {
         public string Id { get; }
         public DateTime StartTime { get; }

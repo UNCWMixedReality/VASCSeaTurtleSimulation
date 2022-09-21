@@ -4,6 +4,6 @@ namespace DataCollection.PubSub
 {
     public interface ISubscriber
     {
-        public abstract void Callback(IDataModel data);
+        public void Callback(IDataModel data);
     }
 }

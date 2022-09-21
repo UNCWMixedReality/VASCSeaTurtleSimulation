@@ -1,15 +1,9 @@
-﻿
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using DataCollection.Models;
 using System.IO;
 using DataCollection.Converters;
 using Newtonsoft.Json;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 using DataCollection.PubSub;
 
 namespace DataCollection
@@ -19,51 +13,14 @@ namespace DataCollection
         public static string SessionId;
         public static Models.Session Session;
         public static Student Student;
-        public static Dictionary<string, string> CorrectAnswers = new Dictionary<string, string>();
+        public static Dictionary<string, string> CorrectAnswers = new ();
+        private static bool _enable = true;
 
         static DcDataLogging()
         {
             LoadLatestSessionId();
         }
-        
-        public static void SetCorrectAnswer(string taskId, string correctAnswer)
-        {
-            if (CorrectAnswers.ContainsKey(taskId))
-            {
-                CorrectAnswers[taskId] = correctAnswer;
-            }
-            else
-            {
-                CorrectAnswers.Add(taskId, correctAnswer);
-            }
-        }
-
-        private static void LoadLatestSessionId()
-        {
-
-            if (Models.Session.sessionCount == 0)
-            {
-                string[] files;
-                try
-                {
-                    files = Directory.GetFiles($"{Application.persistentDataPath}/Log");
-                    if (files.Length > 0)
-                    {
-                        LogManager.LogMessage($"Found Files! Here's a path: {files[0]}");
-                    }
-                    Models.Session.sessionCount = files.Length;
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
-                    Models.Session.sessionCount = 0;
-                }
-            }
-            
-            SessionId = Models.Session.sessionCount.ToString();
-
-        }
-        
+        #region DevTools
         public static Models.Session BeginSession(Student student)
         {
             UnityEngine.Debug.Log("Beginning session");
@@ -96,6 +53,58 @@ namespace DataCollection
 
         }
 
+        public static void Enable()
+        {
+            _enable = true;
+        }
+
+        public static void Disable()
+        {
+            _enable = false;
+        }
+        #endregion
+        
+        public static void SetCorrectAnswer(string taskId, string correctAnswer)
+        {
+            if (_enable)
+            {
+                if (CorrectAnswers.ContainsKey(taskId))
+                {
+                    CorrectAnswers[taskId] = correctAnswer;
+                }
+                else
+                {
+                    CorrectAnswers.Add(taskId, correctAnswer);
+                }
+            }
+        }
+
+        private static void LoadLatestSessionId()
+        {
+
+            if (Models.Session.sessionCount == 0 && _enable)
+            {
+                string[] files;
+                try
+                {
+                    files = Directory.GetFiles($"{Application.persistentDataPath}/Log");
+                    if (files.Length > 0)
+                    {
+                        LogManager.LogMessage($"Found Files! Here's a path: {files[0]}");
+                    }
+                    Models.Session.sessionCount = files.Length;
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Directory.CreateDirectory($"{Application.persistentDataPath}/Log");
+                    Models.Session.sessionCount = 0;
+                }
+            }
+            
+            SessionId = Models.Session.sessionCount.ToString();
+
+        }
+
         public static void ExportData()
         {
             JsonSerializer serializer = new JsonSerializer();
@@ -107,6 +116,7 @@ namespace DataCollection
 
         }
 
+        #region ServerMethods
         public static async void SubmitDataToServer()
         {
             string NewServerPayload = JsonConvert.SerializeObject(DcDataLogging.Session);
@@ -118,47 +128,60 @@ namespace DataCollection
                 LogManager.LogMessage($"{results.Item1.ToString()} - {results.Item2}");
             }
         }
+        #endregion
         
         #region LogMethods
 
         public static void LogInteraction(Interaction data)
         {
-            // Add interaction to interactions log
-            Session.Interactions[data.Id] = data;
-            // Export data to json file on each interaction
-            ExportData();
-            // Publish data to any subscribers
-            Publisher.PublishInteraction(data);
+            if (_enable)
+            {
+                // Add interaction to interactions log
+                Session.Interactions[data.Id] = data;
+                // Export data to json file on each interaction
+                ExportData();
+                // Publish data to any subscribers
+                Publisher.PublishInteraction(data);
+            }
         }
 
         public static void LogDecision(Decision data)
         {
-            // Add Decision to decisions log
-            Session.Decisions[data.Id] = data;
-            // Export data to json file on each interaction
-            ExportData();
-            // Publish data to any subscribers
-            Publisher.PublishDecision(data);
+            if (_enable)
+            {
+                // Add Decision to decisions log
+                Session.Decisions[data.Id] = data;
+                // Export data to json file on each interaction
+                ExportData();
+                // Publish data to any subscribers
+                Publisher.PublishDecision(data);
+            }
         }
 
         public static void LogMovement(Movement data)
         {
-            // Add movement to movements log
-            Session.Movements[data.Id] = data;
-            // Export data to json file on each interaction
-            ExportData();
-            // Publish data to any subscribers
-            Publisher.PublishMovement(data);
+            if (_enable)
+            {
+                // Add movement to movements log
+                Session.Movements[data.Id] = data;
+                // Export data to json file on each interaction
+                ExportData();
+                // Publish data to any subscribers
+                Publisher.PublishMovement(data);
+            }
         }
 
         public static void LogActivity(Activity data)
         {
-            // Add activity to activities log
-            Session.Activities[data.Id] = data;
-            // Export data to json file on each interaction
-            ExportData();
-            // Publish data to any subscribers
-            Publisher.PublishActivity(data);
+            if (_enable)
+            {
+                // Add activity to activities log
+                Session.Activities[data.Id] = data;
+                // Export data to json file on each interaction
+                ExportData();
+                // Publish data to any subscribers
+                Publisher.PublishActivity(data);
+            }
         }
         #endregion
     }

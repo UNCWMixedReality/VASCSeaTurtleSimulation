@@ -20,14 +20,14 @@ namespace UltimateXR.Locomotion
 
         // Arc
 
-        [SerializeField] [Range(2,     1000)] private int                    _arcSegments           = 100;
-        [SerializeField] [Range(0.01f, 0.4f)] private float                  _arcWidth              = 0.1f;
-        [SerializeField]                      private float                  _arcScrollSpeedValid   = 1.0f;
-        [SerializeField]                      private float                  _arcScrollSpeedInvalid = 0.5f;
-        [SerializeField]                      private Material               _arcMaterialValid;
-        [SerializeField]                      private Material               _arcMaterialInvalid;
-        [SerializeField]                      private float                  _arcFadeLength       = 2.0f;
-        [SerializeField]                      private UxrRaycastStepsQuality _raycastStepsQuality = UxrRaycastStepsQuality.HighQuality;
+        [SerializeField][Range(2, 1000)] private int _arcSegments = 100;
+        [SerializeField][Range(0.01f, 0.4f)] private float _arcWidth = 0.1f;
+        [SerializeField] private float _arcScrollSpeedValid = 1.0f;
+        [SerializeField] private float _arcScrollSpeedInvalid = 0.5f;
+        [SerializeField] private Material _arcMaterialValid;
+        [SerializeField] private Material _arcMaterialInvalid;
+        [SerializeField] private float _arcFadeLength = 2.0f;
+        [SerializeField] private UxrRaycastStepsQuality _raycastStepsQuality = UxrRaycastStepsQuality.HighQuality;
 
         #endregion
 
@@ -49,19 +49,19 @@ namespace UltimateXR.Locomotion
 
             // Create arc GameObject
 
-            _arcGameObject                    = new GameObject("Arc");
+            _arcGameObject = new GameObject("Arc");
             _arcGameObject.transform.position = transform.position;
             _arcGameObject.transform.rotation = transform.rotation;
-            _arcGameObject.transform.parent   = Avatar.transform;
+            _arcGameObject.transform.parent = Avatar.transform;
 
             _arcMeshFilter = _arcGameObject.AddComponent<MeshFilter>();
-            _arcRenderer   = _arcGameObject.AddComponent<MeshRenderer>();
+            _arcRenderer = _arcGameObject.AddComponent<MeshRenderer>();
 
-            _arcMesh              = new Mesh();
-            _vertices             = new Vector3[(_arcSegments + 1) * 2];
-            _vertexColors         = new Color32[(_arcSegments + 1) * 2];
-            _vertexMapping        = new Vector2[(_arcSegments + 1) * 2];
-            _accumulatedArcLength = new float [(_arcSegments + 1) * 2];
+            _arcMesh = new Mesh();
+            _vertices = new Vector3[(_arcSegments + 1) * 2];
+            _vertexColors = new Color32[(_arcSegments + 1) * 2];
+            _vertexMapping = new Vector2[(_arcSegments + 1) * 2];
+            _accumulatedArcLength = new float[(_arcSegments + 1) * 2];
 
             _indices = new int[_arcSegments * 4];
 
@@ -76,10 +76,10 @@ namespace UltimateXR.Locomotion
 
             _arcMesh.vertices = _vertices;
             _arcMesh.colors32 = _vertexColors;
-            _arcMesh.uv       = _vertexMapping;
+            _arcMesh.uv = _vertexMapping;
             _arcMesh.SetIndices(_indices, MeshTopology.Quads, 0);
 
-            _arcMeshFilter.mesh         = _arcMesh;
+            _arcMeshFilter.mesh = _arcMesh;
             _arcRenderer.sharedMaterial = _arcMaterialValid;
         }
 
@@ -93,9 +93,9 @@ namespace UltimateXR.Locomotion
             // Set initial state
 
             _previousFrameHadArc = false;
-            _arcCancelled        = false;
+            _arcCancelled = false;
             _arcCancelledByAngle = false;
-            _scroll              = 0.0f;
+            _scroll = 0.0f;
 
             EnableArc(false, false);
         }
@@ -113,18 +113,24 @@ namespace UltimateXR.Locomotion
         /// <inheritdoc />
         protected override void UpdateTeleportLocomotion()
         {
-            Vector2 joystickValue = Avatar.ControllerInput.GetInput2D(HandSide, UxrInput2D.Joystick);
+            float triggerValue = Avatar.ControllerInput.GetInput1D(HandSide, UxrInput1D.Trigger);
 
-            if (joystickValue == Vector2.zero)
+            if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
             {
-                _arcCancelled        = false;
+                CancelTarget();
+            }
+
+            if (triggerValue <= .001f)
+            {
+                _arcCancelled = false;
                 _arcCancelledByAngle = false;
+                triggerValue = 0.0f;
             }
             else
             {
                 if (_arcCancelled)
                 {
-                    joystickValue = Vector2.zero;
+                    triggerValue = 0f;
                 }
             }
 
@@ -134,26 +140,26 @@ namespace UltimateXR.Locomotion
 
             if (IsArcVisible || _arcCancelledByAngle)
             {
-                if (joystickValue != Vector2.zero)
+                if (triggerValue != 0f)
                 {
                     // To support both touchpads and joysticks, we need to check in the case of touchpads that it is also pressed.
 
                     if (Avatar.ControllerInput.MainJoystickIsTouchpad)
                     {
-                        if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Joystick))
+                        if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
                         {
-                            teleportArcActive    = true;
+                            teleportArcActive = true;
                             _arcCancelledByAngle = false;
                         }
                     }
                     else
                     {
-                        teleportArcActive    = true;
+                        teleportArcActive = true;
                         _arcCancelledByAngle = false;
                     }
                 }
             }
-            else if (Avatar.ControllerInput.GetButtonsPressDown(HandSide, UxrInputButtons.JoystickUp))
+            else if (Avatar.ControllerInput.GetButtonsPressDown(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
             {
                 teleportArcActive = true;
             }
@@ -171,34 +177,34 @@ namespace UltimateXR.Locomotion
 
                 // Compute trajectory
 
-                bool    isValidTeleport  = false;
-                Vector3 right            = Vector3.Cross(ControllerForward, Vector3.up).normalized;
+                bool isValidTeleport = false;
+                Vector3 right = Vector3.Cross(ControllerForward, Vector3.up).normalized;
                 Vector3 projectedForward = Vector3.ProjectOnPlane(ControllerForward, Vector3.up).normalized;
-                float   angle            = -Vector3.SignedAngle(ControllerForward, projectedForward, right);
+                float angle = -Vector3.SignedAngle(ControllerForward, projectedForward, right);
 
                 if (Mathf.Abs(angle) < AbsoluteMaxArcAngleThreshold && _arcWidth > 0.0f)
                 {
-                    float parabolicSpeed           = Mathf.Sqrt(ArcGravity * MaxAllowedDistance);
+                    float parabolicSpeed = Mathf.Sqrt(ArcGravity * MaxAllowedDistance);
                     float timeToTravelHorizontally = Mathf.Max(2.0f, 2.0f * parabolicSpeed * Mathf.Abs(Mathf.Sin(angle * Mathf.Deg2Rad)) / ArcGravity);
 
-                    float endTime   = timeToTravelHorizontally * 2;
+                    float endTime = timeToTravelHorizontally * 2;
                     float deltaTime = endTime / BlockingRaycastStepsQualityToSteps(_raycastStepsQuality);
 
                     bool hitSomething = false;
 
                     for (float time = 0.0f; time < endTime; time += deltaTime)
                     {
-                        Vector3 point1                = EvaluateArc(ControllerStart, ControllerForward, parabolicSpeed, time);
-                        Vector3 point2                = EvaluateArc(ControllerStart, ControllerForward, parabolicSpeed, time + deltaTime);
-                        float   distanceBetweenPoints = Vector3.Distance(point1, point2);
-                        Vector3 direction             = (point2 - point1) / distanceBetweenPoints;
+                        Vector3 point1 = EvaluateArc(ControllerStart, ControllerForward, parabolicSpeed, time);
+                        Vector3 point2 = EvaluateArc(ControllerStart, ControllerForward, parabolicSpeed, time + deltaTime);
+                        float distanceBetweenPoints = Vector3.Distance(point1, point2);
+                        Vector3 direction = (point2 - point1) / distanceBetweenPoints;
 
                         // Process blocking hit.
                         // Use RaycastAll to avoid putting "permitted" objects in between "blocking" objects to teleport through walls or any other cheats.
 
                         if (HasBlockingRaycastHit(Physics.RaycastAll(point1, direction, distanceBetweenPoints, LayerMaskRaycast, TriggerCollidersInteraction), out RaycastHit hit))
                         {
-                            endTime      = time + deltaTime * (hit.distance / distanceBetweenPoints);
+                            endTime = time + deltaTime * (hit.distance / distanceBetweenPoints);
                             hitSomething = true;
 
                             isValidTeleport = NotifyDestinationRaycast(hit);
@@ -243,7 +249,7 @@ namespace UltimateXR.Locomotion
             EnableArc(false, false);
 
             _previousFrameHadArc = false;
-            _arcCancelled        = true;
+            _arcCancelled = true;
             _arcCancelledByAngle = false;
         }
 
@@ -274,7 +280,7 @@ namespace UltimateXR.Locomotion
             Vector3 previousPoint = Vector3.zero;
 
             float currentLength = 0.0f;
-            float totalLength   = 0.0f;
+            float totalLength = 0.0f;
 
             _arcGameObject.transform.position = ControllerStart;
             _arcGameObject.transform.rotation = Quaternion.LookRotation(ControllerForward);
@@ -298,7 +304,7 @@ namespace UltimateXR.Locomotion
                 }
 
                 _accumulatedArcLength[i] = currentLength;
-                totalLength              = currentLength;
+                totalLength = currentLength;
 
                 float v = currentLength / _arcWidth - _scroll;
 
@@ -321,13 +327,13 @@ namespace UltimateXR.Locomotion
                     if (_accumulatedArcLength[i] < _arcFadeLength)
                     {
                         alphaFloat = _accumulatedArcLength[i] / _arcFadeLength;
-                        alpha      = (byte)(alphaFloat * 255);
+                        alpha = (byte)(alphaFloat * 255);
                     }
 
                     if (totalLength - _accumulatedArcLength[i] < _arcFadeLength)
                     {
                         alphaFloat = alphaFloat * ((totalLength - _accumulatedArcLength[i]) / _arcFadeLength);
-                        alpha      = (byte)(alphaFloat * 255);
+                        alpha = (byte)(alphaFloat * 255);
                     }
                 }
 
@@ -339,7 +345,7 @@ namespace UltimateXR.Locomotion
 
             _arcMesh.vertices = _vertices;
             _arcMesh.colors32 = _vertexColors;
-            _arcMesh.uv       = _vertexMapping;
+            _arcMesh.uv = _vertexMapping;
             _arcMesh.SetIndices(_indices, MeshTopology.Quads, 0);
             _arcMesh.bounds = new Bounds(Vector3.zero, Vector3.one * UxrAvatar.LocalAvatarCamera.farClipPlane);
         }
@@ -366,11 +372,11 @@ namespace UltimateXR.Locomotion
         {
             switch (stepsQuality)
             {
-                case UxrRaycastStepsQuality.LowQuality:      return BlockingRaycastStepsQualityLow;
-                case UxrRaycastStepsQuality.MediumQuality:   return BlockingRaycastStepsQualityMedium;
-                case UxrRaycastStepsQuality.HighQuality:     return BlockingRaycastStepsQualityHigh;
+                case UxrRaycastStepsQuality.LowQuality: return BlockingRaycastStepsQualityLow;
+                case UxrRaycastStepsQuality.MediumQuality: return BlockingRaycastStepsQualityMedium;
+                case UxrRaycastStepsQuality.HighQuality: return BlockingRaycastStepsQualityHigh;
                 case UxrRaycastStepsQuality.VeryHighQuality: return BlockingRaycastStepsQualityVeryHigh;
-                default:                                     return BlockingRaycastStepsQualityHigh;
+                default: return BlockingRaycastStepsQualityHigh;
             }
         }
 
@@ -383,27 +389,27 @@ namespace UltimateXR.Locomotion
         /// </summary>
         private bool IsArcVisible => _arcGameObject.activeSelf;
 
-        private const int   BlockingRaycastStepsQualityLow      = 10;
-        private const int   BlockingRaycastStepsQualityMedium   = 20;
-        private const int   BlockingRaycastStepsQualityHigh     = 40;
-        private const int   BlockingRaycastStepsQualityVeryHigh = 80;
-        private const float AbsoluteMaxArcAngleThreshold        = 75.0f;
-        private const float ArcGravity                          = 9.8f;
+        private const int BlockingRaycastStepsQualityLow = 10;
+        private const int BlockingRaycastStepsQualityMedium = 20;
+        private const int BlockingRaycastStepsQualityHigh = 40;
+        private const int BlockingRaycastStepsQualityVeryHigh = 80;
+        private const float AbsoluteMaxArcAngleThreshold = 75.0f;
+        private const float ArcGravity = 9.8f;
 
         private bool _previousFrameHadArc;
         private bool _arcCancelled;
         private bool _arcCancelledByAngle;
 
-        private GameObject   _arcGameObject;
-        private MeshFilter   _arcMeshFilter;
+        private GameObject _arcGameObject;
+        private MeshFilter _arcMeshFilter;
         private MeshRenderer _arcRenderer;
-        private Mesh         _arcMesh;
-        private Vector3[]    _vertices;
-        private Color32[]    _vertexColors;
-        private Vector2[]    _vertexMapping;
-        private int[]        _indices;
-        private float[]      _accumulatedArcLength;
-        private float        _scroll;
+        private Mesh _arcMesh;
+        private Vector3[] _vertices;
+        private Color32[] _vertexColors;
+        private Vector2[] _vertexMapping;
+        private int[] _indices;
+        private float[] _accumulatedArcLength;
+        private float _scroll;
 
         #endregion
     }

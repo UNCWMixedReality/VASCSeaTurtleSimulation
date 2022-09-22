@@ -113,8 +113,10 @@ namespace UltimateXR.Locomotion
         /// <inheritdoc />
         protected override void UpdateTeleportLocomotion()
         {
+            // Changed Vector2D measuring joystick to a float measuring is the trigger has been pressed
             float triggerValue = Avatar.ControllerInput.GetInput1D(HandSide, UxrInput1D.Trigger);
 
+            // Cancels teleport if Button 1 (UI interact button) is pressed/held
             if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
             {
                 CancelTarget();
@@ -140,13 +142,13 @@ namespace UltimateXR.Locomotion
 
             if (IsArcVisible || _arcCancelledByAngle)
             {
-                if (triggerValue != 0f)
+                if (triggerValue != 0f) // checks if trigger is being pressed
                 {
                     // To support both touchpads and joysticks, we need to check in the case of touchpads that it is also pressed.
 
                     if (Avatar.ControllerInput.MainJoystickIsTouchpad)
                     {
-                        if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
+                        if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1)) // activates TP if triger is pressed and Button1 is not pressed
                         {
                             teleportArcActive = true;
                             _arcCancelledByAngle = false;
@@ -159,6 +161,7 @@ namespace UltimateXR.Locomotion
                     }
                 }
             }
+            // Activates TP if trigger is pressed and Button1 is not pressed
             else if (Avatar.ControllerInput.GetButtonsPressDown(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
             {
                 teleportArcActive = true;

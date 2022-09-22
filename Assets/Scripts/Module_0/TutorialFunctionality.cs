@@ -50,7 +50,7 @@ public class TutorialFunctionality : MonoBehaviour
 
     public void firstSnapTurn()
     {
-        if(stage == 1)
+        if(stage == 0)
         {
             firstDoor.GetComponent<Animator>().SetTrigger("trigger_start");
             waypoints[0].SetActive(true);

@@ -35,6 +35,7 @@ public class TapeMeasureSize : MonoBehaviour
         text.LookAt(playerhead);
 
         // Drawing line between body and end
+        line.transform.position = bodyPos.position;
         line.transform.LookAt(endPos);
         line.transform.localScale = new Vector3(tapeStartingScale.x, tapeStartingScale.y, tapeStartingScale.z + length*125);
 

@@ -25,7 +25,7 @@ public class TapeMeasureSize : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    public void LateUpdate()
     {
         // Updating measuring tape text
         length = Vector3.Distance(endPos.position, bodyPos.position);
@@ -37,9 +37,7 @@ public class TapeMeasureSize : MonoBehaviour
         // Drawing line between body and end
         line.transform.position = bodyPos.position;
         line.transform.LookAt(endPos);
-        line.transform.localScale = new Vector3(tapeStartingScale.x, tapeStartingScale.y, tapeStartingScale.z + length*125);
-
-
-
+        line.transform.localEulerAngles = new Vector3(line.transform.localEulerAngles.x, line.transform.localEulerAngles.y, 0);
+        line.transform.localScale = new Vector3(tapeStartingScale.x, tapeStartingScale.y, tapeStartingScale.z + length*250);
     }
 }

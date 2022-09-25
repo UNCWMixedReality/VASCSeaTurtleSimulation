@@ -21,7 +21,10 @@ public class CompassManager : MonoBehaviour
 
     void LateUpdate()
     {
-        compassImage.rectTransform.anchoredPosition = GetPosOnCompass(activeObjective);
+        if (activeObjective != null)
+        { 
+            compassImage.rectTransform.anchoredPosition = GetPosOnCompass(activeObjective);
+        }
     }
 
 

@@ -21,6 +21,7 @@ public class CaliperMeasure : MonoBehaviour
         if (col.name == "CalipColliderL" || col.name == "CalipColliderR")
         {
             collided = true;
+            Debug.Log(col.name);
         }
 
     }

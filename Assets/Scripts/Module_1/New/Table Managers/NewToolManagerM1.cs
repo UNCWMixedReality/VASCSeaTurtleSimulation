@@ -19,7 +19,7 @@ public class NewToolManagerM1 : MonoBehaviour
     {
         compMan.EnableCompass(calipers);
         calipers.SetActive(true);
-        calipers.GetComponent<NewCaliper>().ShowButton();
+        //calipers.GetComponent<NewCaliper>().ShowButton();
     }
 
     public void PrepareJar() // Prepares Jar for measuring

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474319649493505666}
+  - component: {fileID: 3491351673505144703}
+  - component: {fileID: 1634664153497354465}
   m_Layer: 0
   m_Name: Camera Controller
   m_TagString: Untagged
@@ -32,6 +34,39 @@ Transform:
   m_Father: {fileID: 474319650110039819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3491351673505144703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474319649493505667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &1634664153497354465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474319649493505667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217d6da9f2110c642952a97bcb13abd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableOtherInputModules: 1
+  _autoEnableOnWorldCanvases: 1
+  _autoAssignEventCamera: 1
+  _interactionTypeOnAutoEnable: 1
+  _fingerTipMinHoverDistance: 0.05
+  _dragThreshold: 40
 --- !u!1 &474319650110039828
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,8 +119,8 @@ MonoBehaviour:
   _prefabGuid: dc011efb41f2d4a419389aefb4b4270d
   _parentPrefab: {fileID: 0}
   _avatarMode: 0
-  _renderMode: 4
-  _showControllerHands: 1
+  _renderMode: -1
+  _showControllerHands: 0
   _avatarRenderers:
   - {fileID: 1817810050888052401}
   - {fileID: 6952996685187939519}
@@ -187,11 +222,11 @@ MonoBehaviour:
       _localUp: {x: 0, y: -1, z: 0}
       _localForward: {x: -1, y: -0, z: -0}
       _universalToActualAxesRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
-      _initialRotation: {x: 0.63565135, y: 0.6592362, z: -0.33655798, w: 0.21928035}
+      _initialRotation: {x: 0.5572381, y: 0.5496656, z: -0.495713, w: 0.37632728}
       _initialLocalRotation: {x: 0.039005104, y: -0.077951096, z: -0.09432525, w: 0.9917182}
       _initialLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialUniversalLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
-      _initialPosition: {x: -0.16247232, y: 1.2168685, z: 0.080916375}
+      _initialPosition: {x: -0.16247232, y: 1.2684642, z: 0.11164138}
       _initialLocalPosition: {x: -0.059387933, y: -0.00000024288892, z: 0.0000000011920929}
     _rightFingerUniversalLocalAxes:
       _transform: {fileID: 7737990529583910158}
@@ -199,20 +234,20 @@ MonoBehaviour:
       _localUp: {x: 0, y: 1, z: 0}
       _localForward: {x: -1, y: -0, z: -0}
       _universalToActualAxesRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-      _initialRotation: {x: 0.65923625, y: 0.6356512, z: -0.2192803, w: 0.33655804}
+      _initialRotation: {x: 0.54966575, y: 0.5572379, z: -0.37632722, w: 0.49571306}
       _initialLocalRotation: {x: -0.039005075, y: -0.07795112, z: 0.094325244, w: 0.9917182}
       _initialLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialUniversalLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
-      _initialPosition: {x: 0.16247222, y: 1.2168686, z: 0.0809162}
+      _initialPosition: {x: 0.16247223, y: 1.2684643, z: 0.11164115}
       _initialLocalPosition: {x: -0.059387956, y: 0.0000002901256, z: -0.00000009894371}
     _leftHandUniversalLocalAxes:
       _transform: {fileID: 1379081688086553744}
-      _localRight: {x: -0.05755215, y: 0.0051832683, z: 0.99832904}
+      _localRight: {x: -0.057551734, y: 0.0051832306, z: 0.99832904}
       _localUp: {x: 0.08969906, y: 0.99596894, z: -0}
-      _localForward: {x: -0.9943048, y: 0.089549184, z: -0.057785094}
-      _universalToActualAxesRotation: {x: 0.03264974, y: 0.7265167, z: 0.030814562,
-        w: 0.6856806}
-      _initialRotation: {x: -0.18301266, y: 0.18301266, z: 0.6830127, w: 0.6830127}
+      _localForward: {x: -0.9943048, y: 0.089549184, z: -0.057784677}
+      _universalToActualAxesRotation: {x: 0.032649733, y: 0.72651654, z: 0.030814568,
+        w: 0.6856808}
+      _initialRotation: {x: -0.3535534, y: 0.3535534, z: 0.61237246, w: 0.61237246}
       _initialLocalRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialUniversalLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -220,12 +255,12 @@ MonoBehaviour:
       _initialLocalPosition: {x: -0, y: 0, z: 0}
     _rightHandUniversalLocalAxes:
       _transform: {fileID: 224553239285659955}
-      _localRight: {x: 0.057552975, y: 0.0051831547, z: -0.99832904}
-      _localUp: {x: 0.08969584, y: -0.9959692, z: 0}
-      _localForward: {x: -0.994305, y: -0.089545965, z: -0.0577859}
-      _universalToActualAxesRotation: {x: -0.726517, y: -0.03264858, z: 0.68568045,
-        w: 0.030813444}
-      _initialRotation: {x: -0.18301266, y: 0.18301266, z: 0.6830127, w: 0.6830127}
+      _localRight: {x: 0.057553656, y: 0.00518322, z: -0.998329}
+      _localUp: {x: 0.0896959, y: -0.9959692, z: 0}
+      _localForward: {x: -0.99430496, y: -0.089546025, z: -0.057786584}
+      _universalToActualAxesRotation: {x: -0.7265173, y: -0.032648608, z: 0.68568015,
+        w: 0.030813452}
+      _initialRotation: {x: -0.3535534, y: 0.3535534, z: 0.61237246, w: 0.61237246}
       _initialLocalRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
       _initialUniversalLocalReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -356,21 +391,29 @@ MonoBehaviour:
     _eyesForwardOffset: 0.1
   _useLegIK: 1
   _listControllerEvents:
-  - _buttons: -1
+  - _buttons: 131072
     _animationType: 4
     _handPose: {fileID: 11400000, guid: ab3b4a5121be9594b83e601b0fa5648e, type: 2}
     _poseBlendValue: 0
-  - _buttons: -1
+  - _buttons: 131072
     _animationType: 5
     _handPose: {fileID: 11400000, guid: ab3b4a5121be9594b83e601b0fa5648e, type: 2}
     _poseBlendValue: 0
   - _buttons: 65536
     _animationType: 2
     _handPose: {fileID: 11400000, guid: 3260743ce360f814f8643cf6a0fcce7d, type: 2}
-    _poseBlendValue: 0
+    _poseBlendValue: 1
   - _buttons: 65536
     _animationType: 3
     _handPose: {fileID: 11400000, guid: 3260743ce360f814f8643cf6a0fcce7d, type: 2}
+    _poseBlendValue: 1
+  - _buttons: 0
+    _animationType: 0
+    _handPose: {fileID: 11400000, guid: 7d7c78e3ff03f0a42aa6c090394ccd44, type: 2}
+    _poseBlendValue: 0
+  - _buttons: 65536
+    _animationType: 1
+    _handPose: {fileID: 11400000, guid: 7d7c78e3ff03f0a42aa6c090394ccd44, type: 2}
     _poseBlendValue: 0
 --- !u!1 &1284786783960670115
 GameObject:
@@ -908,27 +951,27 @@ PrefabInstance:
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6830127
+      value: 0.61237246
       objectReference: {fileID: 0}
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301266
+      value: -0.3535534
       objectReference: {fileID: 0}
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18301266
+      value: 0.3535534
       objectReference: {fileID: 0}
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6830127
+      value: 0.61237246
       objectReference: {fileID: 0}
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -30
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 2815559533123375653, guid: 4001752301e5ec64bba14436977a8eb5,
         type: 3}
@@ -1226,27 +1269,27 @@ PrefabInstance:
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6830127
+      value: 0.61237246
       objectReference: {fileID: 0}
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301266
+      value: -0.3535534
       objectReference: {fileID: 0}
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18301266
+      value: 0.3535534
       objectReference: {fileID: 0}
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6830127
+      value: 0.61237246
       objectReference: {fileID: 0}
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -30
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 6470860882380479526, guid: c21877a9856d1ab42944bce79bd31e55,
         type: 3}

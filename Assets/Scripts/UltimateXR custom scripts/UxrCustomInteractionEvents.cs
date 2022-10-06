@@ -14,9 +14,11 @@ class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteract
     public UnityEvent onGrab;
     public UnityEvent whileGrabbing;
     public UnityEvent whileReleasing;
-    public UnityEvent onRelease;
+    public UnityEvent onRelease;    
     public UnityEvent whilePlacing;
     public UnityEvent onPlaced;
+    public string anchorTag;
+    public UnityEvent onSpecificPlaced;
     public UnityEvent whileConstraintsApplying;
     public UnityEvent onConstraintsApplied;
 
@@ -50,7 +52,14 @@ class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteract
 
     protected override void OnObjectPlaced(UxrManipulationEventArgs e)
     {
-        onPlaced.Invoke();
+        if (e.GrabbableAnchor.tag == anchorTag)
+        {
+            onSpecificPlaced.Invoke();
+        }
+        else
+        {
+            onPlaced.Invoke();
+        }
     }
 
     protected override void OnObjectConstraintsApplying(UxrApplyConstraintsEventArgs e)

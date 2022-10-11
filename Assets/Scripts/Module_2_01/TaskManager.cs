@@ -29,20 +29,11 @@ public class TaskManager : MonoBehaviour
     public float[] taskTimes { get; set; }
 
     //game objects used in tasks
-    public GameObject excavationWaypoint;
+    //public GameObject excavationWaypoint;
     public GameObject gloveL;
     public GameObject gloveR;
-    public GameObject egg1;
-    public GameObject egg2;
-    public GameObject egg3;
-    public GameObject egg4;
-    public GameObject egg5;
-    public GameObject egg6;
-    public GameObject crackedEgg1;
-    public GameObject crackedEgg2;
-    public GameObject halfEgg1;
-    public GameObject halfEgg2;
-    public GameObject eggCounterPanel;
+    public GameObject eggSorting;
+
 
     public void MarkTaskCompletion()
     {
@@ -68,13 +59,13 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the second task.
             PrepareExcavationStart();
-            compMan.EnableCompass(excavationWaypoint);
+            //compMan.EnableCompass(excavationWaypoint);
             instrUpdater.RunInstructions();
-        }
+//        }
 
         //this is true if the player has completed the second task by entering the excavation waypoint
-        else if (taskCount == 2)
-        {
+//        else if (taskCount == 2)
+//        {
             //set everything up for the third task
             PrepareGloves();
             compMan.EnableCompass(gloveL);
@@ -92,7 +83,7 @@ public class TaskManager : MonoBehaviour
         {
             //sets everything up for the fourth task
             instrUpdater.RunInstructions();
-            compMan.EnableCompass(egg1);
+            compMan.EnableCompass(eggSorting);
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
                 DateTime.Now, 
@@ -133,13 +124,13 @@ public class TaskManager : MonoBehaviour
     public void PrepareExcavationStart()
     {
         //so the player knows where to teleport
-        excavationWaypoint.SetActive(true);
+        //excavationWaypoint.SetActive(true);
     }
 
     public void PrepareGloves()
     {
         //turn off waypoint and set gloves active so player can put them on
-        excavationWaypoint.SetActive(false);
+        //excavationWaypoint.SetActive(false);
         gloveL.SetActive(true);
         gloveR.SetActive(true);
     }
@@ -147,17 +138,6 @@ public class TaskManager : MonoBehaviour
 
     public void PrepareSorting()
     {
-        //turns on the panel that shows how many eggs have been sorted
-        eggCounterPanel.SetActive(true);
-        egg1.SetActive(true);
-        egg2.SetActive(true);
-        egg3.SetActive(true);
-        egg4.SetActive(true);
-        egg5.SetActive(true);
-        egg6.SetActive(true);
-        crackedEgg1.SetActive(true);
-        crackedEgg2.SetActive(true);
-        halfEgg1.SetActive(true);
-        halfEgg2.SetActive(true);
+        eggSorting.SetActive(true);
     }
 }

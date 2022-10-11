@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EggSortManager : MonoBehaviour
 {
-    //public TaskManager taskMan;
+    public TaskManager taskMan;
 
     // Text objects for counting eggs sorted
     public Text goodEggText;
@@ -48,7 +48,7 @@ public class EggSortManager : MonoBehaviour
     {
         if (goodEggsDone == numGoodEggs && badEggsDone == numBadEggs)
         {
-            //taskMan.MarkTaskCompletion();
+            taskMan.MarkTaskCompletion();
             Debug.Log("sorting done");
         }
     }

@@ -61,12 +61,13 @@ public class TaskManager : MonoBehaviour
             PrepareExcavationStart();
             //compMan.EnableCompass(excavationWaypoint);
             instrUpdater.RunInstructions();
-//        }
+            //        }
 
-        //this is true if the player has completed the second task by entering the excavation waypoint
-//        else if (taskCount == 2)
-//        {
+            //this is true if the player has completed the second task by entering the excavation waypoint
+            //        else if (taskCount == 2)
+            //        {
             //set everything up for the third task
+            taskCount += 1;
             PrepareGloves();
             compMan.EnableCompass(gloveL);
             instrUpdater.RunInstructions();

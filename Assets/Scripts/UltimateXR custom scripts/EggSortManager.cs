@@ -10,6 +10,7 @@ public class EggSortManager : MonoBehaviour
     // Text objects for counting eggs sorted
     public Text goodEggText;
     public Text badEggText;
+    public Text totalEggText;
 
     // base number of good/bad eggs in scene
     public int numGoodEggs;
@@ -46,6 +47,7 @@ public class EggSortManager : MonoBehaviour
 
     public void CheckDone()
     {
+        totalEggText.text = "Total Eggs: " + (goodEggsDone + badEggsDone).ToString() + "/" + (numGoodEggs + numBadEggs).ToString();
         if (goodEggsDone == numGoodEggs && badEggsDone == numBadEggs)
         {
             taskMan.MarkTaskCompletion();

@@ -20,6 +20,12 @@ public class TapeMeasureSize : MonoBehaviour
     private Vector3 textLocation;
     private Vector3 tapeStartingScale;
 
+    // variables for measuring and progression
+    public NewTaskManagerM1 taskMan;
+    public TMMeasure LCollider;
+    public TMMeasure RCollider;
+    public int taskNum;
+
 
 
     void Start()
@@ -43,5 +49,12 @@ public class TapeMeasureSize : MonoBehaviour
         line.transform.LookAt(endPos);
         line.transform.localEulerAngles = new Vector3(line.transform.localEulerAngles.x, line.transform.localEulerAngles.y, 0);
         line.transform.localScale = new Vector3(tapeStartingScale.x, tapeStartingScale.y, tapeStartingScale.z + length*250);
+
+
+        // checking if measuring colliders have been triggered on both sides
+        if (LCollider.collided && RCollider.collided) {
+            Debug.Log("TM measured");
+            taskMan.MarkTaskCompletion(taskNum);
+        }
     }
 }

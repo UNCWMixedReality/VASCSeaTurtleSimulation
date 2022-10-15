@@ -43,24 +43,24 @@ public class TurtleMeasureManager : MonoBehaviour
         compMan.EnableCompass(calipers);
 
         // prepare calipers
-        calipers.transform.position = collidersPlaceholders[0].transform.position;
-        calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;
-        calipers.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
-        calipers.GetComponent<NewCaliper>().ResetCaliper();
-        calipers.GetComponent<DcGrabInteractable>().enabled = true;
+  //      calipers.transform.position = collidersPlaceholders[0].transform.position;
+    //    calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;
+     //   calipers.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
+     //   calipers.GetComponent<NewCaliper>().ResetCaliper();
 
         // prepare tape measure
-        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
-        tapeMeasure.transform.position = collidersPlaceholders[1].transform.position;
-        tapeMeasure.transform.rotation = collidersPlaceholders[1].transform.rotation;
-        tapeMeasure.GetComponent<NewTapeMeasure>().tmPlaceholder = collidersPlaceholders[1];
-        tmIndicators.SetActive(false);
+      //  tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
+      //  tapeMeasure.transform.position = collidersPlaceholders[1].transform.position;
+      //  tapeMeasure.transform.rotation = collidersPlaceholders[1].transform.rotation;
+      //  tapeMeasure.GetComponent<NewTapeMeasure>().tmPlaceholder = collidersPlaceholders[1];
+          tmIndicators.SetActive(false);
     }
 
     public void prepareFrontFins()
     {
         compMan.EnableCompass(collidersPlaceholders[2]);
-        calipers.GetComponent<NewCaliper>().taskNum = 7;
+        calipers.GetComponent<CalipSize>().taskNum = 7;
+
         for (int i=0; i < 2; i++)
         {
             caliperColliders[i].transform.position = collidersPlaceholders[i+2].transform.position;
@@ -71,7 +71,7 @@ public class TurtleMeasureManager : MonoBehaviour
     public void prepareBackFins()
     {
         compMan.EnableCompass(collidersPlaceholders[4]);
-        calipers.GetComponent<NewCaliper>().taskNum = 8;
+        calipers.GetComponent<CalipSize>().taskNum = 8;
         for (int i = 0; i < 2; i++)
         {
             caliperColliders[i].transform.position = collidersPlaceholders[i+4].transform.position;
@@ -88,9 +88,9 @@ public class TurtleMeasureManager : MonoBehaviour
     public void prepareShellLength()
     {
         compMan.DisableCompass();
-        tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
-        calipers.GetComponent<DcGrabInteractable>().enabled = false;
-        tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 9;
+        //tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
+        //calipers.GetComponent<DcGrabInteractable>().enabled = false;
+        tapeMeasure.GetComponent<TapeMeasureSize>().taskNum = 9;
         tmIndicators.SetActive(true);
 
         for (int i = 0; i < 2; i++)
@@ -103,12 +103,12 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[1].SetActive(true);
         arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         arrows[2].SetActive(true);
-        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "80 cm";
+        tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "80 cm";
     }
 
     public void prepareShellWidth()
     {
-        tapeMeasure.GetComponent<NewTapeMeasure>().taskNum = 10;
+        tapeMeasure.GetComponent<TapeMeasureSize>().taskNum = 10;
 
         for (int i = 0; i < 2; i++)
         {
@@ -119,7 +119,7 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[2].SetActive(true);
         arrows[2].SetActive(false);
         arrows[3].SetActive(true);
-        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "65 cm";
+        tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "65 cm";
     }
 
     public void finishMeasure()

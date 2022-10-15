@@ -6,7 +6,7 @@ using UnityEngine;
 public class CalipSize : MonoBehaviour
 {
     // progression scripts
-    //public NewTaskManagerM1 taskMan;
+    public NewTaskManagerM1 taskMan;
     public int taskNum;
 
     // text boxs to update
@@ -18,8 +18,8 @@ public class CalipSize : MonoBehaviour
     public Transform rightMeasure;
 
     // Caliper Colliders to determine if caliper is colliding with measurable object
-    //public CaliperMeasure LCollider;
-    //public CaliperMeasure RCollider;
+    public CaliperMeasure LCollider;
+    public CaliperMeasure RCollider;
 
     // calculation variable 
     private float length;
@@ -40,11 +40,11 @@ public class CalipSize : MonoBehaviour
         displayText.text = ((int)length).ToString() + "cm";
         floatingText.text = ((int)length).ToString() + "cm";
 
-        //if (LCollider.collided && RCollider.collided)
-        //{
-        //    Debug.Log("Caliper Measured");
-        //    taskMan.MarkTaskCompletion(taskNum);
-        //}
+        if (LCollider.collided && RCollider.collided)
+        {
+            Debug.Log("Caliper Measured");
+            taskMan.MarkTaskCompletion(taskNum);
+        }
 
     }
 }

@@ -43,8 +43,8 @@ public class NewToolManagerM1 : MonoBehaviour
         clipboard.SetActive(true);
         arrows[0].SetActive(false);
         arrows[1].SetActive(true);
-        tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "70 cm";
-        calipers.GetComponent<DcGrabInteractable>().enabled = false;
+        //tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "70 cm";
+        //calipers.GetComponent<DcGrabInteractable>().enabled = false;
     }
     public void FinishToolTable()
     {

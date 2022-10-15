@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using cakeslice;
-
-
 
 public class CaliperMeasure : MonoBehaviour
 {

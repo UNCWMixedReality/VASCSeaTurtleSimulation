@@ -116,8 +116,8 @@ namespace UltimateXR.Locomotion
             // Changed Vector2D measuring joystick to a float measuring is the trigger has been pressed
             float triggerValue = Avatar.ControllerInput.GetInput1D(HandSide, UxrInput1D.Trigger);
 
-            // Cancels teleport if Button 1 (UI interact button) is pressed/held
-            if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
+            // Cancels teleport if Button 1 (UI interact button) or Grip button is pressed/held
+            if (Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1) || Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Grip))
             {
                 CancelTarget();
             }
@@ -161,8 +161,9 @@ namespace UltimateXR.Locomotion
                     }
                 }
             }
-            // Activates TP if trigger is pressed and Button1 is not pressed
-            else if (Avatar.ControllerInput.GetButtonsPressDown(HandSide, UxrInputButtons.Trigger) && !Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1))
+            // Activates TP if trigger is pressed and Button1 or Grip is not pressed
+            else if (Avatar.ControllerInput.GetButtonsPressDown(HandSide, UxrInputButtons.Trigger) && 
+                !(Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Button1) || Avatar.ControllerInput.GetButtonsPress(HandSide, UxrInputButtons.Grip)))
             {
                 teleportArcActive = true;
             }

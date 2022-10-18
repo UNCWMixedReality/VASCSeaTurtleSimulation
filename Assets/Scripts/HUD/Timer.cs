@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
         {
             SceneManager.LoadScene("JustModule");
         }
-
+        SceneManager.LoadScene("JustModule");
 
     }
 }

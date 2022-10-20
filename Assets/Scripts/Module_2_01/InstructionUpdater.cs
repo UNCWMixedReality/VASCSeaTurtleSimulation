@@ -20,7 +20,6 @@ public class InstructionUpdater : MonoBehaviour
 
     // Instruction canvas attached to left controller that displays instructions/character/progress
     public GameObject InstructionPanel;
-    public GameObject TextBox;
     public Text text;
     public ProgressM2 progressBar;
 

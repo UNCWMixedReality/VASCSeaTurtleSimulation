@@ -1,28 +1,24 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DataCollection.Models;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR.Interaction.Toolkit;
+using UltimateXR.Avatar;
+using UltimateXR.Core.Components;
 using UltimateXR.Locomotion;
 
 
-class UxrCustomTeleportEvent
+
+public class UxrCustomTeleportEvent : UxrComponent<UxrTeleportSpawnCollider>
 {
-    //private void OnEnable()
-    //{
-    //    UxrManager.AvatarMoved += UxrManager_AvatarMoved;
-    //}
+    public UnityEvent onTeleport;
 
-    //private void OnDisable()
-    //{
-    //    UxrManager.AvatarMoved -= UxrManager_AvatarMoved;
-    //}
-
-    //private void UxrManager_AvatarMoved(object sender, UxrAvatarMoveEventArgs e)
-    //{
-    //    Debug.Log($"Avatar moved from {e.OldPosition} to {e.NewPosition}");
-    //}
+    private void RaiseTeleported(object sender, UxrAvatarMoveEventArgs e) 
+    {
+        Debug.Log($"teleported to {e}");
+        onTeleport?.Invoke();
+    }
 
 }
+
+
+

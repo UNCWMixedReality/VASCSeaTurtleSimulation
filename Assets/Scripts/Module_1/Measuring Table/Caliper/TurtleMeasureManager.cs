@@ -32,6 +32,7 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public CompassManager compMan;
 
+
     public void prepareTools()
     {
         float shiny = Random.Range(1, 8192);
@@ -44,7 +45,6 @@ public class TurtleMeasureManager : MonoBehaviour
         compMan.EnableCompass(calipers);
 
         // prepare calipers
-        //      calipers.transform.position = collidersPlaceholders[0].transform.position;
         UxrGrabManager.Instance.PlaceObject(calipers.GetComponent<UxrGrabbableObject>(), collidersPlaceholders[0].GetComponent<UxrGrabbableObjectAnchor>(), 0, false);
         calipers.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
 
@@ -86,8 +86,8 @@ public class TurtleMeasureManager : MonoBehaviour
     public void prepareShellLength()
     {
         compMan.DisableCompass();
-        //tapeMeasure.GetComponent<DcGrabInteractable>().enabled = true;
-        //calipers.GetComponent<DcGrabInteractable>().enabled = false;
+        tapeMeasure.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
+        calipers.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
         tapeMeasure.GetComponent<TapeMeasureSize>().taskNum = 9;
         tmIndicators.SetActive(true);
 
@@ -101,7 +101,6 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[1].SetActive(true);
         arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         arrows[2].SetActive(true);
-        //tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "80 cm";
     }
 
     public void prepareShellWidth()
@@ -117,7 +116,6 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[2].SetActive(true);
         arrows[2].SetActive(false);
         arrows[3].SetActive(true);
-        //tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "60 cm";
     }
 
     public void finishMeasure()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
 using DataCollection;
+using UltimateXR.Manipulation;
 
 public class NewToolManagerM1 : MonoBehaviour
 {
@@ -43,8 +44,7 @@ public class NewToolManagerM1 : MonoBehaviour
         clipboard.SetActive(true);
         arrows[0].SetActive(false);
         arrows[1].SetActive(true);
-        //tapeMeasure.GetComponent<NewTapeMeasure>().measureLength = "70 cm";
-        //calipers.GetComponent<DcGrabInteractable>().enabled = false;
+        calipers.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
     }
     public void FinishToolTable()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DataCollection;
+using UltimateXR.Manipulation;
 
 public class TurtleMeasureManager : MonoBehaviour
 {
@@ -43,17 +44,14 @@ public class TurtleMeasureManager : MonoBehaviour
         compMan.EnableCompass(calipers);
 
         // prepare calipers
-  //      calipers.transform.position = collidersPlaceholders[0].transform.position;
-    //    calipers.transform.rotation = collidersPlaceholders[0].transform.rotation;
-     //   calipers.GetComponent<NewCaliper>().caliperPlaceholder = collidersPlaceholders[0];
-     //   calipers.GetComponent<NewCaliper>().ResetCaliper();
+        //      calipers.transform.position = collidersPlaceholders[0].transform.position;
+        UxrGrabManager.Instance.PlaceObject(calipers.GetComponent<UxrGrabbableObject>(), collidersPlaceholders[0].GetComponent<UxrGrabbableObjectAnchor>(), 0, false);
+        calipers.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
 
         // prepare tape measure
-      //  tapeMeasure.GetComponent<DcGrabInteractable>().enabled = false;
-      //  tapeMeasure.transform.position = collidersPlaceholders[1].transform.position;
-      //  tapeMeasure.transform.rotation = collidersPlaceholders[1].transform.rotation;
-      //  tapeMeasure.GetComponent<NewTapeMeasure>().tmPlaceholder = collidersPlaceholders[1];
-          tmIndicators.SetActive(false);
+        tapeMeasure.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
+        UxrGrabManager.Instance.PlaceObject(tapeMeasure.GetComponent<UxrGrabbableObject>(), collidersPlaceholders[1].GetComponent<UxrGrabbableObjectAnchor>(), 0, false);
+        tmIndicators.SetActive(false);
     }
 
     public void prepareFrontFins()
@@ -103,7 +101,7 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[1].SetActive(true);
         arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         arrows[2].SetActive(true);
-        tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "80 cm";
+        //tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "80 cm";
     }
 
     public void prepareShellWidth()
@@ -119,7 +117,7 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[2].SetActive(true);
         arrows[2].SetActive(false);
         arrows[3].SetActive(true);
-        tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "65 cm";
+        //tapeMeasure.GetComponent<TapeMeasureSize>().floatingText.text = "60 cm";
     }
 
     public void finishMeasure()

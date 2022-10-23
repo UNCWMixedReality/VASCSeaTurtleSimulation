@@ -1721,6 +1721,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 65219621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83900900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83900901}
+  - component: {fileID: 83900902}
+  m_Layer: 0
+  m_Name: Right Grab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &83900901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83900900}
+  m_LocalRotation: {x: 0.63349086, y: 0.33984157, z: -0.59265643, w: 0.36325696}
+  m_LocalPosition: {x: 0.0547, y: -0.0041, z: 0.0572}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6823217539135892697}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 120.338, y: 86.185, z: 0}
+--- !u!114 &83900902
+MonoBehaviour:
+  m_ObjectHideFlags: 16
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83900900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212ce82ef45e9684daf388b699410086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &84012055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6319,6 +6363,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1345836995}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &449433977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2132424470536841015, guid: f4816c5482d24514292afa43227f3a4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 756242960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &452536568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7096,6 +7146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479505902}
+  - component: {fileID: 479505903}
   m_Layer: 0
   m_Name: Placeholder TM
   m_TagString: Untagged
@@ -7118,6 +7169,29 @@ Transform:
   m_Father: {fileID: 2047634394}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479505903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479505901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b06a52e9ced0e46a369c9a6e98a92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compatibleTags: []
+  _maxPlaceDistance: 0
+  _alignTransformUseSelf: 1
+  _alignTransform: {fileID: 0}
+  _dropProximityTransformUseSelf: 1
+  _dropProximityTransform: {fileID: 0}
+  _activateOnCompatibleNear: {fileID: 0}
+  _activateOnCompatibleNotNear: {fileID: 0}
+  _activateOnHandNearAndGrabbable: {fileID: 0}
+  _activateOnPlaced: {fileID: 0}
+  _activateOnEmpty: {fileID: 0}
 --- !u!1 &483795393
 GameObject:
   m_ObjectHideFlags: 0
@@ -14823,10 +14897,10 @@ MonoBehaviour:
       - m_Target: {fileID: 682819000}
         m_TargetAssemblyTypeName: NewTrackManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 885387723}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Leatherback
@@ -19051,6 +19125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218818755}
+  - component: {fileID: 1218818756}
   m_Layer: 0
   m_Name: Placeholder Calipers
   m_TagString: Untagged
@@ -19065,14 +19140,37 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218818754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.324, y: 0.9861, z: 0.886}
+  m_LocalRotation: {x: -0, y: -0.7290728, z: -0, w: 0.6844362}
+  m_LocalPosition: {x: -0.495, y: 0.98609966, z: 0.414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2047634394}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -93.617, z: 0}
+--- !u!114 &1218818756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218818754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b06a52e9ced0e46a369c9a6e98a92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _compatibleTags: []
+  _maxPlaceDistance: 0
+  _alignTransformUseSelf: 1
+  _alignTransform: {fileID: 0}
+  _dropProximityTransformUseSelf: 1
+  _dropProximityTransform: {fileID: 0}
+  _activateOnCompatibleNear: {fileID: 0}
+  _activateOnCompatibleNotNear: {fileID: 0}
+  _activateOnHandNearAndGrabbable: {fileID: 0}
+  _activateOnPlaced: {fileID: 0}
+  _activateOnEmpty: {fileID: 0}
 --- !u!1 &1219027791
 GameObject:
   m_ObjectHideFlags: 0
@@ -19455,7 +19553,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1239477024}
   - component: {fileID: 1239477025}
-  - component: {fileID: 1239477027}
   - component: {fileID: 1239477028}
   - component: {fileID: 1239477029}
   m_Layer: 0
@@ -19500,18 +19597,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2223133, y: 0.78403866, z: 2.0543997}
   m_Center: {x: -0.000000059604645, y: 0.40016383, z: 0.009527564}
---- !u!114 &1239477027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239477023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b36493300bd3354b932019efa2dff56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1239477028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20010,10 +20095,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1239477028}
         m_TargetAssemblyTypeName: NewIdentificationManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1251543412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Hawksbill
@@ -21763,10 +21848,10 @@ MonoBehaviour:
       - m_Target: {fileID: 682819000}
         m_TargetAssemblyTypeName: NewTrackManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1403614491}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Loggerhead
@@ -25430,6 +25515,50 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1637230043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637230044}
+  - component: {fileID: 1637230045}
+  m_Layer: 0
+  m_Name: Left Grab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637230044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637230043}
+  m_LocalRotation: {x: 0.94838953, y: 0.11305469, z: -0.2089719, w: 0.21001574}
+  m_LocalPosition: {x: -0.1252, y: 0.0581, z: 0.0321}
+  m_LocalScale: {x: -1.0000002, y: 1, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6823217538620617484}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 153.538, y: 22.936996, z: -8.134003}
+--- !u!114 &1637230045
+MonoBehaviour:
+  m_ObjectHideFlags: 16
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637230043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212ce82ef45e9684daf388b699410086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1650990121
 GameObject:
   m_ObjectHideFlags: 0
@@ -26958,10 +27087,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1239477028}
         m_TargetAssemblyTypeName: NewIdentificationManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1742252495}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Loggerhead
@@ -27717,10 +27846,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1239477028}
         m_TargetAssemblyTypeName: NewIdentificationManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1796849996}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Leatherback
@@ -28028,10 +28157,10 @@ MonoBehaviour:
       - m_Target: {fileID: 682819000}
         m_TargetAssemblyTypeName: NewTrackManagerM1, Assembly-CSharp
         m_MethodName: CheckAnswer
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1819006654}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Green
@@ -36200,8 +36329,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskMan: {fileID: 736135490}
   taskNum: 3
-  displayText: {fileID: 6823217537378505908}
-  floatingText: {fileID: 6823217537958087285}
+  player: {fileID: 449433977}
+  calipers: {fileID: 3184041099891257433}
+  movingPart: {fileID: 8526379564526266695}
+  displayTextBox: {fileID: 6823217537378505910}
+  floatingTextBox: {fileID: 6823217537958087287}
   leftMeasure: {fileID: 6823217539336339863}
   rightMeasure: {fileID: 6823217538518874894}
   LCollider: {fileID: 2048219603}
@@ -36882,7 +37014,7 @@ Transform:
   m_GameObject: {fileID: 3184041099891257433}
   m_LocalRotation: {x: -0, y: -0.2990581, z: -0, w: 0.95423496}
   m_LocalPosition: {x: 0.269, y: 0, z: -0.087}
-  m_LocalScale: {x: 1, y: 1.8307861, z: 1}
+  m_LocalScale: {x: -1, y: 1.8307861, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6823217538240016967}
@@ -37090,7 +37222,7 @@ MonoBehaviour:
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
-    _bothHandsCompatible: 0
+    _bothHandsCompatible: 1
     _handSide: 1
     _inputButtons: 65536
     _hideHandGrabberRenderer: 0
@@ -37107,7 +37239,7 @@ MonoBehaviour:
     - _avatarPrefabGuid: f4816c5482d24514292afa43227f3a4d
       _handPose: {fileID: 11400000, guid: 21bc978bf2087474f9c7f733d53aa938, type: 2}
       _poseBlendValue: 0.521
-      _gripAlignTransformHandLeft: {fileID: 0}
+      _gripAlignTransformHandLeft: {fileID: 1637230044}
       _gripAlignTransformHandRight: {fileID: 6823217537962035400}
     _alignToController: 0
     _alignToControllerAxes: {fileID: 0}
@@ -37257,7 +37389,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &6823217537962035399
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -37333,7 +37465,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &6823217538304089010
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 16
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -37645,9 +37777,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6823217538596808077}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0129}
-  m_LocalScale: {x: 0.00024000005, y: 0.00019000004, z: 0.24347007}
+  m_LocalRotation: {x: -0.70710677, y: 0.000000029802315, z: 0.000000029802315, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0, z: -0.012899991}
+  m_LocalScale: {x: 0.00024000008, y: 0.0001900001, z: 0.24347015}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6823217537378505909}
@@ -37657,7 +37789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0339, y: 0.0046}
+  m_AnchoredPosition: {x: -0.033900052, y: 0.0046}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6823217538596808077
@@ -37724,6 +37856,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6823217537962035400}
+  - {fileID: 1637230044}
   m_Father: {fileID: 6823217539287177811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37844,6 +37977,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6823217538304089011}
+  - {fileID: 83900901}
   m_Father: {fileID: 6823217539283604265}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37973,7 +38107,7 @@ MonoBehaviour:
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
-    _bothHandsCompatible: 0
+    _bothHandsCompatible: 1
     _handSide: 0
     _inputButtons: 65536
     _hideHandGrabberRenderer: 0
@@ -37991,12 +38125,12 @@ MonoBehaviour:
       _handPose: {fileID: 11400000, guid: 21bc978bf2087474f9c7f733d53aa938, type: 2}
       _poseBlendValue: 0.965
       _gripAlignTransformHandLeft: {fileID: 6823217538304089011}
-      _gripAlignTransformHandRight: {fileID: 0}
+      _gripAlignTransformHandRight: {fileID: 83900901}
     _alignToController: 0
     _alignToControllerAxes: {fileID: 0}
     _grabProximityMode: 0
     _grabProximityBox: {fileID: 0}
-    _maxDistanceGrab: 0.1
+    _maxDistanceGrab: 0.5
     _grabProximityTransformUseSelf: 1
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
@@ -38180,6 +38314,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2932323566367429529}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2932323566367429529}
+        m_TargetAssemblyTypeName: CalipSize, Assembly-CSharp
+        m_MethodName: checkHand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   whileGrabbing:
     m_PersistentCalls:
       m_Calls: []
@@ -38188,7 +38346,19 @@ MonoBehaviour:
       m_Calls: []
   onRelease:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2932323566367429529}
+        m_TargetAssemblyTypeName: CalipSize, Assembly-CSharp
+        m_MethodName: startCountdown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   whilePlacing:
     m_PersistentCalls:
       m_Calls: []

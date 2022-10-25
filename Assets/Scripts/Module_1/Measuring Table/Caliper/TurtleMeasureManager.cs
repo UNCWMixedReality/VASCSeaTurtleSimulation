@@ -59,10 +59,10 @@ public class TurtleMeasureManager : MonoBehaviour
         compMan.EnableCompass(collidersPlaceholders[2]);
         calipers.GetComponent<CalipSize>().taskNum = 7;
 
-        for (int i=0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
-            caliperColliders[i].transform.position = collidersPlaceholders[i+2].transform.position;
-            caliperColliders[i].transform.rotation = collidersPlaceholders[i+2].transform.rotation;
+            caliperColliders[i].transform.position = collidersPlaceholders[i + 2].transform.position;
+            caliperColliders[i].transform.rotation = collidersPlaceholders[i + 2].transform.rotation;
         }
         arrows[0].SetActive(true);
     }
@@ -72,8 +72,8 @@ public class TurtleMeasureManager : MonoBehaviour
         calipers.GetComponent<CalipSize>().taskNum = 8;
         for (int i = 0; i < 2; i++)
         {
-            caliperColliders[i].transform.position = collidersPlaceholders[i+4].transform.position;
-            caliperColliders[i].transform.rotation = collidersPlaceholders[i+4].transform.rotation;
+            caliperColliders[i].transform.position = collidersPlaceholders[i + 4].transform.position;
+            caliperColliders[i].transform.rotation = collidersPlaceholders[i + 4].transform.rotation;
         }
         ChangeImage(checks[0]);
         outlineFill[0].SetActive(true);
@@ -133,7 +133,7 @@ public class TurtleMeasureManager : MonoBehaviour
         check.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
         check.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 180, 0);
     }
-    
+
     public void DisableTools()
     {
         tapeMeasure.SetActive(false);

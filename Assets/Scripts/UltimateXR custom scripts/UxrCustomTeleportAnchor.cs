@@ -3,34 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UltimateXR.Avatar;
-using UltimateXR.Core.Components;
 using UltimateXR.Core;
 using UltimateXR.Locomotion;
 
 
-public class UxrCustomTeleportAnchor : MonoBehaviour
+public class UxrCustomTeleportAnchor : UxrTeleportSpawnCollider
 {
-    public UnityEvent onTeleport;
-    public UxrTeleportSpawnCollider anchor;
-    
+    [SerializeField] private UnityEvent _onTeleport;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        anchor.Teleported += UxrManager_AvatarMoved;
+        base.OnEnable();
+        base.Teleported += HandleTeleport;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        anchor.Teleported -= UxrManager_AvatarMoved;
+        base.OnDisable();
+        base.Teleported -= HandleTeleport;
     }
 
-    private void UxrManager_AvatarMoved(object sender, UxrAvatarMoveEventArgs e)
+    private void HandleTeleport(object sender, UxrAvatarMoveEventArgs e)
     {
-        Debug.Log($"Avatar moved from {e.OldPosition} to {e.NewPosition}");
-        onTeleport.Invoke();      
+        _onTeleport.Invoke();
     }
-
 }
-
 
 

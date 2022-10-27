@@ -45,6 +45,7 @@ public class EggSortManager : MonoBehaviour
         CheckDone();
     }
 
+    // checks whether all eggs are sorted into the correct buckets
     public void CheckDone()
     {
         totalEggText.text = "Total Eggs: " + (goodEggsDone + badEggsDone).ToString() + "/" + (numGoodEggs + numBadEggs).ToString();

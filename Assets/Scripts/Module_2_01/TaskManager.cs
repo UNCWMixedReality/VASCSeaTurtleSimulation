@@ -29,7 +29,7 @@ public class TaskManager : MonoBehaviour
     public float[] taskTimes { get; set; }
 
     //game objects used in tasks
-    //public GameObject excavationWaypoint;
+    public GameObject excavationWaypoint;
     public GameObject gloveL;
     public GameObject gloveR;
     public GameObject eggSorting;
@@ -37,6 +37,7 @@ public class TaskManager : MonoBehaviour
 
     public void MarkTaskCompletion()
     {
+        Debug.Log(taskCount);
 
         /*
          * This is the primary function for this class, every time a tasks gets completed this function is called
@@ -61,19 +62,18 @@ public class TaskManager : MonoBehaviour
             PrepareExcavationStart();
             //compMan.EnableCompass(excavationWaypoint);
             instrUpdater.RunInstructions();
-            //        }
+        }
 
-            //this is true if the player has completed the second task by entering the excavation waypoint
-            //        else if (taskCount == 2)
-            //        {
+        //this is true if the player has completed the second task by entering the excavation waypoint
+        else if (taskCount == 2)
+        {
             //set everything up for the third task
-            taskCount += 1;
             PrepareGloves();
             compMan.EnableCompass(gloveL);
             instrUpdater.RunInstructions();
             //Logs activity for entering waypoint
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Entered excavation waypoint"
                 ));
@@ -87,12 +87,12 @@ public class TaskManager : MonoBehaviour
             compMan.EnableCompass(eggSorting);
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Put on Gloves"
             ));
         }
-        
+
         //this is true if the player hsa completed the fourth task by digging up the nest
         else if (taskCount == 4)
         {
@@ -102,12 +102,12 @@ public class TaskManager : MonoBehaviour
             instrUpdater.RunInstructions();
             //Logs activity for digging up nest
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Dug up the nest"
             ));
         }
-        
+
         //true if the fifth and final task is completed
         else if (taskCount == 5)
         {
@@ -115,7 +115,7 @@ public class TaskManager : MonoBehaviour
             activityManager.MarkActivityCompletion();
             //Logs an activity for finishing egg sorting
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Finished sorting eggs"
             ));
@@ -125,13 +125,13 @@ public class TaskManager : MonoBehaviour
     public void PrepareExcavationStart()
     {
         //so the player knows where to teleport
-        //excavationWaypoint.SetActive(true);
+        excavationWaypoint.SetActive(true);
     }
 
     public void PrepareGloves()
     {
         //turn off waypoint and set gloves active so player can put them on
-        //excavationWaypoint.SetActive(false);
+        excavationWaypoint.SetActive(false);
         gloveL.SetActive(true);
         gloveR.SetActive(true);
     }

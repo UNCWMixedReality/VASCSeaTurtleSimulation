@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DataCollection;
+using UltimateXR.Manipulation;
 using cakeslice;
 
 public class CageManager : MonoBehaviour
@@ -13,13 +14,15 @@ public class CageManager : MonoBehaviour
     {
         //outline and enable grabbing
         cage.GetComponent<Outline>().enabled = true;
-        cage.GetComponent<DcGrabInteractable>().enabled = true;
+        cage.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
     }
 
-    public void DisableCageHighlight()
+    public void DisableCage()
     {
         //stop outlining the cage
         cage.GetComponent<Outline>().enabled = false;
+        cage.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
+
     }
 
     public void PrepareCovering()
@@ -31,7 +34,7 @@ public class CageManager : MonoBehaviour
     public void EndCovering()
     {
         //stop grabbing the cagee
-        cage.GetComponent<DcGrabInteractable>().enabled = false;
+        cage.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
 
         //put the cage where it belongs
         cage.transform.position = nestCageCollider.transform.position;

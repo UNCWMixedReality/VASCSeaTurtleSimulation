@@ -2,42 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DataCollection;
+using UltimateXR.Manipulation;
 using cakeslice;
 
 public class SignManager : MonoBehaviour
 {
     public GameObject sign;
-    public GameObject signCollider;
+    public GameObject signOutline;
        
-    public void FreezeSign()
-    {
-        sign.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
-    public void UnFreezeSign()
-    {
-        sign.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-    }
+
     public void PrepareSign()
     {
         //outline and enable grabbing the sign
-        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = true;
-        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = true;
+        signOutline.SetActive(true);
+        sign.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
 
-        sign.GetComponent<DcGrabInteractable>().enabled = true;
     }
 
-    public void DisableSignHighlight()
+    public void DisableSign()
     {
-        //stop outling the sign
-        sign.transform.GetChild(0).gameObject.GetComponent<Outline>().enabled = false;
-        sign.transform.GetChild(1).gameObject.GetComponent<Outline>().enabled = false;
+        //stop outlining the cage
+        signOutline.SetActive(false);
+        sign.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
+
     }
 
-    public void PreparePlacement()
-    {
-        //activate the placement collider
-        signCollider.SetActive(true);
-    }
 
     public void EndPlacement()
     {

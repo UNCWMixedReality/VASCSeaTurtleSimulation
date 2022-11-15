@@ -9,6 +9,7 @@ public class SignManager : MonoBehaviour
 {
     public GameObject sign;
     public GameObject signOutline;
+    public GameObject signAnchor;
        
 
     public void PrepareSign()

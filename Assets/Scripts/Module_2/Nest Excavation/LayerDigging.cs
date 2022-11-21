@@ -14,7 +14,7 @@ public class LayerDigging : MonoBehaviour
     {
         if (prevLayer == null)//if the previous has already been destroyed
         {
-            if (col.name == "GloveL" || col.name == "GloveR" || col.tag == "Hands")
+            if (col.tag == "Player")
             {
                 particle.transform.position = gameObject.transform.position;
                 part.Play();

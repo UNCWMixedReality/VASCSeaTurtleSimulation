@@ -108,7 +108,6 @@ public class TaskManagerM2_2 : MonoBehaviour
         else if (taskCount == 6)
         {
             LogTask("Cage grabbed");
-            cageMan.DisableCageHighlight();
             cageMan.PrepareCovering();
             compMan.DisableCompass();
         }
@@ -126,8 +125,6 @@ public class TaskManagerM2_2 : MonoBehaviour
         else if (taskCount == 8)
         {
             LogTask("Sign grabbed");
-            signMan.DisableSignHighlight();
-            signMan.PreparePlacement();
             compMan.DisableCompass();
         }
 
@@ -151,9 +148,8 @@ public class TaskManagerM2_2 : MonoBehaviour
 
         //stop outlining the shovel, cage, sign
         digMan.DisableShovelHighlight();
-        cageMan.DisableCageHighlight();
-        signMan.DisableSignHighlight();
-        signMan.FreezeSign();
+        cageMan.DisableCage();
+        signMan.DisableSign();
     }
 
     private void LogTask(string message)

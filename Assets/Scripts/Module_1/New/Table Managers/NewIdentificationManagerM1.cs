@@ -58,19 +58,14 @@ public class NewIdentificationManagerM1 : MonoBehaviour
 
     }
 
-    public void CheckAnswer(string turtleName)//will be called when the user selects a answer button
+    public void CheckAnswer(Button button)//will be called when the user selects a answer button
     {
-        if (turtleName == "Loggerhead" && TurtleList[turtleIdx - 1] == Loggerhead)
+        if ((button.name == "Loggerhead_Button" && TurtleList[turtleIdx - 1] == Loggerhead) 
+            || (button.name == "Hawksbill_Button" && TurtleList[turtleIdx - 1] == Hawksbill) 
+            || (button.name == "Leatherback_Button" && TurtleList[turtleIdx - 1] == Leatherback))
         {
             Correct();
-        }
-        else if (turtleName == "Hawksbill" && TurtleList[turtleIdx - 1] == Hawksbill)
-        {
-            Correct();
-        }
-        else if (turtleName == "Leatherback" && TurtleList[turtleIdx - 1] == Leatherback)
-        {
-            Correct();
+            button.interactable = false;
         }
         else
         {  

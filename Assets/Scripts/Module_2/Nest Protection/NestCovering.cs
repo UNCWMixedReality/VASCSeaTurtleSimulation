@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class NestCovering : MonoBehaviour
 {	
 	public GameObject Shovel;
+	public GameObject shovelSand;
 	public GameObject sandLayer;
 	public GameObject particle;
 
@@ -23,14 +24,14 @@ public class NestCovering : MonoBehaviour
 	//handles moving sand over nest from shovel
 	void OnTriggerEnter(Collider col)
 	{
-		if(col.name == "Shovel" && Shovel.gameObject.transform.GetChild(6).gameObject.activeSelf)
+		if(col.tag == "Shovel")
 		{
-			//play anim and put sand on top of nest (since collider is currently on top of nest, this is just the position of the collider)
+			//play anim and toggle sand active on top of nest (since collider is currently on top of nest, this is just the position of the collider)
+			sandLayer.SetActive(true);
 			part.Play();
-			sandLayer.transform.position = transform.position;
 
 			//deactivate collider/shovel sand
-			Shovel.gameObject.transform.GetChild(6).gameObject.SetActive(false);
+			shovelSand.SetActive(false);
 			gameObject.SetActive(false);
 
 			//task completed

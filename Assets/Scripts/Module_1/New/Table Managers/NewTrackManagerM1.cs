@@ -134,19 +134,14 @@ public class NewTrackManagerM1 : MonoBehaviour
         trackIdx++; 
     }
 
-    public void CheckAnswer(string trackName) //Called when user selects a button
+    public void CheckAnswer(Button button) //Called when user selects a button
     {
-        if (trackName == "Green" && TrackList[trackIdx - 1] == Green_Tracks)
+        if ((button.name == "Green_Button" && TrackList[trackIdx - 1] == Green_Tracks) 
+            || (button.name == "Leatherback_Button" && TrackList[trackIdx - 1] == Leatherback_Tracks) 
+            || (button.name == "Loggerhead_Button" && TrackList[trackIdx - 1] == Loggerhead_Tracks))
         {
             Correct();
-        }
-        else if (trackName == "Loggerhead" && TrackList[trackIdx - 1] == Loggerhead_Tracks)
-        {
-            Correct();
-        }
-        else if (trackName == "Leatherback" && TrackList[trackIdx - 1] == Leatherback_Tracks)
-        {
-            Correct();
+            button.interactable = false;
         }
         else
         {

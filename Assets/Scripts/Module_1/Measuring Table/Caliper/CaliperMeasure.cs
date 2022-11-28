@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using cakeslice;
-
-
 
 public class CaliperMeasure : MonoBehaviour
 {
@@ -21,6 +17,7 @@ public class CaliperMeasure : MonoBehaviour
         if (col.name == "CalipColliderL" || col.name == "CalipColliderR")
         {
             collided = true;
+            Debug.Log(col.name);
         }
 
     }

@@ -52,9 +52,14 @@ public class TapeMeasureSize : MonoBehaviour
 
 
         // checking if measuring colliders have been triggered on both sides
-        if (LCollider.collided && RCollider.collided) {
-            Debug.Log("TM measured");
-            taskMan.MarkTaskCompletion(taskNum);
+        if (LCollider is not null && RCollider is not null && taskMan is not null)
+        {
+            if (LCollider.collided && RCollider.collided)
+            {
+                Debug.Log("TM measured");
+                taskMan.MarkTaskCompletion(taskNum);
+            }
+
         }
     }
 }

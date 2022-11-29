@@ -61,10 +61,13 @@ public class CalipSize : MonoBehaviour
         displayText.text = ((int)length).ToString() + "cm";
         floatingText.text = ((int)length).ToString() + "cm";
 
-        if (LCollider.collided && RCollider.collided)
+        if (LCollider is not null && RCollider is not null && taskMan is not null)
         {
-            Debug.Log("Caliper Measured");
-            taskMan.MarkTaskCompletion(taskNum);
+            if (LCollider.collided && RCollider.collided)
+            {
+                Debug.Log("Caliper Measured");
+                taskMan.MarkTaskCompletion(taskNum);
+            }
         }
 
     }

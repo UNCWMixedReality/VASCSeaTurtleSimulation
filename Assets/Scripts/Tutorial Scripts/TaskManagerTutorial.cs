@@ -5,6 +5,8 @@ using UnityEngine;
 using DataCollection;
 using DataCollection.Models;
 using UnityEngine.SceneManagement;
+using UltimateXR.Avatar;
+
 
 public class TaskManagerTutorial : MonoBehaviour
 {
@@ -17,6 +19,13 @@ public class TaskManagerTutorial : MonoBehaviour
     //reference to activity manager script and instruction updater
     public ActivityManagerTutorial activityMan;
     public InstructionUpdaterTutorial instrUpdater;
+    public UxrAvatar avatar;
+    public ControlManager contMan;
+
+    public GameObject[] buttonHighlights;
+    public GameObject sphere;
+
+
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
@@ -25,6 +34,21 @@ public class TaskManagerTutorial : MonoBehaviour
     //game objects used in tasks
 
     #endregion
+
+    IEnumerator ButtonCountdown()
+    {
+        yield return new WaitForSeconds(8);
+        buttonHighlights[0].SetActive(true);
+        buttonHighlights[1].SetActive(true);
+    }
+
+    IEnumerator SphereGrow()
+    {
+        sphere.GetComponent<Animator>().SetTrigger("trigger_start");
+        yield return new WaitForSeconds(5);
+        sphere.SetActive(false);
+    }
+
 
     public void MarkTaskCompletion(int taskID)
     {
@@ -55,37 +79,84 @@ public class TaskManagerTutorial : MonoBehaviour
         if (taskCount == 1)
         {
             PrepareScene();
+            StartCoroutine(ButtonCountdown());
         }
 
         //true when the user completes the second task by entering the relocation waypoint
         else if (taskCount == 2)
         {
-            LogTask("Entered relocation waypoint");
+            EnableNextHighlights(0);
+            StopAllCoroutines();
+        }
+
+        else if (taskCount == 3)
+        {
+            EnableNextHighlights(2);
+        }
+
+        else if (taskCount == 4)
+        {
+            EnableNextHighlights(4);
+        }
+
+        else if (taskCount == 5)
+        {
+            EnableNextHighlights(6);
+        }
+
+        else if (taskCount == 6)
+        {
+            buttonHighlights[8].SetActive(false);
+            buttonHighlights[9].SetActive(false);
+            StartCoroutine(SphereGrow());
+        }
+
+        //true when the user completes the second task by entering the relocation waypoint
+        else if (taskCount == 7)
+        {
+            DisableControllers();
         }
 
         #endregion
 
         //Run the next set of instructions
-        instrUpdater.RunInstructions();
+        //instrUpdater.RunInstructions();
     }
 
     private void PrepareScene()
     {
     }
 
-    private void LogTask(string message)
-    {
-        /*
-         * logs when a task is completed with the appropriate information
-         */
-        DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                message
-                ));
-    }
+    //private void LogTask(string message)
+    //{
+    //    /*
+    //    * logs when a task is completed with the appropriate information
+    //    */
+    //    DcDataLogging.LogActivity(new Activity(
+    //            DateTime.Now,
+    //            SceneManager.GetActiveScene().name,
+    //            message
+    //            ));
+    //}
 
     private void PrepareEnd()
     {
     }
+
+    private void DisableControllers()
+    {
+        avatar.RenderMode = UxrAvatarRenderModes.Avatar;
+    }
+
+
+
+    private void EnableNextHighlights(int index)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            buttonHighlights[index+i].SetActive(false);
+            buttonHighlights[index+2+i].SetActive(true);
+        }
+    }
+
 }

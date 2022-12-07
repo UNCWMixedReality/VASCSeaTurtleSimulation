@@ -13,7 +13,7 @@ public class NewTaskManagerM1 : MonoBehaviour
     public NewInstructionUpdaterM1 instrUpdater;
     public NewActivityManagerM1 activityMan;
     public RoomSwitch roomSwitch;
-    public Fading fading;
+    //public Fading fading;
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
@@ -249,7 +249,6 @@ public class NewTaskManagerM1 : MonoBehaviour
     public void SetNextTable()
     {
         roomSwitch.switchRoom();
-        fading.Fade(false, true);
     }
     
     private void LogAct(string message)

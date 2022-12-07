@@ -6369,9 +6369,9 @@ Transform:
   - {fileID: 1161177211}
   - {fileID: 128806596}
   - {fileID: 1519818544}
+  - {fileID: 1128461992}
   - {fileID: 263909741}
   - {fileID: 2074365822}
-  - {fileID: 1128461992}
   m_Father: {fileID: 1967014539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -6737,7 +6737,6 @@ GameObject:
   - component: {fileID: 736135484}
   - component: {fileID: 736135485}
   - component: {fileID: 736135486}
-  - component: {fileID: 736135487}
   - component: {fileID: 736135489}
   - component: {fileID: 736135491}
   - component: {fileID: 736135490}
@@ -6826,23 +6825,6 @@ MonoBehaviour:
   - {fileID: 682818995}
   playerOrigin: {fileID: 473357851}
   player: {fileID: 449433980}
---- !u!114 &736135487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736135480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d46b557145db9544b213f3bca247b4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 0}
-  fadeDuration: 1
-  displayImageDuration: 1
-  inToOut: 0
-  OutToIn: 0
 --- !u!114 &736135489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6870,7 +6852,6 @@ MonoBehaviour:
   instrUpdater: {fileID: 736135492}
   activityMan: {fileID: 736135491}
   roomSwitch: {fileID: 736135486}
-  fading: {fileID: 736135487}
   toolTable: {fileID: 526690803}
   turtMeasure: {fileID: 2047634397}
   identifyTable: {fileID: 1239477028}
@@ -12309,7 +12290,7 @@ RectTransform:
   - {fileID: 850682946}
   - {fileID: 1254293598}
   m_Father: {fileID: 682818996}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -28,6 +28,11 @@ public class SignManager : MonoBehaviour
 
     }
 
+    public void PreparePlacement()
+    {
+        //outline and enable grabbing the sign
+        signAnchor.SetActive(true);
+    }
 
     public void EndPlacement()
     {

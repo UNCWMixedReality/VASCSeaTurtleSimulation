@@ -136,7 +136,8 @@ public class NewTaskManagerM1 : MonoBehaviour
             turtMeasure.finishMeasure();
             audiofeedback.playGood();
             activityMan.MarkActivityCompletion();
-            PrepareWaypoint();
+            //PrepareWaypoint();
+            return;
             LogAct("Successfully measured the Shell Width");
         }
 

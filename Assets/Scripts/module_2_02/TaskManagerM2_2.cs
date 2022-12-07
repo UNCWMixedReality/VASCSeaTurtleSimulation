@@ -126,6 +126,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             LogTask("Sign grabbed");
             compMan.DisableCompass();
+            signMan.PreparePlacement();
         }
 
         //true when user completes the ninth task by placing the sign

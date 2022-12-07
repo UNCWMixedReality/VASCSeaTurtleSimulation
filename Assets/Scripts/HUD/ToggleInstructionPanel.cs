@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UltimateXR.Avatar;
+using UltimateXR.Devices;
+using UltimateXR.Core;
 
 public class ToggleInstructionPanel : MonoBehaviour
 {
     public GameObject instructionCanvas;
     private bool deactivated;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +20,11 @@ public class ToggleInstructionPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick) || OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick))
+        Debug.Log("toggle panel");
+
+        if (UxrAvatar.LocalAvatarInput.GetButtonsEvent(UxrHandSide.Left, UxrInputButtons.Button1, UxrButtonEventType.PressDown))
         {
+            Debug.Log("toggle panel");
             instructionCanvas.SetActive(deactivated);
             deactivated = !deactivated;
         }

@@ -38,6 +38,6 @@ public class NewActivityManM2_2 : MonoBehaviour
         // just loads the main scene
         yield return new WaitForSecondsRealtime(5);
         DcDataLogging.EndSession();
-        SceneManager.LoadScene("JustModule");
+        SceneManager.LoadScene("DemoMain");
     }
 }

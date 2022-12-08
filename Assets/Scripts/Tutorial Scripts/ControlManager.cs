@@ -37,19 +37,14 @@ public class ControlManager : MonoBehaviour
             {
                 taskMan.MarkTaskCompletion(2);
             }
-            else if (e.Button == UxrInputButtons.DPadRight || e.Button == UxrInputButtons.DPadLeft)
+            else if (e.Button == UxrInputButtons.Grip)
             {
                 taskMan.MarkTaskCompletion(3);
             }
-            else if (e.Button == UxrInputButtons.Trigger)
+            else if (e.Button == UxrInputButtons.DPadRight || e.Button == UxrInputButtons.DPadLeft)
             {
                 taskMan.MarkTaskCompletion(4);
             }
-            else if (e.Button == UxrInputButtons.Grip)
-            {
-                taskMan.MarkTaskCompletion(5);
-            }
         }
     }
-
 }

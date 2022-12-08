@@ -37,11 +37,10 @@ public class InstructionUpdaterTutorial : MonoBehaviour
 
         //set text, mark progress bar, and play audio
         SetInstructionText();
-        //progressBar.TickProgressBar();
-        PlayInstructionAudio();
+        //PlayInstructionAudio();
 
         current += 1;
-        if (current % 2 == 1)
+        if ((current > 3 && current < 9))
         {
             progressBar.TickProgressBar();
         }

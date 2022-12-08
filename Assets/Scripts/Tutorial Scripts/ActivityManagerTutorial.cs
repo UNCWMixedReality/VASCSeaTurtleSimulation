@@ -37,7 +37,7 @@ public class ActivityManagerTutorial : MonoBehaviour
     {
         // just loads the main scene
         yield return new WaitForSecondsRealtime(5);
-        DcDataLogging.EndSession();
-        SceneManager.LoadScene("JustModule");
+        //DcDataLogging.EndSession();
+        SceneManager.LoadScene("Module_01");
     }
 }

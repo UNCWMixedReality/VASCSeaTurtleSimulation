@@ -23,24 +23,24 @@ public class ProgressionInitializerTutorial : MonoBehaviour
 
 		//intialize TaskManager variables
 		taskMan.taskCount = 0;
-		taskMan.taskTimes = new float[9];
+		taskMan.taskTimes = new float[10];
 
 		//intialize audiom2_1 variables
 		//set current file to first
-		audioPlayer.temp = audioPlayer.audioInstructions[0];
-		audioPlayer.currentIdx = 0;
+		//audioPlayer.temp = audioPlayer.audioInstructions[0];
+		//audioPlayer.currentIdx = 0;
 
 		//intialize InstructionUpdater variables
-		instrUpdater.instructions = new string[9];
-		instrUpdater.instructions[0] = ("Welcome! This is part two of the Nest Relocation Module. Move to the marker to begin.");
-		instrUpdater.instructions[1] = ("Your first task is to place the eggs in their new nest. Grab the eggs from the green bucket and place them in the nest");
-		instrUpdater.instructions[2] = ("Great job! Next, we need to cover the nest with sand. Grab the shovel to begin.");
-		instrUpdater.instructions[3] = ("Use the shovel to move the sand pile on top of the nest.");
-		instrUpdater.instructions[4] = ("Good job! Next, we need to cover the nest with a protective cage. Grab the cage to begin.");
-		instrUpdater.instructions[5] = ("Move the cage so it covers the nest.");
-		instrUpdater.instructions[6] = ("Next, we need to place a sign near the nest. Grab the sign to begin.");
-		instrUpdater.instructions[7] = ("Good job! Move the sign to the designated position.");
-		instrUpdater.instructions[8] = ("Good job! You have successfully completed part two of the nest relocation module.");
+		instrUpdater.instructions = new string[11];
+		instrUpdater.instructions[0] = ("Welcome to the VASC tutorial. Let's get you familiar with your controller. To begin, hit either the A or X buttons.");
+		instrUpdater.instructions[1] = ("Good! Now hit the B or Y button.");
+		instrUpdater.instructions[2] = ("Great Job! Now try out the grip button on the side of your remote.");
+		instrUpdater.instructions[3] = ("Okay, now try using your joystick to turn around. Press left or right to perform a snap turn.");
+		instrUpdater.instructions[4] = ("Great job! Using the trigger on the back of the remote, teleport to the blue waypoint.");
+		instrUpdater.instructions[5] = ("Great job! Now pick up the egg in front of you using the grip button.");
+		instrUpdater.instructions[6] = ("To interact with buttons, hold down the A button to reveal the laser, then hit the trigger to select the button you are hovering over.");
+		instrUpdater.instructions[7] = ("Now that you know the basics, feel free to play around. Once you are ready to continue, press the Finish button.");
+		instrUpdater.instructions[8] = ("Congrats! You have completed the tutorial, we will now be moving to the first module.");
 
 		instrUpdater.current = 0;
 		instrUpdater.queueCount = 0;
@@ -52,10 +52,4 @@ public class ProgressionInitializerTutorial : MonoBehaviour
 		//the first task is just entering the scene, so now that setup is done, mark it as complete
 		taskMan.MarkTaskCompletion(0);
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

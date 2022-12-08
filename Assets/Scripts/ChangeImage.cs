@@ -10,14 +10,14 @@ public class ChangeImage : MonoBehaviour
     void Start()
     {
 
-        playerChar = GameObject.Find("Character Icon");
-        gameObject.GetComponent<Image>().sprite = playerChar.GetComponent<Image>().sprite;
+        //playerChar = GameObject.Find("Character Icon");
+        //gameObject.GetComponent<Image>().sprite = playerChar.GetComponent<Image>().sprite;
 
     }
 
     public void UpdateImage()
     {
-        gameObject.GetComponent<Image>().sprite = playerChar.GetComponent<Image>().sprite;
+        //gameObject.GetComponent<Image>().sprite = playerChar.GetComponent<Image>().sprite;
 
     }
 }

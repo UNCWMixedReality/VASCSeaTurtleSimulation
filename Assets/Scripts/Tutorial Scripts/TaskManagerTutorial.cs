@@ -23,8 +23,11 @@ public class TaskManagerTutorial : MonoBehaviour
     public ControlManager contMan;
 
     public GameObject[] buttonHighlights;
+    public GameObject funThings;
+    public GameObject button;
     public GameObject sphere;
 
+    public AudioFeedback audiofeedback;
 
 
     //number of tasks completed and when each task was completee
@@ -37,7 +40,7 @@ public class TaskManagerTutorial : MonoBehaviour
 
     IEnumerator ButtonCountdown()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(5);
         buttonHighlights[0].SetActive(true);
         buttonHighlights[1].SetActive(true);
     }
@@ -82,45 +85,72 @@ public class TaskManagerTutorial : MonoBehaviour
             StartCoroutine(ButtonCountdown());
         }
 
-        //true when the user completes the second task by entering the relocation waypoint
+        // press a/x
         else if (taskCount == 2)
         {
             EnableNextHighlights(0);
             StopAllCoroutines();
         }
 
+        // press b/y
         else if (taskCount == 3)
         {
             EnableNextHighlights(2);
         }
 
+        // press grip
         else if (taskCount == 4)
         {
             EnableNextHighlights(4);
+            audiofeedback.playGood();
+            StartCoroutine(SphereGrow());
         }
 
+        // snap turn
         else if (taskCount == 5)
         {
             EnableNextHighlights(6);
         }
 
+        // teleport
         else if (taskCount == 6)
         {
+            DisableControllers();
+            audiofeedback.playGood();
             buttonHighlights[8].SetActive(false);
             buttonHighlights[9].SetActive(false);
-            StartCoroutine(SphereGrow());
+            buttonHighlights[4].SetActive(true);
+            buttonHighlights[5].SetActive(true);
+            activityMan.MarkActivityCompletion();
         }
 
-        //true when the user completes the second task by entering the relocation waypoint
+        // grab egg
         else if (taskCount == 7)
         {
-            DisableControllers();
+            audiofeedback.playGood();
+            button.SetActive(true);
+            buttonHighlights[4].SetActive(false);
+            buttonHighlights[5].SetActive(false);
+        }
+
+        // click UI
+        else if (taskCount == 8)
+        {
+            audiofeedback.playGood();
+            button.SetActive(false);
+            funThings.SetActive(true);
+        }
+
+        else if (taskCount == 9)
+        {
+            audiofeedback.playCompletion();
+            activityMan.MarkActivityCompletion();
         }
 
         #endregion
 
         //Run the next set of instructions
-        //instrUpdater.RunInstructions();
+        instrUpdater.RunInstructions();
     }
 
     private void PrepareScene()
@@ -158,5 +188,4 @@ public class TaskManagerTutorial : MonoBehaviour
             buttonHighlights[index+2+i].SetActive(true);
         }
     }
-
 }

@@ -22,19 +22,19 @@ public class TaskManagerTutorial : MonoBehaviour
     public UxrAvatar avatar;
     public ControlManager contMan;
 
+    //game objects used in tasks
     public GameObject[] buttonHighlights;
     public GameObject funThings;
     public GameObject button;
     public GameObject sphere;
+    public GameObject teleport;
+    public GameObject homePos;
 
     public AudioFeedback audiofeedback;
-
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
     public float[] taskTimes { get; set; }
-
-    //game objects used in tasks
 
     #endregion
 
@@ -110,6 +110,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 5)
         {
             EnableNextHighlights(6);
+            teleport.SetActive(true);
         }
 
         // teleport
@@ -122,6 +123,7 @@ public class TaskManagerTutorial : MonoBehaviour
             buttonHighlights[4].SetActive(true);
             buttonHighlights[5].SetActive(true);
             activityMan.MarkActivityCompletion();
+            homePos.transform.position = teleport.transform.position;
         }
 
         // grab egg

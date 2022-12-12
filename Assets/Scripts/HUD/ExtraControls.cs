@@ -11,6 +11,7 @@ public class ExtraControls : MonoBehaviour
 {
     [SerializeField] private UxrControllerInput input;
     [SerializeField] private GameObject instructionCanvas;
+    [SerializeField] private Transform homePos;
 
     private bool deactivated;
 
@@ -22,15 +23,15 @@ public class ExtraControls : MonoBehaviour
 
     protected void OnEnable()
     {
-        input.ButtonStateChanged += Input_ButtonStateChanged;
+        input.ButtonStateChanged += ExtraInput_ButtonStateChanged;
     }
 
     protected void OnDisable()
     {
-        input.ButtonStateChanged -= Input_ButtonStateChanged;
+        input.ButtonStateChanged -= ExtraInput_ButtonStateChanged;
     }
 
-    private void Input_ButtonStateChanged(object sender, UxrInputButtonEventArgs e)
+    private void ExtraInput_ButtonStateChanged(object sender, UxrInputButtonEventArgs e)
     {
         if (e.ButtonEventType == UxrButtonEventType.PressDown)
         {
@@ -43,19 +44,49 @@ public class ExtraControls : MonoBehaviour
             {
                 StartCoroutine(JoystickHold());
             }
+            else if (e.Button == UxrInputButtons.Menu)
+            {
+                StartCoroutine(MenuHold());
+            }
 
         }
         else if (e.ButtonEventType == UxrButtonEventType.PressUp)
         {
-            if (e.Button == UxrInputButtons.Joystick && e.HandSide == UxrHandSide.Right)
-
+            if ((e.Button == UxrInputButtons.Joystick && e.HandSide == UxrHandSide.Right) || e.Button == UxrInputButtons.Menu)
             {
                 StopAllCoroutines();
             }
         }
     }
 
+    void Update()
+    {
+        if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Joystick))
+        {
+            instructionCanvas.SetActive(deactivated);
+            deactivated = !deactivated;
+        }
+        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Right, UxrInputButtons.Joystick))
+        {
+            StartCoroutine(JoystickHold());
+        }
+        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Left, UxrInputButtons.Menu))
+        {
+            StartCoroutine(MenuHold());
+        }
+        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Right, UxrInputButtons.Joystick) || UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Menu))
+        {
+            StopAllCoroutines();
+        }
+    }
+
     IEnumerator JoystickHold()
+    {
+        yield return new WaitForSeconds(3);
+        UxrManager.Instance.MoveAvatarTo(UxrAvatar.LocalAvatar, homePos.position);
+    }
+
+    IEnumerator MenuHold()
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("DemoMain");

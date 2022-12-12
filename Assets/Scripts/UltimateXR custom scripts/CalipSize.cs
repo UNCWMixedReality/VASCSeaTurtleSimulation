@@ -67,6 +67,8 @@ public class CalipSize : MonoBehaviour
             {
                 Debug.Log("Caliper Measured");
                 taskMan.MarkTaskCompletion(taskNum);
+                LCollider.enabled = false;
+                RCollider.enabled = false;
             }
         }
 

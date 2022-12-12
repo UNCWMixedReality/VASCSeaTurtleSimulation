@@ -58,6 +58,8 @@ public class TapeMeasureSize : MonoBehaviour
             {
                 Debug.Log("TM measured");
                 taskMan.MarkTaskCompletion(taskNum);
+                LCollider.enabled = false;
+                RCollider.enabled = false;
             }
 
         }

@@ -65,6 +65,9 @@ public class TurtleMeasureManager : MonoBehaviour
             caliperColliders[i].transform.rotation = collidersPlaceholders[i + 2].transform.rotation;
         }
         arrows[0].SetActive(true);
+
+        caliperColliders[0].GetComponent<CaliperMeasure>().enabled = true;
+        caliperColliders[1].GetComponent<CaliperMeasure>().enabled = true;
     }
     public void prepareBackFins()
     {
@@ -79,6 +82,9 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[0].SetActive(true);
         arrows[0].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         arrows[1].SetActive(true);
+
+        caliperColliders[0].GetComponent<CaliperMeasure>().enabled = true;
+        caliperColliders[1].GetComponent<CaliperMeasure>().enabled = true;
     }
 
 
@@ -101,10 +107,14 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[1].SetActive(true);
         arrows[1].GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
         arrows[2].SetActive(true);
+
+        tmColliders[0].GetComponent<TMMeasure>().enabled = true;
+        tmColliders[1].GetComponent<TMMeasure>().enabled = true;
     }
 
     public void prepareShellWidth()
     {
+
         tapeMeasure.GetComponent<TapeMeasureSize>().taskNum = 10;
 
         for (int i = 0; i < 2; i++)
@@ -116,6 +126,8 @@ public class TurtleMeasureManager : MonoBehaviour
         outlineFill[2].SetActive(true);
         arrows[2].SetActive(false);
         arrows[3].SetActive(true);
+        tmColliders[0].GetComponent<TMMeasure>().enabled = true;
+        tmColliders[1].GetComponent<TMMeasure>().enabled = true;
     }
 
     public void finishMeasure()

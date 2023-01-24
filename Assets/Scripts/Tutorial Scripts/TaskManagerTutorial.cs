@@ -47,8 +47,8 @@ public class TaskManagerTutorial : MonoBehaviour
 
     IEnumerator SphereGrow()
     {
-        sphere.GetComponent<Animator>().SetTrigger("trigger_start");
-        yield return new WaitForSeconds(5);
+        sphere.GetComponent<Animator>().SetTrigger("down_start");
+        yield return new WaitForSeconds(2);
         sphere.SetActive(false);
     }
 

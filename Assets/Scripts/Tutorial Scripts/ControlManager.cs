@@ -48,7 +48,7 @@ public class ControlManager : MonoBehaviour
             }
         }
     }
-
+    /*
     void Update()
     {
         if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Button1) || UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Right, UxrInputButtons.Button1))
@@ -69,4 +69,5 @@ public class ControlManager : MonoBehaviour
             taskMan.MarkTaskCompletion(4);
         }
     }
+    */
 }

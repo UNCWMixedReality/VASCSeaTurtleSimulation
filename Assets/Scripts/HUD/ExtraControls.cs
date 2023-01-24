@@ -23,12 +23,12 @@ public class ExtraControls : MonoBehaviour
 
     protected void OnEnable()
     {
-        input.ButtonStateChanged += ExtraInput_ButtonStateChanged;
+        input.GlobalButtonStateChanged += ExtraInput_ButtonStateChanged;
     }
 
     protected void OnDisable()
     {
-        input.ButtonStateChanged -= ExtraInput_ButtonStateChanged;
+        input.GlobalButtonStateChanged -= ExtraInput_ButtonStateChanged;
     }
 
     private void ExtraInput_ButtonStateChanged(object sender, UxrInputButtonEventArgs e)
@@ -59,6 +59,7 @@ public class ExtraControls : MonoBehaviour
         }
     }
 
+    /*
     void Update()
     {
         if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Joystick))
@@ -79,6 +80,7 @@ public class ExtraControls : MonoBehaviour
             StopAllCoroutines();
         }
     }
+    */
 
     IEnumerator JoystickHold()
     {

@@ -14,10 +14,11 @@ public class TMMeasure : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.name == "TapeBody" || col.name == "TapeHand")
+        if (col.name == "TapeBody" || col.name == "TapeEnd")
         {
             collided = true;
         }
+        Debug.Log(col.name + " detected");
 
     }
 

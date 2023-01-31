@@ -33,6 +33,7 @@ public class TaskManagerM2_2 : MonoBehaviour
     public DigManager digMan;
     public CageManager cageMan;
     public SignManager signMan;
+    public CompassManager compMan;
 
     public GameObject relocationWaypoint;
     public GameObject nestEnclosure;
@@ -82,6 +83,7 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Successfully placed eggs in the new nest");
             relocMan.EndRelocation();
             digMan.PrepareShovel();
+            compMan.EnableCompass(digMan.shovel);
             activityManager.MarkActivityCompletion();
         }
 
@@ -90,6 +92,7 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             LogTask("Grabbed shovel");
             digMan.DisableShovelHighlight();
+            compMan.DisableCompass();
             digMan.PrepareDigging();
         }
 
@@ -98,14 +101,15 @@ public class TaskManagerM2_2 : MonoBehaviour
         {
             LogTask("Covered nest with sand");
             cageMan.PrepareCage();
+            compMan.EnableCompass(cageMan.cage);
         }
 
         //true when the user completes the sixth task by grabbing the cage
         else if (taskCount == 6)
         {
             LogTask("Cage grabbed");
-            cageMan.DisableCageHighlight();
             cageMan.PrepareCovering();
+            compMan.DisableCompass();
         }
 
         //true when the user completes the seventh task by placing the cage
@@ -114,13 +118,14 @@ public class TaskManagerM2_2 : MonoBehaviour
             LogTask("Cage placed");
             cageMan.EndCovering();
             signMan.PrepareSign();
+            compMan.EnableCompass(signMan.sign);
         }
 
         //true when the user completes the eighth task by grabbing the sign
         else if (taskCount == 8)
         {
             LogTask("Sign grabbed");
-            signMan.DisableSignHighlight();
+            compMan.DisableCompass();
             signMan.PreparePlacement();
         }
 
@@ -144,9 +149,8 @@ public class TaskManagerM2_2 : MonoBehaviour
 
         //stop outlining the shovel, cage, sign
         digMan.DisableShovelHighlight();
-        cageMan.DisableCageHighlight();
-        signMan.DisableSignHighlight();
-        signMan.FreezeSign();
+        cageMan.DisableCage();
+        signMan.DisableSign();
     }
 
     private void LogTask(string message)

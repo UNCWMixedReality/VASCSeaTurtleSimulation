@@ -10,6 +10,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.fun";
+        
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
@@ -27,7 +28,7 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
-
+            
             stream.Close();
 
             return data;
@@ -38,4 +39,5 @@ public static class SaveSystem
             return null;
         }
     }
+
 }

@@ -33,6 +33,7 @@ public class TaskManagerM3_1 : MonoBehaviour
     public GPSManager GPSMan;
     public PasteManager pasteMan;
     public DNAManager dnaMan;
+    public CompassManager compMan;
 
     public ProgressM3 progressBar;
 
@@ -40,8 +41,6 @@ public class TaskManagerM3_1 : MonoBehaviour
     public GameObject ShellWaypoint;
     public GameObject HeadWaypoint;
     public GameObject SyringeWaypoint;
-
-    public GameObject activeWaypoint;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -205,7 +204,7 @@ public class TaskManagerM3_1 : MonoBehaviour
         // deactivates first waypoint and activates second waypoint
         waypoint1.SetActive(false);
         waypoint2.SetActive(true);
-        activeWaypoint = waypoint2;
+        compMan.EnableCompass(waypoint2);
 
     }
 }

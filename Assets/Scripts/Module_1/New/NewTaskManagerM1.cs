@@ -13,7 +13,7 @@ public class NewTaskManagerM1 : MonoBehaviour
     public NewInstructionUpdaterM1 instrUpdater;
     public NewActivityManagerM1 activityMan;
     public RoomSwitch roomSwitch;
-    public Fading fading;
+    //public Fading fading;
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }
@@ -21,16 +21,16 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     //Table Manager Scripts
     public NewToolManagerM1 toolTable;
-    public NewMeasuringManagerM1 measureTable;
+    public TurtleMeasureManager turtMeasure;
     public NewIdentificationManagerM1 identifyTable;
     public NewTrackManagerM1 trackTable;
+    public AudioFeedback audiofeedback;
+    public CompassManager compMan;
+
 
     //waypoint
     public GameObject waypoint;
 
-    //tool table objects
-    public GameObject toolCalipers;
-    public AudioFeedback audiofeedback;
     #endregion
 
     public void MarkTaskCompletion(int taskID)
@@ -51,14 +51,13 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes first task by entering the scene
         if(taskCount == 1)
         {
-            PrepareScene();
+            toolTable.PrepareCaliper();
         }
 
         //true when user completes second task by grabbing the calipers
         else if (taskCount == 2)
         {
             audiofeedback.playGood();
-            toolTable.FirstCalPickUp();
             LogAct("First Caliper Pick-Up");
         }
 
@@ -73,6 +72,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes fourth task by measuring the jar
         else if (taskCount == 4)
         {
+            audiofeedback.playGood();
             toolTable.PrepareTM();
             LogAct("Measured Jar with Calipers");
         }
@@ -89,6 +89,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         else if (taskCount == 6)
         {
             audiofeedback.playGood();
+            toolTable.FinishToolTable();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
             LogAct("Measured Clipboard with Tape Measure");
@@ -99,34 +100,41 @@ public class NewTaskManagerM1 : MonoBehaviour
         {
             DisableWaypoint();
             SetNextTable();
-            measureTable.PrepareFrontFin();
+            turtMeasure.prepareFrontFins();
+            turtMeasure.prepareTools();
         }
 
         //true when user completes eighth task by measuring the front fin
         else if (taskCount == 8)
         {
-            measureTable.PrepareBackFin();
+            turtMeasure.prepareBackFins();
+            audiofeedback.playGood();
             LogAct("Successfully Measured the Front Fin");
         }
 
         //true when user completes ninth task by measuring the back fin
         else if (taskCount == 9)
         {
-            measureTable.PrepareShellLength();
+            turtMeasure.prepareShellLength();
+            audiofeedback.playGood();
+
             LogAct("Successfully Measured the Back Fin");
         }
 
         //true when user completes tenth task by measuring the shell length
         else if (taskCount == 10)
         {
-            measureTable.PrepareShellWidth();
+            turtMeasure.prepareShellWidth();
+            audiofeedback.playGood();
+
             LogAct("Successfully Measured the Shell Length");
         }
 
         //true when user completes 11th task by measuring shell width
         else if (taskCount == 11)
         {
-            measureTable.FinishTable();
+            turtMeasure.finishMeasure();
+            audiofeedback.playGood();
             activityMan.MarkActivityCompletion();
             PrepareWaypoint();
             LogAct("Successfully measured the Shell Width");
@@ -135,6 +143,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes 12th task by entering the waypoint
         else if (taskCount == 12)
         {
+            turtMeasure.DisableTools();
             DisableWaypoint();
             SetNextTable();
             identifyTable.PrepareTurtleIdentification();
@@ -208,19 +217,16 @@ public class NewTaskManagerM1 : MonoBehaviour
 
     }
 
-    private void PrepareScene()
-    {
-        toolCalipers.SetActive(true);
-    }
-
     private void PrepareWaypoint()
     {
         waypoint.SetActive(true);
+        compMan.EnableCompass(waypoint);
     }
 
     private void DisableWaypoint()
     {
         waypoint.SetActive(false);
+        compMan.DisableCompass();
     }
 
     public void TeleportationCompleted()
@@ -243,7 +249,6 @@ public class NewTaskManagerM1 : MonoBehaviour
     public void SetNextTable()
     {
         roomSwitch.switchRoom();
-        fading.Fade(false, true);
     }
     
     private void LogAct(string message)

@@ -12,7 +12,7 @@ namespace DataCollection
         // Start is called before the first frame update
         void Start()
         {
-            DcDataLogging.Session.SessionScene = SceneManager.GetActiveScene().name;
+            //DcDataLogging.Session.SessionScene = SceneManager.GetActiveScene().name;
         }
     }
 }

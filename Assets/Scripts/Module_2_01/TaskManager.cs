@@ -21,6 +21,7 @@ public class TaskManager : MonoBehaviour
     //reference to activity manager script and instruction updater
     public New_Activity_Manager activityManager;
     public InstructionUpdater instrUpdater;
+    public CompassManager compMan;
 
     //number of tasks completed
     public int taskCount { get; set; }
@@ -31,20 +32,12 @@ public class TaskManager : MonoBehaviour
     public GameObject excavationWaypoint;
     public GameObject gloveL;
     public GameObject gloveR;
-    public GameObject egg1;
-    public GameObject egg2;
-    public GameObject egg3;
-    public GameObject egg4;
-    public GameObject egg5;
-    public GameObject egg6;
-    public GameObject crackedEgg1;
-    public GameObject crackedEgg2;
-    public GameObject halfEgg1;
-    public GameObject halfEgg2;
-    public GameObject eggCounterPanel;
+    public GameObject eggSorting;
+
 
     public void MarkTaskCompletion()
     {
+        Debug.Log(taskCount);
 
         /*
          * This is the primary function for this class, every time a tasks gets completed this function is called
@@ -67,6 +60,7 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the second task.
             PrepareExcavationStart();
+            //compMan.EnableCompass(excavationWaypoint);
             instrUpdater.RunInstructions();
         }
 
@@ -75,10 +69,11 @@ public class TaskManager : MonoBehaviour
         {
             //set everything up for the third task
             PrepareGloves();
+            compMan.EnableCompass(gloveL);
             instrUpdater.RunInstructions();
             //Logs activity for entering waypoint
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Entered excavation waypoint"
                 ));
@@ -88,30 +83,31 @@ public class TaskManager : MonoBehaviour
         else if (taskCount == 3)
         {
             //sets everything up for the fourth task
-            PrepareDigging();
             instrUpdater.RunInstructions();
+            compMan.EnableCompass(eggSorting);
             //Logs activity for putting on gloves
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Put on Gloves"
             ));
         }
-        
+
         //this is true if the player hsa completed the fourth task by digging up the nest
         else if (taskCount == 4)
         {
             activityManager.MarkActivityCompletion();
             PrepareSorting();
+            compMan.DisableCompass();
             instrUpdater.RunInstructions();
             //Logs activity for digging up nest
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Dug up the nest"
             ));
         }
-        
+
         //true if the fifth and final task is completed
         else if (taskCount == 5)
         {
@@ -119,7 +115,7 @@ public class TaskManager : MonoBehaviour
             activityManager.MarkActivityCompletion();
             //Logs an activity for finishing egg sorting
             DcDataLogging.LogActivity(new Activity(
-                DateTime.Now, 
+                DateTime.Now,
                 SceneManager.GetActiveScene().name,
                 "Finished sorting eggs"
             ));
@@ -140,25 +136,9 @@ public class TaskManager : MonoBehaviour
         gloveR.SetActive(true);
     }
 
-    public void PrepareDigging()
-    {
-        //set eggs active so player can dig up nest
-        egg1.SetActive(true);
-        egg2.SetActive(true);
-        egg3.SetActive(true);
-        egg4.SetActive(true);
-        egg5.SetActive(true);
-        egg6.SetActive(true);
-        crackedEgg1.SetActive(true);
-        crackedEgg2.SetActive(true);
-        halfEgg1.SetActive(true);
-        halfEgg2.SetActive(true);
-        
-    }
 
     public void PrepareSorting()
     {
-        //turns on the panel that shows how many eggs have been sorted
-        eggCounterPanel.SetActive(true);
+        eggSorting.SetActive(true);
     }
 }

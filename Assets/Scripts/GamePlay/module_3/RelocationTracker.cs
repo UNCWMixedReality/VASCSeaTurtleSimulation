@@ -5,7 +5,7 @@ using UnityEngine;
 public class RelocationTracker : MonoBehaviour
 {
     public int eggsPlaced { get; set; }
-    public TaskManagerM2_2 taskMan;
+    public TaskManagerM3 taskMan;
 
     private void Start()
     {

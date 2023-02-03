@@ -17,7 +17,7 @@ public class ProgressionIntializer : MonoBehaviour
 	public InstructionUpdater instrUpdater;
 	public New_Activity_Manager activityMan;
 	public TaskManager taskMan;
-	public AudioM2_1 audioPlayer;
+	public AudioM2 audioPlayer;
 	public ProgressM2 progressBar;
 
     void Start()

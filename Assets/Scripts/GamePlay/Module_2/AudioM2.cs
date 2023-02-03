@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioM2_1 : MonoBehaviour
+public class AudioM2 : MonoBehaviour
 {
     //This script handles the audio portion of the instructions for Module 2
 

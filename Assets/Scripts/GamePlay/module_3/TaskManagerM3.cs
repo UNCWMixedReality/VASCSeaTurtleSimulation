@@ -7,7 +7,7 @@ using DataCollection;
 using DataCollection.Models;
 using UnityEngine.SceneManagement;
 
-public class TaskManagerM2_2 : MonoBehaviour
+public class TaskManagerM3 : MonoBehaviour
 {
     /*
      * There are 9 tasks in module 2 part 2, this script is used to mark tasks as complete and to setup the scene for the next task
@@ -21,8 +21,8 @@ public class TaskManagerM2_2 : MonoBehaviour
     //class variables
     #region
     //reference to activity manager script and instruction updater
-    public NewActivityManM2_2 activityManager;
-    public InstructionUpdaterM2_2 instrUpdater;
+    public NewActivityManM3 activityManager;
+    public InstructionUpdaterM3 instrUpdater;
 
     //number of tasks completed and when each task was completee
     public int taskCount { get; set; }

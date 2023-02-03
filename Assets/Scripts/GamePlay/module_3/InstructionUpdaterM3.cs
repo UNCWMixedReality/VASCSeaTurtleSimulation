@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class InstructionUpdater : MonoBehaviour
+public class InstructionUpdaterM3 : MonoBehaviour
 {
     /*
      * This class has one purpose: update instructions.
@@ -20,22 +20,18 @@ public class InstructionUpdater : MonoBehaviour
 
     // Instruction canvas attached to left controller that displays instructions/character/progress
     public GameObject InstructionPanel;
+    public GameObject TextBox;
     public Text text;
     public ProgressM2 progressBar;
 
     //Holds the audio/text portion of the instructions
-    public AudioM2_1 instructionAudio;
+    public AudioM3 instructionAudio;
     public string[] instructions { get; set; }
 
 
     //keeps track of the current instruction being displayed and the number of instructions that have been queued
     public int current { get; set; }
     public int queueCount { get; set; }
-
-    //helper variables so that we don't play overlapping audio
-    private bool audioPlaying;
-    private float audioClipLength;
-    private float[] audioEndTime = { 0, 0, 0, 0, 0 };
 
     public void RunInstructions()
     {
@@ -46,10 +42,14 @@ public class InstructionUpdater : MonoBehaviour
 
         //set text, mark progress bar, and play audio
         SetInstructionText();
-        progressBar.TickProgressBar();
+        //progressBar.TickProgressBar();
         PlayInstructionAudio();
-    
+
         current += 1;
+        if (current % 2 == 1)
+        {
+            progressBar.TickProgressBar();
+        }
     }
 
     public void SetInstructionText()

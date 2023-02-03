@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressionIntializerM2_2 : MonoBehaviour
+public class ProgressionIntializerM3 : MonoBehaviour
 {
 	/*
 	 * This whole script is really just a start method
@@ -13,10 +13,10 @@ public class ProgressionIntializerM2_2 : MonoBehaviour
 
 
 	//references to the scripts that we need to intialize values for
-	public InstructionUpdaterM2_2 instrUpdater;
-	public NewActivityManM2_2 activityMan;
-	public TaskManagerM2_2 taskMan;
-	public AudioM2_2 audioPlayer;
+	public InstructionUpdaterM3 instrUpdater;
+	public NewActivityManM3 activityMan;
+	public TaskManagerM3 taskMan;
+	public AudioM3 audioPlayer;
 	public ProgressM2 progressBar;
 
 	void Start()

@@ -11,7 +11,7 @@ public class NestCovering : MonoBehaviour
 	public GameObject sandLayer;
 	public GameObject particle;
 
-	public TaskManagerM2_2 taskMan;
+	public TaskManagerM3 taskMan;
 		
 	private ParticleSystem part;
 

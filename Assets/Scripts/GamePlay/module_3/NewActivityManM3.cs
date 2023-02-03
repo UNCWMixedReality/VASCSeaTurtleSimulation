@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DataCollection;
 
-public class NewActivityManM2_2 : MonoBehaviour
+public class NewActivityManM3 : MonoBehaviour
 {
     /*
      * 

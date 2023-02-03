@@ -26,7 +26,7 @@ namespace Altimit.UI
         public bool SizeFit = false;
         public Button SubmitButton;
         
-        bool isCreated = false;
+        //bool isCreated = false;
         public PanelManager PanelManager
         {
             get

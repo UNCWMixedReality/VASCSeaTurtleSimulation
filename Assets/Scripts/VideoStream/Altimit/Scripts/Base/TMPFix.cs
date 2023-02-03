@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Altimit.UI
 {
     [ExecuteInEditMode]
-    public class TMPFix : MonoBehaviour
+    public class TMPFix  : MonoBehaviour
     {
         TextMeshProUGUI text;
-
+        /*
         public async void Start()
         {
             text = gameObject.AddOrGet<TextMeshProUGUI>();
@@ -21,7 +21,8 @@ namespace Altimit.UI
             text.fontSharedMaterial.EnableKeyword("UNDERLAY_ON");
             await Task.Delay(100);
             text.fontSharedMaterial.DisableKeyword("UNDERLAY_ON");
-            */
+            
         }
+        */
     }
 }

@@ -12,7 +12,6 @@ public class CalipSize : MonoBehaviour
     // progression scripts
     public NewTaskManagerM1 taskMan;
     public int taskNum;
-    public GameObject player;
 
     // caliper parts used by this script
     public GameObject calipers;

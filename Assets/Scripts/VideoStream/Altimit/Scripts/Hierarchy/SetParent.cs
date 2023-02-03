@@ -24,7 +24,7 @@ namespace Altimit.UI
 
         Parent parent;
         RectTransform rectTransform;
-        bool wasParent = false;
+        //bool wasParent = false;
 
         protected override void OnEnable()
         {

@@ -10,7 +10,7 @@ namespace Altimit.UI {
     {
         public GameObject BackGO, BackContentGO;
         Vector2 contentSize;
-        bool isPlaying = false;
+        //bool isPlaying = false;
         bool isVisible = false;
         Sequence sequence;
 

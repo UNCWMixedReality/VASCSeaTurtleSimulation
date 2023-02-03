@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class RuntimeListenerAddition : MonoBehaviour
 {
+    /*
     MenuManager InSceneManager;
     XRSimpleInteractable ListenerManager;
     LoginStudent StudentManager;
@@ -49,4 +50,5 @@ public class RuntimeListenerAddition : MonoBehaviour
     {
         
     }
+    */
 }

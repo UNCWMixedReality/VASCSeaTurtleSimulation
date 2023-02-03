@@ -427,22 +427,5 @@ public class DemoPart1 : MonoBehaviour {
 		}
 	}
 	
-	void OnLevelWasLoaded(int level)
-	{
-		switch(Application.loadedLevelName)
-		{
-		case "MusicScene1":
-			Camera.main.backgroundColor = Color.gray;
-			break;
-		case "MusicScene2":
-			Camera.main.backgroundColor = Color.magenta;
-			break;
-		case "MusicScene3":
-			Camera.main.backgroundColor = Color.blue;
-			break;
-		default:
-			Camera.main.backgroundColor = new Color(49f/255f, 77f/255f, 121f/255f, 5f/255f);
-			break;
-		}
-	}
+	
 }

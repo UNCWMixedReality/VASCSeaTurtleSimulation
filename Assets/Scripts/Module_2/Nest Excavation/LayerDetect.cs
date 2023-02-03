@@ -7,6 +7,7 @@ public class LayerDetect : MonoBehaviour
     public GameObject particle;
     public GameObject prevLayer;
     public GameObject nextLayer;
+    public TaskManager taskMan;
 		
 	public bool taskDone = false;
     	
@@ -17,14 +18,14 @@ public class LayerDetect : MonoBehaviour
     {
         if (prevLayer == null)//if the previous has already been destroyed
         {
-            if (col.name == "GloveL" || col.name == "GloveR" || col.tag == "Hands")
+            if (col.tag == "Player")
             {
                 particle.transform.position = gameObject.transform.position;
                 print("collision");
                 part.Play();
                 //move next layer up
-                nextLayer.transform.position = gameObject.transform.position;
 				taskDone = true;
+                taskMan.MarkTaskCompletion();
                 Destroy(gameObject);
             }
         }

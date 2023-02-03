@@ -13,6 +13,8 @@ public class SelectCharacter : MonoBehaviour
     public GameObject char3;
     public GameObject char4;
     public GameObject char5;
+    
+
 
     //different audio files for each monster
     public AudioSource monster1;
@@ -20,6 +22,7 @@ public class SelectCharacter : MonoBehaviour
     public AudioSource monster3;
     public AudioSource monster4;
     public AudioSource monster5;
+    
 
     public GameObject playerChar;
 
@@ -34,12 +37,15 @@ public class SelectCharacter : MonoBehaviour
         charArray[2] = char3;
         charArray[3] = char4;
         charArray[4] = char5;
+        
+
         //Debug.Log(charArray[0] + " " + charArray[1] + " " +  charArray[2] + " " + charArray[3] + " " + charArray[4]);
         monsterArray[0] = monster1;
         monsterArray[1] = monster2;
         monsterArray[2] = monster3;
         monsterArray[3] = monster4;
         monsterArray[4] = monster5;
+        
         //Debug.Log(monsterArray[0] + " " + monsterArray[1] + " " + monsterArray[2] + " " + monsterArray[3] + " " + monsterArray[4]);
     }
 

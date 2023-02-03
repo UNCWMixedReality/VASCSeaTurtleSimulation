@@ -59,13 +59,13 @@ public class CalipersTut : MonoBehaviour
 
             if (activeHand == "right")
             {
-                touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+             //   touchPad = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.B);
                 retract = OVRInput.Get(OVRInput.RawButton.A);
             }
             if (activeHand == "left")
             {
-                touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+             //   touchPad = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
                 extend = OVRInput.Get(OVRInput.RawButton.Y);
                 retract = OVRInput.Get(OVRInput.RawButton.X);
             }
@@ -122,6 +122,7 @@ public class CalipersTut : MonoBehaviour
         else
         {
             calipers.transform.position = placeholder.transform.position;
+            calipers.transform.rotation = placeholder.transform.rotation;
             calipers.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }

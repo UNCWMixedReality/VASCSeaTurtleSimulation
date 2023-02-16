@@ -10373,7 +10373,7 @@ MonoBehaviour:
           m_StringArgument: Module_02_01
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1261092785}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LoginStudent, Assembly-CSharp
         m_MethodName: BeginSession
         m_Mode: 1
@@ -15932,7 +15932,7 @@ MonoBehaviour:
           m_StringArgument: Module_02_02
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1261092785}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LoginStudent, Assembly-CSharp
         m_MethodName: BeginSession
         m_Mode: 1
@@ -17151,7 +17151,6 @@ GameObject:
   - component: {fileID: 1258732482}
   - component: {fileID: 1258732481}
   - component: {fileID: 1258732480}
-  - component: {fileID: 1258732479}
   m_Layer: 0
   m_Name: Character Icon
   m_TagString: Untagged
@@ -17159,18 +17158,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1258732479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24b803b486f0174d81f23d230c20d8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1258732480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17222,57 +17209,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.1199994, y: 2.3679998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1261092784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1261092786}
-  - component: {fileID: 1261092785}
-  m_Layer: 0
-  m_Name: Data Collection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1261092785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261092784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b543fff0ba11ce48a40dd1e20d21ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1261092786
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261092784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31251383, y: 9.591467, z: 11.351712}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273999959
 GameObject:
   m_ObjectHideFlags: 0
@@ -24815,7 +24758,7 @@ MonoBehaviour:
           m_StringArgument: Module_01
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1261092785}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LoginStudent, Assembly-CSharp
         m_MethodName: BeginSession
         m_Mode: 1
@@ -27167,7 +27110,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2011795598}
-  - component: {fileID: 2011795599}
   m_Layer: 2
   m_Name: '[Manager]'
   m_TagString: Manager
@@ -27190,35 +27132,6 @@ Transform:
   m_Father: {fileID: 1361894477}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011795599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011795595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6421862930379b4ab31e77db3f627a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char1: {fileID: 1495279079}
-  char2: {fileID: 647695345}
-  char3: {fileID: 550446716}
-  char4: {fileID: 1975813241}
-  char5: {fileID: 1995519659}
-  char6: {fileID: 1808919463}
-  char7: {fileID: 1350566467}
-  char8: {fileID: 1801287283}
-  monster1: {fileID: 560822204}
-  monster2: {fileID: 350609919}
-  monster3: {fileID: 2115551174}
-  monster4: {fileID: 1598207757}
-  monster5: {fileID: 619850211}
-  monster6: {fileID: 350609919}
-  monster7: {fileID: 1598207757}
-  monster8: {fileID: 2115551174}
-  playerChar: {fileID: 1258732478}
 --- !u!1 &2012438129
 GameObject:
   m_ObjectHideFlags: 0

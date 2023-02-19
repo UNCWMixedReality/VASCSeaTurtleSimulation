@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DataCollection;
 using UnityEngine.SceneManagement;
+using VASCDataCollection;
 
 
 public class Player : MonoBehaviour
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 // Below is a class of all of the User's Information 
     public class PlayerInfo
     {
+        public string ID;
         public string Username;
         public string CharacterSelected;    
         public string CharacterNumber;
@@ -40,7 +43,8 @@ public class Player : MonoBehaviour
     public TMP_InputField characterName;
     public TMP_InputField characterNumber;
 
-// Strings for what the Player name is, their character name and what number it is
+    // Strings for what the Player name is, their character name and what number it is
+    public string playerID;
     public string playerName;
     public string playerCharName;
     public string playerCharNumber;
@@ -74,6 +78,7 @@ public class Player : MonoBehaviour
     public void SavePlayer()
     {
         //DcDataLogging.Student = new DataCollection.Models.Student(adjName.text, nounName.text);        <--- This is for you Blake
+        newplayer.ID = (Guid.NewGuid()).ToString();
         newplayer.Username = playerName;
         newplayer.CharacterSelected = playerCharName;
         newplayer.CharacterNumber = playerCharNumber;
@@ -88,7 +93,7 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-
+        playerID = data.playerDataID;
         playerName = data.playerDataName;
         playerCharName = data.playerDataCharName;
         playerCharNumber = data.playerDataCharNumber;
@@ -130,7 +135,7 @@ public class Player : MonoBehaviour
         {
             for (int i = count; i < myPlayerData.myPlayerList.Count; i++)
             {
-                string playerinfo = myPlayerData.myPlayerList[i].Username;
+                PlayerInfo playerinfo = myPlayerData.myPlayerList[i];
                 //Debug.Log(playerinfo);
                 string monsterinfo = myPlayerData.myPlayerList[i].CharacterNumber;
                 int intval = Int32.Parse(monsterinfo);
@@ -139,7 +144,7 @@ public class Player : MonoBehaviour
                 GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
 
                 // change the username
-                newButton.GetComponent<ProfileButton>().profileText.text = playerinfo;
+                newButton.GetComponent<ProfileButton>().profileText.text = playerinfo.Username;
 
                 buttons.Add(newButton);       
 
@@ -191,13 +196,16 @@ public class Player : MonoBehaviour
 
     }
 // show in the terminal the user playing and change the set active gameobjects.
-    public void SelectProfile(int character_num, string username)
+    public void SelectProfile(int character_num, PlayerInfo player)
     {
-        Debug.Log("Loaded profile - ( " + username + " )" + " with the profile picture - ( " + character_num + " )");
+        Debug.Log("Loaded profile - ( " + player.Username + " )" + " with the profile picture - ( " + character_num + " )");
+
+        File.WriteAllText(Application.persistentDataPath + "/player.json", JsonUtility.ToJson(player));
 
         profileBrowser.SetActive(false);
         interactiveMap.SetActive(true);
-        DcDataLogging.Student = new DataCollection.Models.Student(username, "");
+        DcDataLogging.Student = new DataCollection.Models.Student(player.Username, "");
+        UserConfig.generateUserConfig();
         SceneManager.LoadScene("JustModule");
         /* PlayersMonster.SetActive(true);
          if(character_num == 1)

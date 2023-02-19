@@ -263,7 +263,7 @@ public class APIManager : MonoBehaviour
             while (!www.isDone)
                 await Task.Delay(100);
 
-            if (www.isNetworkError)
+            if (www.result == UnityWebRequest.Result.ConnectionError)
             {
                 LogManager.LogMessage($"Failed GET Request. Error Message: {www.error}", true);
                 return (true, www.error);
@@ -306,7 +306,7 @@ public class APIManager : MonoBehaviour
             while (!www.isDone)
                 await Task.Delay(100);
 
-            if (www.isNetworkError)
+            if (www.result == UnityWebRequest.Result.ConnectionError)
             {
                 LogManager.LogMessage($"Failed POST Request. Error Message: {www.error}", true);
                 return (true, www.error);

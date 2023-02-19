@@ -19,6 +19,8 @@ public class NewActivityManagerM1 : MonoBehaviour
 
     public AudioSource EndAudio;
 
+    public SceneChanger lvlLoad;
+
     public void MarkActivityCompletion()
     {
         // save time of activity completion
@@ -41,6 +43,6 @@ public class NewActivityManagerM1 : MonoBehaviour
         EndAudio.Play();
         yield return new WaitForSecondsRealtime(5);
         DcDataLogging.EndSession();
-        SceneManager.LoadScene("JustModule");
+        lvlLoad.changeScene("JustModule");
     }
 }

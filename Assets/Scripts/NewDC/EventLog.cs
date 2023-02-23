@@ -52,7 +52,7 @@ namespace VASCDataCollection
                 string logHeader = "User, Session, Timestamp, Event Type, Module, Message\n";
 
                 File.WriteAllText(path + "/log.csv", logHeader);
-                File.WriteAllText(path + "/InteractioLog.csv", logHeader);
+                File.WriteAllText(path + "/InteractionLog.csv", logHeader);
                 File.WriteAllText(path + "/ActivityLog.csv", logHeader);
                 File.WriteAllText(path + "/DecisionLog.csv", logHeader);
                 File.WriteAllText(path + "/MovementLog.csv", logHeader);
@@ -65,7 +65,7 @@ namespace VASCDataCollection
             switch (eventType)
             {
                 case EventType.Interaction:
-                    File.AppendAllText(path + "/InteractioLog.csv", logMsg);
+                    File.AppendAllText(path + "/InteractionLog.csv", logMsg);
                     break;
                 case EventType.Movement:
                     File.AppendAllText(path + "/MovementLog.csv", logMsg);

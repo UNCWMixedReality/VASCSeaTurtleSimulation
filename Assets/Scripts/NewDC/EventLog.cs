@@ -22,7 +22,7 @@ namespace VASCDataCollection
     public class EventLog : MonoBehaviour
     {
 
-        public void logEvent(string msg, EventType eventType)
+        public static void logEvent(string msg, EventType eventType)
         {
             JSONNode playerData = JSON.Parse(File.ReadAllText(Application.persistentDataPath + "/player.json"));
 
@@ -45,7 +45,7 @@ namespace VASCDataCollection
         }
 
 
-        public void logAll(string logMsg, string path, EventType eventType) { 
+        public static void logAll(string logMsg, string path, EventType eventType) { 
 
             if (!File.Exists(path + "/log.csv"))
             {
@@ -79,22 +79,22 @@ namespace VASCDataCollection
             }
         }
 
-        public void logInteractionEvent(string msg)
+        public static void logInteractionEvent(string msg)
         {
             logEvent(msg, EventType.Interaction);
         }
 
-        public void logMovementEvent(string msg)
+        public static void logMovementEvent(string msg)
         {
             logEvent(msg, EventType.Movement);
         }
 
-        public void logDecisionEvent(string msg)
+        public static void logDecisionEvent(string msg)
         {
             logEvent(msg, EventType.Decision);
         }
 
-        public void logActivityEvent(string msg)
+        public static void logActivityEvent(string msg)
         {
             logEvent(msg, EventType.Activity);
         }

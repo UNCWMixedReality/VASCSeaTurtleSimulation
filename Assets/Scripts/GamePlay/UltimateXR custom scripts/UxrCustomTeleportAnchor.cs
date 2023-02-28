@@ -27,7 +27,9 @@ public class UxrCustomTeleportAnchor : UxrTeleportSpawnCollider
     private void HandleTeleport(object sender, UxrAvatarMoveEventArgs e)
     {
         _onTeleport.Invoke();
-        EventLog.logInteractionEvent("Teleported to " + this.name);
+        Debug.Log(sender);
+        Debug.Log(this.name);
+        VASCDataCollection.EventLog.logMovementEvent("Teleported to " + this.name);
     }
 }
 

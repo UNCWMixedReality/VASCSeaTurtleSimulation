@@ -1,3 +1,24 @@
+/*
+ * This script is the main script behind the VASC data collection. 
+ * 
+ * It handles generating both general and user-specific log files 
+ *      And logging into those files when called by another script
+ * 
+ * Log Types:
+ *  Activity - Related to progression, typically called inside 
+ *              Task Managers when a task is completed or a scene
+ *              is loaded.
+ *  Interation - Related to interacting with grabbale objects, 
+ *                  useful when picking up, releasing, or placing a GameObject.
+ *  Decision - Related to quizzes, useful when a user has to choose an answers.
+ *  Movement - Related to teleportation, useful when needing to know where a user is moving.
+ *  
+ *  All event types are logged in their individual files, 
+ *      but are also dumped into a main Log file where all events are logged as well.
+ *      
+ *  Written by Nichols Brunsink
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +40,10 @@ namespace VASCDC
         Activity
     }
 
-    public class EventLog : MonoBehaviour
+    public class VASCEventLog : MonoBehaviour
     {
-
-        public static void logEvent(string msg, EventType eventType)
+        #region Logging Functions
+        private static void logEvent(string msg, EventType eventType)
         {
             JSONNode playerData = JSON.Parse(File.ReadAllText(Application.persistentDataPath + "/player.json"));
 
@@ -45,7 +66,7 @@ namespace VASCDC
         }
 
 
-        public static void logAll(string logMsg, string path, EventType eventType) { 
+        private static void logAll(string logMsg, string path, EventType eventType) { 
 
             if (!File.Exists(path + "/log.csv"))
             {
@@ -78,7 +99,13 @@ namespace VASCDC
                     break;
             }
         }
+        #endregion
 
+        #region Public Event Logging Functions
+        /// <summary>
+        /// These are the public function for interfacing with logging system
+        /// </summary>
+        /// <param name="msg">The message to be logged</param>
         public static void logInteractionEvent(string msg)
         {
             logEvent(msg, EventType.Interaction);
@@ -98,6 +125,7 @@ namespace VASCDC
         {
             logEvent(msg, EventType.Activity);
         }
+        #endregion
     }
 }
 

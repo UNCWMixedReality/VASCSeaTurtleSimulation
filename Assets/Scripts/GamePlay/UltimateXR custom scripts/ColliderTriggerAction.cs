@@ -8,6 +8,10 @@ public class ColliderTriggerAction : MonoBehaviour
     /// <summary>
     /// Added to an object with a collider. Triggers events when a collider enteres 
     /// collider of object script is attatched to. specificTag allows ability to specify if only certain tags trigger events.
+    /// 
+    /// Can specify an event to trigger when a specific collider is enteres using the specificColliderEntered/Exited events
+    /// 
+    /// - Nicholas Brunsink
     /// </summary>
     public UnityEvent colliderEntered;
     public UnityEvent colliderExited;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using VASCDataCollection;
+using VASCDC;
 
 
 public static class SaveSystem

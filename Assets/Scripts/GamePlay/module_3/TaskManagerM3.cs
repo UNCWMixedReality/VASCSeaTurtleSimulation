@@ -6,6 +6,7 @@ using cakeslice;
 using DataCollection;
 using DataCollection.Models;
 using UnityEngine.SceneManagement;
+using VASCDC;
 
 public class TaskManagerM3 : MonoBehaviour
 {
@@ -68,19 +69,20 @@ public class TaskManagerM3 : MonoBehaviour
         if (taskCount == 1)
         {
             PrepareScene();
+            LogAct("Entered " + SceneManager.GetActiveScene().name);
         }
 
         //true when the user completes the second task by entering the relocation waypoint
         else if (taskCount == 2)
         {
-            LogTask("Entered relocation waypoint");
+            LogAct("Entered relocation waypoint");
             relocMan.PrepareRelocation();            
         }
 
         //true when the user completes the third task by successfully placing the eggs
         else if (taskCount == 3)
         {
-            LogTask("Successfully placed eggs in the new nest");
+            LogAct("Successfully placed eggs in the new nest");
             relocMan.EndRelocation();
             digMan.PrepareShovel();
             compMan.EnableCompass(digMan.shovel);
@@ -90,7 +92,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when the user completes the fourth task by grabbing the shovel
         else if (taskCount == 4)
         {
-            LogTask("Grabbed shovel");
+            LogAct("Grabbed shovel");
             digMan.DisableShovelHighlight();
             compMan.DisableCompass();
             digMan.PrepareDigging();
@@ -99,7 +101,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when the user completes the fifth task by covering the nest with sand
         else if (taskCount == 5)
         {
-            LogTask("Covered nest with sand");
+            LogAct("Covered nest with sand");
             cageMan.PrepareCage();
             compMan.EnableCompass(cageMan.cage);
         }
@@ -107,7 +109,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when the user completes the sixth task by grabbing the cage
         else if (taskCount == 6)
         {
-            LogTask("Cage grabbed");
+            LogAct("Cage grabbed");
             cageMan.PrepareCovering();
             compMan.DisableCompass();
         }
@@ -115,7 +117,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when the user completes the seventh task by placing the cage
         else if(taskCount == 7)
         {
-            LogTask("Cage placed");
+            LogAct("Cage placed");
             cageMan.EndCovering();
             signMan.PrepareSign();
             compMan.EnableCompass(signMan.sign);
@@ -124,7 +126,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when the user completes the eighth task by grabbing the sign
         else if (taskCount == 8)
         {
-            LogTask("Sign grabbed");
+            LogAct("Sign grabbed");
             compMan.DisableCompass();
             signMan.PreparePlacement();
         }
@@ -132,7 +134,7 @@ public class TaskManagerM3 : MonoBehaviour
         //true when user completes the ninth task by placing the sign
         else if (taskCount == 9)
         {
-            LogTask("Sign placed");
+            LogAct("Sign placed");
             signMan.EndPlacement();
             PrepareEnd();
             activityManager.MarkActivityCompletion();
@@ -153,16 +155,12 @@ public class TaskManagerM3 : MonoBehaviour
         signMan.DisableSign();
     }
 
-    private void LogTask(string message)
+    private void LogAct(string message)
     {
         /*
          * logs when a task is completed with the appropriate information
          */
-        DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                message
-                ));
+        VASCEventLog.logActivityEvent(message);
     }
 
     private void PrepareEnd()

@@ -5,6 +5,7 @@ using UnityEngine;
 using DataCollection;
 using DataCollection.Models;
 using UnityEngine.SceneManagement;
+using VASCDC;
 
 public class NewTaskManagerM1 : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class NewTaskManagerM1 : MonoBehaviour
         //true when user completes first task by entering the scene
         if(taskCount == 1)
         {
+            LogAct("Entered " + SceneManager.GetActiveScene().name);
             toolTable.PrepareCaliper();
         }
 
@@ -102,6 +104,7 @@ public class NewTaskManagerM1 : MonoBehaviour
             SetNextTable();
             turtMeasure.prepareFrontFins();
             turtMeasure.prepareTools();
+            LogAct("Pressed continue button");
         }
 
         //true when user completes eighth task by measuring the front fin
@@ -147,6 +150,7 @@ public class NewTaskManagerM1 : MonoBehaviour
             DisableWaypoint();
             SetNextTable();
             identifyTable.PrepareTurtleIdentification();
+            LogAct("Pressed continue button");
         }
 
         //true when user completes 13th task by selecting begin
@@ -256,10 +260,6 @@ public class NewTaskManagerM1 : MonoBehaviour
         /*
          * logs when a task is completed with the appropriate information
          */
-        DcDataLogging.LogActivity(new Activity(
-            DateTime.Now,
-            SceneManager.GetActiveScene().name,
-            message
-        ));
+        VASCEventLog.logActivityEvent(message);
     }
 }

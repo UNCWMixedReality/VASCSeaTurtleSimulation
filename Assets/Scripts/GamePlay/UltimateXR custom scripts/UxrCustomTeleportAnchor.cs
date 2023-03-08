@@ -1,3 +1,18 @@
+/*
+*   This Script is used to generate custom 
+*   teleportation events using the UltimateXR Framework. 
+*   
+*   Attatch this script to a GameObject on the ground layer to enable custom teleprot events.
+* 
+*   Events are triggered after the teleport process concludes
+* 
+*   Events available: 
+*   OnTeleport - Triggers when the UxrAvatar is teleported to 
+*                   a Gameobject with this script on it
+*   
+*   Written by: Nicholas Brunsink
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,10 +41,8 @@ public class UxrCustomTeleportAnchor : UxrTeleportSpawnCollider
 
     private void HandleTeleport(object sender, UxrAvatarMoveEventArgs e)
     {
+        VASCEventLog.logMovementEvent("Teleported to " + this.name);
         _onTeleport.Invoke();
-        Debug.Log(sender);
-        Debug.Log(this.name);
-        VASCDC.EventLog.logMovementEvent("Teleported to " + this.name);
     }
 }
 

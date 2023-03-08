@@ -5,6 +5,7 @@ using DataCollection;
 using DataCollection.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VASCDC;
 
 public class TaskManager : MonoBehaviour
 {
@@ -72,11 +73,8 @@ public class TaskManager : MonoBehaviour
             compMan.EnableCompass(gloveL);
             instrUpdater.RunInstructions();
             //Logs activity for entering waypoint
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                "Entered excavation waypoint"
-                ));
+            LogAct("Entered " + SceneManager.GetActiveScene().name);
+
         }
 
         //this is true if the player has completed the third task by putting on the gloves
@@ -86,11 +84,7 @@ public class TaskManager : MonoBehaviour
             instrUpdater.RunInstructions();
             compMan.EnableCompass(eggSorting);
             //Logs activity for putting on gloves
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                "Put on Gloves"
-            ));
+            LogAct("Put on Gloves");
         }
 
         //this is true if the player hsa completed the fourth task by digging up the nest
@@ -101,11 +95,7 @@ public class TaskManager : MonoBehaviour
             compMan.DisableCompass();
             instrUpdater.RunInstructions();
             //Logs activity for digging up nest
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                "Dug up the nest"
-            ));
+            LogAct("Dug up the nest");
         }
 
         //true if the fifth and final task is completed
@@ -114,11 +104,7 @@ public class TaskManager : MonoBehaviour
             instrUpdater.RunInstructions();
             activityManager.MarkActivityCompletion();
             //Logs an activity for finishing egg sorting
-            DcDataLogging.LogActivity(new Activity(
-                DateTime.Now,
-                SceneManager.GetActiveScene().name,
-                "Finished sorting eggs"
-            ));
+            LogAct("Finished sorting eggs");
         }
     }
 
@@ -140,5 +126,13 @@ public class TaskManager : MonoBehaviour
     public void PrepareSorting()
     {
         eggSorting.SetActive(true);
+    }
+
+    private void LogAct(string message)
+    {
+        /*
+         * logs when a task is completed with the appropriate information
+         */
+        VASCEventLog.logActivityEvent(message);
     }
 }

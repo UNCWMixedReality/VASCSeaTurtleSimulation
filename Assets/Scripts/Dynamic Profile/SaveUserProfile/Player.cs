@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 using DataCollection;
 using UnityEngine.SceneManagement;
-using VASCDataCollection;
+using VASCDC;
 
 
 public class Player : MonoBehaviour

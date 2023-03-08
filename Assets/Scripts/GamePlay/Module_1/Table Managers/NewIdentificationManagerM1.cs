@@ -65,13 +65,13 @@ public class NewIdentificationManagerM1 : MonoBehaviour
             || (button.name == "Hawksbill_Button" && TurtleList[turtleIdx - 1] == Hawksbill) 
             || (button.name == "Leatherback_Button" && TurtleList[turtleIdx - 1] == Leatherback))
         {
-            VASCDC.EventLog.logDecisionEvent("Turtle: Correct Choice: " + button.name);
+            VASCEventLog.logDecisionEvent("Turtle: Correct Choice: " + button.name);
             Correct();
             button.interactable = false;
         }
         else
         {
-            VASCDC.EventLog.logDecisionEvent("Turtle: Incorrect Choice (" + TurtleList[turtleIdx - 1].name + ") : " + button.name);
+            VASCEventLog.logDecisionEvent("Turtle: Incorrect Choice (" + TurtleList[turtleIdx - 1].name + ") : " + button.name);
             Incorrect();
         }
     }

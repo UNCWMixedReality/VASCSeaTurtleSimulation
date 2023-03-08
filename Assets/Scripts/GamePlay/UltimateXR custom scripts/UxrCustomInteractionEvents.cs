@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UltimateXR.Manipulation;
 using UltimateXR.Core.Components.Composite;
-using VASCDataCollection;
+using VASCDC;
 
 
 class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteractionEvents>
@@ -34,7 +34,7 @@ class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteract
     protected override void OnObjectGrabbed(UxrManipulationEventArgs e)
     {
         onGrab.Invoke();
-        VASCDataCollection.EventLog.logInteractionEvent("Grabbed " + this.name);
+        VASCDC.EventLog.logInteractionEvent("Grabbed " + this.name);
     }
 
     protected override void OnObjectReleasing(UxrManipulationEventArgs e)
@@ -45,7 +45,7 @@ class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteract
     protected override void OnObjectReleased(UxrManipulationEventArgs e)
     {
         onRelease.Invoke();
-        VASCDataCollection.EventLog.logInteractionEvent("Released " + this.name);
+        VASCDC.EventLog.logInteractionEvent("Released " + this.name);
     }
 
     protected override void OnObjectPlacing(UxrManipulationEventArgs e)
@@ -60,7 +60,7 @@ class UxrCustomInteractionEvents : UxrGrabbableObjectComponent<UxrCustomInteract
         else
             onPlaced.Invoke();
 
-        VASCDataCollection.EventLog.logInteractionEvent("Placing: " + this.name + " on anchor: " + e.GrabbableAnchor.name);
+        VASCDC.EventLog.logInteractionEvent("Placing: " + this.name + " on anchor: " + e.GrabbableAnchor.name);
     }
 
     protected override void OnObjectConstraintsApplying(UxrApplyConstraintsEventArgs e)

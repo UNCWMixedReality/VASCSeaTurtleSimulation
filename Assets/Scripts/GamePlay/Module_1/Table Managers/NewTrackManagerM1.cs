@@ -4,6 +4,7 @@ using Altimit.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using DataCollection;
+using VASCDC;
 
 public class NewTrackManagerM1 : MonoBehaviour
 {
@@ -140,11 +141,13 @@ public class NewTrackManagerM1 : MonoBehaviour
             || (button.name == "Leatherback_Button" && TrackList[trackIdx - 1] == Leatherback_Tracks) 
             || (button.name == "Loggerhead_Button" && TrackList[trackIdx - 1] == Loggerhead_Tracks))
         {
+            VASCDC.EventLog.logDecisionEvent("Track: Correct Choice: " + button.name);
             Correct();
             button.interactable = false;
         }
         else
         {
+            VASCDC.EventLog.logDecisionEvent("Track: Incorrect Choice (" + TrackList[trackIdx-1].name + ") : "+ button.name);
             Incorrect();
         }
     }

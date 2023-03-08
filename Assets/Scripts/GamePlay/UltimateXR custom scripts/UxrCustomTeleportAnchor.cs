@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UltimateXR.Avatar;
 using UltimateXR.Core;
 using UltimateXR.Locomotion;
-using VASCDataCollection;
+using VASCDC;
 
 
 public class UxrCustomTeleportAnchor : UxrTeleportSpawnCollider
@@ -29,7 +29,7 @@ public class UxrCustomTeleportAnchor : UxrTeleportSpawnCollider
         _onTeleport.Invoke();
         Debug.Log(sender);
         Debug.Log(this.name);
-        VASCDataCollection.EventLog.logMovementEvent("Teleported to " + this.name);
+        VASCDC.EventLog.logMovementEvent("Teleported to " + this.name);
     }
 }
 

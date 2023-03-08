@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using SimpleJSON;
 
 
-namespace VASCDataCollection
+namespace VASCDC
 {
     public enum EventType
     {

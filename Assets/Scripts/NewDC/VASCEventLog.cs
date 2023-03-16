@@ -60,7 +60,7 @@ namespace VASCDC
 
             logAll(logMsg, pathToUserLogs, eventType);
 
-            string pathToLogs = Application.persistentDataPath + "/Logs/";
+            string pathToLogs = Path.Combine(Application.persistentDataPath, "Logs");
             Directory.CreateDirectory(pathToLogs);
             logAll(logMsg, pathToLogs, eventType);
         }
@@ -108,22 +108,22 @@ namespace VASCDC
         /// <param name="msg">The message to be logged</param>
         public static void logInteractionEvent(string msg)
         {
-            //logEvent(msg, EventType.Interaction);
+            logEvent(msg, EventType.Interaction);
         }
 
         public static void logMovementEvent(string msg)
         {
-            //logEvent(msg, EventType.Movement);
+            logEvent(msg, EventType.Movement);
         }
 
         public static void logDecisionEvent(string msg)
         {
-            //logEvent(msg, EventType.Decision);
+            logEvent(msg, EventType.Decision);
         }
 
         public static void logActivityEvent(string msg)
         {
-            //logEvent(msg, EventType.Activity);
+            logEvent(msg, EventType.Activity);
         }
         #endregion
     }

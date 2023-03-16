@@ -17,9 +17,14 @@ namespace VASCDC
         /// </summary>
         public static void generateUserConfig()
         {
+            Debug.Log("andrew was here");
+            string tempteacherjson = "{\"teacherid\":\"123456\",\"sitting\":0,\"demo\":0}";
             // grabbing info from player and teacher json files created from database and user profile creation
             string pathToPlayer = Application.persistentDataPath + "/player.json";
             string pathToTeacher = Application.persistentDataPath + "/teacher.json";
+
+            File.WriteAllText(pathToTeacher, tempteacherjson);
+
             string teacherjson = File.ReadAllText(pathToTeacher);
             string playerjson = File.ReadAllText(pathToPlayer);
             JSONNode teacherData = JSON.Parse(teacherjson);

@@ -6,6 +6,7 @@ using DataCollection;
 using DataCollection.Models;
 using UnityEngine.SceneManagement;
 using UltimateXR.Avatar;
+using VASCDC;
 
 
 public class TaskManagerTutorial : MonoBehaviour
@@ -89,12 +90,14 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 2)
         {
             EnableNextHighlights(0);
+            LogTask("Pressed a/x button");
             StopAllCoroutines();
         }
 
         // press b/y
         else if (taskCount == 3)
         {
+            LogTask("Pressed b/y button");
             EnableNextHighlights(2);
         }
 
@@ -102,6 +105,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 4)
         {
             EnableNextHighlights(4);
+            LogTask("Pressed grip button");
             audiofeedback.playGood();
             StartCoroutine(SphereGrow());
         }
@@ -110,6 +114,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 5)
         {
             EnableNextHighlights(6);
+            LogTask("Completed first snap turn");
             teleport.SetActive(true);
         }
 
@@ -117,6 +122,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 6)
         {
             DisableControllers();
+            LogTask("Teleported to first waypoint");
             audiofeedback.playGood();
             buttonHighlights[8].SetActive(false);
             buttonHighlights[9].SetActive(false);
@@ -130,6 +136,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 7)
         {
             audiofeedback.playGood();
+            LogTask("Grabbed egg");
             button.SetActive(true);
             buttonHighlights[4].SetActive(false);
             buttonHighlights[5].SetActive(false);
@@ -139,6 +146,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 8)
         {
             audiofeedback.playGood();
+            LogTask("Clicked first button");
             button.SetActive(false);
             funThings.SetActive(true);
         }
@@ -146,6 +154,7 @@ public class TaskManagerTutorial : MonoBehaviour
         else if (taskCount == 9)
         {
             audiofeedback.playCompletion();
+            LogTask("Finished tutorial");
             activityMan.MarkActivityCompletion();
         }
 
@@ -159,17 +168,13 @@ public class TaskManagerTutorial : MonoBehaviour
     {
     }
 
-    //private void LogTask(string message)
-    //{
-    //    /*
-    //    * logs when a task is completed with the appropriate information
-    //    */
-    //    DcDataLogging.LogActivity(new Activity(
-    //            DateTime.Now,
-    //            SceneManager.GetActiveScene().name,
-    //            message
-    //            ));
-    //}
+    private void LogTask(string message)
+    {
+        /*
+        * logs when a task is completed with the appropriate information
+        */
+        VASCDC.VASCEventLog.logActivityEvent(message);
+    }
 
     private void PrepareEnd()
     {

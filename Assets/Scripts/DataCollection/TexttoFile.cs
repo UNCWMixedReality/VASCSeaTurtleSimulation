@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 //**************************
 public class TexttoFile : MonoBehaviour
 {
+	/*
     public static string pin = "TestLog";
 		
 	//these will get start times for individual activities
@@ -139,5 +140,6 @@ public class TexttoFile : MonoBehaviour
 		
 		Debug.Log("M1 Info get");
 	}
+	*/
 	
 }

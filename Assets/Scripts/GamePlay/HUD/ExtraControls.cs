@@ -11,13 +11,14 @@ public class ExtraControls : MonoBehaviour
 {
     [SerializeField] private UxrControllerInput input;
     [SerializeField] private GameObject instructionCanvas;
-    [SerializeField] private Transform homePos;
+    private Transform homePos;
 
     private bool deactivated;
 
     void Start()
     {
         deactivated = false;
+        homePos = this.gameObject.transform;
     }
 
 
@@ -71,11 +72,11 @@ public class ExtraControls : MonoBehaviour
         {
             StartCoroutine(JoystickHold());
         }
-        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Left, UxrInputButtons.Menu))
+        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Menu))
         {
             StartCoroutine(MenuHold());
         }
-        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Right, UxrInputButtons.Joystick) || UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Menu))
+        else if (UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Right, UxrInputButtons.Joystick) || UxrAvatar.LocalAvatarInput.GetButtonsPressUp(UxrHandSide.Left, UxrInputButtons.Menu))
         {
             StopAllCoroutines();
         }
@@ -91,7 +92,7 @@ public class ExtraControls : MonoBehaviour
     IEnumerator MenuHold()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("DemoMain");
+        SceneManager.LoadScene("NewMain");
     }
 
 }

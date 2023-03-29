@@ -207,40 +207,6 @@ public class Player : MonoBehaviour
         DcDataLogging.Student = new DataCollection.Models.Student(player.Username, "");
         UserConfig.generateUserConfig();
         SceneManager.LoadScene("JustModule");
-        /* PlayersMonster.SetActive(true);
-         if(character_num == 1)
-         {
-             blueOct.SetActive(true);
-         }
-         else if(character_num == 2)
-         {
-             pinkOct.SetActive(true);
-         }
-         else if (character_num == 3)
-         {
-             turtle.SetActive(true);
-         }
-         else if (character_num == 4)          put the players character on iteractive map if we want
-         {
-             orangeOct.SetActive(true);
-         }
-         else if (character_num == 5)
-         {
-             jelly.SetActive(true);
-         }
-         else if (character_num == 6)
-         {
-             Dolphan.SetActive(true);
-         }
-         else if (character_num == 7)
-         {
-             stingray.SetActive(true);
-         }
-         else if (character_num == 8)
-         {
-             seahorse.SetActive(true);
-         }*/
-
-    }
+     }
 
 }

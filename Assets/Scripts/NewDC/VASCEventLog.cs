@@ -49,6 +49,12 @@ namespace VASCDC
 
             string pathToUser = Path.Combine(Application.persistentDataPath + "/Users", playerData["ID"]);
 
+            if (!File.Exists(pathToUser + "/UserConfig.json"))
+            {
+                return;
+            }
+
+
             string userConfig = File.ReadAllText(pathToUser + "/UserConfig.json");
             JSONNode data = JSON.Parse(userConfig);
 

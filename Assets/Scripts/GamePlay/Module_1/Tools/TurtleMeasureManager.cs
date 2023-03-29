@@ -71,6 +71,8 @@ public class TurtleMeasureManager : MonoBehaviour
     }
     public void prepareBackFins()
     {
+        caliperColliders[0].GetComponent<CaliperMeasure>().enabled = false;
+        caliperColliders[1].GetComponent<CaliperMeasure>().enabled = false;
         compMan.EnableCompass(collidersPlaceholders[4]);
         calipers.GetComponent<CalipSize>().taskNum = 8;
         for (int i = 0; i < 2; i++)
@@ -91,6 +93,9 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellLength()
     {
+        tmColliders[0].GetComponent<TMMeasure>().enabled = false;
+        tmColliders[1].GetComponent<TMMeasure>().enabled = false;
+
         compMan.DisableCompass();
         tapeMeasure.GetComponent<UxrGrabbableObject>().IsGrabbable = true;
         calipers.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
@@ -114,6 +119,8 @@ public class TurtleMeasureManager : MonoBehaviour
 
     public void prepareShellWidth()
     {
+        tmColliders[0].GetComponent<TMMeasure>().enabled = false;
+        tmColliders[1].GetComponent<TMMeasure>().enabled = false;
 
         tapeMeasure.GetComponent<TapeMeasureSize>().taskNum = 10;
 

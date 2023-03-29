@@ -28,7 +28,7 @@ public class NewActivityManagerM1 : MonoBehaviour
         activityCount += 1;
 
         // if all activities are completed, then end the module
-        if (activityCount == 4)
+        if (activityCount == 2)
         {
             StartCoroutine(EndSimulation());
         }
@@ -37,10 +37,10 @@ public class NewActivityManagerM1 : MonoBehaviour
     private IEnumerator EndSimulation()
     {
         // just loads the main scene
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(7);
         EndAudio.Play();
         yield return new WaitForSecondsRealtime(5);
         DcDataLogging.EndSession();
-        SceneManager.LoadScene("JustModule");
+        SceneManager.LoadScene("Build Nest");
     }
 }

@@ -17,7 +17,6 @@ Overall, the VascSeaTurtleSimulation project provides students with a unique and
 - [Features](#features)
 - [Installation](#installation)
 - [Navigating](#navigating)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Credits](#credits)
@@ -170,12 +169,20 @@ If something went wrong ensure that git is installed correctly.
     
 
 ## Contributing
+The information provided outlines the basic steps for contributing to a GitHub repository.
+Please have a firm understanding of the concepts below and never make permanent changes to a main branch unless authorized to do so. 
 
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Push to the branch
-5. Submit a pull request
+1. Fork the repository: The first step is to make a copy of the repository by forking it. Forking creates a separate copy of the repository in your own GitHub account, which you can modify without affecting the original repository.
+
+2. Create a new branch: Once you have forked the repository, create a new branch in your forked repository to make changes. This helps keep your changes separate from the main branch of the original repository.
+
+3. Commit your changes: Make the changes you want to contribute to the repository and commit them to your new branch. Commits are a way to save changes to the code with a message describing the changes made. You can commit as often as you may like to.
+
+4. Push to the branch: After committing your changes, you need to push them to the new branch in your forked repository. Pushing sends the changes to your GitHub account, where they can be reviewed before being merged with the original repository.
+
+5. Submit a pull request: The final step is to submit a pull request to the original repository. A pull request is a request to the repository's owner to merge your changes into their repository. Once submitted, the repository owner can review the changes and decide whether or not to merge them into the main branch of the original repository.
+
+By following these steps, you can contribute to a repository on GitHub and help improve open-source projects.
 
 ## Rights 
 

@@ -8,7 +8,8 @@ After completing the tutorial, students are transported to a classroom where the
 
 Overall, the VascSeaTurtleSimulation project provides students with a unique and immersive learning experience that helps them gain a deeper understanding of sea turtles and their role in the ecosystem. By providing students with the tools and knowledge needed to help preserve sea turtle habitats, this project encourages students to become stewards of the environment and advocates for life here on earth. 
 
-![thumbnail](https://user-images.githubusercontent.com/104607298/229296619-4d148f61-482a-450d-b82e-c17597f9b396.png)
+
+![Screenshot 2023-04-02 172618](https://user-images.githubusercontent.com/104607298/229379819-95e962b2-2fa4-4c5d-85ee-ae480ec13540.png)
 
 
 ## Table of Contents
